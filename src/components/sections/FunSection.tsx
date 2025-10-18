@@ -45,7 +45,7 @@ export const FunSection = () => {
       id="certifications"
       className="animate-fade-in space-y-10 scroll-mt-28"
     >
-      <h2 className="text-4xl font-bold text-foreground text-center">
+      <h2 className="text-4xl font-bold text-foreground text-center select-none pointer-events-none">
         Certifications
       </h2>
 

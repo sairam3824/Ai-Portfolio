@@ -89,7 +89,7 @@ export const SkillsSection = () => {
 
   return (
     <section id="skills" className="scroll-mt-28 animate-fade-in space-y-10">
-      <h2 className="text-4xl font-bold text-foreground text-center">
+      <h2 className="text-4xl font-bold text-foreground text-center select-none pointer-events-none">
         Skills & Expertise
       </h2>
 
