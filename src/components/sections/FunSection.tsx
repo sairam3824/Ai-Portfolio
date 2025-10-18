@@ -1,4 +1,4 @@
-import { Award } from "lucide-react";
+import { Award, ArrowUpRight } from "lucide-react";
 
 const certifications = [
   {
@@ -41,31 +41,45 @@ const certifications = [
 
 export const FunSection = () => {
   return (
-    <div className="animate-fade-in space-y-8">
-      <h2 className="text-3xl font-bold text-foreground">Certifications</h2>
+    <section
+      id="certifications"
+      className="animate-fade-in space-y-10 scroll-mt-28"
+    >
+      <h2 className="text-4xl font-bold text-foreground text-center">
+        Certifications
+      </h2>
 
-      <div className="grid gap-6 md:grid-cols-2">
+      <ul className="max-w-4xl mx-auto space-y-5 px-4">
         {certifications.map((cert, index) => (
-          <div
+          <li
             key={index}
-            className="p-6 rounded-2xl bg-card border-2 border-border hover:border-accent transition-all duration-300 hover:scale-[1.03] shadow-sm"
+            className="group flex items-center justify-between bg-white/10 dark:bg-white/5 
+                       backdrop-blur-md border border-white/20 rounded-xl 
+                       px-6 py-4 transition-all duration-300 
+                       hover:bg-white/20 hover:border-accent/40 hover:scale-[1.02]
+                       shadow-sm"
           >
-            <div className="flex items-center gap-3 mb-3">
-              <Award className="w-6 h-6 text-accent" />
-              <h3 className="text-lg font-semibold text-foreground">{cert.title}</h3>
+            <div className="flex items-center gap-4">
+              <Award className="w-6 h-6 text-accent shrink-0" />
+              <span className="text-base md:text-lg font-semibold text-foreground/90">
+                {cert.title}
+              </span>
             </div>
 
             <a
               href={cert.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block mt-2 text-sm font-medium text-accent hover:text-accent/80 transition-colors"
+              className="flex items-center gap-1 text-sm md:text-base text-accent font-medium 
+                         opacity-90 hover:opacity-100 transition-opacity"
             >
-              View Certificate →
+              View <ArrowUpRight className="w-4 h-4" />
             </a>
-          </div>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </section>
   );
 };
+
+export default FunSection;
