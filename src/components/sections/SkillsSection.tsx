@@ -88,28 +88,38 @@ export const SkillsSection = () => {
   ];
 
   return (
-    <div className="animate-fade-in space-y-8">
-      <h2 className="text-3xl font-bold text-foreground text-center">
+    <section id="skills" className="scroll-mt-28 animate-fade-in space-y-10">
+      <h2 className="text-4xl font-bold text-foreground text-center">
         Skills & Expertise
       </h2>
 
-      {/* ======= DENSE PACKING GRID: fills holes so items move up ======= */}
-      <div className="grid gap-6 auto-rows-min grid-flow-row-dense md:grid-cols-2 lg:grid-cols-4">
-        {skillCategories.map((cat, index) => (
-          <div
-            key={index}
-            className="bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300"
-          >
-            <h3 className="text-lg font-semibold text-accent mb-4 text-left">
+      <div className="max-w-5xl mx-auto space-y-10 px-4">
+        {skillCategories.map((cat, idx) => (
+          <div key={idx} className="space-y-4">
+            {/* Category Heading */}
+            <h3 className="text-2xl md:text-3xl font-semibold text-foreground">
               {cat.category}
             </h3>
 
-            <div className="space-y-3">
-              {cat.skills.map((skill, i) => (
-                <div key={i} className="flex flex-col">
-                  <span className="font-medium text-foreground text-sm">{skill.name}</span>
-                  <span className="text-muted-foreground text-xs">
-                    {skill.level}
+            {/* Glassy Chips (tuned sizes) */}
+            <div className="flex flex-wrap gap-4">
+              {cat.skills.map((s, i) => (
+                <div
+                  key={i}
+                  className="inline-flex items-center px-5 py-2.5 rounded-full 
+                             bg-white/20 dark:bg-white/10
+                             text-foreground/90 
+                             backdrop-blur-lg border border-white/30
+                             shadow-sm hover:shadow-lg hover:scale-[1.05]
+                             hover:border-accent/50 hover:bg-white/25
+                             transition-all duration-300"
+                  title={`${s.name} — ${s.level}`}
+                >
+                  <span className="text-sm md:text-base font-semibold tracking-wide">
+                    {s.name}
+                  </span>
+                  <span className="ml-3 text-xs md:text-sm opacity-70 font-medium">
+                    • {s.level}
                   </span>
                 </div>
               ))}
@@ -117,37 +127,8 @@ export const SkillsSection = () => {
           </div>
         ))}
       </div>
-
-      {/* ======= ALTERNATIVE: equal-height cards (uncomment to use)
-          Use this if you require strict visual order and aligned rows.
-
-      <div className="grid gap-6 auto-rows-fr md:grid-cols-2 lg:grid-cols-4">
-        {skillCategories.map((cat, index) => (
-          <div
-            key={index}
-            className="bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 h-full"
-          >
-            <div className="min-h-[220px] flex flex-col justify-between">
-              <h3 className="text-lg font-semibold text-accent mb-4 text-left">
-                {cat.category}
-              </h3>
-
-              <div className="space-y-3">
-                {cat.skills.map((skill, i) => (
-                  <div key={i} className="flex flex-col">
-                    <span className="font-medium text-foreground text-sm">{skill.name}</span>
-                    <span className="text-muted-foreground text-xs">
-                      {skill.level}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      */}
-    </div>
+    </section>
   );
 };
+
+export default SkillsSection;
