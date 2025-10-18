@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { User, FolderKanban, Layers, GraduationCap, Sparkles, Send, Mail, FileText } from "lucide-react";
 import { NavigationCard } from "@/components/NavigationCard";
 import { Input } from "@/components/ui/input";
@@ -59,6 +59,29 @@ const Index = () => {
         return null;
     }
   };
+
+  // ref to the content wrapper that will be scrolled into view
+  const contentRef = useRef<HTMLDivElement | null>(null);
+
+  // Scroll into view when activeSection changes
+  useEffect(() => {
+    if (activeSection && contentRef.current) {
+      // Smooth scroll to the content wrapper
+      contentRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      // Accessibility: focus first heading inside the section so keyboard/screen reader users know context
+      // Use a small timeout to ensure the rendered section DOM is ready (usually not needed but safe)
+      setTimeout(() => {
+        if (!contentRef.current) return;
+        const firstHeading = contentRef.current.querySelector("h1, h2, h3");
+        if (firstHeading instanceof HTMLElement) {
+          // make sure it's focusable
+          if (!firstHeading.hasAttribute("tabindex")) firstHeading.setAttribute("tabindex", "-1");
+          firstHeading.focus({ preventScroll: true });
+        }
+      }, 50);
+    }
+  }, [activeSection]);
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
@@ -123,21 +146,18 @@ const Index = () => {
           ))}
         </div>
 
-        {/* Content Section */}
-        {activeSection && (
-          <div className="max-w-3xl mx-auto px-4 pb-16">
-            {renderSection()}
-          </div>
-        )}
+        {/* Content Section - stable wrapper so we can reliably scroll to it */}
+        <div ref={contentRef} className="max-w-3xl mx-auto px-4 pb-16">
+          {activeSection ? (
+            renderSection()
+          ) : null}
+        </div>
 
         {/* Watermark */}
         {!activeSection && (
-        
-        <div className="text-center text-[120px] md:text-[180px] font-bold text-muted/40 select-none pointer-events-none animate-fade-in drop-shadow-md">
-        SAI RAM
-        </div>
-      
-        
+          <div className="text-center text-[120px] md:text-[180px] font-bold text-muted/40 select-none pointer-events-none animate-fade-in drop-shadow-md">
+            SAI RAM
+          </div>
         )}
 
         {/* Chat Dialog */}
