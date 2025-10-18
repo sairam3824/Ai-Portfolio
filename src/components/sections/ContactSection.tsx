@@ -16,15 +16,15 @@ const codingProfiles = [
 export const ContactSection = () => {
   return (
     <div className="animate-fade-in space-y-6">
-      <h2 className="text-3xl font-bold text-foreground">Let's Connect</h2>
+      <h2 className="text-3xl font-bold text-foreground text-center">Let's Connect</h2>
       <div className="space-y-8">
-        <p className="text-lg text-muted-foreground">
+        <p className="text-lg text-muted-foreground text-center">
           I'm always excited to collaborate on interesting projects or just have a chat about AI,
           technology, and creative possibilities.
         </p>
 
         {/* Contact Actions */}
-        <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+        <div className="flex flex-col sm:flex-row gap-4 items-center justify-center text-center">
           {/* Email Button */}
           <a
             href="mailto:sairam.maruri@gmail.com"

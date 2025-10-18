@@ -3,7 +3,7 @@ import { GraduationCap, Calendar, MapPin } from "lucide-react";
 export const EducationSection = () => {
   return (
     <div className="animate-fade-in space-y-6">
-      <h2 className="text-3xl font-bold text-foreground">Education</h2>
+      <h2 className="text-3xl font-bold text-foreground text-center">Education</h2>
 
       <div className="space-y-6">
         {/* Bachelor of Technology */}
@@ -20,7 +20,7 @@ export const EducationSection = () => {
                 Bachelor of Technology - Computer Science
               </h3>
               <p className="text-gray-600 mb-3">
-                Focus on Data Structures, Algorithms, Machine Learning, and Software Engineering
+                Vellore Institute of Technology
               </p>
 
               <div className="flex flex-wrap gap-4 text-sm text-gray-700">
@@ -30,7 +30,7 @@ export const EducationSection = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-gray-500" />
-                  <span>Vellore Institute of Technology</span>
+                  <span>Amaravati</span>
                 </div>
               </div>
 
