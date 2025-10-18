@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Send, Settings } from "lucide-react";
+import { Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import avatar from "@/assets/avatar.png";
 
@@ -22,10 +22,12 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [webhookUrl, setWebhookUrl] = useState(
+
+  // keep webhook URL but don't expose UI for editing
+  const [webhookUrl] = useState(
     localStorage.getItem("n8n_webhook_url") || "https://honeywell232435643524.app.n8n.cloud/webhook/704ab75c-30ce-4ce4-a236-cd4866b76bc8/chat"
   );
-  const [showSettings, setShowSettings] = useState(false);
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
@@ -33,28 +35,21 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
     if (initialMessage && open) {
       handleSendMessage(initialMessage);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialMessage, open]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // Auto-save default webhook URL to localStorage if not already set
-  useEffect(() => {
-    if (!localStorage.getItem("n8n_webhook_url") && webhookUrl) {
-      localStorage.setItem("n8n_webhook_url", webhookUrl);
-    }
-  }, [webhookUrl]);
-
   const handleSendMessage = async (messageText?: string) => {
     const textToSend = messageText || input;
     if (!textToSend.trim()) return;
 
     if (!webhookUrl) {
-      setShowSettings(true);
       toast({
         title: "Configuration Required",
-        description: "Please configure your n8n webhook URL first",
+        description: "n8n webhook URL not found. Set 'n8n_webhook_url' in localStorage to enable the chat.",
         variant: "destructive",
       });
       return;
@@ -88,7 +83,7 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
       }
 
       const data = await response.json();
-      
+
       const assistantMessage: Message = {
         role: "assistant",
         content: data.output || data.message || data.response || "I received your message!",
@@ -99,14 +94,13 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
     } catch (error) {
       console.error("Error sending message to n8n:", error);
       const errorMsg = error instanceof Error ? error.message : "Unknown error occurred";
-      
+
       toast({
         title: "Chatbot Error",
         description: `Failed to get response: ${errorMsg}`,
         variant: "destructive",
       });
 
-      // Add error message to chat with helpful information
       const errorMessage: Message = {
         role: "assistant",
         content: `Sorry, I'm having trouble connecting right now. Error: ${errorMsg}. 
@@ -117,7 +111,7 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
 3. Ensure the workflow is activated
 4. Make sure you have a "Respond to Webhook" node
 
-**Quick Fix:** Try recreating a simple workflow with just:
+**Quick Fix:** Try recreating a simple workflow with:
 - Webhook Trigger → Code Node → Respond to Webhook
 
 I'm here to help once the workflow is fixed! 🤖`,
@@ -129,126 +123,82 @@ I'm here to help once the workflow is fixed! 🤖`,
     }
   };
 
-  const handleSaveWebhook = () => {
-    localStorage.setItem("n8n_webhook_url", webhookUrl);
-    setShowSettings(false);
-    toast({
-      title: "Settings Saved",
-      description: "Your n8n webhook URL has been saved",
-    });
-  };
-
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl h-[600px] flex flex-col">
         <DialogHeader>
           <div className="flex items-center justify-between">
             <DialogTitle className="flex items-center gap-2">
-              <img src={avatar} alt="Raphael" className="w-8 h-8 rounded-full" />
+              <img src={avatar} alt="Sairam" className="w-8 h-8 rounded-full" />
               Chat with Sairam
             </DialogTitle>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setShowSettings(!showSettings)}
-            >
-              <Settings className="w-4 h-4" />
-            </Button>
+            {/* Settings button removed on purpose */}
           </div>
         </DialogHeader>
 
-        {showSettings ? (
-          <div className="flex-1 flex flex-col gap-4 p-4">
-            <div className="space-y-2">
-              <label className="text-sm font-medium">n8n Webhook URL</label>
-              <Input
-                value={webhookUrl}
-                onChange={(e) => setWebhookUrl(e.target.value)}
-                placeholder="https://your-n8n-instance.com/webhook/..."
-                className="w-full"
-              />
-              <p className="text-xs text-muted-foreground">
-                Enter your n8n webhook URL. Create a webhook trigger in n8n and paste the URL here.
-              </p>
+        {/* Messages */}
+        <div className="flex-1 overflow-y-auto space-y-4 p-4">
+          {messages.length === 0 && (
+            <div className="text-center text-muted-foreground py-8">
+              <p>Start a conversation! Ask me anything about my work, projects, or interests.</p>
             </div>
-            <Button onClick={handleSaveWebhook} className="w-full">
-              Save Configuration
-            </Button>
-          </div>
-        ) : (
-          <>
-            {/* Messages */}
-            <div className="flex-1 overflow-y-auto space-y-4 p-4">
-              {messages.length === 0 && (
-                <div className="text-center text-muted-foreground py-8">
-                  <p>Start a conversation! Ask me anything about my work, projects, or interests.</p>
-                </div>
+          )}
+          {messages.map((message, index) => (
+            <div
+              key={index}
+              className={`flex gap-3 ${message.role === "user" ? "justify-end" : "justify-start"}`}
+            >
+              {message.role === "assistant" && (
+                <img src={avatar} alt="Sairam" className="w-8 h-8 rounded-full" />
               )}
-              {messages.map((message, index) => (
-                <div
-                  key={index}
-                  className={`flex gap-3 ${
-                    message.role === "user" ? "justify-end" : "justify-start"
-                  }`}
-                >
-                  {message.role === "assistant" && (
-                    <img src={avatar} alt="Raphael" className="w-8 h-8 rounded-full" />
-                  )}
-                  <div
-                    className={`max-w-[70%] rounded-2xl px-4 py-3 ${
-                      message.role === "user"
-                        ? "bg-accent text-accent-foreground"
-                        : "bg-secondary text-secondary-foreground"
-                    }`}
-                  >
-                    <p className="text-sm leading-relaxed">{message.content}</p>
-                    <p className="text-xs opacity-60 mt-1">
-                      {message.timestamp.toLocaleTimeString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })}
-                    </p>
-                  </div>
-                </div>
-              ))}
-              {isLoading && (
-                <div className="flex gap-3">
-                  <img src={avatar} alt="Raphael" className="w-8 h-8 rounded-full" />
-                  <div className="bg-secondary rounded-2xl px-4 py-3">
-                    <div className="flex gap-1">
-                      <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" />
-                      <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:0.2s]" />
-                      <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:0.4s]" />
-                    </div>
-                  </div>
-                </div>
-              )}
-              <div ref={messagesEndRef} />
-            </div>
-
-            {/* Input */}
-            <div className="p-4 border-t">
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  handleSendMessage();
-                }}
-                className="flex gap-2"
+              <div
+                className={`max-w-[70%] rounded-2xl px-4 py-3 ${
+                  message.role === "user" ? "bg-accent text-accent-foreground" : "bg-secondary text-secondary-foreground"
+                }`}
               >
-                <Input
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  placeholder="Type your message..."
-                  disabled={isLoading}
-                  className="flex-1"
-                />
-                <Button type="submit" size="icon" disabled={isLoading || !input.trim()}>
-                  <Send className="w-4 h-4" />
-                </Button>
-              </form>
+                <p className="text-sm leading-relaxed">{message.content}</p>
+                <p className="text-xs opacity-60 mt-1">
+                  {message.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+                </p>
+              </div>
             </div>
-          </>
-        )}
+          ))}
+          {isLoading && (
+            <div className="flex gap-3">
+              <img src={avatar} alt="Sairam" className="w-8 h-8 rounded-full" />
+              <div className="bg-secondary rounded-2xl px-4 py-3">
+                <div className="flex gap-1">
+                  <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" />
+                  <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:0.2s]" />
+                  <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:0.4s]" />
+                </div>
+              </div>
+            </div>
+          )}
+          <div ref={messagesEndRef} />
+        </div>
+
+        {/* Input */}
+        <div className="p-4 border-t">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSendMessage();
+            }}
+            className="flex gap-2"
+          >
+            <Input
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Type your message..."
+              disabled={isLoading}
+              className="flex-1"
+            />
+            <Button type="submit" size="icon" disabled={isLoading || !input.trim()}>
+              <Send className="w-4 h-4" />
+            </Button>
+          </form>
+        </div>
       </DialogContent>
     </Dialog>
   );
