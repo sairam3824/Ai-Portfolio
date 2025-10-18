@@ -229,7 +229,7 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
   const [sessionId] = useState(() => `web-session-${Date.now()}-${Math.random().toString(36).substring(7)}`);
 
   // IMPORTANT: Make sure this is your PRODUCTION URL from the n8n Webhook node
-  const webhookUrl = "https://shdbf13.app.n8n.cloud/webhook/ba7a9292-9954-49fb-85b2-c397f80da4d6";
+  const webhookUrl = "https://shdbf13.app.n8n.cloud/webhook/7cc95036-ce41-4440-bbc3-b86dfc9ec879";
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
