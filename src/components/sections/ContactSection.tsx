@@ -95,29 +95,69 @@ export const ContactSection = () => {
             ))}
           </div>
         </div>
-
         {/* Quick Stats */}
-        <div className="pt-6 bg-gradient-to-r from-accent/5 to-secondary/5 border border-border rounded-lg p-6">
-          <h3 className="text-lg font-semibold text-foreground mb-4">Quick Stats</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-accent">450+</div>
-              <div className="text-xs text-muted-foreground">CodeChef Problems</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-accent">750+</div>
-              <div className="text-xs text-muted-foreground">LeetCode Problems</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-accent">1500+</div>
-              <div className="text-xs text-muted-foreground">CodeChef Rating</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-accent">10+</div>
-              <div className="text-xs text-muted-foreground">GitHub Projects</div>
+        <div className="pt-8">
+          <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-10 shadow-md hover:shadow-lg transition-all duration-300">
+            <h3 className="text-3xl font-extrabold text-center text-foreground mb-8 tracking-tight">
+              Quick Stats
+            </h3>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              {/* Stat 1 */}
+              <div className="group hover:scale-105 transition-transform duration-300">
+                <div className="text-4xl font-extrabold text-blue-600 group-hover:text-blue-700 transition-colors">
+                  450+
+                </div>
+                <div className="text-sm md:text-base text-muted-foreground font-medium">
+                  CodeChef Problems
+                </div>
+              </div>
+
+              {/* Stat 2 */}
+              <div className="group hover:scale-105 transition-transform duration-300">
+                <div className="text-4xl font-extrabold text-blue-600 group-hover:text-blue-700 transition-colors">
+                  750+
+                </div>
+                <div className="text-sm md:text-base text-muted-foreground font-medium">
+                  LeetCode Problems
+                </div>
+              </div>
+
+              {/* Stat 3 */}
+              <div className="group hover:scale-105 transition-transform duration-300">
+                <div className="text-4xl font-extrabold text-blue-600 group-hover:text-blue-700 transition-colors">
+                  1500+
+                </div>
+                <div className="text-sm md:text-base text-muted-foreground font-medium">
+                  CodeChef Rating
+                </div>
+              </div>
+
+              {/* Stat 4 */}
+              <div className="group hover:scale-105 transition-transform duration-300">
+                <div className="text-4xl font-extrabold text-blue-600 group-hover:text-blue-700 transition-colors">
+                  10+
+                </div>
+                <div className="text-sm md:text-base text-muted-foreground font-medium">
+                  GitHub Projects
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <div className="mt-6 flex flex-wrap justify-center gap-3">
+          <span className="px-4 py-2 bg-pink-50 text-pink-600 text-sm rounded-full">
+            🚀 AI Enthusiast
+          </span>
+          <span className="px-4 py-2 bg-blue-50 text-blue-600 text-sm rounded-full">
+            2⭐️ Codechef 
+          </span>
+          <span className="px-4 py-2 bg-purple-50 text-purple-600 text-sm rounded-full">
+            💡 Software Developer
+          </span>
+          
+        </div>
+
       </div>
     </div>
   );
