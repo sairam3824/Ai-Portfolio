@@ -27,7 +27,7 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
   // const [webhookUrl] = useState(
   //   localStorage.getItem("n8n_webhook_url") || "https://shdbf13.app.n8n.cloud/webhook/ad26ac70-e815-4a88-9b1e-f07a76664515/chat"
   // );
-  const webhookUrl = "https://shdbf13.app.n8n.cloud/webhook/ad26ac70-e815-4a88-9b1e-f07a76664515/chat";
+  const webhookUrl = "https://shdbf13.app.n8n.cloud/webhook/96ba3649-243e-4686-bc88-b14ceb5100ef";
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
