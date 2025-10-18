@@ -132,9 +132,12 @@ const Index = () => {
 
         {/* Watermark */}
         {!activeSection && (
-          <div className="text-center text-[120px] md:text-[180px] font-bold text-muted/10 select-none pointer-events-none animate-fade-in">
-            SAI RAM
-          </div>
+        
+        <div className="text-center text-[120px] md:text-[180px] font-bold text-muted/40 select-none pointer-events-none animate-fade-in drop-shadow-md">
+        SAI RAM
+        </div>
+      
+        
         )}
 
         {/* Chat Dialog */}

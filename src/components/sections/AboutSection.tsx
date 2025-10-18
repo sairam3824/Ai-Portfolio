@@ -27,7 +27,7 @@ const codingProfiles = [
   { 
     icon: Target, 
     label: "TakeUForward", 
-    href: "https://takeuforward.org/plus/profile/sairam3824", 
+    href: "https://takeuforward.org/plus/profile/3824", 
     category: "coding" 
   },
 ];
