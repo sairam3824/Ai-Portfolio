@@ -42,6 +42,18 @@ export const ContactSection = () => {
             <Phone className="w-4 h-4" />
             +91 7893865644
           </a>
+
+          {/* Resume Button (secondary CTA) */}
+          <a
+            href="/Sai_Ram_Maruri_Resume_2025.pdf"
+            download="Sai_Ram_Maruri_Resume_2025.pdf"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all duration-300 font-medium"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4" />
+            </svg>
+            Download Resume
+          </a>
         </div>
 
         {/* Social Media Section */}
