@@ -1,0 +1,68 @@
+{
+  "name": "Chatbot Webhook Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "chat",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "704ab75c-30ce-4ce4-a236-cd4866b76bc8"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the message from the webhook payload\nconst message = $input.first().json.body.message || 'Hello';\n\n// Simple chatbot responses\nlet response = '';\n\nif (message.toLowerCase().includes('hello') || message.toLowerCase().includes('hi')) {\n  response = 'Hello! How can I help you today?';\n} else if (message.toLowerCase().includes('who') && message.toLowerCase().includes('you')) {\n  response = 'I\\'m Raphael\\'s AI assistant! I can help you learn about his projects, skills, and experience.';\n} else if (message.toLowerCase().includes('project')) {\n  response = 'Raphael works on various AI and creative technology projects. You can explore the Projects section to see more details!';\n} else if (message.toLowerCase().includes('skill')) {\n  response = 'Raphael has expertise in machine learning, natural language processing, and interactive design. Check out the Skills section for more!';\n} else if (message.toLowerCase().includes('contact')) {\n  response = 'You can reach Raphael through the Contact section on this portfolio!';\n} else {\n  response = `Thanks for your message: \"${message}\". I\\'m here to help you learn more about Raphael\\'s work. Try asking about his projects, skills, or experience!`;\n}\n\nreturn {\n  output: response,\n  message: response\n};"
+      },
+      "id": "code-node",
+      "name": "Process Message",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json.output }}",
+        "options": {}
+      },
+      "id": "respond-node",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [680, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Process Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Message": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {},
+  "versionId": "1"
+}
