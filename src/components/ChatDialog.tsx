@@ -230,7 +230,6 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
 
   // IMPORTANT: Make sure this is your PRODUCTION URL from the n8n Webhook node
   const webhookUrl = "https://shdbf13.app.n8n.cloud/webhook/ba7a9292-9954-49fb-85b2-c397f80da4d6";
-
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
