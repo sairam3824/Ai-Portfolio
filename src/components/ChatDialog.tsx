@@ -24,9 +24,10 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
   const [isLoading, setIsLoading] = useState(false);
 
   // keep webhook URL but don't expose UI for editing
-  const [webhookUrl] = useState(
-    localStorage.getItem("n8n_webhook_url") || "https://honeywell232435643524.app.n8n.cloud/webhook/704ab75c-30ce-4ce4-a236-cd4866b76bc8/chat"
-  );
+  // const [webhookUrl] = useState(
+  //   localStorage.getItem("n8n_webhook_url") || "https://shdbf13.app.n8n.cloud/webhook/ad26ac70-e815-4a88-9b1e-f07a76664515/chat"
+  // );
+  const webhookUrl = "https://shdbf13.app.n8n.cloud/webhook/ad26ac70-e815-4a88-9b1e-f07a76664515/chat";
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
