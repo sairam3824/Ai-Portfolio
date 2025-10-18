@@ -93,11 +93,12 @@ export const SkillsSection = () => {
         Skills & Expertise
       </h2>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {/* ======= DENSE PACKING GRID: fills holes so items move up ======= */}
+      <div className="grid gap-6 auto-rows-min grid-flow-row-dense md:grid-cols-2 lg:grid-cols-4">
         {skillCategories.map((cat, index) => (
           <div
             key={index}
-            className="bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 h-fit"
+            className="bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300"
           >
             <h3 className="text-lg font-semibold text-accent mb-4 text-left">
               {cat.category}
@@ -116,6 +117,37 @@ export const SkillsSection = () => {
           </div>
         ))}
       </div>
+
+      {/* ======= ALTERNATIVE: equal-height cards (uncomment to use)
+          Use this if you require strict visual order and aligned rows.
+
+      <div className="grid gap-6 auto-rows-fr md:grid-cols-2 lg:grid-cols-4">
+        {skillCategories.map((cat, index) => (
+          <div
+            key={index}
+            className="bg-card border border-border rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 h-full"
+          >
+            <div className="min-h-[220px] flex flex-col justify-between">
+              <h3 className="text-lg font-semibold text-accent mb-4 text-left">
+                {cat.category}
+              </h3>
+
+              <div className="space-y-3">
+                {cat.skills.map((skill, i) => (
+                  <div key={i} className="flex flex-col">
+                    <span className="font-medium text-foreground text-sm">{skill.name}</span>
+                    <span className="text-muted-foreground text-xs">
+                      {skill.level}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      */}
     </div>
   );
 };
