@@ -65,7 +65,7 @@ export const AboutSection = () => {
           </div>
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-accent"></div>
-            <span>Completed 9+ Projects</span>
+            <span>Completed 10+ Projects</span>
           </div>
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-accent"></div>

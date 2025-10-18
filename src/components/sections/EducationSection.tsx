@@ -43,7 +43,7 @@ export const EducationSection = () => {
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 mt-1 rounded-full bg-blue-600"></div>
-                  <span className="text-sm text-gray-800">CGPA: 8.24</span>
+                  <span className="text-sm text-gray-800">CGPA: 8.24/10 </span>
                 </div>
                 {/* <div className="flex items-start gap-3">
                   <div className="w-2 h-2 mt-1 rounded-full bg-blue-600"></div>
