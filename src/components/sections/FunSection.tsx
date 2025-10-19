@@ -2,20 +2,20 @@ import { Award, ArrowUpRight } from "lucide-react";
 
 const certifications = [
   {
-    title: "IBM RAG and Agentic AI Professional Certificate",
-    link: "https://www.credly.com/badges/84dabd2f-4c54-4ad8-b424-8ff9ab85d263/public_url",
-  },
-  {
-    title: "Generative AI for Project Managers Specialization",
-    link: "https://www.credly.com/badges/7ecec711-00b3-4e6a-a06f-30ead5c4a6aa/public_url",
-  },
-  {
     title: "Oracle Generative AI Professional",
     link: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=CC2371A772A07EC0926BE492904B67F3AA59912C48FE5488BAB54F87F914D350",
   },
   {
     title: "AWS Cloud Practitioner",
     link: "https://www.credly.com/badges/eeb97be1-16e8-475b-8f08-d3ffdf051f2e/linked_in_profile",
+  },
+  {
+    title: "IBM RAG and Agentic AI Professional Certificate",
+    link: "https://www.credly.com/badges/84dabd2f-4c54-4ad8-b424-8ff9ab85d263/public_url",
+  },
+  {
+    title: "Generative AI for Project Managers Specialization",
+    link: "https://www.credly.com/badges/7ecec711-00b3-4e6a-a06f-30ead5c4a6aa/public_url",
   },
   {
     title: "Azure Data Fundamentals",
