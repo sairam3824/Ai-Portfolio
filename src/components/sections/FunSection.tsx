@@ -2,6 +2,10 @@ import { Award, ArrowUpRight } from "lucide-react";
 
 const certifications = [
   {
+    title: "IBM RAG and Agentic AI Professional Certificate",
+    link: "https://www.credly.com/badges/84dabd2f-4c54-4ad8-b424-8ff9ab85d263/public_url",
+  },
+  {
     title: "Oracle Generative AI Professional",
     link: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=CC2371A772A07EC0926BE492904B67F3AA59912C48FE5488BAB54F87F914D350",
   },
