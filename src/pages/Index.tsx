@@ -155,8 +155,8 @@ const Index = () => {
 
         {/* Watermark */}
         {!activeSection && (
-          <div className="text-center text-[120px] md:text-[180px] font-bold text-muted/40 select-none pointer-events-none animate-fade-in drop-shadow-md">
-            SAI RAM
+          <div className="fixed bottom-[-40px] md:bottom-[-60px] left-0 right-0 text-center text-[150px] md:text-[250px] font-extrabold text-muted/25 select-none pointer-events-none -z-10">
+            SAIRAM
           </div>
         )}
 
