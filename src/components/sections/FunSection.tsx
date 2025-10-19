@@ -6,6 +6,10 @@ const certifications = [
     link: "https://www.credly.com/badges/84dabd2f-4c54-4ad8-b424-8ff9ab85d263/public_url",
   },
   {
+    title: "Generative AI for Project Managers Specialization",
+    link: "https://www.credly.com/badges/7ecec711-00b3-4e6a-a06f-30ead5c4a6aa/public_url",
+  },
+  {
     title: "Oracle Generative AI Professional",
     link: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=CC2371A772A07EC0926BE492904B67F3AA59912C48FE5488BAB54F87F914D350",
   },
