@@ -79,7 +79,7 @@ src/
 │   │   ├── ProjectsSection.tsx
 │   │   ├── SkillsSection.tsx
 │   │   ├── EducationSection.tsx
-│   │   ├── FunSection.tsx
+│   │   ├── CertificationSection.tsx
 │   │   └── ContactSection.tsx
 │   ├── ui/                 # Reusable UI components
 │   ├── ChatDialog.tsx      # AI chat interface
