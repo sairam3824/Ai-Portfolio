@@ -47,7 +47,7 @@ const certifications = [
   },
 ];
 
-export const FunSection = () => {
+export const CertificationSection = () => {
   return (
     <section
       id="certifications"
@@ -90,4 +90,4 @@ export const FunSection = () => {
   );
 };
 
-export default FunSection;
+export default CertificationSection;

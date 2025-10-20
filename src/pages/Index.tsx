@@ -7,14 +7,14 @@ import { AboutSection } from "@/components/sections/AboutSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { EducationSection } from "@/components/sections/EducationSection";
-import { FunSection } from "@/components/sections/FunSection";
+import { CertificationSection } from "@/components/sections/CertificationSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { CursorBlast } from "@/components/CursorBlast";
 import { ChatDialog } from "@/components/ChatDialog";
 import logo from "@/assets/logo.png";
 import avatar from "@/assets/avatar.png";
 
-type Section = "me" | "resume" | "projects" | "skills" | "education" | "fun" | "contact";
+type Section = "me" | "resume" | "projects" | "skills" | "education" | "certification" | "contact";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState<Section | null>(null);
@@ -28,7 +28,7 @@ const Index = () => {
     { id: "projects" as Section, icon: FolderKanban, label: "Projects" },
     { id: "skills" as Section, icon: Layers, label: "Skills" },
     { id: "education" as Section, icon: GraduationCap, label: "Education" },
-    { id: "fun" as Section, icon: Sparkles, label: "Certifications" },
+    { id: "certification" as Section, icon: Sparkles, label: "Certifications" },
     { id: "contact" as Section, icon: Mail, label: "Contact" },
   ];
 
@@ -51,8 +51,8 @@ const Index = () => {
         return <SkillsSection />;
       case "education":
         return <EducationSection />;
-      case "fun":
-        return <FunSection />;
+      case "certification":
+        return <CertificationSection />;
       case "contact":
         return <ContactSection />;
       default:
