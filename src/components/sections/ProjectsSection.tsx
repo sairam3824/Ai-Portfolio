@@ -83,7 +83,7 @@ const projects = [
 export const ProjectsSection = () => {
   return (
     <div className="animate-fade-in space-y-6">
-      <h2 className="text-3xl font-bold text-foreground text-center select-none pointer-events-none">My Projects</h2>
+      <h2 className="text-3xl font-bold text-foreground text-center select-none pointer-events-none focus:outline-none">My Projects</h2>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project, index) => (
           <Card

@@ -3,7 +3,7 @@ import { GraduationCap, Calendar, MapPin } from "lucide-react";
 export const EducationSection = () => {
   return (
     <div className="animate-fade-in space-y-6">
-      <h2 className="text-3xl font-bold text-foreground text-center select-none pointer-events-none">Education</h2>
+      <h2 className="text-3xl font-bold text-foreground text-center select-none pointer-events-none focus:outline-none">Education</h2>
 
       <div className="space-y-6">
         {/* Bachelor of Technology */}

@@ -53,7 +53,7 @@ export const CertificationSection = () => {
       id="certifications"
       className="animate-fade-in space-y-10 scroll-mt-28"
     >
-      <h2 className="text-4xl font-bold text-foreground text-center select-none pointer-events-none">
+      <h2 className="text-4xl font-bold text-foreground text-center select-none pointer-events-none focus:outline-none">
         Certifications
       </h2>
 

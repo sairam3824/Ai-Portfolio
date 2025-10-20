@@ -17,7 +17,7 @@ export const ContactSection = () => {
   return (
     <div className="animate-fade-in space-y-6">
       {/* <h2 className="text-3xl font-bold text-foreground text-center">Let's Connect</h2> */}
-      <h2 className="text-3xl font-bold text-foreground text-center select-none pointer-events-none">
+      <h2 className="text-3xl font-bold text-foreground text-center select-none pointer-events-none focus:outline-none">
         Let's Connect
       </h2>
 
