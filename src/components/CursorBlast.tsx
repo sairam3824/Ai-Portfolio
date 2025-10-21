@@ -49,8 +49,8 @@ export const CursorBlast = () => {
 
     // Create particles with increased count for more bubbles
     const createParticles = (x: number, y: number, count: number = 8) => {
-      // Limit total particles for performance
-      if (particlesRef.current.length > 150) return;
+      // Limit total particles for performance but allow more for better coverage
+      if (particlesRef.current.length > 200) return;
       
       for (let i = 0; i < count; i++) {
         const angle = (Math.PI * 2 * i) / count + Math.random() * 0.8;
@@ -71,8 +71,8 @@ export const CursorBlast = () => {
     // Throttled mouse move handler
     const handleMouseMove = (e: MouseEvent) => {
       const now = Date.now();
-      // Throttle to allow more frequent particle creation
-      if (now - lastParticleTime.current < 12) return;
+      // Reduced throttle for more responsive particles
+      if (now - lastParticleTime.current < 8) return;
       
       lastMouseRef.current = { ...mouseRef.current };
       mouseRef.current = { x: e.clientX, y: e.clientY };
@@ -82,9 +82,14 @@ export const CursorBlast = () => {
       const dy = mouseRef.current.y - lastMouseRef.current.y;
       const distance = Math.sqrt(dx * dx + dy * dy);
 
-      // Create more particles for better visual effect
-      if (distance > 6) {
-        createParticles(mouseRef.current.x, mouseRef.current.y, Math.min(Math.floor(distance / 8), 10));
+      // Create particles even on small movements for consistent effect
+      if (distance > 2) {
+        const particleCount = Math.max(3, Math.min(Math.floor(distance / 6), 12));
+        createParticles(mouseRef.current.x, mouseRef.current.y, particleCount);
+        lastParticleTime.current = now;
+      } else if (distance > 0) {
+        // Create minimal particles even for tiny movements
+        createParticles(mouseRef.current.x, mouseRef.current.y, 2);
         lastParticleTime.current = now;
       }
     };
