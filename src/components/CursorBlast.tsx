@@ -16,6 +16,7 @@ export const CursorBlast = () => {
   const particlesRef = useRef<Particle[]>([]);
   const mouseRef = useRef({ x: 0, y: 0 });
   const lastMouseRef = useRef({ x: 0, y: 0 });
+  const lastParticleTime = useRef(0);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -23,6 +24,9 @@ export const CursorBlast = () => {
 
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+
+    // Optimize canvas context
+    ctx.imageSmoothingEnabled = false;
 
     // Set canvas size
     const resize = () => {
@@ -43,26 +47,33 @@ export const CursorBlast = () => {
       "hsl(260, 60%, 88%)", // light purple
     ];
 
-    // Create particles
+    // Create particles with increased count for more bubbles
     const createParticles = (x: number, y: number, count: number = 8) => {
+      // Limit total particles for performance
+      if (particlesRef.current.length > 150) return;
+      
       for (let i = 0; i < count; i++) {
-        const angle = (Math.PI * 2 * i) / count + Math.random() * 0.5;
-        const speed = 2 + Math.random() * 3;
+        const angle = (Math.PI * 2 * i) / count + Math.random() * 0.8;
+        const speed = 1.5 + Math.random() * 3;
         particlesRef.current.push({
-          x,
-          y,
+          x: x + (Math.random() - 0.5) * 10, // Add slight position variation
+          y: y + (Math.random() - 0.5) * 10,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
           life: 1,
-          maxLife: 0.5 + Math.random() * 0.5,
+          maxLife: 0.4 + Math.random() * 0.6,
           color: colors[Math.floor(Math.random() * colors.length)],
-          size: 3 + Math.random() * 4,
+          size: 2 + Math.random() * 4,
         });
       }
     };
 
-    // Mouse move handler
+    // Throttled mouse move handler
     const handleMouseMove = (e: MouseEvent) => {
+      const now = Date.now();
+      // Throttle to allow more frequent particle creation
+      if (now - lastParticleTime.current < 12) return;
+      
       lastMouseRef.current = { ...mouseRef.current };
       mouseRef.current = { x: e.clientX, y: e.clientY };
 
@@ -71,48 +82,45 @@ export const CursorBlast = () => {
       const dy = mouseRef.current.y - lastMouseRef.current.y;
       const distance = Math.sqrt(dx * dx + dy * dy);
 
-      // Create particles based on movement speed
-      if (distance > 5) {
-        createParticles(mouseRef.current.x, mouseRef.current.y, Math.min(Math.floor(distance / 5), 12));
+      // Create more particles for better visual effect
+      if (distance > 6) {
+        createParticles(mouseRef.current.x, mouseRef.current.y, Math.min(Math.floor(distance / 8), 10));
+        lastParticleTime.current = now;
       }
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
 
-    // Animation loop
+    // Animation loop with optimizations
     let animationId: number;
     const animate = () => {
-      ctx.fillStyle = "rgba(255, 255, 255, 0.08)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // Clear canvas efficiently
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      // Batch particle operations
+      ctx.save();
+      
       // Update and draw particles
       particlesRef.current = particlesRef.current.filter((particle) => {
         particle.x += particle.vx;
         particle.y += particle.vy;
-        particle.vy += 0.1; // gravity
-        particle.vx *= 0.99; // friction
-        particle.vy *= 0.99;
-        particle.life -= 0.02;
+        particle.vy += 0.08; // reduced gravity
+        particle.vx *= 0.98; // reduced friction
+        particle.vy *= 0.98;
+        particle.life -= 0.025;
 
         if (particle.life > 0) {
-          ctx.globalAlpha = particle.life;
+          ctx.globalAlpha = particle.life * 0.8;
           ctx.fillStyle = particle.color;
           ctx.beginPath();
           ctx.arc(particle.x, particle.y, particle.size * particle.life, 0, Math.PI * 2);
           ctx.fill();
-
-          // Add soft glow effect
-          ctx.shadowBlur = 30;
-          ctx.shadowColor = particle.color;
-          ctx.fill();
-          ctx.shadowBlur = 0;
-
           return true;
         }
         return false;
       });
 
-      ctx.globalAlpha = 1;
+      ctx.restore();
       animationId = requestAnimationFrame(animate);
     };
 
