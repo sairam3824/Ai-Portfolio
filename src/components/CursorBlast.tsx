@@ -61,7 +61,7 @@ export const CursorBlast = () => {
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
           life: 1,
-          maxLife: 0.4 + Math.random() * 0.6,
+          maxLife: 0.8 + Math.random() * 0.8,
           color: colors[Math.floor(Math.random() * colors.length)],
           size: 2 + Math.random() * 4,
         });
@@ -104,10 +104,10 @@ export const CursorBlast = () => {
       particlesRef.current = particlesRef.current.filter((particle) => {
         particle.x += particle.vx;
         particle.y += particle.vy;
-        particle.vy += 0.08; // reduced gravity
-        particle.vx *= 0.98; // reduced friction
-        particle.vy *= 0.98;
-        particle.life -= 0.025;
+        particle.vy += 0.05; // even lighter gravity
+        particle.vx *= 0.995; // less friction for longer movement
+        particle.vy *= 0.995;
+        particle.life -= 0.015;
 
         if (particle.life > 0) {
           ctx.globalAlpha = particle.life * 0.8;
