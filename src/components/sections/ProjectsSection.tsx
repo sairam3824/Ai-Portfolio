@@ -2,32 +2,32 @@ import { Card } from "@/components/ui/card";
 
 const projects = [
   {
-    title: "AI Research Platform (Orravn.cloud)",
+    title: "AI Research Platform (Orravyn.cloud)",
     description:
       "A collaborative AI research and deployment platform built for scalable LLM and ML experimentation in the cloud.",
-    tech: ["Next.js", "Python", "AWS"],
+    tech: ["Node.js", "Python", "AWS", "n8n"],
+    github: "https://orravyn.cloud",
+  },
+  {
+    title: "Ai-Portfolio (saiii.in)",
+    description:
+      "A personal Ai Portfolio buit with Ai integration showcasing AI, ML projects ",
+    tech: ["Tailwind CSS", "n8n"],
     github: "https://orravyn.cloud",
   },
   {
     title: "Bone Fracture Classification",
     description:
       "A deep learning model that detects and classifies bone fractures from X-ray images using CNN architectures.",
-    tech: ["PyTorch", "FastAPI", "OpenCV"],
+    tech: ["PyTorch", "TensorFlow",  "WideResnet"],
     github: "https://github.com/sairam3824/Bone-Fracture-Classification",
   },
   {
     title: "Customer Churn Prediction",
     description:
       "A predictive analytics model identifying customers likely to churn using advanced feature engineering and ML algorithms.",
-    tech: ["scikit-learn", "Pandas", "Matplotlib"],
+    tech: ["ML models", "scikit-learn", "Pandas", "Matplotlib"],
     github: "https://github.com/sairam3824/Customer-Churn-Prediction",
-  },
-  {
-    title: "Integrated AI Text Assistant",
-    description:
-      "A unified AI assistant integrating NLP models to perform reasoning, summarization, and text-based automation tasks.",
-    tech: ["LLMs", "React", "Node.js"],
-    github: "https://github.com/sairam3824/Integrated-AI-Text-Assistant",
   },
   {
     title: "unthinkable-RAG",
@@ -37,45 +37,52 @@ const projects = [
     github: "https://github.com/sairam3824/unthinkable-RAG",
   },
   {
-    title: "My Portfolio",
+    title: "Portfolio",
     description:
-      "A personal portfolio built with React/Next.js showcasing AI, ML, and DSA projects with interactive animations and dark mode.",
-    tech: ["React", "TailwindCSS", "TypeScript"],
-    github: "https://github.com/sairam3824/Myportfilo",
+      "A personal portfolio built with React/Next.js showcasing AI, ML projects with interactive animations and dark mode.",
+    tech: ["Node.js", "HTML", "CSS"],
+    github: "https://myportfilo-azure.vercel.app",
+  },
+  {
+    title: "Integrated AI Text Assistant",
+    description:
+      "A unified AI assistant integrating NLP models to perform reasoning, summarization, and text-based automation tasks.",
+    tech: ["LLMs", "React", "Node.js"],
+    github: "https://github.com/sairam3824/Integrated-AI-Text-Assistant",
   },
   {
     title: "Basic-MCP-Server-Practice",
     description:
       "A foundational project for understanding Model Context Protocol (MCP) servers, focusing on AI agent interoperability.",
-    tech: ["Node.js", "Express", "LangChain"],
+    tech: ["MCP", "Python", "LangChain", "Groq API"],
     github: "https://github.com/sairam3824/Basic-MCP-Server-Practice",
   },
   {
     title: "SpaceX Booster Landing Prediction",
     description:
       "A machine learning project predicting the success of SpaceX rocket landings using launch data and regression models.",
-    tech: ["Python", "Pandas", "Matplotlib"],
+    tech: ["Ml Models", "Python", "Pandas", "Matplotlib"],
     github: "https://github.com/sairam3824/SpaceX-Booster-Landing-Prediction",
   },
   {
     title: "LangChain Pet Namer & Agent",
     description:
       "An AI-powered agent using LangChain and OpenAI APIs to generate creative pet names and assist in conversational tasks.",
-    tech: ["LangChain", "OpenAI", "TypeScript"],
+    tech: ["LangChain", "Gemini API"],
     github: "https://github.com/sairam3824/Langchain-LLM-PET-app",
   },
   {
     title: "School Management System",
     description:
       "A full-stack web app for managing students, teachers, and administration using secure role-based access controls.",
-    tech: ["Django", "PostgreSQL", "Bootstrap"],
+    tech: ["Python", "MySql"],
     github: "https://github.com/sairam3824/School-Management-System",
   },
   {
     title: "Quiz Website",
     description:
       "An interactive quiz platform featuring category-based questions, timer integration, and real-time scoring.",
-    tech: ["React", "Firebase", "TailwindCSS"],
+    tech: ["React", "MongoDB", "Node.js"],
     github: "https://github.com/sairam3824/Quiz-Website",
   },
 ];
