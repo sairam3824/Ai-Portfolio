@@ -140,8 +140,8 @@ export const BlogSection = () => {
 
       {/* Legal footer links */}
       <footer className="flex items-center justify-center gap-6 text-sm text-gray-600">
-        <a className="hover:text-gray-900 underline underline-offset-4" href="/privacy">Privacy Policy</a>
-        <a className="hover:text-gray-900 underline underline-offset-4" href="/terms">Terms of Use</a>
+        <a className="hover:text-gray-900 underline underline-offset-4" href="/privacy-policy">Privacy Policy</a>
+        <a className="hover:text-gray-900 underline underline-offset-4" href="/terms-and-conditions">Terms & Conditions</a>
       </footer>
 
       {/* Subscribe CTA */}

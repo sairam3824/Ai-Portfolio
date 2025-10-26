@@ -175,6 +175,21 @@ const Index = () => {
       {/* Copyright Footer - Outside container, at very bottom */}
       <footer className="w-full py-6 border-t border-border bg-background">
         <div className="container mx-auto px-4 text-center">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
+            <a
+              href="/privacy-policy"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Privacy Policy
+            </a>
+            <span className="hidden sm:inline text-muted-foreground">•</span>
+            <a
+              href="/terms-and-conditions"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Terms & Conditions
+            </a>
+          </div>
           <p className="text-sm text-muted-foreground">
             © 2025 Sai Rama Linga Reddy Maruri. All Rights Reserved.
           </p>
