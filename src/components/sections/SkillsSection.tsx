@@ -9,27 +9,44 @@ export const SkillsSection = () => {
       ],
     },
     {
-      category: "AI/ML Tools",
+      category: "🤖 AI/ML Frameworks & Libraries",
       skills: [
-        { name: "TensorFlow", level: "Intermediate" },
-        { name: "PyTorch", level: "Intermediate" },
-        { name: "Scikit-learn", level: "Intermediate" },
-        { name: "LangChain", level: "Intermediate" },
-        { name: "NumPy", level: "Intermediate" },
-        { name: "Pandas", level: "Intermediate" },
-        { name: "Neural Networks", level: "Intermediate" },
-        { name: "Seaborn", level: "Intermediate" },
+        { name: "TensorFlow", level: "Advanced" },
+        { name: "PyTorch", level: "Advanced" },
+        { name: "Scikit-learn", level: "Advanced" },
+        { name: "LangChain", level: "Advanced" },
+        { name: "NumPy", level: "Advanced" },
+        { name: "Pandas", level: "Advanced" },
+        { name: "Neural Networks", level: "Advanced" },
+        { name: "Keras", level: "Intermediate" },
+        { name: "XGBoost", level: "Intermediate" },
       ],
     },
     {
-      category: "Generative AI & LLMs",
+      category: "🧠 Generative AI & LLMs",
       skills: [
         { name: "OpenAI API", level: "Advanced" },
-        { name: "Claude", level: "Intermediate" },
+        { name: "Claude API", level: "Advanced" },
+        { name: "Gemini API", level: "Advanced" },
+        { name: "Hugging Face", level: "Advanced" },
         { name: "BERT", level: "Intermediate" },
-        { name: "Hugging Face", level: "Intermediate" },
         { name: "T5", level: "Intermediate" },
-        { name: "Qwen", level: "Intermediate" },
+        { name: "RAG Systems", level: "Advanced" },
+        { name: "Vector Databases", level: "Intermediate" },
+        { name: "Prompt Engineering", level: "Advanced" },
+      ],
+    },
+    {
+      category: "🔬 AI Specializations",
+      skills: [
+        { name: "Computer Vision", level: "Advanced" },
+        { name: "Natural Language Processing", level: "Advanced" },
+        { name: "Deep Learning", level: "Advanced" },
+        { name: "Machine Learning", level: "Advanced" },
+        { name: "Reinforcement Learning", level: "Intermediate" },
+        { name: "MLOps", level: "Intermediate" },
+        { name: "Model Fine-tuning", level: "Intermediate" },
+        { name: "AI Agent Development", level: "Advanced" },
       ],
     },
     {
@@ -90,7 +107,7 @@ export const SkillsSection = () => {
   return (
     <section id="skills" className="scroll-mt-28 animate-fade-in space-y-10">
       <h2 className="text-4xl font-bold text-foreground text-center select-none pointer-events-none focus:outline-none">
-        Skills & Expertise
+        AI & Technical Expertise
       </h2>
 
       <div className="max-w-5xl mx-auto space-y-10 px-4">
