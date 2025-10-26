@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { User, FolderKanban, Layers, GraduationCap, BookOpen, Sparkles, Send, Mail, FileText } from "lucide-react";
 import { NavigationCard } from "@/components/NavigationCard";
 import { Input } from "@/components/ui/input";
@@ -18,10 +19,19 @@ import avatar from "@/assets/avatar.png";
 type Section = "me" | "resume" | "projects" | "skills" | "education" | "blog" | "certification" | "contact";
 
 const Index = () => {
+  const [searchParams] = useSearchParams();
   const [activeSection, setActiveSection] = useState<Section | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [chatOpen, setChatOpen] = useState(false);
   const [initialChatMessage, setInitialChatMessage] = useState<string>();
+
+  // Check for section parameter on component mount
+  useEffect(() => {
+    const sectionParam = searchParams.get("section");
+    if (sectionParam && ["me", "projects", "skills", "education", "blog", "certification", "contact"].includes(sectionParam)) {
+      setActiveSection(sectionParam as Section);
+    }
+  }, [searchParams]);
 
   const navigationItems = [
     { id: "me" as Section, icon: User, label: "Me" },
@@ -175,21 +185,6 @@ const Index = () => {
       {/* Copyright Footer - Outside container, at very bottom */}
       <footer className="w-full py-6 border-t border-border bg-background">
         <div className="container mx-auto px-4 text-center">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
-            <a
-              href="/privacy-policy"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Privacy Policy
-            </a>
-            <span className="hidden sm:inline text-muted-foreground">•</span>
-            <a
-              href="/terms-and-conditions"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Terms & Conditions
-            </a>
-          </div>
           <p className="text-sm text-muted-foreground">
             © 2025 Sai Rama Linga Reddy Maruri. All Rights Reserved.
           </p>
