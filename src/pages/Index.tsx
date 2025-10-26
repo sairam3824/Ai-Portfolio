@@ -171,6 +171,15 @@ const Index = () => {
           initialMessage={initialChatMessage}
         />
       </div>
+
+      {/* Copyright Footer - Outside container, at very bottom */}
+      <footer className="w-full py-6 border-t border-border bg-background">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-sm text-muted-foreground">
+            © 2025 Sai Rama Linga Reddy Maruri. All Rights Reserved.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
