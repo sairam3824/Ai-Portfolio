@@ -1,5 +1,6 @@
 import { BookOpen, Calendar, ExternalLink, Eye, X, Share2, Link as LinkIcon, CheckCircle2, ShieldCheck } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const BlogSection = () => {
   const [selectedPost, setSelectedPost] = useState<number | null>(null);
@@ -58,7 +59,7 @@ export const BlogSection = () => {
       await navigator.clipboard.writeText(shareUrl);
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
-    } catch (_) {}
+    } catch (_) { }
   };
 
   return (
@@ -140,8 +141,18 @@ export const BlogSection = () => {
 
       {/* Legal footer links */}
       <footer className="flex items-center justify-center gap-6 text-sm text-gray-600">
-        <a className="hover:text-gray-900 underline underline-offset-4" href="/privacy-policy">Privacy Policy</a>
-        <a className="hover:text-gray-900 underline underline-offset-4" href="/terms-and-conditions">Terms & Conditions</a>
+        <Link
+          to="/privacy-policy"
+          className="hover:text-gray-900 underline underline-offset-4 transition-colors"
+        >
+          Privacy Policy
+        </Link>
+        <Link
+          to="/terms-and-conditions"
+          className="hover:text-gray-900 underline underline-offset-4 transition-colors"
+        >
+          Terms & Conditions
+        </Link>
       </footer>
 
       {/* Subscribe CTA */}
@@ -307,7 +318,7 @@ export const BlogSection = () => {
                 </p>
 
                 {/* Sources accordion */}
-                
+
                 <details className="mt-6 bg-gray-50 border border-gray-200 rounded-xl p-4">
                   <summary className="cursor-pointer font-semibold text-gray-900">Sources & References</summary>
                   <div className="mt-3 space-y-4 text-gray-700">
