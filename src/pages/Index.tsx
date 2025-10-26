@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { User, FolderKanban, Layers, GraduationCap, Sparkles, Send, Mail, FileText } from "lucide-react";
+import { User, FolderKanban, Layers, GraduationCap, BookOpen, Sparkles, Send, Mail, FileText } from "lucide-react";
 import { NavigationCard } from "@/components/NavigationCard";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,7 @@ import { AboutSection } from "@/components/sections/AboutSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { EducationSection } from "@/components/sections/EducationSection";
+import { BlogSection } from "@/components/sections/BlogSection";
 import { CertificationSection } from "@/components/sections/CertificationSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { CursorBlast } from "@/components/CursorBlast";
@@ -14,7 +15,7 @@ import { ChatDialog } from "@/components/ChatDialog";
 import logo from "@/assets/logo.png";
 import avatar from "@/assets/avatar.png";
 
-type Section = "me" | "resume" | "projects" | "skills" | "education" | "certification" | "contact";
+type Section = "me" | "resume" | "projects" | "skills" | "education" | "blog" | "certification" | "contact";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState<Section | null>(null);
@@ -28,6 +29,7 @@ const Index = () => {
     { id: "projects" as Section, icon: FolderKanban, label: "Projects" },
     { id: "skills" as Section, icon: Layers, label: "Skills" },
     { id: "education" as Section, icon: GraduationCap, label: "Education" },
+    { id: "blog" as Section, icon: BookOpen, label: "Blog" },
     { id: "certification" as Section, icon: Sparkles, label: "Certifications" },
     { id: "contact" as Section, icon: Mail, label: "Contact" },
   ];
@@ -51,6 +53,8 @@ const Index = () => {
         return <SkillsSection />;
       case "education":
         return <EducationSection />;
+      case "blog":
+        return <BlogSection />;
       case "certification":
         return <CertificationSection />;
       case "contact":
@@ -128,7 +132,7 @@ const Index = () => {
         </div>
 
         {/* Navigation Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mb-16 animate-fade-in">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-16 animate-fade-in">
           {navigationItems.map((item) => (
             <NavigationCard
               key={item.id}
