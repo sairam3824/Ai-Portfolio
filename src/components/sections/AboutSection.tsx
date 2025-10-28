@@ -6,29 +6,29 @@ const socialLinks = [
 ];
 
 const codingProfiles = [
-  { 
-    icon: Code, 
-    label: "LeetCode", 
-    href: "https://leetcode.com/u/sairam3824/", 
-    category: "coding" 
+  {
+    icon: Code,
+    label: "LeetCode",
+    href: "https://leetcode.com/u/sairam3824/",
+    category: "coding"
   },
-  { 
-    icon: Trophy, 
-    label: "CodeChef", 
-    href: "https://www.codechef.com/users/sairam2004", 
-    category: "coding" 
+  {
+    icon: Trophy,
+    label: "CodeChef",
+    href: "https://www.codechef.com/users/sairam2004",
+    category: "coding"
   },
-  { 
-    icon: BookOpen, 
-    label: "InterviewBit", 
-    href: "https://www.interviewbit.com/profile/sai-rama-linga-reddy-maruri/", 
-    category: "coding" 
+  {
+    icon: BookOpen,
+    label: "InterviewBit",
+    href: "https://www.interviewbit.com/profile/sai-rama-linga-reddy-maruri/",
+    category: "coding"
   },
-  { 
-    icon: Target, 
-    label: "TakeUForward", 
-    href: "https://takeuforward.org/plus/profile/sairam3824", 
-    category: "coding" 
+  {
+    icon: Target,
+    label: "TakeUForward",
+    href: "https://takeuforward.org/plus/profile/sairam3824",
+    category: "coding"
   },
 ];
 
@@ -43,21 +43,21 @@ export const AboutSection = () => {
 
       <div className="space-y-6 text-muted-foreground">
         <p className="text-lg leading-relaxed">
-          I'm Sairam, a dedicated DSA problem solver and AI-driven technologist with 3 years of programming experience. 
-          I've solved over 800+ problems on LeetCode to strengthen my grasp of data structures and algorithms — 
+          I'm Sairam, a dedicated DSA problem solver and AI-driven technologist with 3 years of programming experience.
+          I've solved over 800+ problems on LeetCode to strengthen my grasp of data structures and algorithms —
           the foundation of scalable and efficient systems.
         </p>
 
         <p className="leading-relaxed">
-          My core interests include Artificial Intelligence, Machine Learning, AI Agents, and Generative AI, 
-          with growing proficiency in Large Language Models (LLMs) and their real-world applications. 
+          My core interests include Artificial Intelligence, Machine Learning, AI Agents, and Generative AI,
+          with growing proficiency in Large Language Models (LLMs) and their real-world applications.
           I continuously explore model architectures, optimization techniques, and cutting-edge AI advancements.
         </p>
 
         <p className="leading-relaxed">
           Beyond algorithms, I bring hands-on experience with cloud technologies, particularly Amazon Web Services (AWS),
-          enabling me to design and deploy scalable, secure, and cost-efficient ML workflows and data pipelines. 
-          For me, it's not just about using powerful tools—it's about mastering them to build impactful solutions. 
+          enabling me to design and deploy scalable, secure, and cost-efficient ML workflows and data pipelines.
+          For me, it's not just about using powerful tools—it's about mastering them to build impactful solutions.
         </p>
 
         <p className="leading-relaxed">Learn always, Build always.</p>

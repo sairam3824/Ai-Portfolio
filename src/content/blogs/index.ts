@@ -1,4 +1,6 @@
 import { techBiweeklyDigestOct2025 } from './tech-biweekly-digest-oct-20-2025';
+import { llmPoisoningHiddenThreat } from './llm-poisoning-hidden-threat';
+import { ragTransformingLLMKnowledgeAccess } from './rag-transforming-llm-knowledge-access';
 
 export interface BlogPost {
     id: string;
@@ -17,6 +19,8 @@ export interface BlogPost {
 // Export all blog posts in chronological order (newest first)
 export const blogPosts: BlogPost[] = [
     techBiweeklyDigestOct2025,
+    llmPoisoningHiddenThreat,
+    ragTransformingLLMKnowledgeAccess,
 ];
 
 // Helper function to get a specific blog post by ID

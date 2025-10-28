@@ -1,14 +1,16 @@
-import { X, Share2, Link as LinkIcon, CheckCircle2, ShieldCheck } from "lucide-react";
+import { X, Share2, Link as LinkIcon, CheckCircle2, ShieldCheck, Search } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { BlogCard } from "@/components/BlogCard";
 import { blogPosts, getBlogPost } from "@/content/blogs";
 import { SubscriptionDialog } from "@/components/SubscriptionDialog";
+import { Input } from "@/components/ui/input";
 
 export const BlogSection = () => {
   const [selectedPost, setSelectedPost] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [subscriptionDialogOpen, setSubscriptionDialogOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const closeBtnRef = useRef<HTMLButtonElement | null>(null);
   const lastFocusedRef = useRef<HTMLElement | null>(null);
 
@@ -68,21 +70,54 @@ export const BlogSection = () => {
     }
   };
 
+  // Filter blog posts based on search query
+  const filteredPosts = blogPosts.filter((post) => {
+    if (!searchQuery.trim()) return true;
+    
+    const query = searchQuery.toLowerCase();
+    return (
+      post.title.toLowerCase().includes(query) ||
+      post.excerpt.toLowerCase().includes(query) ||
+      post.tags.some(tag => tag.toLowerCase().includes(query))
+    );
+  });
+
   return (
     <div className="animate-fade-in space-y-6">
       <h2 className="text-3xl font-bold text-foreground text-center select-none pointer-events-none focus:outline-none">
         Blog
       </h2>
 
+      {/* Search Bar */}
+      <div className="max-w-md mx-auto">
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+          <Input
+            type="text"
+            placeholder="Search blogs by title, content, or tags..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-10 pr-4 py-2 w-full rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          />
+        </div>
+      </div>
+
       {/* Dynamic Blog Posts */}
       <div className="space-y-6">
-        {blogPosts.map((post) => (
-          <BlogCard
-            key={post.id}
-            post={post}
-            onReadMore={post.content ? openModal : undefined}
-          />
-        ))}
+        {filteredPosts.length > 0 ? (
+          filteredPosts.map((post) => (
+            <BlogCard
+              key={post.id}
+              post={post}
+              onReadMore={post.content ? openModal : undefined}
+            />
+          ))
+        ) : (
+          <div className="text-center py-8">
+            <p className="text-gray-500 text-lg">No blogs found matching "{searchQuery}"</p>
+            <p className="text-gray-400 text-sm mt-2">Try searching with different keywords</p>
+          </div>
+        )}
       </div>
 
       {/* 2️⃣ Subscribe CTA (moved up) */}
