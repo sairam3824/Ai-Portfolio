@@ -20,9 +20,9 @@ export interface BlogPost {
 // Export all blog posts in chronological order (newest first)
 export const blogPosts: BlogPost[] = [
     vectorDatabasesFoundationModernAI,
+    techBiweeklyDigestOct2025,
     ragTransformingLLMKnowledgeAccess,
     llmPoisoningHiddenThreat,
-    techBiweeklyDigestOct2025,
 ];
 
 // Helper function to get a specific blog post by ID
