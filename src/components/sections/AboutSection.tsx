@@ -44,7 +44,7 @@ export const AboutSection = () => {
       <div className="space-y-6 text-muted-foreground">
         <p className="text-lg leading-relaxed">
           I'm Sairam, a dedicated DSA problem solver and AI-driven technologist with 3 years of programming experience. 
-          I've solved over 750+ problems on LeetCode to strengthen my grasp of data structures and algorithms — 
+          I've solved over 800+ problems on LeetCode to strengthen my grasp of data structures and algorithms — 
           the foundation of scalable and efficient systems.
         </p>
 

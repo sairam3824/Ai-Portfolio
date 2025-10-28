@@ -3,10 +3,12 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { BlogCard } from "@/components/BlogCard";
 import { blogPosts, getBlogPost } from "@/content/blogs";
+import { SubscriptionDialog } from "@/components/SubscriptionDialog";
 
 export const BlogSection = () => {
   const [selectedPost, setSelectedPost] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const [subscriptionDialogOpen, setSubscriptionDialogOpen] = useState(false);
   const closeBtnRef = useRef<HTMLButtonElement | null>(null);
   const lastFocusedRef = useRef<HTMLElement | null>(null);
 
@@ -98,48 +100,48 @@ export const BlogSection = () => {
               Get email notifications whenever I publish new blog on GenAI, cloud, and dev-tools highlights. No fixed schedule, no spam — unsubscribe anytime.
             </p>
             <form
-            className="flex flex-col sm:flex-row gap-3"
-            onSubmit={async (e) => {
-              e.preventDefault();
-              const form = e.currentTarget;
-              const formData = new FormData(form);
+              className="flex flex-col sm:flex-row gap-3"
+              onSubmit={async (e) => {
+                e.preventDefault();
+                const form = e.currentTarget;
+                const formData = new FormData(form);
 
-              try {
-                const response = await fetch("https://formspree.io/f/mnnoqkzr", {
-                  method: "POST",
-                  headers: {
-                    Accept: "application/json",
-                  },
-                  body: formData,
-                });
+                try {
+                  const response = await fetch("https://formspree.io/f/mnnoqkzr", {
+                    method: "POST",
+                    headers: {
+                      Accept: "application/json",
+                    },
+                    body: formData,
+                  });
 
-                if (response.ok) {
-                  alert("✅ Thanks! You’re on the list.");
-                  form.reset();
-                } else {
-                  alert("❌ Something went wrong, please try again.");
+                  if (response.ok) {
+                    setSubscriptionDialogOpen(true);
+                    form.reset();
+                  } else {
+                    alert("❌ Something went wrong, please try again.");
+                  }
+                } catch {
+                  alert("⚠️ Network issue! Try again later.");
                 }
-              } catch {
-                alert("⚠️ Network issue! Try again later.");
-              }
-            }}
-          >
-            <input
-              type="email"
-              name="email"
-              required
-              aria-label="Email address"
-              placeholder="you@example.com"
-              className="w-full sm:w-auto flex-1 rounded-xl border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-
-            <button
-              type="submit"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700"
+              }}
             >
-              <CheckCircle2 className="w-4 h-4" /> Subscribe
-            </button>
-          </form>
+              <input
+                type="email"
+                name="email"
+                required
+                aria-label="Email address"
+                placeholder="you@example.com"
+                className="w-full sm:w-auto flex-1 rounded-xl border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+
+              <button
+                type="submit"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700"
+              >
+                <CheckCircle2 className="w-4 h-4" /> Subscribe
+              </button>
+            </form>
 
           </div>
         </div>
@@ -206,7 +208,7 @@ export const BlogSection = () => {
                 {currentPost?.content && (
                   <div dangerouslySetInnerHTML={{ __html: currentPost.content }} />
                 )}
-                
+
                 {/* Share buttons for modal */}
                 <div className="flex items-center gap-4 mt-6 pt-6 border-t border-gray-200">
                   <button
@@ -227,6 +229,12 @@ export const BlogSection = () => {
           </div>
         </div>
       )}
+
+      {/* Subscription Success Dialog */}
+      <SubscriptionDialog
+        open={subscriptionDialogOpen}
+        onOpenChange={setSubscriptionDialogOpen}
+      />
     </div>
   );
 };

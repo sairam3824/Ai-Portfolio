@@ -2,6 +2,10 @@ import { Award, ArrowUpRight } from "lucide-react";
 
 const certifications = [
   {
+    title: "Oracle Vector AI Search Professional",
+    link: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=C3418835C36967F3D176B27533502B55888A3CFBEEC3D339189559E070D0F939",
+  },
+  {
     title: "Oracle Generative AI Professional",
     link: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=CC2371A772A07EC0926BE492904B67F3AA59912C48FE5488BAB54F87F914D350",
   },

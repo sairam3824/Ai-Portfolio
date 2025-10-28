@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { User, FolderKanban, Layers, GraduationCap, BookOpen, Sparkles, Send, Mail, FileText } from "lucide-react";
 import { NavigationCard } from "@/components/NavigationCard";
 import { Input } from "@/components/ui/input";
@@ -20,6 +20,7 @@ type Section = "me" | "resume" | "projects" | "skills" | "education" | "blog" | 
 
 const Index = () => {
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState<Section | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [chatOpen, setChatOpen] = useState(false);
@@ -151,8 +152,22 @@ const Index = () => {
               onClick={() => {
                 if (item.id === "resume") {
                   window.open("/Sai_Ram_Maruri_Resume_2025.pdf", "_blank");
+                } else if (item.id === "me") {
+                  navigate("/about");
                 } else {
-                  setActiveSection(item.id as Section);
+                  // Navigate to dedicated page
+                  const routeMap = {
+                    projects: "/projects",
+                    skills: "/skills", 
+                    education: "/education",
+                    blog: "/blogs",
+                    certification: "/certifications",
+                    contact: "/contact"
+                  };
+                  const route = routeMap[item.id as keyof typeof routeMap];
+                  if (route) {
+                    navigate(route);
+                  }
                 }
               }}
               isActive={activeSection === item.id}

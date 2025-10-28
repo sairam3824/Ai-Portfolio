@@ -110,7 +110,7 @@ export const ContactSection = () => {
               {/* Stat 1 */}
               <div className="group hover:scale-105 transition-transform duration-300">
                 <div className="text-4xl font-extrabold text-blue-600 group-hover:text-blue-700 transition-colors">
-                  450+
+                  500+
                 </div>
                 <div className="text-sm md:text-base text-muted-foreground font-medium">
                   CodeChef Problems
@@ -120,7 +120,7 @@ export const ContactSection = () => {
               {/* Stat 2 */}
               <div className="group hover:scale-105 transition-transform duration-300">
                 <div className="text-4xl font-extrabold text-blue-600 group-hover:text-blue-700 transition-colors">
-                  750+
+                  800+
                 </div>
                 <div className="text-sm md:text-base text-muted-foreground font-medium">
                   LeetCode Problems
@@ -151,7 +151,7 @@ export const ContactSection = () => {
         </div>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
           <span className="px-4 py-2 bg-pink-50 text-pink-600 text-sm rounded-full">
-            🚀 AI Enthusiast
+            🚀 GenAi Enthusiast
           </span>
           <span className="px-4 py-2 bg-blue-50 text-blue-600 text-sm rounded-full">
             2⭐️ Codechef 
