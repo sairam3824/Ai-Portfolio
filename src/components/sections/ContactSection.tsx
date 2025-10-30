@@ -130,7 +130,7 @@ export const ContactSection = () => {
               {/* Stat 3 */}
               <div className="group hover:scale-105 transition-transform duration-300">
                 <div className="text-4xl font-extrabold text-blue-600 group-hover:text-blue-700 transition-colors">
-                  1500+
+                1550+
                 </div>
                 <div className="text-sm md:text-base text-muted-foreground font-medium">
                   CodeChef Rating
