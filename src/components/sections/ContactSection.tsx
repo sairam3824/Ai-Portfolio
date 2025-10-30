@@ -157,7 +157,7 @@ export const ContactSection = () => {
             2⭐️ Codechef 
           </span>
           <span className="px-4 py-2 bg-purple-50 text-purple-600 text-sm rounded-full">
-            💡 Software Developer
+            🛡️ LeetCode Knight (1900+) @programmer3824
           </span>
           
         </div>
