@@ -1,5 +1,4 @@
 import { Mail, Phone, Github, Linkedin, Code, Trophy, BookOpen, Target } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const socialLinks = [
   { icon: Github, label: "GitHub", href: "https://github.com/sairam3824", category: "social" },
@@ -106,46 +105,81 @@ export const ContactSection = () => {
               Quick Stats
             </h3>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-              {/* Stat 1 */}
-              <div className="group hover:scale-105 transition-transform duration-300">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
+              {/* Stat 1 - CodeChef Problems */}
+              <a
+                href="https://www.codechef.com/users/sairam2004"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group hover:scale-105 transition-transform duration-300 cursor-pointer"
+              >
                 <div className="text-4xl font-extrabold text-blue-600 group-hover:text-blue-700 transition-colors">
                   500+
                 </div>
-                <div className="text-sm md:text-base text-muted-foreground font-medium">
+                <div className="text-sm md:text-base text-muted-foreground font-medium group-hover:text-blue-600 transition-colors">
                   CodeChef Problems
                 </div>
-              </div>
+              </a>
 
-              {/* Stat 2 */}
-              <div className="group hover:scale-105 transition-transform duration-300">
+              {/* Stat 2 - LeetCode Problems */}
+              <a
+                href="https://leetcode.com/u/sairam3824/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group hover:scale-105 transition-transform duration-300 cursor-pointer"
+              >
                 <div className="text-4xl font-extrabold text-blue-600 group-hover:text-blue-700 transition-colors">
                   800+
                 </div>
-                <div className="text-sm md:text-base text-muted-foreground font-medium">
+                <div className="text-sm md:text-base text-muted-foreground font-medium group-hover:text-blue-600 transition-colors">
                   LeetCode Problems
                 </div>
-              </div>
+              </a>
 
-              {/* Stat 3 */}
-              <div className="group hover:scale-105 transition-transform duration-300">
+              {/* Stat 3 - LeetCode Rating */}
+              <a
+                href="https://leetcode.com/u/programmer3824/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group hover:scale-105 transition-transform duration-300 cursor-pointer"
+              >
                 <div className="text-4xl font-extrabold text-blue-600 group-hover:text-blue-700 transition-colors">
-                1550+
+                  1900+
                 </div>
-                <div className="text-sm md:text-base text-muted-foreground font-medium">
+                <div className="text-sm md:text-base text-muted-foreground font-medium group-hover:text-blue-600 transition-colors">
+                  LeetCode Rating
+                </div>
+              </a>
+
+              {/* Stat 4 - CodeChef Rating */}
+              <a
+                href="https://www.codechef.com/users/sairam2004"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group hover:scale-105 transition-transform duration-300 cursor-pointer"
+              >
+                <div className="text-4xl font-extrabold text-blue-600 group-hover:text-blue-700 transition-colors">
+                  1550+
+                </div>
+                <div className="text-sm md:text-base text-muted-foreground font-medium group-hover:text-blue-600 transition-colors">
                   CodeChef Rating
                 </div>
-              </div>
+              </a>
 
-              {/* Stat 4 */}
-              <div className="group hover:scale-105 transition-transform duration-300">
+              {/* Stat 5 - GitHub Projects */}
+              <a
+                href="https://github.com/sairam3824"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group hover:scale-105 transition-transform duration-300 cursor-pointer"
+              >
                 <div className="text-4xl font-extrabold text-blue-600 group-hover:text-blue-700 transition-colors">
                   10+
                 </div>
-                <div className="text-sm md:text-base text-muted-foreground font-medium">
+                <div className="text-sm md:text-base text-muted-foreground font-medium group-hover:text-blue-600 transition-colors">
                   GitHub Projects
                 </div>
-              </div>
+              </a>
             </div>
           </div>
         </div>
@@ -153,13 +187,23 @@ export const ContactSection = () => {
           <span className="px-4 py-2 bg-pink-50 text-pink-600 text-sm rounded-full">
             🚀 GenAi Enthusiast
           </span>
-          <span className="px-4 py-2 bg-blue-50 text-blue-600 text-sm rounded-full">
-            2⭐️ Codechef 
-          </span>
-          <span className="px-4 py-2 bg-purple-50 text-purple-600 text-sm rounded-full">
+          <a
+            href="https://www.codechef.com/users/sairam2004"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 bg-blue-50 text-blue-600 text-sm rounded-full hover:bg-blue-100 transition-colors duration-200 cursor-pointer"
+          >
+            2⭐️ Codechef
+          </a>
+          <a
+            href="https://leetcode.com/u/programmer3824/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 bg-purple-50 text-purple-600 text-sm rounded-full hover:bg-purple-100 transition-colors duration-200 cursor-pointer"
+          >
             🛡️ LeetCode Knight (1900+) @programmer3824
-          </span>
-          
+          </a>
+
         </div>
 
       </div>
