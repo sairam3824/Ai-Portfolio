@@ -34,6 +34,14 @@ const projects = [
     category: "Machine Learning",
   },
   {
+    title: "🫁 Lung Cancer Detection System",
+    description:
+      "Deep learning-based medical imaging system for early detection and classification of lung cancer from CT scans. Utilizes advanced CNN architectures for accurate diagnosis and clinical decision support.",
+    tech: ["Deep Learning", "Medical Imaging", "CNN", "Python", "Healthcare AI"],
+    github: "https://github.com/sairam3824/lungcancer",
+    category: "Medical AI",
+  },
+  {
     title: "🧠 Enterprise RAG System (unthinkable-RAG)",
     description:
       "Sophisticated Retrieval-Augmented Generation system combining vector databases, semantic search, and LLMs for intelligent document processing and knowledge extraction at enterprise scale.",
@@ -64,6 +72,14 @@ const projects = [
     tech: ["Machine Learning", "Python", "Pandas", "Time Series", "Aerospace"],
     github: "https://github.com/sairam3824/SpaceX-Booster-Landing-Prediction",
     category: "Predictive Analytics",
+  }, 
+  {
+    title: "🍎 NutriVision: AI Nutrition Analyzer",
+    description:
+      "Computer vision-powered nutrition analysis system that identifies food items from images and provides detailed nutritional information, calorie counts, and dietary recommendations using deep learning.",
+    tech: ["Computer Vision", "Deep Learning", "Nutrition AI", "Python", "Image Recognition"],
+    github: "https://github.com/sairam3824/NutriVision",
+    category: "Computer Vision",
   },
   {
     title: "🐾 LangChain AI Agent & Pet Namer",
