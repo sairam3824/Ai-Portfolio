@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { Home, MessageCircle } from "lucide-react";
 import { Button } from "@/shared/ui/button";
 import SectionNavigation from "./SectionNavigation";
-import { ChatDialog } from "@/features/chat";
 import logo from "@/assets/logo.png";
+
+const ChatDialog = lazy(() => import("@/features/chat").then(m => ({ default: m.ChatDialog })));
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -19,7 +20,13 @@ const Layout = ({ children, title }: LayoutProps) => {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-              <img src={logo} alt="Logo" className="w-8 h-8 object-contain" />
+              <img 
+                src={logo} 
+                alt="Logo" 
+                className="w-8 h-8 object-contain" 
+                loading="eager"
+                fetchPriority="high"
+              />
             </Link>
             <SectionNavigation />
           </div>
@@ -58,10 +65,14 @@ const Layout = ({ children, title }: LayoutProps) => {
         </div>
       </footer>
 
-      <ChatDialog
-        open={chatOpen}
-        onOpenChange={setChatOpen}
-      />
+      {chatOpen && (
+        <Suspense fallback={null}>
+          <ChatDialog
+            open={chatOpen}
+            onOpenChange={setChatOpen}
+          />
+        </Suspense>
+      )}
     </div>
   );
 };
