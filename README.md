@@ -1,50 +1,76 @@
-# 🚀 Sai Ram Maruri - AI & Software Developer Portfolio
+<div align="center">
+  <img src="public/preview.png" alt="AI Portfolio Preview" width="800"/>
+  
+  # 🚀 AI-Powered Portfolio
+  **A modern, interactive portfolio website with AI-powered chat capabilities**  
+  [View Demo](https://saiii.in)
+</div>
 
-A modern, interactive portfolio website showcasing my expertise in AI, Machine Learning, and Software Development. Built with React, TypeScript, and Tailwind CSS, featuring an AI-powered chat interface and beautiful animations.
+---
 
 ## ✨ Features
 
-- **🎨 Modern Design**: Clean, responsive UI with smooth animations and hover effects
-- **🤖 AI Chat Interface**: Interactive chat powered by n8n webhooks for real-time conversations
-- **📱 Fully Responsive**: Optimized for all devices and screen sizes
-- **🌙 Dark Mode**: Beautiful dark theme with smooth transitions
-- **⚡ Fast Performance**: Built with Vite for lightning-fast development and builds
-- **🎯 Interactive Elements**: Cursor blast effects, smooth scrolling, and engaging animations
-- **📊 Comprehensive Sections**: About, Projects, Skills, Education, Certifications, and Contact
+- 🤖 **AI Chat Assistant** - Interactive chat powered by n8n webhooks for intelligent conversations
+- 🎨 **Modern UI/UX** - Built with shadcn/ui components and Tailwind CSS
+- ⚡ **Lightning Fast** - Powered by Vite for instant hot module replacement
+- 📱 **Fully Responsive** - Seamless experience across all devices
+- 🎯 **Type-Safe** - Written in TypeScript for robust code quality
+- 🎭 **Smooth Animations** - Engaging cursor effects and transitions
+- 🌐 **Multi-Page Routing** - React Router for seamless navigation
+- 📊 **Dynamic Sections** - About, Projects, Skills, Education, Blog, Certifications, and Contact
+- 🔍 **SEO Optimized** - Proper meta tags and sitemap configuration
+- 📄 **Resume Integration** - Direct PDF resume viewing
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React 18, TypeScript, Vite
-- **Styling**: Tailwind CSS, shadcn/ui components
-- **Icons**: Lucide React
-- **State Management**: React Hooks
-- **Routing**: React Router DOM
-- **AI Integration**: n8n webhooks
-- **Build Tool**: Vite with SWC
-- **Package Manager**: npm/pnpm/bun
+### Core
+- **React 18.3** - UI library
+- **TypeScript 5.8** - Type safety
+- **Vite 5.4** - Build tool and dev server
 
-## 🚀 Quick Start
+### UI & Styling
+- **Tailwind CSS 3.4** - Utility-first CSS framework
+- **shadcn/ui** - High-quality React components
+- **Radix UI** - Accessible component primitives
+- **Lucide React** - Beautiful icon library
+- **Framer Motion** (via class-variance-authority) - Animations
+
+### State & Data
+- **TanStack Query 5.83** - Server state management
+- **React Hook Form 7.61** - Form handling
+- **Zod 3.25** - Schema validation
+
+### Routing & Navigation
+- **React Router DOM 6.30** - Client-side routing
+
+### Additional Libraries
+- **date-fns** - Date utilities
+- **Recharts** - Data visualization
+- **Sonner** - Toast notifications
+- **next-themes** - Dark mode support
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js (v16 or higher)
-- npm, pnpm, or bun package manager
+- Node.js 18+ and npm/yarn/pnpm
+- Git
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/sairam3824/my-cool-comeback-main.git
-   cd my-cool-comeback-main
+   git clone https://github.com/sairam3824/Ai-Portfolio.git
+   cd Ai-Portfolio
    ```
 
 2. **Install dependencies**
    ```bash
    npm install
    # or
-   pnpm install
+   yarn install
    # or
-   bun install
+   pnpm install
    ```
 
 3. **Set up environment variables**
@@ -54,156 +80,134 @@ A modern, interactive portfolio website showcasing my expertise in AI, Machine L
    
    Edit `.env` and add your n8n webhook URL:
    ```env
-   VITE_N8N_WEBHOOK_URL=https://your-n8n-instance.app.n8n.cloud/webhook/your-webhook-id
+   VITE_N8N_WEBHOOK_URL=your_actual_webhook_url_here
    ```
 
 4. **Start the development server**
    ```bash
    npm run dev
-   # or
-   pnpm dev
-   # or
-   bun dev
    ```
+   
+   Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-5. **Open your browser**
-   Navigate to `http://localhost:8080` to view the portfolio.
+## 📦 Build & Deploy
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+This creates an optimized production build in the `dist` folder.
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+### Deploy to Vercel
+
+The project includes a `vercel.json` configuration for seamless deployment:
+
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
+```
+
+Or connect your GitHub repository to Vercel for automatic deployments.
 
 ## 📁 Project Structure
 
 ```
-src/
-├── components/
-│   ├── sections/           # Portfolio sections
-│   │   ├── AboutSection.tsx
-│   │   ├── ProjectsSection.tsx
-│   │   ├── SkillsSection.tsx
-│   │   ├── EducationSection.tsx
-│   │   ├── CertificationSection.tsx
-│   │   └── ContactSection.tsx
-│   ├── ui/                 # Reusable UI components
-│   ├── ChatDialog.tsx      # AI chat interface
-│   ├── CursorBlast.tsx     # Interactive cursor effects
-│   └── NavigationCard.tsx  # Navigation components
-├── pages/
-│   ├── Index.tsx          # Main portfolio page
-│   └── NotFound.tsx       # 404 page
-├── assets/                # Images and static assets
-├── hooks/                 # Custom React hooks
-└── lib/                   # Utility functions
+Ai-Portfolio/
+├── public/                      # Static assets
+│   ├── preview.png             # Portfolio preview image
+│   ├── robots.txt              # SEO robots file
+│   └── Sai_Ram_Maruri_Resume_2025.pdf
+├── src/
+│   ├── assets/                 # Images and media
+│   ├── core/                   # Core app components
+│   │   ├── App.tsx            # Main app component
+│   │   ├── Index.tsx          # Home page
+│   │   └── NotFound.tsx       # 404 page
+│   ├── features/              # Feature modules
+│   │   ├── about/             # About section
+│   │   ├── blog/              # Blog section
+│   │   ├── certifications/    # Certifications section
+│   │   ├── chat/              # AI chat feature
+│   │   ├── contact/           # Contact section
+│   │   ├── education/         # Education section
+│   │   ├── projects/          # Projects section
+│   │   └── skills/            # Skills section
+│   ├── shared/                # Shared components & utilities
+│   │   ├── components/        # Reusable components
+│   │   ├── ui/                # shadcn/ui components
+│   │   └── lib/               # Utility functions
+│   ├── styles/                # Global styles
+│   └── main.tsx               # App entry point
+├── .env.example               # Environment variables template
+├── vercel.json                # Vercel deployment config
+├── tailwind.config.ts         # Tailwind configuration
+├── tsconfig.json              # TypeScript configuration
+└── vite.config.ts             # Vite configuration
 ```
-
-## 🎯 Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run build:dev` - Build in development mode
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-
-## 🤖 AI Chat Integration
-
-The portfolio includes an AI-powered chat interface that connects to n8n workflows:
-
-1. **Setup n8n Webhook**: Create a webhook in your n8n instance
-2. **Configure Environment**: Add your webhook URL to `.env`
-3. **Test Integration**: Use the search box or chat dialog to interact
-
-### Chat Features
-
-- Real-time conversation with AI
-- Session management
-- Error handling and user feedback
-- Responsive design
 
 ## 🎨 Customization
 
-### Personal Information
+### Update Personal Information
 
-Update the following files with your information:
+1. **Profile Details** - Edit `src/core/Index.tsx`
+2. **About Section** - Modify `src/features/about/AboutSection.tsx`
+3. **Projects** - Update `src/features/projects/ProjectsSection.tsx`
+4. **Skills** - Edit `src/features/skills/SkillsSection.tsx`
+5. **Resume** - Replace `public/Sai_Ram_Maruri_Resume_2025.pdf`
 
-- `src/pages/Index.tsx` - Hero section and navigation
-- `src/components/sections/AboutSection.tsx` - Personal details
-- `src/components/sections/ProjectsSection.tsx` - Your projects
-- `src/components/sections/SkillsSection.tsx` - Skills and expertise
-- `src/components/sections/EducationSection.tsx` - Education background
-- `src/components/sections/FunSection.tsx` - Certifications
-- `src/components/sections/ContactSection.tsx` - Contact information
+### Customize Theme
 
-### Styling
+Edit `tailwind.config.ts` to modify colors, fonts, and other design tokens.
 
-- Modify `tailwind.config.ts` for theme customization
-- Update `src/index.css` for global styles
-- Customize component styles in individual files
+### Configure AI Chat
 
-### Assets
+The chat feature uses n8n webhooks. Set up your workflow:
 
-- Replace `src/assets/avatar.png` with your photo
-- Update `src/assets/logo.png` with your logo
-- Add your resume to `public/` directory
+1. Create an n8n workflow with a webhook trigger
+2. Add your AI logic (OpenAI, Claude, etc.)
+3. Copy the webhook URL to your `.env` file
 
-## 📱 Responsive Design
+## 🧪 Available Scripts
 
-The portfolio is fully responsive and optimized for:
-
-- **Desktop**: Full experience with all animations
-- **Tablet**: Adapted layout with touch-friendly interactions
-- **Mobile**: Streamlined interface with optimized navigation
-
-## 🔧 Environment Variables
-
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `VITE_N8N_WEBHOOK_URL` | n8n webhook URL for AI chat | Yes |
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-
-1. Connect your GitHub repository to Vercel
-2. Set environment variables in Vercel dashboard
-3. Deploy automatically on push to main branch
-
-### Netlify
-
-1. Build the project: `npm run build`
-2. Deploy the `dist` folder to Netlify
-3. Set environment variables in Netlify dashboard
-
-### Other Platforms
-
-The project can be deployed to any static hosting service that supports SPA routing.
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run build:dev    # Build in development mode
+npm run preview      # Preview production build
+npm run lint         # Run ESLint
+```
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📄 License
+## 📝 License
 
-This project is open source and available under the [Apache 2.0 License](LICENSE).
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
 
-## 📞 Contact
-
-**Sai Rama Linga Reddy Maruri**
-
-- 📧 Email: [sairam.maruri@gmail.com](mailto:sairam.maruri@gmail.com)
-- 📱 Phone: +91 7893865644
-- 💼 LinkedIn: [sairam-maruri](https://www.linkedin.com/in/sairam-maruri)
-- 🐙 GitHub: [sairam3824](https://github.com/sairam3824)
 
 ## 🙏 Acknowledgments
 
-- **UI Components**: Built with [shadcn/ui](https://ui.shadcn.com/) components
-- **Icons**: Powered by [Lucide React](https://lucide.dev/)
-- **Styling**: Styled with [Tailwind CSS](https://tailwindcss.com/)
-- **Development**: Enhanced with [Lovable](https://lovable.dev/) for rapid prototyping
+- [shadcn/ui](https://ui.shadcn.com/) for the beautiful component library
+- [Radix UI](https://www.radix-ui.com/) for accessible primitives
+- [Lucide](https://lucide.dev/) for the icon set
+- [Vercel](https://vercel.com/) for hosting
 
 ---
-
-<div align="center">
-  <p>⭐ Star this repository if you found it helpful!</p>
-</div># Security update completed
