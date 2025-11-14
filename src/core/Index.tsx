@@ -91,9 +91,9 @@ const Index = () => {
   }, [activeSection]);
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
+    <div className="min-h-screen bg-background relative overflow-hidden flex flex-col">
       <CursorBlast />
-      <div className="container mx-auto px-4 py-8 max-w-4xl relative z-10">
+      <div className="container mx-auto px-4 py-8 max-w-4xl relative z-10 flex-1">
         <div className="flex justify-center mb-8 animate-fade-in">
           <img src={logo} alt="Logo" className="w-12 h-12 object-contain" />
         </div>
@@ -161,7 +161,7 @@ const Index = () => {
           ))}
         </div>
 
-        <div ref={contentRef} className="max-w-3xl mx-auto px-4 pb-16">
+        <div ref={contentRef} className="max-w-3xl mx-auto px-4">
           {activeSection ? (
             renderSection()
           ) : null}
@@ -180,7 +180,7 @@ const Index = () => {
         />
       </div>
 
-      <footer className="w-full py-6 border-t border-border bg-background">
+      <footer className="w-full py-6 border-t border-border bg-background mt-auto">
         <div className="container mx-auto px-4 text-center">
           <p className="text-sm text-muted-foreground">
             © 2025 Sai Rama Linga Reddy Maruri. All Rights Reserved.
