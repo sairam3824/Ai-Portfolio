@@ -9,7 +9,22 @@ interface BlogCardProps {
 }
 
 export const BlogCard = ({ post, onReadMore }: BlogCardProps) => {
-  const IconComponent = (Icons as any)[post.icon] || Icons.BookOpen;
+  // Auto-correct common icon name issues (lowercase to PascalCase)
+  const getIconComponent = (iconName: string) => {
+    // Try the exact name first
+    let icon = (Icons as any)[iconName];
+    
+    // If not found, try capitalizing first letter (e.g., "database" -> "Database")
+    if (!icon && iconName) {
+      const capitalized = iconName.charAt(0).toUpperCase() + iconName.slice(1);
+      icon = (Icons as any)[capitalized];
+    }
+    
+    // Fallback to BookOpen
+    return icon || Icons.BookOpen;
+  };
+  
+  const IconComponent = getIconComponent(post.icon);
   
   const getIconColorClasses = (color: string) => {
     const colorMap = {

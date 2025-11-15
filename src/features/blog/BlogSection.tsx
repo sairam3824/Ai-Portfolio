@@ -2,11 +2,13 @@ import { X, Share2, Link as LinkIcon, CheckCircle2, ShieldCheck, Search } from "
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { BlogCard } from "./BlogCard";
-import { blogPosts, getBlogPost } from "./index";
+import { useBlogPosts } from "./useBlogPosts";
+import { BlogResources } from "./BlogResources";
 import { SubscriptionDialog } from "@/features/chat/SubscriptionDialog";
 import { Input } from "@/shared/ui/input";
 
 export const BlogSection = () => {
+  const { posts: blogPosts, loading } = useBlogPosts();
   const [selectedPost, setSelectedPost] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [subscriptionDialogOpen, setSubscriptionDialogOpen] = useState(false);
@@ -40,7 +42,7 @@ export const BlogSection = () => {
     }
   }, [selectedPost]);
 
-  const currentPost = selectedPost ? getBlogPost(selectedPost) : null;
+  const currentPost = selectedPost ? blogPosts.find(p => p.id === selectedPost) : null;
   const shareUrl = typeof window !== "undefined" ? window.location.href : "https://saiii.in";
   const shareTitle = currentPost?.title || "Blog Post";
 
@@ -76,6 +78,15 @@ export const BlogSection = () => {
       post.tags.some(tag => tag.toLowerCase().includes(query))
     );
   });
+
+  if (loading) {
+    return (
+      <div className="animate-fade-in space-y-6">
+        <h2 className="text-3xl font-bold text-foreground text-center">Blog</h2>
+        <div className="text-center py-8">Loading blog posts...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="animate-fade-in space-y-6">
@@ -128,28 +139,22 @@ export const BlogSection = () => {
             </p>
             <form
               className="flex flex-col sm:flex-row gap-3"
-              onSubmit={async (e) => {
+              onSubmit={(e) => {
                 e.preventDefault();
                 const form = e.currentTarget;
                 const formData = new FormData(form);
+                const email = formData.get("email") as string;
 
-                try {
-                  const response = await fetch("https://formspree.io/f/mnnoqkzr", {
-                    method: "POST",
-                    headers: {
-                      Accept: "application/json",
-                    },
-                    body: formData,
-                  });
-
-                  if (response.ok) {
-                    setSubscriptionDialogOpen(true);
-                    form.reset();
-                  } else {
-                    alert("❌ Something went wrong, please try again.");
-                  }
-                } catch {
-                  alert("⚠️ Network issue! Try again later.");
+                // Store email in localStorage for now (static implementation)
+                const subscribers = JSON.parse(localStorage.getItem("blog_subscribers") || "[]");
+                
+                if (subscribers.includes(email)) {
+                  alert("✅ You're already subscribed!");
+                } else {
+                  subscribers.push(email);
+                  localStorage.setItem("blog_subscribers", JSON.stringify(subscribers));
+                  setSubscriptionDialogOpen(true);
+                  form.reset();
                 }
               }}
             >
@@ -230,6 +235,26 @@ export const BlogSection = () => {
                 {currentPost?.content && (
                   <div dangerouslySetInnerHTML={{ __html: currentPost.content }} />
                 )}
+
+                {/* Resources Section - removed as static posts don't have resources */}
+
+                {/* Engagement Box */}
+                <div className="bg-blue-50 border border-blue-200 rounded-2xl p-6 mt-8">
+                  <div className="space-y-4">
+                    <p className="text-gray-700 text-base leading-relaxed">
+                      What are your thoughts on this topic? What would you like to see covered next? Feel free to share—this is a conversation, not a monologue.
+                    </p>
+                    <div className="space-y-2">
+                      <p className="text-gray-700">Until next time,</p>
+                      <p className="text-gray-900 font-medium italic">Sairam Maruri</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Disclaimer Note */}
+                <div className="mt-6 text-sm text-gray-500">
+                  <p>Note: This article includes AI-assisted writing and manual curation. Use at your own risk.</p>
+                </div>
 
                 <div className="flex items-center gap-4 mt-6 pt-6 border-t border-gray-200">
                   <button
