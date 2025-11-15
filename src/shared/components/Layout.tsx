@@ -18,8 +18,8 @@ const Layout = ({ children, title }: LayoutProps) => {
     <div className="min-h-screen bg-background flex flex-col">
       <header className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <div className="flex items-center gap-4 min-w-0 flex-1">
+            <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity flex-shrink-0">
               <img 
                 src={logo} 
                 alt="Logo" 
@@ -28,10 +28,12 @@ const Layout = ({ children, title }: LayoutProps) => {
                 fetchPriority="high"
               />
             </Link>
-            <SectionNavigation />
+            <div className="min-w-0 flex-1">
+              <SectionNavigation />
+            </div>
           </div>
           
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-shrink-0">
             <Button 
               variant="ghost" 
               size="sm" 
@@ -39,12 +41,12 @@ const Layout = ({ children, title }: LayoutProps) => {
               className="flex items-center gap-2"
             >
               <MessageCircle className="w-4 h-4" />
-              Ask me anything
+              <span className="hidden sm:inline">Ask me anything</span>
             </Button>
             <Button variant="ghost" size="sm" asChild>
               <Link to="/" className="flex items-center gap-2">
                 <Home className="w-4 h-4" />
-                Home
+                <span className="hidden sm:inline">Home</span>
               </Link>
             </Button>
           </div>

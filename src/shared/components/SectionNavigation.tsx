@@ -17,7 +17,7 @@ const SectionNavigation = () => {
   const location = useLocation();
 
   return (
-    <nav className="flex items-center gap-2 overflow-x-auto">
+    <nav className="flex items-center gap-2 overflow-x-auto overflow-y-hidden [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       {navigationItems.map((item) => {
         const isActive = location.pathname === item.path;
         const Icon = item.icon;
@@ -29,7 +29,7 @@ const SectionNavigation = () => {
               variant="outline"
               size="sm"
               asChild
-              className="whitespace-nowrap"
+              className="whitespace-nowrap flex-shrink-0"
             >
               <a
                 href="/Sai_Ram_Maruri_Resume_2025.pdf"
@@ -50,7 +50,7 @@ const SectionNavigation = () => {
             variant={isActive ? "default" : "outline"}
             size="sm"
             asChild
-            className="whitespace-nowrap"
+            className="whitespace-nowrap flex-shrink-0"
           >
             <Link to={item.path} className="flex items-center gap-2">
               <Icon className="w-4 h-4" />

@@ -12,6 +12,7 @@ import { EducationPage } from "@/features/education";
 import { BlogsPage } from "@/features/blog";
 import { CertificationsPage } from "@/features/certifications";
 import { ContactPage } from "@/features/contact";
+import { AdminLogin, AdminDashboard } from "@/features/admin";
 import NotFound from "./NotFound";
 import PrivacyPolicy from "./PrivacyPolicy";
 import TermsAndConditions from "./TermsAndConditions";
@@ -37,6 +38,8 @@ const App = () => (
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+          <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
