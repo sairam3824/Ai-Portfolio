@@ -1,4 +1,6 @@
-import { Mail, Phone, Github, Linkedin, Code, Trophy, BookOpen, Target } from "lucide-react";
+import { useState } from "react";
+import { Mail, Phone, Github, Linkedin, Code, Trophy, BookOpen, Target, MessageSquare } from "lucide-react";
+import { MessageDialog } from "./MessageDialog";
 
 const socialLinks = [
   { icon: Github, label: "GitHub", href: "https://github.com/sairam3824", category: "social" },
@@ -13,6 +15,8 @@ const codingProfiles = [
 ];
 
 export const ContactSection = () => {
+  const [anonymousDialogOpen, setAnonymousDialogOpen] = useState(false);
+
   return (
     <div className="animate-fade-in space-y-6">
       <h2 className="text-3xl font-bold text-foreground text-center select-none pointer-events-none focus:outline-none">
@@ -45,6 +49,15 @@ export const ContactSection = () => {
             +91 7893865644
           </a>
 
+          {/* Message Button */}
+          <button
+            onClick={() => setAnonymousDialogOpen(true)}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all duration-300 font-medium"
+          >
+            <MessageSquare className="w-4 h-4" />
+            Send Message
+          </button>
+
           {/* Resume Button (secondary CTA) */}
           <a
             href="/Sai_Ram_Maruri_Resume_2025.pdf"
@@ -57,6 +70,11 @@ export const ContactSection = () => {
             Download Resume
           </a>
         </div>
+
+        <MessageDialog 
+          open={anonymousDialogOpen} 
+          onOpenChange={setAnonymousDialogOpen} 
+        />
 
         {/* Social Media Section */}
         <div className="pt-6 space-y-4">
