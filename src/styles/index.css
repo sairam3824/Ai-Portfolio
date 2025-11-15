@@ -1,3 +1,6 @@
+/* Quill Editor Styles */
+@import 'react-quill/dist/quill.snow.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -90,4 +93,132 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Custom Quill Editor Styling */
+.ql-container {
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.ql-editor {
+  min-height: 400px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.ql-editor h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.ql-editor h5 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.ql-editor p {
+  margin-bottom: 1rem;
+  color: #374151;
+  line-height: 1.75;
+}
+
+.ql-editor ul,
+.ql-editor ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.ql-editor li {
+  margin-bottom: 0.5rem;
+  color: #374151;
+}
+
+.ql-editor strong {
+  font-weight: 600;
+  color: #111827;
+}
+
+.ql-toolbar {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  background: #f9fafb;
+}
+
+.ql-container {
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+
+/* Blog Content Spacing */
+#digest-content .prose p {
+  margin-bottom: 1rem;
+}
+
+#digest-content .prose h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+#digest-content .prose h5 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+#digest-content .prose ul,
+#digest-content .prose ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+#digest-content .prose li {
+  margin-bottom: 0.5rem;
+}
+
+#digest-content .prose strong {
+  font-weight: 600;
+  color: #111827;
+}
+
+#digest-content .prose blockquote {
+  border-left: 4px solid #e5e7eb;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #6b7280;
+}
+
+#digest-content .prose code {
+  background: #f3f4f6;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+
+#digest-content .prose pre {
+  background: #1f2937;
+  color: #f3f4f6;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+#digest-content .prose pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
 }
