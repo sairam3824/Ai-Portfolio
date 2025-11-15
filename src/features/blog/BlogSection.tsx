@@ -3,12 +3,13 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { BlogCard } from "./BlogCard";
 import { useBlogPosts } from "./useBlogPosts";
-import { BlogResources } from "./BlogResources";
+import { useSubscription } from "./useSubscription";
 import { SubscriptionDialog } from "@/features/chat/SubscriptionDialog";
 import { Input } from "@/shared/ui/input";
 
 export const BlogSection = () => {
   const { posts: blogPosts, loading } = useBlogPosts();
+  const { subscribe, isSubmitting } = useSubscription();
   const [selectedPost, setSelectedPost] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [subscriptionDialogOpen, setSubscriptionDialogOpen] = useState(false);
@@ -139,20 +140,15 @@ export const BlogSection = () => {
             </p>
             <form
               className="flex flex-col sm:flex-row gap-3"
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
                 const form = e.currentTarget;
                 const formData = new FormData(form);
                 const email = formData.get("email") as string;
 
-                // Store email in localStorage for now (static implementation)
-                const subscribers = JSON.parse(localStorage.getItem("blog_subscribers") || "[]");
+                const success = await subscribe(email);
                 
-                if (subscribers.includes(email)) {
-                  alert("✅ You're already subscribed!");
-                } else {
-                  subscribers.push(email);
-                  localStorage.setItem("blog_subscribers", JSON.stringify(subscribers));
+                if (success) {
                   setSubscriptionDialogOpen(true);
                   form.reset();
                 }
@@ -169,9 +165,11 @@ export const BlogSection = () => {
 
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700"
+                disabled={isSubmitting}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <CheckCircle2 className="w-4 h-4" /> Subscribe
+                <CheckCircle2 className="w-4 h-4" /> 
+                {isSubmitting ? 'Subscribing...' : 'Subscribe'}
               </button>
             </form>
 
