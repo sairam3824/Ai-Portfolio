@@ -16,6 +16,7 @@ import { AdminLogin, AdminDashboard } from "@/features/admin";
 import NotFound from "./NotFound";
 import PrivacyPolicy from "./PrivacyPolicy";
 import TermsAndConditions from "./TermsAndConditions";
+import CodingRedirect from "./CodingRedirect";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/blogs" element={<BlogsPage />} />
           <Route path="/certifications" element={<CertificationsPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/coding" element={<CodingRedirect />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           <Route path="/admin" element={<AdminLogin />} />
