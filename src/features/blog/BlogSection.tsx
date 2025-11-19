@@ -236,19 +236,6 @@ export const BlogSection = () => {
 
                 {/* Resources Section - removed as static posts don't have resources */}
 
-                {/* Engagement Box */}
-                <div className="bg-blue-50 border border-blue-200 rounded-2xl p-6 mt-8">
-                  <div className="space-y-4">
-                    <p className="text-gray-700 text-base leading-relaxed">
-                      What are your thoughts on this topic? What would you like to see covered next? Feel free to share—this is a conversation, not a monologue.
-                    </p>
-                    <div className="space-y-2">
-                      <p className="text-gray-700">Until next time,</p>
-                      <p className="text-gray-900 font-medium italic">Sairam Maruri</p>
-                    </div>
-                  </div>
-                </div>
-
                 {/* Disclaimer Note */}
                 <div className="mt-6 text-sm text-gray-500">
                   <p>Note: This article includes AI-assisted writing and manual curation. Use at your own risk.</p>

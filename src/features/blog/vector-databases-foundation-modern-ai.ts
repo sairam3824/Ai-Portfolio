@@ -277,7 +277,7 @@ print(results)</code></pre>
     <!-- Collapsible Sources Section -->
     <details class="mb-8 border border-gray-200 rounded-lg">
       <summary class="px-4 py-3 bg-gray-50 cursor-pointer hover:bg-gray-100 font-medium text-gray-900 rounded-t-lg">
-        ▶ Sources & References
+        Sources & References
       </summary>
       <div class="p-4 space-y-4">
         <div class="space-y-3">

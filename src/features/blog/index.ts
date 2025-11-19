@@ -6,6 +6,7 @@ import { techBiweeklyDigestOct2025 } from './tech-biweekly-digest-oct-20-2025';
 import { llmPoisoningHiddenThreat } from './llm-poisoning-hidden-threat';
 import { ragTransformingLLMKnowledgeAccess } from './rag-transforming-llm-knowledge-access';
 import { vectorDatabasesFoundationModernAI } from './vector-databases-foundation-modern-ai';
+import { myCodingJourney0To3Star } from './my-coding-journey-0-to-3-star';
 
 export interface BlogPost {
     id: string;
@@ -22,6 +23,7 @@ export interface BlogPost {
 }
 
 export const blogPosts: BlogPost[] = [
+    myCodingJourney0To3Star,
     vectorDatabasesFoundationModernAI,
     techBiweeklyDigestOct2025,
     ragTransformingLLMKnowledgeAccess,

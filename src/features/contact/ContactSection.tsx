@@ -159,7 +159,7 @@ export const ContactSection = () => {
                 className="group hover:scale-105 transition-transform duration-300 cursor-pointer"
               >
                 <div className="text-4xl font-extrabold text-blue-600 group-hover:text-blue-700 transition-colors">
-                  1900+
+                  2100+
                 </div>
                 <div className="text-sm md:text-base text-muted-foreground font-medium group-hover:text-blue-600 transition-colors">
                   LeetCode Rating
@@ -174,7 +174,7 @@ export const ContactSection = () => {
                 className="group hover:scale-105 transition-transform duration-300 cursor-pointer"
               >
                 <div className="text-4xl font-extrabold text-blue-600 group-hover:text-blue-700 transition-colors">
-                  1550+
+                  1600+
                 </div>
                 <div className="text-sm md:text-base text-muted-foreground font-medium group-hover:text-blue-600 transition-colors">
                   CodeChef Rating
@@ -208,7 +208,7 @@ export const ContactSection = () => {
             rel="noopener noreferrer"
             className="px-4 py-2 bg-blue-50 text-blue-600 text-sm rounded-full hover:bg-blue-100 transition-colors duration-200 cursor-pointer"
           >
-            2⭐️ Codechef
+            3⭐️ Codechef
           </a>
           <a
             href="https://leetcode.com/u/programmer3824/"
@@ -216,7 +216,7 @@ export const ContactSection = () => {
             rel="noopener noreferrer"
             className="px-4 py-2 bg-purple-50 text-purple-600 text-sm rounded-full hover:bg-purple-100 transition-colors duration-200 cursor-pointer"
           >
-            🛡️ LeetCode Knight (1900+) @programmer3824
+            🛡️ LeetCode Knight (2100+) @programmer3824
           </a>
 
         </div>

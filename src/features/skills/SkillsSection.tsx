@@ -33,6 +33,7 @@ export const SkillsSection = () => {
     "Model Fine-tuning": "https://huggingface.co/docs/transformers/training",
     "AI Agent Development": "https://python.langchain.com/docs/modules/agents/",
 
+    "Django": "https://docs.djangoproject.com/",
     "Node JS": "https://nodejs.org/en/docs/",
     "MySQL": "https://dev.mysql.com/doc/",
     "Mongo DB": "https://docs.mongodb.com/",
@@ -120,6 +121,7 @@ export const SkillsSection = () => {
     {
       category: "Backend Development",
       skills: [
+        { name: "Django", level: "Intermediate" },
         { name: "Node JS", level: "Intermediate" },
         { name: "MySQL", level: "Intermediate" },
         { name: "Mongo DB", level: "Intermediate" },
