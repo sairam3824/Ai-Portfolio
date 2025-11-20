@@ -9,7 +9,7 @@ import { AboutPage } from "@/features/about";
 import { ProjectsPage } from "@/features/projects";
 import { SkillsPage } from "@/features/skills";
 import { EducationPage } from "@/features/education";
-import { BlogsPage } from "@/features/blog";
+import { BlogsPage, BlogPostPage } from "@/features/blog";
 import { CertificationsPage } from "@/features/certifications";
 import { ContactPage } from "@/features/contact";
 import { AdminLogin, AdminDashboard } from "@/features/admin";
@@ -35,6 +35,7 @@ const App = () => (
           <Route path="/skills" element={<SkillsPage />} />
           <Route path="/education" element={<EducationPage />} />
           <Route path="/blogs" element={<BlogsPage />} />
+          <Route path="/blogs/:slug" element={<BlogPostPage />} />
           <Route path="/certifications" element={<CertificationsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/coding" element={<CodingRedirect />} />
