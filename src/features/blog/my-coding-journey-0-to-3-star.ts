@@ -1,5 +1,5 @@
 export const myCodingJourney0To3Star = {
-  id: "my-coding-journey-0-to-3-star",
+  id: "coding-journey",
   title: "From Zero to 3-Star: My 8-Month Journey to 2100+ LeetCode Rating & 1000+ DSA Problems",
   excerpt: "How I went from knowing nothing about competitive programming in April 2025 to achieving 3-star on CodeChef, 2100+ rating on LeetCode, and solving 1000+ DSA problems by November 2025. A raw, honest account of the struggles, strategies, and breakthroughs.",
   date: "November 19, 2025",

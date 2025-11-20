@@ -1,5 +1,6 @@
 export { BlogSection } from './BlogSection';
 export { default as BlogsPage } from './BlogsPage';
+export { default as BlogPostPage } from './BlogPostPage';
 export { BlogCard } from './BlogCard';
 
 import { techBiweeklyDigestOct2025 } from './tech-biweekly-digest-oct-20-2025';

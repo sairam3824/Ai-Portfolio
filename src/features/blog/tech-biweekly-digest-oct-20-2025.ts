@@ -1,5 +1,5 @@
 export const techBiweeklyDigestOct2025 = {
-  id: "tech-biweekly-digest-oct-20-2025",
+  id: "weekly-oct20",
   title: "Tech BiWeekly Digest: Week of October 20, 2025",
   excerpt: "Welcome to the inaugural edition of Tech BiWeekly Digest—your Sunday morning companion for staying current with the rapidly evolving world of GenAI, cloud computing, and emerging technologies.",
   date: "October 26, 2025",

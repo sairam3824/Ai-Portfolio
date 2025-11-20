@@ -1,5 +1,5 @@
 export const vectorDatabasesFoundationModernAI = {
-  id: "vector-databases-foundation-modern-ai",
+  id: "vector-database",
   title: "Vector Databases: The Foundation of Modern AI Applications",
   excerpt: "The rise of generative AI and large language models has fundamentally transformed how we store and retrieve data. Traditional databases struggle with the demands of modern AI workloads. Enter vector databases—a paradigm shift in data management that's quietly becoming table stakes for any organization building AI-native applications.",
   date: "October 28, 2025",

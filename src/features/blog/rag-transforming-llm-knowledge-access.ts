@@ -1,5 +1,5 @@
 export const ragTransformingLLMKnowledgeAccess = {
-  id: "rag-transforming-llm-knowledge-access",
+  id: "rag",
   title: "Retrieval-Augmented Generation: Transforming How LLMs Access Knowledge",
   excerpt: "Large Language Models have revolutionized how we interact with AI, but they face a fundamental limitation: their knowledge is frozen at the time of training. RAG emerged as the solution to this challenge, fundamentally changing how we build production AI applications.",
   date: "October 10, 2025",
