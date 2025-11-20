@@ -1,5 +1,5 @@
-import { X, Share2, Link as LinkIcon, CheckCircle2, ShieldCheck, Search } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { CheckCircle2, ShieldCheck, Search } from "lucide-react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { BlogCard } from "./BlogCard";
 import { useBlogPosts } from "./useBlogPosts";
@@ -10,68 +10,12 @@ import { Input } from "@/shared/ui/input";
 export const BlogSection = () => {
   const { posts: blogPosts, loading } = useBlogPosts();
   const { subscribe, isSubmitting } = useSubscription();
-  const [selectedPost, setSelectedPost] = useState<string | null>(null);
-  const [copied, setCopied] = useState(false);
   const [subscriptionDialogOpen, setSubscriptionDialogOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const closeBtnRef = useRef<HTMLButtonElement | null>(null);
-  const lastFocusedRef = useRef<HTMLElement | null>(null);
-
-  const openModal = (postId: string) => {
-    lastFocusedRef.current = document.activeElement as HTMLElement;
-    setSelectedPost(postId);
-    document.body.style.overflow = "hidden";
-  };
-
-  const closeModal = () => {
-    setSelectedPost(null);
-    document.body.style.overflow = "";
-    setTimeout(() => lastFocusedRef.current?.focus?.(), 0);
-  };
-
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && selectedPost !== null) closeModal();
-    };
-    if (selectedPost !== null) document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [selectedPost]);
-
-  useEffect(() => {
-    if (selectedPost !== null) {
-      setTimeout(() => closeBtnRef.current?.focus(), 0);
-    }
-  }, [selectedPost]);
-
-  const currentPost = selectedPost ? blogPosts.find(p => p.id === selectedPost) : null;
-  const shareUrl = typeof window !== "undefined" ? window.location.href : "https://saiii.in";
-  const shareTitle = currentPost?.title || "Blog Post";
-
-  const handleNativeShare = async () => {
-    try {
-      if (navigator.share) {
-        await navigator.share({ title: shareTitle, url: shareUrl });
-      } else {
-        await navigator.clipboard.writeText(shareUrl);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 1500);
-      }
-    } catch {
-    }
-  };
-
-  const copyLink = async () => {
-    try {
-      await navigator.clipboard.writeText(shareUrl);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
-    } catch {
-    }
-  };
 
   const filteredPosts = blogPosts.filter((post) => {
     if (!searchQuery.trim()) return true;
-    
+
     const query = searchQuery.toLowerCase();
     return (
       post.title.toLowerCase().includes(query) ||
@@ -114,7 +58,6 @@ export const BlogSection = () => {
             <BlogCard
               key={post.id}
               post={post}
-              onReadMore={post.content ? openModal : undefined}
             />
           ))
         ) : (
@@ -147,7 +90,7 @@ export const BlogSection = () => {
                 const email = formData.get("email") as string;
 
                 const success = await subscribe(email);
-                
+
                 if (success) {
                   setSubscriptionDialogOpen(true);
                   form.reset();
@@ -168,7 +111,7 @@ export const BlogSection = () => {
                 disabled={isSubmitting}
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <CheckCircle2 className="w-4 h-4" /> 
+                <CheckCircle2 className="w-4 h-4" />
                 {isSubmitting ? 'Subscribing...' : 'Subscribe'}
               </button>
             </form>
@@ -197,69 +140,6 @@ export const BlogSection = () => {
           Terms & Conditions
         </Link>
       </footer>
-
-      {selectedPost && (
-        <div
-          id="digest-modal-backdrop"
-          className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50"
-          onClick={closeModal}
-          aria-hidden="true"
-        >
-          <div
-            id="digest-modal"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="digest-title"
-            aria-describedby="digest-content"
-            className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-gray-200"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="sticky top-0 bg-white/90 backdrop-blur border-b border-gray-200 p-4 sm:p-6 flex justify-between items-center rounded-t-2xl">
-              <h3 id="digest-title" className="text-2xl font-bold text-gray-900">
-                {currentPost?.title || "Blog Post"}
-              </h3>
-              <button
-                ref={closeBtnRef}
-                onClick={closeModal}
-                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-                aria-label="Close dialog"
-              >
-                <X className="w-6 h-6 text-gray-500" />
-              </button>
-            </div>
-
-            <div id="digest-content" className="p-6">
-              <div className="prose prose-lg max-w-none text-gray-800 leading-relaxed">
-                {currentPost?.content && (
-                  <div dangerouslySetInnerHTML={{ __html: currentPost.content }} />
-                )}
-
-                {/* Resources Section - removed as static posts don't have resources */}
-
-                {/* Disclaimer Note */}
-                <div className="mt-6 text-sm text-gray-500">
-                  <p>Note: This article includes AI-assisted writing and manual curation. Use at your own risk.</p>
-                </div>
-
-                <div className="flex items-center gap-4 mt-6 pt-6 border-t border-gray-200">
-                  <button
-                    onClick={handleNativeShare}
-                    className="inline-flex items-center gap-2 text-gray-700 hover:text-gray-900 font-medium text-sm transition-colors"
-                  >
-                    <Share2 className="w-4 h-4" /> Share
-                  </button>
-                  <button
-                    onClick={copyLink}
-                    className="inline-flex items-center gap-2 text-gray-700 hover:text-gray-900 font-medium text-sm transition-colors"
-                  >
-                    <LinkIcon className="w-4 h-4" /> {copied ? "Copied" : "Copy link"}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       <SubscriptionDialog
         open={subscriptionDialogOpen}
