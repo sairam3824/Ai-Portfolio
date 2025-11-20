@@ -50,6 +50,22 @@ const projects = [
     category: "NLP & RAG",
   },
   {
+    title: "🚀 SpaceX ML: Landing Success Prediction",
+    description:
+      "Aerospace ML project analyzing SpaceX launch data to predict booster landing success using ensemble methods and time-series analysis. Features real-time prediction dashboard.",
+    tech: ["Machine Learning", "Python", "Pandas", "Time Series", "Aerospace"],
+    github: "https://github.com/sairam3824/SpaceX-Booster-Landing-Prediction",
+    category: "Predictive Analytics",
+  }, 
+  {
+    title: "🚦 Traffic Prediction System",
+    description:
+      "Machine learning system for predicting traffic patterns and congestion using historical data analysis. Features time-series forecasting, pattern recognition, and real-time traffic flow prediction for urban planning.",
+    tech: ["Machine Learning", "Python", "Time Series", "Data Analysis", "Predictive Modeling"],
+    github: "https://github.com/sairam3824/Traffic-prediction",
+    category: "Predictive Analytics",
+  },
+  {
     title: "🤖 Integrated AI Text Assistant",
     description:
       "Multi-modal AI assistant leveraging state-of-the-art NLP models for advanced reasoning, document summarization, and intelligent automation. Features custom fine-tuned models and API integrations.",
@@ -65,14 +81,6 @@ const projects = [
     github: "https://github.com/sairam3824/Basic-MCP-Server-Practice",
     category: "AI Infrastructure",
   },
-  {
-    title: "🚀 SpaceX ML: Landing Success Prediction",
-    description:
-      "Aerospace ML project analyzing SpaceX launch data to predict booster landing success using ensemble methods and time-series analysis. Features real-time prediction dashboard.",
-    tech: ["Machine Learning", "Python", "Pandas", "Time Series", "Aerospace"],
-    github: "https://github.com/sairam3824/SpaceX-Booster-Landing-Prediction",
-    category: "Predictive Analytics",
-  }, 
   {
     title: "🍎 NutriVision: AI Nutrition Analyzer",
     description:
