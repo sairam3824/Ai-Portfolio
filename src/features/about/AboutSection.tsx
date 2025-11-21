@@ -43,7 +43,8 @@ export const AboutSection = () => {
       <div className="space-y-6 text-muted-foreground">
         <p className="text-lg leading-relaxed">
           I'm Sairam, a dedicated DSA problem solver and AI-driven technologist with 3 years of programming experience.
-          I've solved over 800+ problems on LeetCode and earned the Knight badge, strengthening my grasp of data structures and algorithms —
+          I've solved over 1000+ problems on LeetCode with a peak rating of 2150+ and earned the Guardian badge, 
+          along with being a 3-star coder on CodeChef. This strengthens my grasp of data structures and algorithms —
           the foundation of scalable and efficient systems.
         </p>
 
@@ -68,11 +69,15 @@ export const AboutSection = () => {
           </div>
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-accent"></div>
-            <span>Completed 10+ Projects</span>
+            <span>LeetCode 2150+ Rating • Guardian Badge • 1000+ Problems</span>
           </div>
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-accent"></div>
-            <span>Expertise in Data Structures & Algorithms</span>
+            <span>CodeChef 3 Star • 50+ Contests Participated</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 rounded-full bg-accent"></div>
+            <span>Completed 10+ Projects</span>
           </div>
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-accent"></div>
