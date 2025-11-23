@@ -1,10 +1,22 @@
 import { useNavigate } from "react-router-dom";
-import { Code, Trophy, FileText, Download, ExternalLink, Github, Linkedin } from "lucide-react";
+import { Code, Trophy, FileText, Download, ExternalLink, Github, Linkedin, User, FolderKanban, Layers, GraduationCap, BookOpen, Sparkles, Mail } from "lucide-react";
 import { Button } from "@/shared/ui/button";
 import { Card } from "@/shared/ui/card";
 
 export const ProfilePage = () => {
   const navigate = useNavigate();
+
+  const sectionIcons = [
+    { id: "coding", icon: Code, label: "Coding", onClick: () => navigate("/profile") },
+    { id: "resume", icon: FileText, label: "Resume", onClick: () => window.open("/Sai_Ram_Maruri_Resume_2025.pdf", "_blank") },
+    { id: "projects", icon: FolderKanban, label: "Projects", onClick: () => navigate("/projects") },
+    { id: "about", icon: User, label: "About", onClick: () => navigate("/about") },
+    { id: "skills", icon: Layers, label: "Skills", onClick: () => navigate("/skills") },
+    { id: "education", icon: GraduationCap, label: "Education", onClick: () => navigate("/education") },
+    { id: "certifications", icon: Sparkles, label: "Certifications", onClick: () => navigate("/certifications") },
+    { id: "blog", icon: BookOpen, label: "Blog", onClick: () => navigate("/blogs") },
+    { id: "contact", icon: Mail, label: "Contact", onClick: () => navigate("/contact") },
+  ];
 
   const codingProfiles = [
     { label: "LeetCode", href: "https://leetcode.com/u/programmer3824/", stats: "2150+ • Guardian" },
@@ -46,9 +58,26 @@ export const ProfilePage = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-8 max-w-5xl space-y-12">
+      {/* Floating Section Icons */}
+      <div className="fixed left-4 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-3">
+        {sectionIcons.map((item) => (
+          <button
+            key={item.id}
+            onClick={item.onClick}
+            className="w-12 h-12 rounded-full bg-card/80 backdrop-blur-sm border border-border hover:border-primary hover:bg-primary/10 transition-all flex items-center justify-center group relative"
+            title={item.label}
+          >
+            <item.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+            <span className="absolute left-full ml-3 px-3 py-1 bg-card/95 backdrop-blur-sm border border-border rounded-lg text-xs font-medium text-foreground opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap">
+              {item.label}
+            </span>
+          </button>
+        ))}
+      </div>
+
+      <div className="container mx-auto px-4 lg:pl-24 py-8 max-w-5xl space-y-12">
         {/* Coding Profiles & Stats */}
-        <section>
+        <section id="coding-section">
           <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-2">
             <Code className="w-6 h-6" />
             Coding Profiles
@@ -127,7 +156,7 @@ export const ProfilePage = () => {
         </section>
 
         {/* Resume */}
-        <section>
+        <section id="resume-section">
           <div className="flex items-center gap-4 mb-4">
             <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
               <FileText className="w-6 h-6" />
@@ -156,7 +185,7 @@ export const ProfilePage = () => {
         </section>
 
         {/* Projects */}
-        <section>
+        <section id="projects-section">
           <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-2">
             <Trophy className="w-6 h-6" />
             Key Projects
@@ -180,7 +209,7 @@ export const ProfilePage = () => {
         </section>
 
         {/* About */}
-        <section>
+        <section id="about-section">
           <h2 className="text-2xl font-bold text-foreground mb-4">About</h2>
           <Card className="p-6">
             <p className="text-muted-foreground mb-4">
@@ -211,7 +240,7 @@ export const ProfilePage = () => {
         </section>
 
         {/* Skills */}
-        <section>
+        <section id="skills-section">
           <h2 className="text-2xl font-bold text-foreground mb-4">Skills</h2>
           <div className="grid gap-3 md:grid-cols-2">
             {skills.map((skill, i) => (
@@ -224,7 +253,7 @@ export const ProfilePage = () => {
         </section>
 
         {/* Education */}
-        <section>
+        <section id="education-section">
           <h2 className="text-2xl font-bold text-foreground mb-4">Education</h2>
           <Card className="p-6">
             <h3 className="font-semibold text-foreground">B.Tech Computer Science</h3>
