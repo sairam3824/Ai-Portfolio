@@ -2,7 +2,7 @@ export const llmPoisoningHiddenThreat = {
   id: "llm-poisoning",
   title: "LLM Poisoning: The Hidden Threat to AI Trustworthiness",
   excerpt: "LLM poisoning is a rising cybersecurity concern where attackers subtly corrupt the data used to train large language models, causing these AI systems to behave unpredictably or dangerously. Recent research shows that it takes only a small number of poisoned documents to impact even the largest models.",
-  date: "October 11, 2025",
+  date: "October 13, 2025",
   readTime: "12 min read",
   tags: ["AI/ML", "Cybersecurity", "LLM Security", "Data Poisoning", "AI Safety"],
   icon: "Shield",

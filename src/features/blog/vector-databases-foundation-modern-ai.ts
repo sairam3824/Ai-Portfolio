@@ -2,7 +2,7 @@ export const vectorDatabasesFoundationModernAI = {
   id: "vector-database",
   title: "Vector Databases: The Foundation of Modern AI Applications",
   excerpt: "The rise of generative AI and large language models has fundamentally transformed how we store and retrieve data. Traditional databases struggle with the demands of modern AI workloads. Enter vector databases—a paradigm shift in data management that's quietly becoming table stakes for any organization building AI-native applications.",
-  date: "October 28, 2025",
+  date: "November 5, 2025",
   readTime: "20 min read",
   tags: ["Vector Databases", "AI/ML", "Embeddings", "Semantic Search", "RAG", "Database Technology"],
   icon: "Database",
@@ -186,6 +186,28 @@ export const vectorDatabasesFoundationModernAI = {
     </ul>
     <p class="mb-6 text-gray-700"><strong>Best For:</strong> Complex filtering requirements, multi-tenant applications</p>
 
+    <h5 class="text-lg font-semibold text-gray-900 mb-3 mt-6">Faiss</h5>
+    <p class="mb-2 text-gray-700"><strong>Type:</strong> Open-source library developed by Facebook AI Research (FAIR)</p>
+    <p class="mb-2 text-gray-700"><strong>Strengths:</strong></p>
+    <ul class="mb-4 text-gray-700 list-disc list-inside space-y-1">
+      <li>Highly optimized for large-scale similarity search and clustering</li>
+      <li>Supports GPU acceleration for speed</li>
+      <li>Wide range of indexing methods (IVF, PQ, HNSW) suitable for diverse use cases</li>
+      <li>Flexible integration as a standalone or embedded solution</li>
+    </ul>
+    <p class="mb-6 text-gray-700"><strong>Best For:</strong> Research teams, developers focusing on performance tuning, and large-scale vector search on-premise</p>
+
+    <h5 class="text-lg font-semibold text-gray-900 mb-3 mt-6">Chroma DB</h5>
+    <p class="mb-2 text-gray-700"><strong>Type:</strong> Open-source vector database designed for developer ease</p>
+    <p class="mb-2 text-gray-700"><strong>Strengths:</strong></p>
+    <ul class="mb-4 text-gray-700 list-disc list-inside space-y-1">
+      <li>Focuses on simplicity, fast prototyping, and developer usability</li>
+      <li>Integration-friendly with popular ML frameworks</li>
+      <li>Supports embedding storage and similarity search with metadata filtering</li>
+      <li>Actively evolving with community-driven features</li>
+    </ul>
+    <p class="mb-6 text-gray-700"><strong>Best For:</strong> Developers building prototypes and small to medium production apps with simple integration needs</p>
+
     <h4 class="text-xl font-semibold text-gray-900 mb-4 mt-8">Implementation Best Practices</h4>
 
     <h5 class="text-lg font-semibold text-gray-900 mb-3 mt-6">1. Data Preparation and Normalization</h5>
@@ -222,8 +244,10 @@ export const vectorDatabasesFoundationModernAI = {
       <pre><code>import weaviate
 from transformers import AutoTokenizer, AutoModel
 
+
 # Connect to Weaviate
 client = weaviate.Client("http://localhost:8080")
+
 
 # Example: Index some documents
 documents = [
@@ -232,11 +256,13 @@ documents = [
     "Embeddings convert unstructured data to vectors"
 ]
 
+
 # Generate embeddings
 def get_embedding(text):
     inputs = tokenizer(text, return_tensors='pt')
     outputs = model(**inputs)
     return outputs.last_hidden_state.mean(dim=1).detach().numpy()[0].tolist()
+
 
 # Index documents
 for i, doc in enumerate(documents):
@@ -246,12 +272,14 @@ for i, doc in enumerate(documents):
         class_name="Document"
     )
 
+
 # Query: Find similar documents
 query = "How do embeddings work?"
 query_embedding = get_embedding(query)
 results = client.query.get("Document").with_near_vector(
     {"vector": query_embedding}
 ).with_limit(3).do()
+
 
 print(results)</code></pre>
     </div>

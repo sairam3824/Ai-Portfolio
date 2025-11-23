@@ -228,5 +228,8 @@ export const myCodingJourney0To3Star = {
         </div>
       </div>
     </div>
+    <div class="mt-6 text-sm text-gray-500">
+      <p>Note: This article includes AI-assisted writing and manual curation. Use at your own risk.</p>
+    </div>
   `
 };

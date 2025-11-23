@@ -10,6 +10,22 @@ import { llmPoisoningHiddenThreat } from './llm-poisoning-hidden-threat';
 import { ragTransformingLLMKnowledgeAccess } from './rag-transforming-llm-knowledge-access';
 import { vectorDatabasesFoundationModernAI } from './vector-databases-foundation-modern-ai';
 import { myCodingJourney0To3Star } from './my-coding-journey-0-to-3-star';
+import { langchainOrchestrationForAI } from './langchain-Orchestration-For-AI';
+import { awsBedrock } from './aws-bedrock';
+import { llmHallucination } from './llm-Hallucination';
+import { awsLambda } from './aws-lambda';
+import { awsSageMaker } from './aws-sagemaker';
+import { AivsGenAi } from './ai-vs-genai';
+import { openAIAgentBuilder } from './openAI-Agent-Builder';
+import { fineTuningLLMs } from './fineTuning-LLMs';
+import { mcpServers } from './MCP-server';
+import { llms } from './llm'
+import { mlAlgorithms } from './ml-algorithms';
+import { dlAlgorithms } from './dl-algorithms';
+import { java } from './java';
+import { python } from './python';
+import { cpp } from './cpp';
+import { n8n } from './n8n-automation';
 
 export interface BlogPost {
     id: string;
@@ -28,11 +44,30 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
     techBiweeklyDigestNovMid2025,
     myCodingJourney0To3Star,
+<<<<<<< Updated upstream
     techBiweeklyDigestNov2025,
+=======
+    langchainOrchestrationForAI,
+    n8n,
+>>>>>>> Stashed changes
     vectorDatabasesFoundationModernAI,
     techBiweeklyDigestOct2025,
+    fineTuningLLMs,
     ragTransformingLLMKnowledgeAccess,
     llmPoisoningHiddenThreat,
+    llmHallucination,
+    python,
+    openAIAgentBuilder,
+    mcpServers,
+    awsBedrock,
+    awsLambda,
+    java,
+    cpp,
+    awsSageMaker,
+    llms,
+    AivsGenAi,
+    dlAlgorithms,
+    mlAlgorithms,
 ];
 
 export const getBlogPost = (id: string): BlogPost | undefined => {
