@@ -3,6 +3,7 @@ export { default as BlogsPage } from './BlogsPage';
 export { default as BlogPostPage } from './BlogPostPage';
 export { BlogCard } from './BlogCard';
 
+import { techBiweeklyDigestNov2025 } from './tech-biweekly-digest-nov-3-2025';
 import { techBiweeklyDigestOct2025 } from './tech-biweekly-digest-oct-20-2025';
 import { llmPoisoningHiddenThreat } from './llm-poisoning-hidden-threat';
 import { ragTransformingLLMKnowledgeAccess } from './rag-transforming-llm-knowledge-access';
@@ -25,6 +26,7 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
     myCodingJourney0To3Star,
+    techBiweeklyDigestNov2025,
     vectorDatabasesFoundationModernAI,
     techBiweeklyDigestOct2025,
     ragTransformingLLMKnowledgeAccess,
