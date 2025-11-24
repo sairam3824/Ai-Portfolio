@@ -1,0 +1,35 @@
+tableu
+powerbi
+k8n
+docker 
+ides
+
+dec 7 biweekly
+dec 21 biweekly
+
+nov 23 biweekly
+nov 19 coding journey
+nov 18 Langchain
+nov 13 n8n
+nov 9 biweekly
+nov 5 Vector db 
+
+oct 26 biweekly
+oct 20 Fine tuning
+oct 15 RAG
+oct 13 Llm poising 
+oct 10 llm hallucinations
+oct 8 python
+oct 7 Agent builder OpenAI 
+
+sep 25 MCP
+sep 23 AWS bedrock
+sep 20 AWS lambda
+sep 17 java
+sep 16 cpp
+sep 11 AWS sagemaker
+sep 9  LLm
+
+Aug 31 difference between ai and genai 
+Aug 26 dl algorithm 
+aug 25 ml algorithm 
