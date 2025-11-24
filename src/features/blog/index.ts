@@ -44,12 +44,9 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
     techBiweeklyDigestNovMid2025,
     myCodingJourney0To3Star,
-<<<<<<< Updated upstream
-    techBiweeklyDigestNov2025,
-=======
     langchainOrchestrationForAI,
     n8n,
->>>>>>> Stashed changes
+    techBiweeklyDigestNov2025,
     vectorDatabasesFoundationModernAI,
     techBiweeklyDigestOct2025,
     fineTuningLLMs,
