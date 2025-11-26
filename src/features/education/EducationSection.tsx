@@ -1,124 +1,94 @@
 import { GraduationCap, Calendar, MapPin } from "lucide-react";
 
 export const EducationSection = () => {
+  const items = [
+    {
+      title: "Bachelor of Technology - Computer Science",
+      org: "Vellore Institute of Technology Andhra Pradesh",
+      date: "2022 - 2026",
+      place: "Amaravati, Andhra Pradesh, India",
+      notes: [
+        "Relevant Coursework: Data Structures & Algorithms, Operating Systems, OOP, Software Engineering (Design Patterns, System Design), Computer Networks, Deep Learning, NoSQL databases",
+        "CGPA: 8.24",
+      ],
+    },
+    {
+      title: "Board of Intermediate Education",
+      org: "Sri Chaitanya Junior College",
+      date: "2020 - 2022",
+      place: "Vijayawada, Andhra Pradesh, India",
+      notes: ["Grade: 83.7%", "Subjects: Mathematics, Physics, Chemistry"],
+    },
+    {
+      title: "Board of Secondary Education",
+      org: "Sri Chaitanya High School",
+      date: "2020",
+      place: "Vijayawada, Andhra Pradesh, India",
+      notes: ["Grade: 97.1%"],
+    },
+  ];
+
   return (
-    <div className="animate-fade-in space-y-6">
-      <h2 className="text-3xl font-bold text-foreground text-center select-none pointer-events-none focus:outline-none">Education</h2>
+    <section className="animate-fade-in">
+      <h2 className="text-3xl font-bold text-foreground text-center mb-8 select-none pointer-events-none">
+        Education
+      </h2>
 
-      <div className="space-y-6">
-        <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
-          <div className="flex items-start gap-4">
-            <div className="flex-shrink-0">
-              <div className="p-3 bg-blue-50 rounded-full">
-                <GraduationCap className="w-6 h-6 text-blue-600" />
-              </div>
-            </div>
+      <div className="relative">
+        {/* vertical line */}
+        <div className="absolute left-6 top-6 bottom-0 w-[2px] bg-gray-200" />
 
-            <div className="flex-1">
-              <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-2">
-                Bachelor of Technology - Computer Science
-              </h3>
-              <p className="text-gray-600 mb-3">
-                Vellore Institute of Technology
-              </p>
-
-              <div className="flex flex-wrap gap-4 text-sm text-gray-700">
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-gray-500" />
-                  <span>2022 - 2026</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-gray-500" />
-                  <span>Amaravati</span>
+        <div className="space-y-8">
+          {items.map((it, idx) => (
+            <article key={idx} className="relative pl-16">
+              {/* marker */}
+              <div className="absolute left-0 top-3 flex items-center justify-center">
+                <div className="p-2 bg-white border border-gray-200 rounded-full shadow-sm">
+                  <div className="p-2 bg-blue-50 rounded-full">
+                    <GraduationCap className="w-5 h-5 text-blue-600" />
+                  </div>
                 </div>
               </div>
 
-              <div className="mt-4 space-y-2">
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 mt-1 rounded-full bg-blue-600"></div>
-                  <span className="text-sm text-gray-800">
-                    Relevant Coursework: DSA, OOP, CN, Operating Systems, Software Engineering, Deep Learning, NoSQL databases
-                  </span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 mt-1 rounded-full bg-blue-600"></div>
-                  <span className="text-sm text-gray-800">CGPA: 8.24/10 </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+              <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+                <div className="flex items-start gap-4">
+                  <div className="flex-1">
+                    <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-1">
+                      {it.title}
+                    </h3>
+                    <p className="text-gray-600 mb-3">{it.org}</p>
 
-        <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
-          <div className="flex items-start gap-4">
-            <div className="flex-shrink-0">
-              <div className="p-3 bg-blue-50 rounded-full">
-                <GraduationCap className="w-6 h-6 text-blue-600" />
-              </div>
-            </div>
+                    <div className="flex flex-wrap gap-4 text-sm text-gray-700">
+                      <div className="flex items-center gap-2">
+                        <Calendar className="w-4 h-4 text-gray-500" />
+                        <span>{it.date}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <MapPin className="w-4 h-4 text-gray-500" />
+                        <span>{it.place}</span>
+                      </div>
+                    </div>
 
-            <div className="flex-1">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Board of Intermediate Education
-              </h3>
-              <p className="text-gray-600 mb-3">Sri Chaitanya Junior College</p>
+                    <div className="mt-4 space-y-2">
+                      {it.notes.map((n, i) => (
+                        <div key={i} className="flex items-start gap-3">
+                          <div className="w-2 h-2 mt-1 rounded-full bg-blue-600"></div>
+                          <span className="text-sm text-gray-800">{n}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
 
-              <div className="flex flex-wrap gap-4 text-sm text-gray-700">
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-gray-500" />
-                  <span>2020 - 2022</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-gray-500" />
-                  <span>Vijayawada, India</span>
+                  {/* optional right-side date badge for larger screens */}
+                  <div className="hidden md:flex md:flex-col md:items-end md:justify-start md:gap-2 md:ml-4">
+                    <span className="text-sm text-gray-500">{it.date}</span>
+                  </div>
                 </div>
               </div>
-
-              <div className="mt-4 space-y-2">
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 mt-1 rounded-full bg-blue-600"></div>
-                  <span className="text-sm text-gray-800">Grade: 83.7%</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
-          <div className="flex items-start gap-4">
-            <div className="flex-shrink-0">
-              <div className="p-3 bg-blue-50 rounded-full">
-                <GraduationCap className="w-6 h-6 text-blue-600" />
-              </div>
-            </div>
-
-            <div className="flex-1">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Secondary Board of Education
-              </h3>
-              <p className="text-gray-600 mb-3">Sri Chaitanya High School</p>
-
-              <div className="flex flex-wrap gap-4 text-sm text-gray-700">
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-gray-500" />
-                  <span>2020</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-gray-500" />
-                  <span>Vijayawada, India</span>
-                </div>
-              </div>
-
-              <div className="mt-4 space-y-2">
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 mt-1 rounded-full bg-blue-600"></div>
-                  <span className="text-sm text-gray-800">Grade: 97.1%</span>
-                </div>
-              </div>
-            </div>
-          </div>
+            </article>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };

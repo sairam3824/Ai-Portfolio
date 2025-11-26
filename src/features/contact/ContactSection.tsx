@@ -199,9 +199,12 @@ export const ContactSection = () => {
           </div>
         </div>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
-          <span className="px-4 py-2 bg-pink-50 text-pink-600 text-sm rounded-full">
-            🚀 GenAi Enthusiast
-          </span>
+          <a
+            href="/blogs"
+            className="px-4 py-2 bg-pink-50 text-pink-600 text-sm rounded-full hover:bg-pink-100 transition-colors duration-200 cursor-pointer inline-flex items-center"
+          >
+            🚀 GenAI Enthusiast
+          </a>
           <a
             href="https://www.codechef.com/users/sairam2004"
             target="_blank"
