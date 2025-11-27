@@ -14,7 +14,7 @@ import { BlogsPage, BlogPostPage } from "@/features/blog";
 import { CertificationsPage } from "@/features/certifications";
 import { ContactPage } from "@/features/contact";
 import { AdminLogin, AdminDashboard } from "@/features/admin";
-import { ProfilePage } from "@/features/profile";
+import { ProfilePage, BadgesPage } from "@/features/profile";
 import NotFound from "./NotFound";
 import PrivacyPolicy from "./PrivacyPolicy";
 import TermsAndConditions from "./TermsAndConditions";
@@ -52,6 +52,7 @@ const App = () => (
           <Route path="/certifications" element={<CertificationsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/profile/badges" element={<BadgesPage />} />
           <Route path="/coding" element={<CodingRedirect />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
