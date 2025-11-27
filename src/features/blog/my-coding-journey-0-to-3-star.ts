@@ -196,7 +196,7 @@ export const myCodingJourney0To3Star = {
     </p>
     <ul class="mb-6 text-gray-700 list-disc list-inside space-y-2">
       <li>Reach 4-star on CodeChef</li>
-      <li>Cross 2300+ on LeetCode</li>
+      <li>Cross 2150+ on LeetCode</li>
       <li>Solve 1500+ total problems</li>
       <li>Participate in Codeforces and reach Expert level</li>
       <li>Help others on their DSA journey through mentoring</li>

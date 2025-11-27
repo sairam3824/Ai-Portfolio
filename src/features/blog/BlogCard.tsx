@@ -6,9 +6,10 @@ import * as Icons from "lucide-react";
 interface BlogCardProps {
   post: BlogPost;
   onReadMore?: (postId: string) => void;
+  onTagClick?: (tag: string) => void;
 }
 
-export const BlogCard = ({ post, onReadMore }: BlogCardProps) => {
+export const BlogCard = ({ post, onReadMore, onTagClick }: BlogCardProps) => {
   // Auto-correct common icon name issues (lowercase to PascalCase)
   const getIconComponent = (iconName: string) => {
     // Try the exact name first
@@ -41,13 +42,96 @@ export const BlogCard = ({ post, onReadMore }: BlogCardProps) => {
 
   const getTagColor = (tag: string) => {
     const tagColorMap: { [key: string]: string } = {
+      // AI/ML Related
       "AI/ML": "bg-blue-100 text-blue-800",
       "OpenAI": "bg-purple-100 text-purple-800",
+      "LLM": "bg-purple-100 text-purple-800",
+      "Large Language Models": "bg-purple-100 text-purple-800",
+      "RAG": "bg-sky-100 text-sky-800",
+      "Vector Databases": "bg-fuchsia-100 text-fuchsia-800",
+      "LangChain": "bg-cyan-100 text-cyan-800",
+      "AI Orchestration": "bg-blue-100 text-blue-800",
+      "Fine-Tuning": "bg-rose-100 text-rose-800",
+      "NLP": "bg-lime-100 text-lime-800",
+      "AI Innovation": "bg-indigo-100 text-indigo-800",
+      "Production AI": "bg-emerald-100 text-emerald-800",
+      "Generative AI": "bg-violet-100 text-violet-800",
+      "Foundation Models": "bg-indigo-100 text-indigo-800",
+      "Machine Learning": "bg-blue-100 text-blue-800",
+      "Deep Learning": "bg-purple-100 text-purple-800",
+      "Neural Networks": "bg-violet-100 text-violet-800",
+      "MLOps": "bg-teal-100 text-teal-800",
+      "AI Trends": "bg-sky-100 text-sky-800",
+      "Future of AI": "bg-cyan-100 text-cyan-800",
+      "AI Integration": "bg-blue-100 text-blue-800",
+      
+      // AI Security & Reliability
+      "Hallucination": "bg-amber-100 text-amber-800",
+      "AI Reliability": "bg-green-100 text-green-800",
+      "Prompt Engineering": "bg-lime-100 text-lime-800",
+      "Cybersecurity": "bg-red-100 text-red-800",
+      "LLM Security": "bg-orange-100 text-orange-800",
+      "Data Poisoning": "bg-red-100 text-red-800",
+      "AI Safety": "bg-yellow-100 text-yellow-800",
+      
+      // Cloud & Infrastructure
       "Cloud Computing": "bg-green-100 text-green-800",
+      "AWS": "bg-orange-100 text-orange-800",
+      "AWS Bedrock": "bg-orange-100 text-orange-800",
+      "AWS Lambda": "bg-amber-100 text-amber-800",
+      "Serverless": "bg-yellow-100 text-yellow-800",
+      "Serverless AI": "bg-amber-100 text-amber-800",
+      "Event-Driven Architecture": "bg-lime-100 text-lime-800",
+      "MCP Servers": "bg-indigo-100 text-indigo-800",
+      "Data Architecture": "bg-slate-100 text-slate-800",
+      
+      // Programming & Development
+      "Python": "bg-blue-100 text-blue-800",
+      "Java": "bg-red-100 text-red-800",
+      "C++": "bg-indigo-100 text-indigo-800",
+      "Programming": "bg-slate-100 text-slate-800",
+      "Data Science": "bg-teal-100 text-teal-800",
+      "Automation": "bg-green-100 text-green-800",
+      "Web Development": "bg-cyan-100 text-cyan-800",
+      "Software Engineering": "bg-blue-100 text-blue-800",
+      "Object-Oriented": "bg-purple-100 text-purple-800",
+      "JVM": "bg-red-100 text-red-800",
+      "Systems Development": "bg-gray-100 text-gray-800",
+      "Performance": "bg-yellow-100 text-yellow-800",
+      
+      // DSA & Competitive Programming
+      "DSA": "bg-indigo-100 text-indigo-800",
+      "Competitive Programming": "bg-violet-100 text-violet-800",
+      "LeetCode": "bg-yellow-100 text-yellow-800",
+      "CodeChef": "bg-amber-100 text-amber-800",
+      "Learning Journey": "bg-teal-100 text-teal-800",
+      "Career Growth": "bg-emerald-100 text-emerald-800",
+      "Algorithms": "bg-indigo-100 text-indigo-800",
+      
+      // Tools & Platforms
+      "Agent Builder": "bg-teal-100 text-teal-800",
+      "No-Code AI": "bg-lime-100 text-lime-800",
+      "n8n": "bg-green-100 text-green-800",
+      "Workflow Automation": "bg-emerald-100 text-emerald-800",
+      "Open Source": "bg-blue-100 text-blue-800",
+      "DevOps": "bg-cyan-100 text-cyan-800",
+      
+      // Data & Databases
+      "Embeddings": "bg-pink-100 text-pink-800",
+      "Semantic Search": "bg-rose-100 text-rose-800",
+      "Database Technology": "bg-slate-100 text-slate-800",
+      "Knowledge Management": "bg-amber-100 text-amber-800",
+      
+      // Content Types
+      "BiWeekly Digest": "bg-orange-100 text-orange-800",
       "Weekly Digest": "bg-orange-100 text-orange-800",
+      "Technology": "bg-blue-100 text-blue-800",
+      "Innovation": "bg-purple-100 text-purple-800",
+      
+      // Legal
       "Privacy": "bg-blue-100 text-blue-800",
       "Legal": "bg-green-100 text-green-800",
-      "Policy": "bg-gray-100 text-gray-800",
+      "Policy": "bg-slate-100 text-slate-800",
       "Terms": "bg-purple-100 text-purple-800",
       "Conditions": "bg-gray-100 text-gray-800",
     };
@@ -61,11 +145,11 @@ export const BlogCard = ({ post, onReadMore }: BlogCardProps) => {
     : { to: `/blogs/${post.id}` };
 
   return (
-    <article className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
-      <div className="flex items-start gap-4 flex-1">
+    <article className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
+      <div className="flex items-start gap-3.5 flex-1">
         <div className="flex-shrink-0">
-          <div className={`p-3 rounded-full ${getIconColorClasses(post.iconColor)}`}>
-            <IconComponent className="w-6 h-6" />
+          <div className={`p-2.5 rounded-full ${getIconColorClasses(post.iconColor)}`}>
+            <IconComponent className="w-5 h-5" />
           </div>
         </div>
 
@@ -77,47 +161,49 @@ export const BlogCard = ({ post, onReadMore }: BlogCardProps) => {
               rel="noopener noreferrer"
               className="block group"
             >
-              <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+              <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
                 {post.title}
               </h3>
             </a>
           ) : (
             <Link to={`/blogs/${post.id}`} className="block group">
-              <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+              <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
                 {post.title}
               </h3>
             </Link>
           )}
 
-          <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3">
+          <p className="text-sm text-gray-600 mb-3 leading-relaxed line-clamp-3">
             {post.excerpt}
           </p>
 
-          <div className="flex flex-wrap gap-4 text-sm text-gray-700 mb-4">
-            <div className="flex items-center gap-2">
+          <div className="flex flex-wrap gap-3 text-sm text-gray-700 mb-3">
+            <div className="flex items-center gap-1.5">
               <Calendar className="w-4 h-4 text-gray-500" />
               <span>{post.date}</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5">
               <Eye className="w-4 h-4 text-gray-500" />
               <span>{post.readTime}</span>
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-2 mb-4">
+          <div className="flex flex-wrap gap-2 mb-3">
             {post.tags.map((tag) => (
-              <span
+              <button
                 key={tag}
-                className={`px-3 py-1 text-xs rounded-full ${getTagColor(tag)}`}
+                onClick={() => onTagClick?.(tag)}
+                className={`px-2.5 py-0.5 text-xs rounded-full transition-all hover:ring-2 hover:ring-offset-1 hover:ring-blue-400 cursor-pointer ${getTagColor(tag)}`}
+                title={`Filter by ${tag}`}
               >
                 {tag}
-              </span>
+              </button>
             ))}
           </div>
         </div>
       </div>
 
-      <div className="flex items-center justify-end mt-4 pt-4 border-t border-gray-100">
+      <div className="flex items-center justify-end mt-3 pt-3 border-t border-gray-100">
         {isExternal ? (
           <a
             href={post.externalLink}

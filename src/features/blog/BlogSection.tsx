@@ -1,10 +1,11 @@
-import { CheckCircle2, ShieldCheck, Search } from "lucide-react";
-import { useState, useMemo } from "react";
+import { CheckCircle2, ShieldCheck, Search, Sparkles } from "lucide-react";
+import { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { BlogCard } from "./BlogCard";
 import { useBlogPosts } from "./useBlogPosts";
 import { useSubscription } from "./useSubscription";
 import { SubscriptionDialog } from "@/features/chat/SubscriptionDialog";
+import { AIChatDialog } from "./AIChatDialog";
 import { Input } from "@/shared/ui/input";
 
 const PRESET_CATEGORIES = [
@@ -34,6 +35,26 @@ export const BlogSection = () => {
   const [subscriptionDialogOpen, setSubscriptionDialogOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [aiChatOpen, setAiChatOpen] = useState(false);
+  const [aiQuery, setAiQuery] = useState("");
+
+  const handleTagClick = (tag: string) => {
+    setSelectedTag(tag);
+    setSelectedCategory("all");
+    setSearchQuery("");
+  };
+
+  // Add ESC key listener to clear tag filter
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && selectedTag) {
+        setSelectedTag(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedTag]);
 
   const categories = useMemo(() => {
     const seen = new Set<string>();
@@ -72,6 +93,11 @@ export const BlogSection = () => {
   const filteredPosts = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
     return blogPosts.filter((post) => {
+      // First check if a specific tag is selected
+      if (selectedTag) {
+        return post.tags.includes(selectedTag);
+      }
+      
       const matchesQuery = !q || post.title.toLowerCase().includes(q) || post.excerpt.toLowerCase().includes(q) || post.tags.some((tag: string) => tag.toLowerCase().includes(q));
       if (!matchesQuery) return false;
       if (selectedCategory === "all") return true;
@@ -83,7 +109,7 @@ export const BlogSection = () => {
       if (selectedCategory === "weekly") return post.tags.some((t: string) => mapTagToCategory(t) === "weekly");
       return post.tags.some((t: string) => mapTagToCategory(t) === selectedCategory || t.toLowerCase() === selectedCategory);
     });
-  }, [blogPosts, searchQuery, selectedCategory]);
+  }, [blogPosts, searchQuery, selectedCategory, selectedTag]);
 
   if (loading) {
     return (
@@ -101,12 +127,13 @@ export const BlogSection = () => {
       </h2>
 
       <div className="max-w-4xl mx-auto px-4">
-        <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-          <div className="relative flex-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Left Box - Local Blog Search */}
+          <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
             <Input
               type="text"
-              placeholder="Search blogs by title, content, or tags..."
+              placeholder="Search my blogs..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={(e) => {
@@ -124,6 +151,26 @@ export const BlogSection = () => {
               </button>
             )}
           </div>
+
+          {/* Right Box - AI Chat Search */}
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (aiQuery.trim()) {
+                setAiChatOpen(true);
+              }
+            }}
+            className="relative"
+          >
+            <Sparkles className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-400 w-4 h-4" />
+            <Input
+              type="text"
+              value={aiQuery}
+              onChange={(e) => setAiQuery(e.target.value)}
+              placeholder="Ask AI anything..."
+              className="pl-10 pr-4 py-2 w-full rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            />
+          </form>
         </div>
 
 
@@ -157,17 +204,38 @@ export const BlogSection = () => {
 
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 space-y-6">
-        {filteredPosts.length > 0 ? (
-          filteredPosts.map((post) => (
-            <BlogCard key={post.id} post={post} />
-          ))
-        ) : (
-          <div className="text-center py-8">
-            <p className="text-gray-500 text-lg">No blogs found matching "{searchQuery}"</p>
-            <p className="text-gray-400 text-sm mt-2">Try a different search or category</p>
+      <div className="max-w-4xl mx-auto px-4">
+        {/* Active Tag Filter Display */}
+        {selectedTag && (
+          <div className="mb-4 flex items-center gap-2">
+            <span className="text-sm text-gray-600">Filtering by tag:</span>
+            <span className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+              {selectedTag}
+              <button
+                onClick={() => setSelectedTag(null)}
+                className="hover:text-blue-900"
+                aria-label="Clear tag filter"
+              >
+                ×
+              </button>
+            </span>
           </div>
         )}
+
+        <div className="space-y-5">
+          {filteredPosts.length > 0 ? (
+            filteredPosts.map((post) => (
+              <BlogCard key={post.id} post={post} onTagClick={handleTagClick} />
+            ))
+          ) : (
+            <div className="text-center py-8">
+              <p className="text-gray-500 text-base">
+                No blogs found {selectedTag ? `with tag "${selectedTag}"` : searchQuery ? `matching "${searchQuery}"` : ""}
+              </p>
+              <p className="text-gray-400 text-sm mt-2">Try a different search or category</p>
+            </div>
+          )}
+        </div>
       </div>
 
       <section aria-labelledby="subscribe-title" className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 rounded-2xl p-6 mt-6 max-w-4xl mx-auto px-4">
@@ -216,6 +284,14 @@ export const BlogSection = () => {
       </footer>
 
       <SubscriptionDialog open={subscriptionDialogOpen} onOpenChange={setSubscriptionDialogOpen} />
+      <AIChatDialog 
+        open={aiChatOpen} 
+        onOpenChange={(open) => {
+          setAiChatOpen(open);
+          if (!open) setAiQuery('');
+        }}
+        initialQuery={aiQuery}
+      />
     </div>
   );
 };
