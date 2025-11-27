@@ -1,3 +1,5 @@
+import React from "react";
+
 export const SkillsSection = () => {
   const skillDocs: { [key: string]: string } = {
     "Java": "https://docs.oracle.com/en/java/",
@@ -23,6 +25,7 @@ export const SkillsSection = () => {
     "RAG Systems": "https://python.langchain.com/docs/use_cases/question_answering",
     "Vector Databases": "https://www.pinecone.io/learn/vector-database/",
     "Prompt Engineering": "https://platform.openai.com/docs/guides/prompt-engineering",
+    "Fine-tuning (LoRA / QLoRA)": "https://huggingface.co/docs/peft/main/en/intro",
 
     "Computer Vision": "https://opencv.org/",
     "Natural Language Processing": "https://www.nltk.org/",
@@ -103,6 +106,7 @@ export const SkillsSection = () => {
         { name: "RAG Systems", level: "Advanced" },
         { name: "Vector Databases", level: "Intermediate" },
         { name: "Prompt Engineering", level: "Advanced" },
+        { name: "Fine-tuning (LoRA / QLoRA)", level: "Intermediate" },
       ],
     },
     {
