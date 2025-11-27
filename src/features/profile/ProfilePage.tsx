@@ -110,7 +110,7 @@ export const ProfilePage = () => {
   ];
 
   const codingProfiles = [
-    { label: "LeetCode", href: "https://leetcode.com/u/programmer3824/", stats: "2150+ • Guardian" },
+    { label: "LeetCode", href: "https://leetcode.com/u/programmer3824/", stats: "2300+ • Guardian" },
     { label: "CodeChef", href: "https://www.codechef.com/users/sairam2004", stats: "3★ • 1600+" },
     { label: "LeetCode", href: "https://leetcode.com/u/sairam3824/", stats: "Streak" },
     { label: "InterviewBit", href: "https://www.interviewbit.com/profile/sai-rama-linga-reddy-maruri/", stats: "Active" },
@@ -162,7 +162,7 @@ export const ProfilePage = () => {
             <Code className="w-6 h-6" />
             Coding Profiles
           </h2>
-          <p className="text-sm font-semibold text-muted-foreground mb-6">1000+ DSA problems solved • LeetCode Guardian (2150+) • CodeChef 3★</p>
+          <p className="text-sm font-semibold text-muted-foreground mb-6">1000+ DSA problems solved • LeetCode Guardian (2300+) • CodeChef 3★</p>
 
           {/* Grid with left (fixed-ish), right (stats) */}
           <div className="grid gap-8 items-start md:grid-cols-[minmax(0,360px)_minmax(0,1fr)]">
@@ -241,7 +241,7 @@ export const ProfilePage = () => {
           <Card className="p-6">
             <p className="text-muted-foreground mb-4">
               AI-driven technologist with 3 years of programming experience. Specialized in AI/ML, LLMs, and cloud technologies.
-              LeetCode Guardian (2150+), CodeChef 3★ with 1000+ problems solved. Passionate about building impactful AI solutions.
+              LeetCode Guardian (2300+), CodeChef 3★ with 1000+ problems solved. Passionate about building impactful AI solutions.
             </p>
             <div className="flex gap-3">
               <a href="https://github.com/sairam3824" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 bg-secondary rounded-lg hover:bg-secondary/80 transition-colors text-sm">
