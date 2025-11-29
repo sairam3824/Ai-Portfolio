@@ -99,6 +99,14 @@ const projects = [
     github: "https://github.com/sairam3824/Langchain-LLM-PET-app",
     category: "Conversational AI",
   },
+  {
+    title: "🏆 Competitive Programming Solutions",
+    description:
+      "Comprehensive collection of algorithmic problem-solving solutions from competitive programming platforms. Features optimized implementations of data structures, algorithms, and problem-solving techniques with detailed explanations.",
+    tech: ["C++", "Python", "Algorithms", "Data Structures", "Problem Solving"],
+    github: "https://github.com/sairam3824/Competitive-Programming",
+    category: "Algorithms",
+  },
 ];
 
 export const ProjectsSection = () => {
