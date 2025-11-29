@@ -42,22 +42,15 @@ export const AboutSection = () => {
 
       <div className="space-y-6 text-muted-foreground">
         <p className="text-lg leading-relaxed">
-          I'm Sairam, a dedicated DSA problem solver and AI-driven technologist with 3 years of programming experience.
-          I've solved over 1000+ problems on LeetCode with a peak rating of 23000+ and earned the Guardian badge, 
-          along with being a 3-star coder on CodeChef. This strengthens my grasp of data structures and algorithms —
-          the foundation of scalable and efficient systems.
+          I’m a dedicated DSA and problem-solving enthusiast with 1,000+ problems solved, holding the Guardian badge on LeetCode with a rating of 2300+, and a 3★ rating (1600+) on CodeChef. This consistent practice in data structures and algorithms has strengthened my ability to design efficient, scalable, and reliable solutions—skills I actively apply to real-world engineering and AI challenges.
         </p>
 
         <p className="leading-relaxed">
-          My core interests include Artificial Intelligence, Machine Learning, AI Agents, and Generative AI,
-          with growing proficiency in Large Language Models (LLMs) and their real-world applications.
-          I continuously explore model architectures, optimization techniques, and cutting-edge AI advancements.
+          My core interests include Artificial Intelligence, Machine Learning, AI Agents, and Generative AI, with a growing proficiency in Large Language Models (LLMs) and their applications. I actively explore model architectures, optimization strategies, and stay updated with the latest advancements across AI and data science.
         </p>
 
         <p className="leading-relaxed">
-          Beyond algorithms, I bring hands-on experience with cloud technologies, particularly Amazon Web Services (AWS),
-          enabling me to design and deploy scalable, secure, and cost-efficient ML workflows and data pipelines.
-          For me, it's not just about using powerful tools—it's about mastering them to build impactful solutions.
+          I also bring hands-on experience with Amazon Web Services (AWS), enabling me to design and deploy scalable, secure, and cost-efficient data pipelines and AI/ML workflows. For me, it’s not just about using powerful tools—it's about understanding them deeply and building solutions that truly make an impact.
         </p>
 
         <p className="leading-relaxed">Learn always, Build always.</p>
@@ -69,19 +62,23 @@ export const AboutSection = () => {
           </div>
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-accent"></div>
-            <span>LeetCode 2300+ Rating • Guardian Badge • 1000+ Problems</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="w-2 h-2 rounded-full bg-accent"></div>
-            <span>CodeChef 3 Star • 50+ Contests Participated</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="w-2 h-2 rounded-full bg-accent"></div>
-            <span>Completed 10+ Projects</span>
+            <span>Completed 15+ Projects</span>
           </div>
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-accent"></div>
             <span>Proficient in AI, ML, LLMs & AWS</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 rounded-full bg-accent"></div>
+            <span>LeetCode 2300+ Rating • Guardian Badge</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 rounded-full bg-accent"></div>
+            <span>CodeChef 1600+ Rating • 3 Star</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 rounded-full bg-accent"></div>
+            <span>50+ Contests Participated •  1000+ Problems</span>
           </div>
         </div>
 
