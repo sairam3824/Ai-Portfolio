@@ -159,7 +159,7 @@ export const ContactSection = () => {
                 className="group hover:scale-105 transition-transform duration-300 cursor-pointer"
               >
                 <div className="text-4xl font-extrabold text-blue-600 group-hover:text-blue-700 transition-colors">
-                  2100+
+                  2300+
                 </div>
                 <div className="text-sm md:text-base text-muted-foreground font-medium group-hover:text-blue-600 transition-colors">
                   LeetCode Rating
@@ -189,7 +189,7 @@ export const ContactSection = () => {
                 className="group hover:scale-105 transition-transform duration-300 cursor-pointer"
               >
                 <div className="text-4xl font-extrabold text-blue-600 group-hover:text-blue-700 transition-colors">
-                  10+
+                  15+
                 </div>
                 <div className="text-sm md:text-base text-muted-foreground font-medium group-hover:text-blue-600 transition-colors">
                   GitHub Projects
