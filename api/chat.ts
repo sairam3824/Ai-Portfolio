@@ -11,6 +11,20 @@ export default async function handler(
   req: VercelRequest,
   res: VercelResponse
 ) {
+  // Add CORS headers
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
+
+  // Handle OPTIONS request
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -19,8 +33,45 @@ export default async function handler(
   try {
     const { query, sessionId = 'default' } = req.body;
 
+    // Check if OpenAI API key is configured
+    if (!process.env.OPENAI_API_KEY) {
+      console.error('OPENAI_API_KEY is not configured');
+      return res.status(500).json({ 
+        error: 'OpenAI API key not configured',
+        details: 'Please add OPENAI_API_KEY to environment variables'
+      });
+    }
+
     if (!query) {
       return res.status(400).json({ error: 'Query is required' });
+    }
+
+    // Check if user is asking about Sai Ram Maruri
+    const lowerQuery = query.toLowerCase();
+    const personalKeywords = [
+      'who is sai',
+      'sai ram',
+      'sai rama',
+      'maruri',
+      'who is he',
+      'tell about him',
+      'tell me about him',
+      'about sai',
+      'who are you',
+      'your name',
+      'about you',
+      'about yourself'
+    ];
+
+    const isPersonalQuery = personalKeywords.some(keyword => lowerQuery.includes(keyword));
+
+    if (isPersonalQuery) {
+      return res.status(200).json({
+        success: true,
+        response: "I'd love to tell you about Sai Ram Maruri! For personalized information about him, his experience, projects, and skills, please use the 'Ask me anything' chat feature on the homepage. You can click on the chat icon in the navigation bar or visit the Contact section. That chat is specifically designed to answer questions about Sai Ram's background, expertise, and work! 😊",
+        sessionId,
+        redirectToContact: true,
+      });
     }
 
     // Get or create session memory
