@@ -1,8 +1,9 @@
-tableu
-powerbi
-k8n
-docker 
+tableu, powerbi
+docker, k8n
 ides
+transforemers
+llm architectures
+tokenization n Embeddings
 
 dec 7 biweekly
 dec 21 biweekly
