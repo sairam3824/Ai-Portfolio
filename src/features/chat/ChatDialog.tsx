@@ -78,11 +78,31 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
         throw new Error(`HTTP ${response.status}: ${errorData.message || response.statusText}`);
       }
 
-      const data = await response.json();
+      // Get response text first to check if it's valid
+      const responseText = await response.text();
+      
+      // Check if response is empty
+      if (!responseText || responseText.trim() === '') {
+        throw new Error('Empty response from webhook. Please check your n8n workflow is active and returning data.');
+      }
+
+      // Try to parse JSON
+      let data;
+      try {
+        data = JSON.parse(responseText);
+      } catch (parseError) {
+        console.error('Failed to parse response:', responseText);
+        throw new Error(`Invalid JSON response from webhook. Response: ${responseText.substring(0, 100)}...`);
+      }
+
+      // Check if the response has the expected structure
+      if (!data || typeof data !== 'object') {
+        throw new Error('Invalid response format from webhook');
+      }
 
       const assistantMessage: Message = {
         role: "assistant",
-        content: data.reply || "Sorry, I couldn't process that response.",
+        content: data.reply || data.response || data.message || "Sorry, I couldn't process that response.",
         timestamp: new Date(),
       };
 
@@ -99,7 +119,7 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
 
       const errorMessage: Message = {
         role: "assistant",
-        content: `Sorry, I'm having trouble connecting right now. Error: ${errorMsg}.`,
+        content: `Sorry, I'm having trouble connecting right now. Error: ${errorMsg}`,
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, errorMessage]);
