@@ -4,7 +4,7 @@ export const modernIdes2025 = {
   excerpt: "Explore how VS Code, Cursor, Kiro, and Google Antigravity are reshaping the developer experience—from lightweight code editing to fully agentic AI-driven workflows.",
   date: "December 03, 2025",
   readTime: "15 min read",
-  tags: ["IDEs", "VS Code", "Cursor", "Kiro", "Antigravity", "AI Coding"],
+  tags: ["IDEs", "VS Code", "Cursor", "Kiro", "Antigravity", "AI Coding", "AI", "Tools"],
   icon: "Code2",
   iconColor: "blue",
   content: `

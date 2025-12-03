@@ -26,6 +26,7 @@ import { java } from './java';
 import { python } from './python';
 import { cpp } from './cpp';
 import { n8n } from './n8n-automation';
+import { modernIdes2025 } from './modren-ides';
 
 export interface BlogPost {
     id: string;
@@ -42,6 +43,7 @@ export interface BlogPost {
 }
 
 export const blogPosts: BlogPost[] = [
+    modernIdes2025,
     techBiweeklyDigestNovMid2025,
     myCodingJourney0To3Star,
     langchainOrchestrationForAI,

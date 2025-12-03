@@ -115,6 +115,14 @@ export const BlogCard = ({ post, onReadMore, onTagClick }: BlogCardProps) => {
       "Workflow Automation": "bg-emerald-100 text-emerald-800",
       "Open Source": "bg-blue-100 text-blue-800",
       "DevOps": "bg-cyan-100 text-cyan-800",
+      "IDEs": "bg-indigo-100 text-indigo-800",
+      "VS Code": "bg-blue-100 text-blue-800",
+      "Cursor": "bg-purple-100 text-purple-800",
+      "Kiro": "bg-cyan-100 text-cyan-800",
+      "Antigravity": "bg-violet-100 text-violet-800",
+      "AI Coding": "bg-fuchsia-100 text-fuchsia-800",
+      "AI": "bg-blue-100 text-blue-800",
+      "Tools": "bg-slate-100 text-slate-800",
       
       // Data & Databases
       "Embeddings": "bg-pink-100 text-pink-800",
