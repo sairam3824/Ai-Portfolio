@@ -134,14 +134,13 @@ const Index = () => {
         {/* Achievement Stats Bar */}
         <div className="mb-8 animate-fade-in overflow-x-auto pt-24 -mt-24 px-4">
           <div className="max-w-5xl mx-auto bg-card/80 backdrop-blur-md border-2 border-border rounded-full px-6 py-3">
-            <div className="flex items-center justify-center gap-2 text-xs whitespace-nowrap">
+            <div className="flex items-center justify-center gap-2 text-sm whitespace-nowrap">
               <a
                 href="https://leetcode.com/u/programmer3824/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-accent hover:scale-105 transition-all duration-200"
               >
-                <span className="text-base">🏆</span>
                 <span className="text-foreground">LEETCODE: GUARDIAN (2300+)</span>
               </a>
               <span className="text-muted-foreground">•</span>
@@ -151,13 +150,11 @@ const Index = () => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-accent hover:scale-105 transition-all duration-200"
               >
-                <span className="text-base">⭐</span>
                 <span className="text-foreground">CODECHEF: 3★ (1600+)</span>
               </a>
               <span className="text-muted-foreground">•</span>
               <div className="relative group">
                 <div className="flex items-center gap-2 cursor-pointer hover:text-accent hover:scale-105 transition-all duration-200">
-                  <span className="text-base">💻</span>
                   <span className="text-foreground">1000+ PROBLEMS SOLVED</span>
                 </div>
                 <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 flex flex-col gap-1 bg-card/95 backdrop-blur-sm border border-border rounded-lg p-3 shadow-xl z-[100] whitespace-nowrap">
@@ -166,7 +163,7 @@ const Index = () => {
                     href="https://leetcode.com/u/sairam3824/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-3 py-2 hover:bg-accent/10 rounded text-foreground hover:text-accent transition-colors text-xs font-medium"
+                    className="px-3 py-2 hover:bg-accent/10 rounded text-foreground hover:text-accent transition-colors text-sm font-medium"
                   >
                     🏆 LeetCode Profile
                   </a>
@@ -174,7 +171,7 @@ const Index = () => {
                     href="https://www.codechef.com/users/sairam2004"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-3 py-2 hover:bg-accent/10 rounded text-foreground hover:text-accent transition-colors text-xs font-medium"
+                    className="px-3 py-2 hover:bg-accent/10 rounded text-foreground hover:text-accent transition-colors text-sm font-medium"
                   >
                     ⭐ CodeChef Profile
                   </a>
@@ -187,7 +184,6 @@ const Index = () => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-accent hover:scale-105 transition-all duration-200"
               >
-                <span className="text-base">👨‍💻</span>
                 <span className="text-foreground">CODING PROFILES</span>
               </a>
             </div>
