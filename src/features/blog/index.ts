@@ -3,6 +3,7 @@ export { default as BlogsPage } from './BlogsPage';
 export { default as BlogPostPage } from './BlogPostPage';
 export { BlogCard } from './BlogCard';
 
+import { biweeklyTechDec7To23 } from './posts/tech-biweekly-digest-dec-7-2025';
 import { techBiweeklyDigestNovMid2025 } from './posts/tech-biweekly-digest-nov-mid-2025';
 import { techBiweeklyDigestNov2025 } from './posts/tech-biweekly-digest-nov-3-2025';
 import { techBiweeklyDigestOct2025 } from './posts/tech-biweekly-digest-oct-20-2025';
@@ -43,6 +44,7 @@ export interface BlogPost {
 }
 
 export const blogPosts: BlogPost[] = [
+    biweeklyTechDec7To23,
     modernIdes2025,
     techBiweeklyDigestNovMid2025,
     myCodingJourney0To3Star,
