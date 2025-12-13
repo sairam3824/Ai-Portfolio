@@ -130,19 +130,22 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl h-[600px] flex flex-col">
+      <DialogContent className="max-w-2xl h-[600px] flex flex-col" aria-labelledby="chat-title" aria-describedby="chat-description">
         <DialogHeader>
           <div className="flex items-center justify-between">
-            <DialogTitle className="flex items-center gap-2">
-              <img src={avatar} alt="Sairam" className="w-8 h-8 rounded-full" />
+            <DialogTitle id="chat-title" className="flex items-center gap-2">
+              <img src={avatar} alt="Sairam's avatar" className="w-8 h-8 rounded-full" aria-hidden="true" />
               Chat with Sairam
             </DialogTitle>
           </div>
+          <div id="chat-description" className="sr-only">
+            Interactive chat interface to ask questions about Sai Ram's portfolio, projects, and experience
+          </div>
         </DialogHeader>
 
-        <div className="flex-1 overflow-y-auto space-y-4 p-4">
+        <div className="flex-1 overflow-y-auto space-y-4 p-4" role="log" aria-live="polite" aria-label="Chat conversation">
           {messages.length === 0 && (
-            <div className="text-center text-muted-foreground py-8">
+            <div className="text-center text-muted-foreground py-8" role="status">
               <p>Start a conversation! Ask me anything about my work, projects, or interests.</p>
             </div>
           )}
@@ -150,9 +153,11 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
             <div
               key={index}
               className={`flex gap-3 ${message.role === "user" ? "justify-end" : "justify-start"}`}
+              role="article"
+              aria-label={`${message.role === "user" ? "Your message" : "Sairam's response"} at ${message.timestamp.toLocaleTimeString()}`}
             >
               {message.role === "assistant" && (
-                <img src={avatar} alt="Sairam" className="w-8 h-8 rounded-full" />
+                <img src={avatar} alt="Sairam's avatar" className="w-8 h-8 rounded-full" aria-hidden="true" />
               )}
               <div
                 className={`max-w-[70%] rounded-2xl px-4 py-3 ${
@@ -160,21 +165,22 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
                 }`}
               >
                 <p className="text-sm leading-relaxed">{message.content}</p>
-                <p className="text-xs opacity-60 mt-1">
+                <p className="text-xs opacity-60 mt-1" aria-label={`Sent at ${message.timestamp.toLocaleTimeString()}`}>
                   {message.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                 </p>
               </div>
             </div>
           ))}
           {isLoading && (
-            <div className="flex gap-3">
-              <img src={avatar} alt="Sairam" className="w-8 h-8 rounded-full" />
+            <div className="flex gap-3" role="status" aria-live="polite" aria-label="Sairam is typing">
+              <img src={avatar} alt="Sairam's avatar" className="w-8 h-8 rounded-full" aria-hidden="true" />
               <div className="bg-secondary rounded-2xl px-4 py-3">
-                <div className="flex gap-1">
+                <div className="flex gap-1" aria-hidden="true">
                   <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" />
                   <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:0.2s]" />
                   <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:0.4s]" />
                 </div>
+                <span className="sr-only">Sairam is typing a response</span>
               </div>
             </div>
           )}
@@ -188,6 +194,8 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
               handleSendMessage();
             }}
             className="flex gap-2"
+            role="form"
+            aria-label="Send message form"
           >
             <Input
               value={input}
@@ -195,9 +203,19 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
               placeholder="Type your message..."
               disabled={isLoading}
               className="flex-1"
+              aria-label="Type your message to Sairam"
+              aria-describedby="send-help"
             />
-            <Button type="submit" size="icon" disabled={isLoading || !input.trim()}>
-              <Send className="w-4 h-4" />
+            <div id="send-help" className="sr-only">
+              Press Enter or click the send button to send your message
+            </div>
+            <Button 
+              type="submit" 
+              size="icon" 
+              disabled={isLoading || !input.trim()}
+              aria-label="Send message"
+            >
+              <Send className="w-4 h-4" aria-hidden="true" />
             </Button>
           </form>
         </div>
