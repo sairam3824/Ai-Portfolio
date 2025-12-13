@@ -121,16 +121,16 @@ export const BlogSection = () => {
   }
 
   return (
-    <div className="animate-fade-in space-y-6">
-      <h2 className="text-3xl font-bold text-foreground text-center select-none pointer-events-none focus:outline-none">
+    <section className="animate-fade-in space-y-6" aria-labelledby="blog-title">
+      <h2 id="blog-title" className="text-3xl font-bold text-foreground text-center select-none pointer-events-none focus:outline-none">
       Tech Insights...
       </h2>
 
       <div className="max-w-4xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4" role="region" aria-label="Blog search options">
           {/* Left Box - Local Blog Search */}
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" aria-hidden="true" />
             <Input
               type="text"
               placeholder="Search my blogs..."
@@ -140,12 +140,17 @@ export const BlogSection = () => {
                 if (e.key === 'Escape') setSearchQuery('');
               }}
               className="pl-10 pr-4 py-2 w-full rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              aria-label="Search blog posts by title, content, or tags"
+              aria-describedby="search-help"
             />
+            <div id="search-help" className="sr-only">
+              Search through blog posts by typing keywords. Press Escape to clear.
+            </div>
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                aria-label="Clear search"
+                aria-label="Clear search query"
               >
                 ×
               </button>
@@ -161,15 +166,22 @@ export const BlogSection = () => {
               }
             }}
             className="relative"
+            role="search"
+            aria-label="AI-powered blog search"
           >
-            <Sparkles className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-400 w-4 h-4" />
+            <Sparkles className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-400 w-4 h-4" aria-hidden="true" />
             <Input
               type="text"
               value={aiQuery}
               onChange={(e) => setAiQuery(e.target.value)}
               placeholder="Ask AI anything..."
               className="pl-10 pr-4 py-2 w-full rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+              aria-label="Ask AI questions about blog content"
+              aria-describedby="ai-search-help"
             />
+            <div id="ai-search-help" className="sr-only">
+              Ask AI questions about blog content and get intelligent responses
+            </div>
           </form>
         </div>
 
@@ -222,13 +234,13 @@ export const BlogSection = () => {
           </div>
         )}
 
-        <div className="space-y-5">
+        <div className="space-y-5" role="region" aria-label="Blog posts" aria-live="polite">
           {filteredPosts.length > 0 ? (
             filteredPosts.map((post) => (
               <BlogCard key={post.id} post={post} onTagClick={handleTagClick} />
             ))
           ) : (
-            <div className="text-center py-8">
+            <div className="text-center py-8" role="status">
               <p className="text-gray-500 text-base">
                 No blogs found {selectedTag ? `with tag "${selectedTag}"` : searchQuery ? `matching "${searchQuery}"` : ""}
               </p>
@@ -292,6 +304,6 @@ export const BlogSection = () => {
         }}
         initialQuery={aiQuery}
       />
-    </div>
+    </section>
   );
 };

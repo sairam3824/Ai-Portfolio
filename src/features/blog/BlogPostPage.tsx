@@ -55,7 +55,7 @@ const BlogPostPage = () => {
                     Back to Blogs
                 </Link>
 
-                <article className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                <article className="bg-gray-50 rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
                     <div className="p-6 md:p-10">
                         <header className="mb-8">
                             <div className="flex flex-wrap gap-2 mb-4">

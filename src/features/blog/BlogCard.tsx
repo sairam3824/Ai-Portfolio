@@ -5,11 +5,10 @@ import * as Icons from "lucide-react";
 
 interface BlogCardProps {
   post: BlogPost;
-  onReadMore?: (postId: string) => void;
   onTagClick?: (tag: string) => void;
 }
 
-export const BlogCard = ({ post, onReadMore, onTagClick }: BlogCardProps) => {
+export const BlogCard = ({ post, onTagClick }: BlogCardProps) => {
   // Auto-correct common icon name issues (lowercase to PascalCase)
   const getIconComponent = (iconName: string) => {
     // Try the exact name first
@@ -135,6 +134,10 @@ export const BlogCard = ({ post, onReadMore, onTagClick }: BlogCardProps) => {
       "Weekly Digest": "bg-orange-100 text-orange-800",
       "Technology": "bg-blue-100 text-blue-800",
       "Innovation": "bg-purple-100 text-purple-800",
+      "Agents": "bg-emerald-100 text-emerald-800",
+      "Cloud": "bg-sky-100 text-sky-800",
+      "Infra": "bg-slate-100 text-slate-800",
+      "Productivity": "bg-amber-100 text-amber-800",
       
       // Legal
       "Privacy": "bg-blue-100 text-blue-800",
@@ -147,16 +150,12 @@ export const BlogCard = ({ post, onReadMore, onTagClick }: BlogCardProps) => {
   };
 
   const isExternal = !!post.externalLink;
-  const LinkComponent = isExternal ? 'a' : Link;
-  const linkProps = isExternal
-    ? { href: post.externalLink, target: "_blank", rel: "noopener noreferrer" }
-    : { to: `/blogs/${post.id}` };
 
   return (
-    <article className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow h-full flex flex-col">
+    <article className="bg-gray-50 border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow h-full flex flex-col" aria-labelledby={`blog-title-${post.id}`}>
       <div className="flex items-start gap-3.5 flex-1">
         <div className="flex-shrink-0">
-          <div className={`p-2.5 rounded-full ${getIconColorClasses(post.iconColor)}`}>
+          <div className={`p-2.5 rounded-full ${getIconColorClasses(post.iconColor)}`} aria-hidden="true">
             <IconComponent className="w-5 h-5" />
           </div>
         </div>
@@ -168,14 +167,15 @@ export const BlogCard = ({ post, onReadMore, onTagClick }: BlogCardProps) => {
               target="_blank"
               rel="noopener noreferrer"
               className="block group"
+              aria-label={`Read ${post.title} (opens in new tab)`}
             >
-              <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+              <h3 id={`blog-title-${post.id}`} className="text-lg md:text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
                 {post.title}
               </h3>
             </a>
           ) : (
-            <Link to={`/blogs/${post.id}`} className="block group">
-              <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+            <Link to={`/blogs/${post.id}`} className="block group" aria-label={`Read ${post.title}`}>
+              <h3 id={`blog-title-${post.id}`} className="text-lg md:text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
                 {post.title}
               </h3>
             </Link>
@@ -187,21 +187,22 @@ export const BlogCard = ({ post, onReadMore, onTagClick }: BlogCardProps) => {
 
           <div className="flex flex-wrap gap-3 text-sm text-gray-700 mb-3">
             <div className="flex items-center gap-1.5">
-              <Calendar className="w-4 h-4 text-gray-500" />
-              <span>{post.date}</span>
+              <Calendar className="w-4 h-4 text-gray-500" aria-hidden="true" />
+              <span aria-label={`Published on ${post.date}`}>{post.date}</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <Eye className="w-4 h-4 text-gray-500" />
-              <span>{post.readTime}</span>
+              <Eye className="w-4 h-4 text-gray-500" aria-hidden="true" />
+              <span aria-label={`Reading time: ${post.readTime}`}>{post.readTime}</span>
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-2 mb-3">
+          <div className="flex flex-wrap gap-2 mb-3" role="group" aria-label="Blog post tags">
             {post.tags.map((tag) => (
               <button
                 key={tag}
                 onClick={() => onTagClick?.(tag)}
                 className={`px-2.5 py-0.5 text-xs rounded-full transition-all hover:ring-2 hover:ring-offset-1 hover:ring-blue-400 cursor-pointer ${getTagColor(tag)}`}
+                aria-label={`Filter posts by ${tag} tag`}
                 title={`Filter by ${tag}`}
               >
                 {tag}
@@ -218,15 +219,17 @@ export const BlogCard = ({ post, onReadMore, onTagClick }: BlogCardProps) => {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors"
+            aria-label={`Read full policy: ${post.title} (opens in new tab)`}
           >
-            Read Full Policy <ExternalLink className="w-4 h-4" />
+            Read Full Policy <ExternalLink className="w-4 h-4" aria-hidden="true" />
           </a>
         ) : (
           <Link
             to={`/blogs/${post.id}`}
             className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors"
+            aria-label={`Read full article: ${post.title}`}
           >
-            Read Article <ArrowRight className="w-4 h-4" />
+            Read Article <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </Link>
         )}
       </div>
