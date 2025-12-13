@@ -100,40 +100,48 @@ const Index = () => {
 
         <div className="text-center space-y-6 mb-12 animate-fade-in">
           <p className="text-xl text-muted-foreground">Hey, I'm Sai Rama Linga Reddy Maruri 👋</p>
-          <h1 className="text-6xl md:text-7xl font-bold text-foreground">AI & Software Developer</h1>
+          <h1 className="text-6xl md:text-7xl font-bold text-foreground" role="banner">AI & Software Developer</h1>
         </div>
 
         <div className="flex justify-center mb-12 animate-fade-in">
           <img
             src={avatar}
-            alt="Sai Ram Avatar"
+            alt="Sai Ram Avatar - Professional headshot of Sai Rama Linga Reddy Maruri"
             className="w-48 h-48 object-cover rounded-full shadow-2xl cursor-pointer hover:scale-105 transition-transform"
             onDoubleClick={() => navigate("/profile")}
+            role="img"
+            aria-label="Profile picture, double-click to view full profile"
           />
         </div>
 
         <div className="mb-12 animate-fade-in">
-          <form onSubmit={handleSearchSubmit} className="relative max-w-2xl mx-auto">
+          <form onSubmit={handleSearchSubmit} className="relative max-w-2xl mx-auto" role="search">
             <Input
               type="text"
               placeholder="Ask me anything..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full h-14 px-6 text-lg rounded-full border-2 border-border focus:border-accent transition-colors pr-14"
+              aria-label="Search or ask questions about Sai Ram's portfolio"
+              aria-describedby="search-help"
             />
+            <div id="search-help" className="sr-only">
+              Type your question and press enter to start a conversation with the AI assistant
+            </div>
             <Button
               type="submit"
               size="icon"
               className="absolute right-2 top-2 w-10 h-10 rounded-full bg-accent hover:bg-accent/90 text-accent-foreground"
+              aria-label="Submit search query"
             >
-              <Send className="w-5 h-5" />
+              <Send className="w-5 h-5" aria-hidden="true" />
             </Button>
           </form>
         </div>
 
         {/* Achievement Stats Bar */}
         <div className="mb-8 animate-fade-in overflow-x-auto pt-24 -mt-24 px-4">
-          <div className="max-w-5xl mx-auto bg-card/80 backdrop-blur-md border-2 border-border rounded-full px-6 py-3">
+          <div className="max-w-5xl mx-auto bg-card/80 backdrop-blur-md border-2 border-border rounded-full px-6 py-3" role="region" aria-label="Coding achievements and statistics">
             <div className="flex items-center justify-center gap-2 text-sm whitespace-nowrap">
               <a
                 href="https://leetcode.com/u/programmer3824/"
@@ -190,7 +198,7 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-16 animate-fade-in">
+        <nav className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-16 animate-fade-in" role="navigation" aria-label="Main navigation menu">
           {navigationItems.map((item) => (
             <NavigationCard
               key={item.id}
@@ -217,15 +225,16 @@ const Index = () => {
                 }
               }}
               isActive={activeSection === item.id}
+              aria-label={`Navigate to ${item.label} section`}
             />
           ))}
-        </div>
+        </nav>
 
-        <div ref={contentRef} className="max-w-3xl mx-auto px-4">
+        <main ref={contentRef} className="max-w-3xl mx-auto px-4" role="main" aria-live="polite">
           {activeSection ? (
             renderSection()
           ) : null}
-        </div>
+        </main>
 
         {!activeSection && (
           <div className="fixed bottom-[-40px] md:bottom-[-60px] left-0 right-0 text-center text-[150px] md:text-[250px] font-extrabold text-muted/25 select-none pointer-events-none -z-10">
