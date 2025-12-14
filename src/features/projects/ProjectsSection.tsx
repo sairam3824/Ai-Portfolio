@@ -156,58 +156,58 @@ export const ProjectsSection = () => {
       {/* TITLE + SEARCH (side-by-side, search expands to LEFT) */}
       <div className="flex flex-col items-center space-y-4">
 
-      {/* Title + Search Row */}
-      <div className="flex items-center gap-4">
+        {/* Title + Search Row */}
+        <div className="flex items-center gap-4">
 
-        {/* Heading */}
-        <h2 className="text-3xl font-bold text-foreground select-none">
-          AI &amp; ML Projects
-        </h2>
+          {/* Heading */}
+          <h2 className="text-3xl font-bold text-foreground select-none">
+            AI &amp; ML Projects
+          </h2>
 
-        {/* Search box wrapper */}
-        <div className="flex items-center">
+          {/* Search box wrapper */}
+          <div className="flex items-center">
 
-        {/* Expanding search input (opens RIGHT) */}
-        <div
-          className={`overflow-hidden bg-background border border-border rounded-full transition-all duration-300 flex items-center
+            {/* Expanding search input (opens RIGHT) */}
+            <div
+              className={`overflow-hidden bg-background border border-border rounded-full transition-all duration-300 flex items-center
             ${open ? "w-64 px-3 py-2 shadow ml-2" : "w-0 px-0 py-0 ml-2"}`}
-        >
-          <input
-            ref={ref}
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
-            placeholder="Search projects..."
-            className="w-full bg-transparent outline-none text-sm"
-          />
-          {q && (
-            <button onClick={() => setQ("")} className="ml-2">
-              ✖
-            </button>
-          )}
-        </div>
+            >
+              <input
+                ref={ref}
+                value={q}
+                onChange={(e) => setQ(e.target.value)}
+                placeholder="Search projects..."
+                className="w-full bg-transparent outline-none text-sm"
+              />
+              {q && (
+                <button onClick={() => setQ("")} className="ml-2">
+                  ✖
+                </button>
+              )}
+            </div>
 
-        {/* Search Icon */}
-        <button
-          aria-label="open search"
-          onClick={() => setOpen((v) => !v)}
-          className="h-10 w-10 rounded-full flex items-center justify-center 
+            {/* Search Icon */}
+            <button
+              aria-label="open search"
+              onClick={() => setOpen((v) => !v)}
+              className="h-10 w-10 rounded-full flex items-center justify-center 
           bg-secondary/10 hover:bg-secondary/20 transition"
-        >
-          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
-            <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="1.5"/>
-            <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="1.5"/>
-          </svg>
-        </button>
+            >
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
+                <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="1.5" />
+                <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="1.5" />
+              </svg>
+            </button>
 
+          </div>
         </div>
-      </div>
 
-      {/* Subtitle */}
-      <p className="text-muted-foreground max-w-2xl text-center">
-        Cutting-edge AI/ML projects spanning computer vision, NLP, RAG systems, 
-        and intelligent automation. Each project demonstrates practical AI 
-        applications with real-world impact.
-      </p>
+        {/* Subtitle */}
+        <p className="text-muted-foreground max-w-2xl text-center">
+          Cutting-edge AI/ML projects spanning computer vision, NLP, RAG systems,
+          and intelligent automation. Each project demonstrates practical AI
+          applications with real-world impact.
+        </p>
       </div>
 
       {/* Live Projects (insert below the subtitle paragraph) */}
@@ -248,8 +248,25 @@ export const ProjectsSection = () => {
         {list.map((project, index) => (
           <Card
             key={index}
-            className="p-6 hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-border group"
+            className="
+              relative p-6
+              border-2 border-border
+              transition-all duration-300
+              hover:shadow-xl hover:scale-105
+              group
+              overflow-hidden
+            "
           >
+            <span
+              className="
+                absolute left-0 top-0 h-full w-1
+                bg-blue-500
+                scale-y-0
+                origin-top
+                transition-transform duration-300
+                group-hover:scale-y-100
+              "
+            />
             <div className="flex items-start justify-between mb-3">
               <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
                 {project.title}
