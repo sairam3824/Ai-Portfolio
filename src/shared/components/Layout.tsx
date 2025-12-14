@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Home, MessageCircle } from "lucide-react";
 import { Button } from "@/shared/ui/button";
 import SectionNavigation from "./SectionNavigation";
+import { ModeToggle } from "./mode-toggle";
 import logo from "@/assets/logo.png";
 
 const ChatDialog = lazy(() => import("@/features/chat").then(m => ({ default: m.ChatDialog })));
@@ -20,10 +21,10 @@ const Layout = ({ children, title }: LayoutProps) => {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4 min-w-0 flex-1">
             <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity flex-shrink-0">
-              <img 
-                src={logo} 
-                alt="Logo" 
-                className="w-8 h-8 object-contain" 
+              <img
+                src={logo}
+                alt="Logo"
+                className="w-8 h-8 object-contain"
                 loading="eager"
                 fetchPriority="high"
               />
@@ -32,11 +33,12 @@ const Layout = ({ children, title }: LayoutProps) => {
               <SectionNavigation />
             </div>
           </div>
-          
+
           <div className="flex items-center gap-2 flex-shrink-0">
-            <Button 
-              variant="ghost" 
-              size="sm" 
+            <ModeToggle />
+            <Button
+              variant="ghost"
+              size="sm"
               onClick={() => setChatOpen(true)}
               className="flex items-center gap-2"
             >
