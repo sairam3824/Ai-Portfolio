@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { User, FolderKanban, Layers, GraduationCap, BookOpen, Sparkles, Send, Mail, FileText } from "lucide-react";
-import { NavigationCard, CursorBlast } from "@/shared/components";
+import { NavigationCard, CursorBlast, ModeToggle } from "@/shared/components";
 import { Input } from "@/shared/ui/input";
 import { Button } from "@/shared/ui/button";
 import { AboutSection } from "@/features/about";
@@ -93,26 +93,67 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background relative overflow-hidden flex flex-col">
       <CursorBlast />
+      <div className="absolute top-4 right-4 z-50">
+        <ModeToggle />
+      </div>
       <div className="container mx-auto px-4 py-8 max-w-4xl relative z-10 flex-1">
         <div className="flex justify-center mb-8 animate-fade-in">
           <img src={logo} alt="Logo" className="w-12 h-12 object-contain" />
         </div>
 
         <div className="text-center space-y-6 mb-12 animate-fade-in">
-          <p className="text-xl text-muted-foreground">Hey, I'm Sai Rama Linga Reddy Maruri 👋</p>
-          <h1 className="text-6xl md:text-7xl font-bold text-foreground" role="banner">AI & Software Developer</h1>
+          <p className="text-xl text-muted-foreground">
+            Hey, I'm Sai Rama Linga Reddy Maruri 👋
+          </p>
+
+          <div className="relative left-1/2 right-1/2 -mx-[50vw] w-screen">
+            <h1
+              className="
+                text-5xl
+                md:text-6xl
+                lg:text-7xl
+                font-bold
+                text-foreground
+                whitespace-nowrap
+                text-center
+              "
+              role="banner"
+            >
+              AI Engineer & Software Developer
+            </h1>
+          </div>
         </div>
 
+
         <div className="flex justify-center mb-12 animate-fade-in">
-          <img
-            src={avatar}
-            alt="Sai Ram Avatar - Professional headshot of Sai Rama Linga Reddy Maruri"
-            className="w-48 h-48 object-cover rounded-full shadow-2xl cursor-pointer hover:scale-105 transition-transform"
-            onDoubleClick={() => navigate("/profile")}
-            role="img"
-            aria-label="Profile picture, double-click to view full profile"
-          />
+          <div
+            className="
+              w-56 h-56 rounded-full
+              flex items-center justify-center
+              bg-muted
+              dark:bg-muted
+              shadow-xl
+            "
+          >
+            <div
+              className="
+                w-48 h-48 rounded-full
+                bg-white
+                flex items-center justify-center
+                cursor-pointer hover:scale-105 transition-transform
+              "
+              onDoubleClick={() => navigate('/profile')}
+            >
+              <img
+                src={avatar}
+                alt="Sai Ram Avatar - Professional headshot of Sai Rama Linga Reddy Maruri"
+                className="w-48 h-48 object-cover rounded-full cursor-pointer hover:scale-105 transition-transform"
+                onDoubleClick={() => navigate('/profile')}
+              />
+            </div>
+          </div>
         </div>
+
 
         <div className="mb-12 animate-fade-in">
           <form onSubmit={handleSearchSubmit} className="relative max-w-2xl mx-auto" role="search">
@@ -212,7 +253,7 @@ const Index = () => {
                 } else {
                   const routeMap = {
                     projects: "/projects",
-                    skills: "/skills", 
+                    skills: "/skills",
                     education: "/education",
                     blog: "/blogs",
                     certification: "/certifications",
