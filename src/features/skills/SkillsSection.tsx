@@ -81,7 +81,7 @@ export const SkillsSection = () => {
       ],
     },
     {
-      category: "🤖 AI/ML Frameworks & Libraries",
+      category: "AI/ML Frameworks & Libraries",
       skills: [
         { name: "TensorFlow", level: "Intermediate" },
         { name: "PyTorch", level: "Intermediate" },
@@ -95,7 +95,7 @@ export const SkillsSection = () => {
       ],
     },
     {
-      category: "🧠 Generative AI & LLMs",
+      category: "Generative AI & LLMs",
       skills: [
         { name: "OpenAI API", level: "Advanced" },
         { name: "Claude API", level: "Advanced" },
@@ -110,7 +110,7 @@ export const SkillsSection = () => {
       ],
     },
     {
-      category: "🔬 AI Specializations",
+      category: "AI Specializations",
       skills: [
         { name: "Computer Vision", level: "Advanced" },
         { name: "Natural Language Processing", level: "Advanced" },
@@ -209,7 +209,7 @@ export const SkillsSection = () => {
                                  shadow-sm hover:shadow-lg hover:scale-[1.05]
                                  hover:border-accent/50 hover:bg-white/25
                                  transition-all duration-300 cursor-pointer
-                                 hover:text-blue-600 dark:hover:text-blue-400"
+                                 hover:text-blue-600 dark:hover:text-blue-500"
                       title={`${s.name} — ${s.level} (Click to view documentation)`}
                     >
                       <span className="text-sm md:text-base font-semibold tracking-wide">
