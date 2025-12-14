@@ -36,35 +36,35 @@ export const EducationSection = () => {
 
       <div className="relative">
         {/* vertical line */}
-        <div className="absolute left-6 top-6 bottom-0 w-[2px] bg-gray-200" />
+        <div className="absolute left-6 top-6 bottom-0 w-[2px] bg-border" />
 
         <div className="space-y-8">
           {items.map((it, idx) => (
             <article key={idx} className="relative pl-16">
               {/* marker */}
               <div className="absolute left-0 top-3 flex items-center justify-center">
-                <div className="p-2 bg-white border border-gray-200 rounded-full shadow-sm">
-                  <div className="p-2 bg-blue-50 rounded-full">
-                    <GraduationCap className="w-5 h-5 text-blue-600" />
+                <div className="p-2 bg-card border border-border rounded-full shadow-sm z-10">
+                  <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-full">
+                    <GraduationCap className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+              <div className="bg-card border border-border rounded-2xl p-6 shadow-sm transition-all duration-300 hover:border-accent hover:shadow-md">
                 <div className="flex items-start gap-4">
                   <div className="flex-1">
-                    <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-1">
+                    <h3 className="text-xl md:text-2xl font-semibold text-card-foreground mb-1">
                       {it.title}
                     </h3>
-                    <p className="text-gray-600 mb-3">{it.org}</p>
+                    <p className="text-muted-foreground mb-3">{it.org}</p>
 
-                    <div className="flex flex-wrap gap-4 text-sm text-gray-700">
+                    <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
                       <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4 text-gray-500" />
+                        <Calendar className="w-4 h-4 text-muted-foreground" />
                         <span>{it.date}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <MapPin className="w-4 h-4 text-gray-500" />
+                        <MapPin className="w-4 h-4 text-muted-foreground" />
                         <span>{it.place}</span>
                       </div>
                     </div>
@@ -72,8 +72,8 @@ export const EducationSection = () => {
                     <div className="mt-4 space-y-2">
                       {it.notes.map((n, i) => (
                         <div key={i} className="flex items-start gap-3">
-                          <div className="w-2 h-2 mt-1 rounded-full bg-blue-600"></div>
-                          <span className="text-sm text-gray-800">{n}</span>
+                          <div className="w-2 h-2 mt-1 rounded-full bg-blue-600 dark:bg-blue-400"></div>
+                          <span className="text-sm text-foreground/90">{n}</span>
                         </div>
                       ))}
                     </div>
@@ -81,7 +81,7 @@ export const EducationSection = () => {
 
                   {/* optional right-side date badge for larger screens */}
                   <div className="hidden md:flex md:flex-col md:items-end md:justify-start md:gap-2 md:ml-4">
-                    <span className="text-sm text-gray-500">{it.date}</span>
+                    <span className="text-sm text-muted-foreground">{it.date}</span>
                   </div>
                 </div>
               </div>
