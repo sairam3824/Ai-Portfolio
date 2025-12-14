@@ -71,9 +71,9 @@ export const ContactSection = () => {
           </a>
         </div>
 
-        <MessageDialog 
-          open={anonymousDialogOpen} 
-          onOpenChange={setAnonymousDialogOpen} 
+        <MessageDialog
+          open={anonymousDialogOpen}
+          onOpenChange={setAnonymousDialogOpen}
         />
 
         {/* Social Media Section */}
@@ -115,7 +115,7 @@ export const ContactSection = () => {
           </div>
         </div>
         <div className="pt-8">
-          <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-10 shadow-md hover:shadow-lg transition-all duration-300">
+          <div className="bg-muted/30 dark:bg-muted/10 border border-border rounded-2xl p-10 shadow-sm transition-all duration-300">
             <h3 className="text-3xl font-extrabold text-center text-foreground mb-8 tracking-tight">
               Quick Stats
             </h3>
@@ -128,10 +128,10 @@ export const ContactSection = () => {
                 rel="noopener noreferrer"
                 className="group hover:scale-105 transition-transform duration-300 cursor-pointer"
               >
-                <div className="text-4xl font-extrabold text-blue-600 group-hover:text-blue-700 transition-colors">
+                <div className="text-4xl font-extrabold text-blue-600 dark:text-blue-500 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
                   500+
                 </div>
-                <div className="text-sm md:text-base text-muted-foreground font-medium group-hover:text-blue-600 transition-colors">
+                <div className="text-sm md:text-base text-muted-foreground font-medium group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   CodeChef Problems
                 </div>
               </a>
@@ -143,10 +143,10 @@ export const ContactSection = () => {
                 rel="noopener noreferrer"
                 className="group hover:scale-105 transition-transform duration-300 cursor-pointer"
               >
-                <div className="text-4xl font-extrabold text-blue-600 group-hover:text-blue-700 transition-colors">
+                <div className="text-4xl font-extrabold text-blue-600 dark:text-blue-500 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
                   800+
                 </div>
-                <div className="text-sm md:text-base text-muted-foreground font-medium group-hover:text-blue-600 transition-colors">
+                <div className="text-sm md:text-base text-muted-foreground font-medium group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   LeetCode Problems
                 </div>
               </a>
@@ -158,10 +158,10 @@ export const ContactSection = () => {
                 rel="noopener noreferrer"
                 className="group hover:scale-105 transition-transform duration-300 cursor-pointer"
               >
-                <div className="text-4xl font-extrabold text-blue-600 group-hover:text-blue-700 transition-colors">
+                <div className="text-4xl font-extrabold text-blue-600 dark:text-blue-500 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
                   2300+
                 </div>
-                <div className="text-sm md:text-base text-muted-foreground font-medium group-hover:text-blue-600 transition-colors">
+                <div className="text-sm md:text-base text-muted-foreground font-medium group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   LeetCode Rating
                 </div>
               </a>
@@ -173,10 +173,10 @@ export const ContactSection = () => {
                 rel="noopener noreferrer"
                 className="group hover:scale-105 transition-transform duration-300 cursor-pointer"
               >
-                <div className="text-4xl font-extrabold text-blue-600 group-hover:text-blue-700 transition-colors">
+                <div className="text-4xl font-extrabold text-blue-600 dark:text-blue-500 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
                   1600+
                 </div>
-                <div className="text-sm md:text-base text-muted-foreground font-medium group-hover:text-blue-600 transition-colors">
+                <div className="text-sm md:text-base text-muted-foreground font-medium group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   CodeChef Rating
                 </div>
               </a>
@@ -188,10 +188,10 @@ export const ContactSection = () => {
                 rel="noopener noreferrer"
                 className="group hover:scale-105 transition-transform duration-300 cursor-pointer"
               >
-                <div className="text-4xl font-extrabold text-blue-600 group-hover:text-blue-700 transition-colors">
-                  15+
+                <div className="text-4xl font-extrabold text-blue-600 dark:text-blue-500 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
+                  20+
                 </div>
-                <div className="text-sm md:text-base text-muted-foreground font-medium group-hover:text-blue-600 transition-colors">
+                <div className="text-sm md:text-base text-muted-foreground font-medium group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   GitHub Projects
                 </div>
               </a>
@@ -199,27 +199,30 @@ export const ContactSection = () => {
           </div>
         </div>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
+
           <a
             href="/blogs"
-            className="px-4 py-2 bg-pink-50 text-pink-600 text-sm rounded-full hover:bg-pink-100 transition-colors duration-200 cursor-pointer inline-flex items-center"
+            className="px-4 py-2 bg-pink-50 text-pink-600 text-sm rounded-full hover:bg-pink-100 transition-colors duration-200 cursor-pointer inline-flex items-center gap-1"
           >
             🚀 GenAI Enthusiast
           </a>
+
           <a
             href="https://www.codechef.com/users/sairam2004"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-blue-50 text-blue-600 text-sm rounded-full hover:bg-blue-100 transition-colors duration-200 cursor-pointer"
+            className="px-4 py-2 bg-slate-100 text-slate-800 text-sm rounded-full hover:bg-slate-200 transition-colors duration-200 cursor-pointer inline-flex items-center gap-1"
           >
-            3⭐️ Codechef
+            🍽️ 3⭐ CodeChef
           </a>
+
           <a
             href="https://leetcode.com/u/programmer3824/"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-purple-50 text-purple-600 text-sm rounded-full hover:bg-purple-100 transition-colors duration-200 cursor-pointer"
+            className="px-4 py-2 bg-purple-50 text-purple-600 text-sm rounded-full hover:bg-purple-100 transition-colors duration-200 cursor-pointer inline-flex items-center gap-1"
           >
-            🛡️ LeetCode Knight (2100+) @programmer3824
+            🛡️ LeetCode Knight (2300+) @programmer3824
           </a>
 
         </div>
