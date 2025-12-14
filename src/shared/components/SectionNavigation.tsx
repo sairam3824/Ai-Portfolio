@@ -47,10 +47,13 @@ const SectionNavigation = () => {
         return (
           <Button
             key={item.path}
-            variant={isActive ? "default" : "outline"}
+            variant={isActive ? "secondary" : "outline"}
             size="sm"
             asChild
-            className="whitespace-nowrap flex-shrink-0"
+            className={`whitespace-nowrap flex-shrink-0 ${isActive
+              ? "bg-blue-600 hover:bg-blue-700 text-white dark:bg-blue-600 dark:hover:bg-blue-700 border-blue-600 dark:border-blue-600"
+              : ""
+              }`}
           >
             <Link to={item.path} className="flex items-center gap-2">
               <Icon className="w-4 h-4" />
