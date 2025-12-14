@@ -49,31 +49,31 @@ const BlogPostPage = () => {
             <div className="max-w-4xl mx-auto px-4 py-8">
                 <Link
                     to="/blogs"
-                    className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-8 transition-colors"
+                    className="inline-flex items-center text-muted-foreground hover:text-foreground mb-8 transition-colors"
                 >
                     <ArrowLeft className="w-4 h-4 mr-2" />
                     Back to Blogs
                 </Link>
 
-                <article className="bg-gray-50 rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                <article className="bg-card rounded-2xl shadow-sm border border-border overflow-hidden">
                     <div className="p-6 md:p-10">
                         <header className="mb-8">
                             <div className="flex flex-wrap gap-2 mb-4">
                                 {post.tags.map((tag) => (
                                     <span
                                         key={tag}
-                                        className="px-3 py-1 text-xs font-medium rounded-full bg-blue-50 text-blue-700"
+                                        className="px-3 py-1 text-xs font-medium rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400"
                                     >
                                         {tag}
                                     </span>
                                 ))}
                             </div>
 
-                            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+                            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4 leading-tight">
                                 {post.title}
                             </h1>
 
-                            <div className="flex items-center gap-6 text-gray-600 text-sm">
+                            <div className="flex items-center gap-6 text-muted-foreground text-sm">
                                 <div className="flex items-center gap-2">
                                     <Calendar className="w-4 h-4" />
                                     <span>{post.date}</span>
@@ -85,13 +85,13 @@ const BlogPostPage = () => {
                             </div>
                         </header>
 
-                        <div className="prose prose-lg max-w-none text-gray-800 leading-relaxed">
+                        <div className="prose prose-lg max-w-none dark:prose-invert leading-relaxed text-foreground [&>p]:text-foreground/90 [&>ul>li]:text-foreground/90 [&>ol>li]:text-foreground/90">
                             {post.content && (
                                 <div dangerouslySetInnerHTML={{ __html: post.content }} />
                             )}
                         </div>
 
-                        <div className="flex items-center gap-4 mt-10 pt-6 border-t border-gray-200">
+                        <div className="flex items-center gap-4 mt-10 pt-6 border-t border-border">
                             <Button
                                 variant="outline"
                                 size="sm"
@@ -111,12 +111,12 @@ const BlogPostPage = () => {
                         </div>
 
                         {/* Feedback / Message Section */}
-                        <div className="mt-8 pt-8 border-t border-gray-200">
-                            <div className="bg-blue-50 rounded-2xl p-8 text-center">
-                                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                        <div className="mt-8 pt-8 border-t border-border">
+                            <div className="bg-blue-50 dark:bg-blue-900/10 rounded-2xl p-8 text-center">
+                                <h3 className="text-xl font-bold text-foreground mb-2">
                                     Have thoughts or suggestions?
                                 </h3>
-                                <p className="text-gray-600 mb-6 max-w-lg mx-auto">
+                                <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
                                     I'd love to hear your feedback on this article. Whether it's a suggestion,
                                     correction, or just a friendly hello, feel free to reach out!
                                 </p>
