@@ -72,7 +72,7 @@ export const BlogSection = () => {
 
   const counts = useMemo(() => {
     const m = new Map<string, number>();
-  
+
     blogPosts.forEach((post) => {
       // count each post once per matched category (based on tags)
       const seenForPost = new Set<string>();
@@ -83,13 +83,13 @@ export const BlogSection = () => {
       // increment counts for the categories identified for this post
       seenForPost.forEach((c) => m.set(c, (m.get(c) || 0) + 1));
     });
-  
+
     // set total for 'all'
     m.set("all", blogPosts.length);
-  
+
     return m;
   }, [blogPosts]);
-  
+
   const filteredPosts = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
     return blogPosts.filter((post) => {
@@ -97,7 +97,7 @@ export const BlogSection = () => {
       if (selectedTag) {
         return post.tags.includes(selectedTag);
       }
-      
+
       const matchesQuery = !q || post.title.toLowerCase().includes(q) || post.excerpt.toLowerCase().includes(q) || post.tags.some((tag: string) => tag.toLowerCase().includes(q));
       if (!matchesQuery) return false;
       if (selectedCategory === "all") return true;
@@ -123,7 +123,7 @@ export const BlogSection = () => {
   return (
     <section className="animate-fade-in space-y-6" aria-labelledby="blog-title">
       <h2 id="blog-title" className="text-3xl font-bold text-foreground text-center select-none pointer-events-none focus:outline-none">
-      Tech Insights...
+        Tech Insights...
       </h2>
 
       <div className="max-w-4xl mx-auto px-4">
@@ -186,7 +186,7 @@ export const BlogSection = () => {
         </div>
 
 
-        
+
         {/* Horizontally scrollable chips */}
         <div className="mt-4">
           <div className="overflow-x-auto no-scrollbar px-1">
@@ -199,11 +199,10 @@ export const BlogSection = () => {
                 <button
                   key={c.id}
                   onClick={() => setSelectedCategory(c.id)}
-                  className={`inline-block shrink-0 px-3 py-1 rounded-full text-sm font-medium focus:outline-none transition ${
-                    selectedCategory === c.id
+                  className={`inline-block shrink-0 px-3 py-1 rounded-full text-sm font-medium focus:outline-none transition ${selectedCategory === c.id
                       ? "bg-blue-600 text-white"
                       : "bg-gray-100 text-gray-800 hover:bg-gray-200"
-                  }`}
+                    }`}
                   role="tab"
                   aria-selected={selectedCategory === c.id}
                 >
@@ -250,14 +249,14 @@ export const BlogSection = () => {
         </div>
       </div>
 
-      <section aria-labelledby="subscribe-title" className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 rounded-2xl p-6 mt-6 max-w-4xl mx-auto px-4">
+      <section aria-labelledby="subscribe-title" className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/40 dark:to-indigo-950/40 border border-blue-100 dark:border-blue-900 rounded-2xl p-6 mt-6 max-w-4xl mx-auto px-4">
         <div className="flex items-start gap-3">
-          <ShieldCheck className="w-5 h-5 text-blue-600 mt-0.5" />
+          <ShieldCheck className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5" />
           <div className="flex-1">
-            <h4 id="subscribe-title" className="text-lg font-semibold text-gray-900">
+            <h4 id="subscribe-title" className="text-lg font-semibold text-foreground">
               Subscribe to Blog Updates
             </h4>
-            <p className="text-gray-700 text-sm mb-3">
+            <p className="text-muted-foreground text-sm mb-3">
               Get email notifications whenever I publish new blog on GenAI, cloud, and dev-tools highlights. No fixed schedule, no spam — unsubscribe anytime.
             </p>
             <form
@@ -274,8 +273,8 @@ export const BlogSection = () => {
                 }
               }}
             >
-              <input type="email" name="email" required aria-label="Email address" placeholder="you@example.com" className="w-full sm:w-auto flex-1 rounded-xl border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-              <button type="submit" disabled={isSubmitting} className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed">
+              <input type="email" name="email" required aria-label="Email address" placeholder="you@example.com" className="w-full sm:w-auto flex-1 rounded-xl border border-input bg-background px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-foreground" />
+              <button type="submit" disabled={isSubmitting} className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed">
                 <CheckCircle2 className="w-4 h-4" />
                 {isSubmitting ? 'Subscribing...' : 'Subscribe'}
               </button>
@@ -284,20 +283,20 @@ export const BlogSection = () => {
         </div>
       </section>
 
-      <div className="bg-amber-50 border border-amber-200 p-4 rounded-lg mt-8 max-w-4xl mx-auto px-4">
-        <p className="text-amber-900 text-sm text-center">
+      <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900 p-4 rounded-lg mt-8 max-w-4xl mx-auto px-4">
+        <p className="text-amber-900 dark:text-amber-200 text-sm text-center">
           <strong>Disclaimer:</strong> These articles feature curated industry updates and AI-assisted writing. Information is accurate as of publication but may change over time. Please verify technical or business decisions independently.
         </p>
       </div>
 
-      <footer className="flex items-center justify-center gap-6 text-sm text-gray-600 max-w-4xl mx-auto px-4">
-        <Link to="/privacy-policy" className="hover:text-gray-900 underline underline-offset-4 transition-colors">Privacy Policy</Link>
-        <Link to="/terms-and-conditions" className="hover:text-gray-900 underline underline-offset-4 transition-colors">Terms & Conditions</Link>
+      <footer className="flex items-center justify-center gap-6 text-sm text-muted-foreground max-w-4xl mx-auto px-4">
+        <Link to="/privacy-policy" className="hover:text-foreground underline underline-offset-4 transition-colors">Privacy Policy</Link>
+        <Link to="/terms-and-conditions" className="hover:text-foreground underline underline-offset-4 transition-colors">Terms & Conditions</Link>
       </footer>
 
       <SubscriptionDialog open={subscriptionDialogOpen} onOpenChange={setSubscriptionDialogOpen} />
-      <AIChatDialog 
-        open={aiChatOpen} 
+      <AIChatDialog
+        open={aiChatOpen}
         onOpenChange={(open) => {
           setAiChatOpen(open);
           if (!open) setAiQuery('');
