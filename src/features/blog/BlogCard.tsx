@@ -1,6 +1,8 @@
 import { Calendar, Eye, ExternalLink, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { BlogPost } from "@/features/blog";
+import { useAnalytics } from "@/shared/hooks/useAnalytics";
+import { useViewTracking } from "@/shared/hooks/useViewTracking";
 import * as Icons from "lucide-react";
 
 interface BlogCardProps {
@@ -9,6 +11,16 @@ interface BlogCardProps {
 }
 
 export const BlogCard = ({ post, onTagClick }: BlogCardProps) => {
+  const { trackBlogPostView } = useAnalytics();
+  const { incrementView, getViewCount } = useViewTracking();
+
+  const viewCount = getViewCount(post.id);
+
+  const handlePostClick = () => {
+    trackBlogPostView(post.id, post.title);
+    incrementView(post.id);
+  };
+
   // Auto-correct common icon name issues (lowercase to PascalCase)
   const getIconComponent = (iconName: string) => {
     // Try the exact name first
@@ -102,13 +114,14 @@ export const BlogCard = ({ post, onTagClick }: BlogCardProps) => {
               rel="noopener noreferrer"
               className="block group"
               aria-label={`Read ${post.title} (opens in new tab)`}
+              onClick={handlePostClick}
             >
               <h3 id={`blog-title-${post.id}`} className="text-lg md:text-xl font-semibold text-card-foreground mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
                 {post.title}
               </h3>
             </a>
           ) : (
-            <Link to={`/blogs/${post.id}`} className="block group" aria-label={`Read ${post.title}`}>
+            <Link to={`/blogs/${post.id}`} className="block group" aria-label={`Read ${post.title}`} onClick={handlePostClick}>
               <h3 id={`blog-title-${post.id}`} className="text-lg md:text-xl font-semibold text-card-foreground mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
                 {post.title}
               </h3>
@@ -127,6 +140,12 @@ export const BlogCard = ({ post, onTagClick }: BlogCardProps) => {
             <div className="flex items-center gap-1.5">
               <Eye className="w-4 h-4 text-muted-foreground" aria-hidden="true" />
               <span aria-label={`Reading time: ${post.readTime}`}>{post.readTime}</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <Eye className="w-4 h-4 text-blue-500" aria-hidden="true" />
+              <span aria-label={`${viewCount} views`} className="text-blue-600 font-medium">
+                {viewCount} {viewCount === 1 ? 'view' : 'views'}
+              </span>
             </div>
           </div>
 
@@ -154,6 +173,7 @@ export const BlogCard = ({ post, onTagClick }: BlogCardProps) => {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium text-sm transition-colors"
             aria-label={`Read full policy: ${post.title} (opens in new tab)`}
+            onClick={handlePostClick}
           >
             Read Full Policy <ExternalLink className="w-4 h-4" aria-hidden="true" />
           </a>
@@ -162,6 +182,7 @@ export const BlogCard = ({ post, onTagClick }: BlogCardProps) => {
             to={`/blogs/${post.id}`}
             className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium text-sm transition-colors"
             aria-label={`Read full article: ${post.title}`}
+            onClick={handlePostClick}
           >
             Read Article <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </Link>
