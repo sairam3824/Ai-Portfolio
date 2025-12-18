@@ -1,2 +1,2 @@
-export * from './use-mobile';
-export * from './use-toast';
+export { useAnalytics, usePageViewTracking } from './useAnalytics';
+export { useViewTracking } from './useViewTracking';
