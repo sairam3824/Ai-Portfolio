@@ -7,6 +7,7 @@ import { useSubscription } from "./useSubscription";
 import { SubscriptionDialog } from "@/features/chat/SubscriptionDialog";
 import { AIChatDialog } from "./AIChatDialog";
 import { Input } from "@/shared/ui/input";
+import { useAnalytics } from "@/shared/hooks/useAnalytics";
 
 const PRESET_CATEGORIES = [
   { id: "all", label: "All" },
@@ -32,6 +33,7 @@ const mapTagToCategory = (tag: string) => {
 export const BlogSection = () => {
   const { posts: blogPosts, loading } = useBlogPosts();
   const { subscribe, isSubmitting } = useSubscription();
+  const { trackBlogSectionView, trackBlogSearch } = useAnalytics();
   const [subscriptionDialogOpen, setSubscriptionDialogOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -44,6 +46,11 @@ export const BlogSection = () => {
     setSelectedCategory("all");
     setSearchQuery("");
   };
+
+  // Track blog section view on component mount
+  useEffect(() => {
+    trackBlogSectionView();
+  }, [trackBlogSectionView]);
 
   // Add ESC key listener to clear tag filter
   useEffect(() => {
@@ -110,6 +117,16 @@ export const BlogSection = () => {
       return post.tags.some((t: string) => mapTagToCategory(t) === selectedCategory || t.toLowerCase() === selectedCategory);
     });
   }, [blogPosts, searchQuery, selectedCategory, selectedTag]);
+
+  // Track search queries (moved after filteredPosts declaration)
+  useEffect(() => {
+    if (searchQuery.trim()) {
+      const timeoutId = setTimeout(() => {
+        trackBlogSearch(searchQuery, filteredPosts.length);
+      }, 1000); // Debounce search tracking
+      return () => clearTimeout(timeoutId);
+    }
+  }, [searchQuery, filteredPosts.length, trackBlogSearch]);
 
   if (loading) {
     return (
