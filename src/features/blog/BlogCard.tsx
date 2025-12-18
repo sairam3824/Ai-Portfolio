@@ -12,9 +12,7 @@ interface BlogCardProps {
 
 export const BlogCard = ({ post, onTagClick }: BlogCardProps) => {
   const { trackBlogPostView } = useAnalytics();
-  const { incrementView, getViewCount } = useViewTracking();
-
-  const viewCount = getViewCount(post.id);
+  const { incrementView } = useViewTracking();
 
   const handlePostClick = () => {
     trackBlogPostView(post.id, post.title);
@@ -140,12 +138,6 @@ export const BlogCard = ({ post, onTagClick }: BlogCardProps) => {
             <div className="flex items-center gap-1.5">
               <Eye className="w-4 h-4 text-muted-foreground" aria-hidden="true" />
               <span aria-label={`Reading time: ${post.readTime}`}>{post.readTime}</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <Eye className="w-4 h-4 text-blue-500" aria-hidden="true" />
-              <span aria-label={`${viewCount} views`} className="text-blue-600 font-medium">
-                {viewCount} {viewCount === 1 ? 'view' : 'views'}
-              </span>
             </div>
           </div>
 
