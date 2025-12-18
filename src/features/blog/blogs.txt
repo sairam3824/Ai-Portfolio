@@ -4,9 +4,9 @@ transforemers
 llm architectures
 tokenization n Embeddings
 
-dec 7 biweekly
 dec 21 biweekly
 
+dec 7 biweekly
 dec 3 ides
 
 nov 23 biweekly
