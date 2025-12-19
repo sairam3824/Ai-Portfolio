@@ -29,24 +29,24 @@ const AdminDashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-lg">Loading...</div>
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="text-lg text-foreground">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
+      <header className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 sticky top-0 z-10">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <h1 className="text-2xl font-bold">Admin Dashboard</h1>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Admin Dashboard</h1>
           <Button variant="outline" onClick={handleLogout}>
             <LogOut className="w-4 h-4 mr-2" />
             Logout
           </Button>
         </div>
         <div className="container mx-auto px-4">
-          <div className="flex gap-2 border-t">
+          <div className="flex gap-2 border-t border-gray-200 dark:border-gray-800">
             <button
               onClick={() => setActiveTab("analytics")}
               className={`flex items-center gap-2 px-4 py-3 border-b-2 transition-colors ${
@@ -73,7 +73,7 @@ const AdminDashboard = () => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-8 bg-gray-50 dark:bg-gray-950">
         {activeTab === "database" ? (
           <DatabaseViewer />
         ) : (

@@ -106,7 +106,7 @@ const DatabaseViewer = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center p-8">
-        <div className="text-lg">Loading database tables...</div>
+        <div className="text-lg text-foreground">Loading database tables...</div>
       </div>
     );
   }
@@ -115,8 +115,8 @@ const DatabaseViewer = () => {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Database className="w-6 h-6" />
-          <h2 className="text-2xl font-bold">Database Tables</h2>
+          <Database className="w-6 h-6 text-foreground" />
+          <h2 className="text-2xl font-bold text-foreground">Database Tables</h2>
         </div>
         <Button variant="outline" size="sm" onClick={fetchTables}>
           <RefreshCw className="w-4 h-4 mr-2" />
@@ -156,7 +156,7 @@ const DatabaseViewer = () => {
           </CardHeader>
           <CardContent>
             {dataLoading ? (
-              <div className="text-center py-8">Loading data...</div>
+              <div className="text-center py-8 text-foreground">Loading data...</div>
             ) : tableData.length === 0 ? (
               <div className="text-center py-8 text-muted-foreground">
                 No data in this table

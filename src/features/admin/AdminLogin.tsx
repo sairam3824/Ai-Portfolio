@@ -5,6 +5,7 @@ import { Input } from "@/shared/ui/input";
 import { Label } from "@/shared/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/ui/card";
 import { Lock } from "lucide-react";
+import { ModeToggle } from "@/shared/components/mode-toggle";
 
 const AdminLogin = () => {
   const [username, setUsername] = useState("");
@@ -30,7 +31,10 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-950 p-4">
+      <div className="absolute top-4 right-4">
+        <ModeToggle />
+      </div>
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
           <div className="flex items-center justify-center mb-4">
