@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { Analytics } from '@vercel/analytics/react';
 import { Toaster } from "@/shared/ui/toaster";
 import { Toaster as Sonner } from "@/shared/ui/sonner";
 import { TooltipProvider } from "@/shared/ui/tooltip";
@@ -62,7 +61,6 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
-      <Analytics />
     </TooltipProvider>
   </QueryClientProvider>
 );
