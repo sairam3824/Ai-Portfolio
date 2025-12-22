@@ -70,7 +70,7 @@ export const AboutSection = () => {
           </div>
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-accent"></div>
-            <span>LeetCode 2300+ Rating • Guardian Badge</span>
+            <span>LeetCode 2400+ Rating • Guardian Badge</span>
           </div>
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-accent"></div>
