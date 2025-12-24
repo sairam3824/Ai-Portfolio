@@ -147,6 +147,7 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
           {messages.length === 0 && (
             <div className="text-center text-muted-foreground py-8" role="status">
               <p>Start a conversation! Ask me anything about my work, projects, or interests.</p>
+              <p>This AI assistant is in continuous improvement mode, so some responses may still be under optimization.</p>
             </div>
           )}
           {messages.map((message, index) => (
