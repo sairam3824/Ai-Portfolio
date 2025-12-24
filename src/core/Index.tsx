@@ -26,6 +26,23 @@ const Index = () => {
   const [chatOpen, setChatOpen] = useState(false);
   const [initialChatMessage, setInitialChatMessage] = useState<string>();
 
+  // Typewriter effect for placeholder
+  const placeholderText = useTypewriter({
+    texts: [
+      "Ask me anything...",
+      "What are my skills?",
+      "Tell me about my projects...",
+      "What's my experience?",
+      "How can I help you?",
+      "Ask about my education...",
+      "This is beta version 🚀"
+    ],
+    speed: 100,
+    deleteSpeed: 50,
+    delayBetweenTexts: 2000,
+    loop: true,
+  });
+
   useEffect(() => {
     const sectionParam = searchParams.get("section");
     if (sectionParam && ["me", "projects", "skills", "education", "blog", "certification", "contact"].includes(sectionParam)) {
@@ -160,7 +177,7 @@ const Index = () => {
           <form onSubmit={handleSearchSubmit} className="relative max-w-2xl mx-auto" role="search">
             <Input
               type="text"
-              placeholder="Ask me anything..."
+              placeholder={placeholderText}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full h-14 px-6 text-lg rounded-full border-2 border-border focus:border-accent transition-colors pr-14"
