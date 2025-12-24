@@ -4,6 +4,7 @@ import { Input } from "@/shared/ui/input";
 import { Button } from "@/shared/ui/button";
 import { Send } from "lucide-react";
 import { useToast } from "@/shared/hooks/use-toast";
+import { useTypewriter } from "@/shared/hooks/useTypewriter";
 import avatar from "@/assets/avatar.png";
 
 interface Message {
@@ -27,6 +28,23 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
   const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL;
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
+
+  // Typewriter effect for chat input placeholder
+  const chatPlaceholder = useTypewriter({
+    texts: [
+      "Type your message...",
+      "Ask about my projects...",
+      "What are my skills?",
+      "Tell me about my experience...",
+      "Ask about my education...",
+      "How can I help you?",
+      "Beta version - improving daily! 🚀"
+    ],
+    speed: 80,
+    deleteSpeed: 40,
+    delayBetweenTexts: 2500,
+    loop: true,
+  });
 
   useEffect(() => {
     if (initialMessage && open) {
@@ -135,7 +153,7 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
           <div className="flex items-center justify-between">
             <DialogTitle id="chat-title" className="flex items-center gap-2">
               <img src={avatar} alt="Sairam's avatar" className="w-8 h-8 rounded-full" aria-hidden="true" />
-              Chat with Sairam
+              Chat with Sairam - This is Beta Version and improving.
             </DialogTitle>
           </div>
           <div id="chat-description" className="sr-only">
@@ -206,7 +224,7 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
             <Input
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Type your message..."
+              placeholder={chatPlaceholder}
               disabled={isLoading}
               className="flex-1"
               aria-label="Type your message to Sairam"
