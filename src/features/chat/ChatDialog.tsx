@@ -146,8 +146,13 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
         <div className="flex-1 overflow-y-auto space-y-4 p-4" role="log" aria-live="polite" aria-label="Chat conversation">
           {messages.length === 0 && (
             <div className="text-center text-muted-foreground py-8" role="status">
+              <div className="mb-4">
+                <span className="inline-block px-3 py-1 text-xs font-medium bg-orange-100 text-orange-800 rounded-full mb-3">
+                  Beta Version
+                </span>
+              </div>
               <p>Start a conversation! Ask me anything about my work, projects, or interests.</p>
-              <p>This AI assistant is in continuous improvement mode, so some responses may still be under optimization.</p>
+              <p className="text-sm mt-2 opacity-75">This AI assistant is currently in beta and continuously improving.</p>
             </div>
           )}
           {messages.map((message, index) => (

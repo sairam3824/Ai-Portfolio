@@ -4,6 +4,7 @@ import { User, FolderKanban, Layers, GraduationCap, BookOpen, Sparkles, Send, Ma
 import { NavigationCard, CursorBlast, ModeToggle } from "@/shared/components";
 import { Input } from "@/shared/ui/input";
 import { Button } from "@/shared/ui/button";
+import { useTypewriter } from "@/shared/hooks/useTypewriter";
 import { AboutSection } from "@/features/about";
 import { ProjectsSection } from "@/features/projects";
 import { SkillsSection } from "@/features/skills";
