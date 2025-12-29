@@ -208,7 +208,7 @@ const Index = () => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-accent hover:scale-105 transition-all duration-200"
               >
-                <span className="text-foreground">LEETCODE: GUARDIAN (2300+)</span>
+                <span className="text-foreground">LEETCODE: GUARDIAN (2400+)</span>
               </a>
               <span className="text-muted-foreground">•</span>
               <a
