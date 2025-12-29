@@ -42,7 +42,7 @@ export const AboutSection = () => {
 
       <div className="space-y-6 text-muted-foreground">
         <p className="text-lg leading-relaxed">
-          I’m a dedicated DSA and problem-solving enthusiast with 1,000+ problems solved, holding the Guardian badge on LeetCode with a rating of 2300+, and a 3★ rating (1600+) on CodeChef. This consistent practice in data structures and algorithms has strengthened my ability to design efficient, scalable, and reliable solutions—skills I actively apply to real-world engineering and AI challenges.
+          I’m a dedicated DSA and problem-solving enthusiast with 1,000+ problems solved, holding the Guardian badge on LeetCode with a rating of 2400+, and a 3★ rating (1600+) on CodeChef. This consistent practice in data structures and algorithms has strengthened my ability to design efficient, scalable, and reliable solutions—skills I actively apply to real-world engineering and AI challenges.
         </p>
 
         <p className="leading-relaxed">
