@@ -116,9 +116,9 @@ const Index = () => {
       </div>
       <div className="container mx-auto px-4 py-8 max-w-4xl relative z-10 flex-1">
         <div className="flex justify-center mb-8 animate-fade-in">
-          <img 
-            src={logo} 
-            alt="Logo" 
+          <img
+            src={logo}
+            alt="Logo"
             className="w-12 h-12 object-contain"
             loading="eager"
             fetchPriority="high"
@@ -216,7 +216,7 @@ const Index = () => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-accent hover:scale-105 transition-all duration-200"
               >
-                <span className="text-foreground">LEETCODE: GUARDIAN (2400+)</span>
+                <span className="text-foreground">LEETCODE: GUARDIAN (2500+)</span>
               </a>
               <span className="text-muted-foreground">•</span>
               <a
