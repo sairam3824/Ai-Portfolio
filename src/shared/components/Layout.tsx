@@ -4,7 +4,7 @@ import { Home, MessageCircle } from "lucide-react";
 import { Button } from "@/shared/ui/button";
 import SectionNavigation from "./SectionNavigation";
 import { ModeToggle } from "./mode-toggle";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 
 const ChatDialog = lazy(() => import("@/features/chat").then(m => ({ default: m.ChatDialog })));
 

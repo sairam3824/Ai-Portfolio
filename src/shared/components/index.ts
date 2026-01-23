@@ -6,5 +6,6 @@ export { SEO } from './SEO';
 export { ErrorBoundary } from './ErrorBoundary';
 export { RouteLoadingBar } from './RouteLoadingBar';
 export { PageTransition } from './PageTransition';
+export { PageLoader, MinimalLoader } from './PageLoader';
 export * from "./theme-provider";
 export * from "./mode-toggle";

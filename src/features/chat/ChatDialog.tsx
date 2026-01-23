@@ -5,7 +5,7 @@ import { Button } from "@/shared/ui/button";
 import { Send } from "lucide-react";
 import { useToast } from "@/shared/hooks/use-toast";
 import { useTypewriter } from "@/shared/hooks/useTypewriter";
-import avatar from "@/assets/avatar.png";
+import avatar from "@/assets/avatar.webp";
 
 interface Message {
   role: "user" | "assistant";
@@ -152,7 +152,7 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
         <DialogHeader>
           <div className="flex items-center justify-between">
             <DialogTitle id="chat-title" className="flex items-center gap-2">
-              <img src={avatar} alt="Sairam's avatar" className="w-8 h-8 rounded-full" aria-hidden="true" />
+              <img src={avatar} alt="Sairam's avatar" className="w-8 h-8 rounded-full" aria-hidden="true" loading="lazy" />
               Chat with Sairam - This is Beta Version and improving.
             </DialogTitle>
           </div>
@@ -181,7 +181,7 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
               aria-label={`${message.role === "user" ? "Your message" : "Sairam's response"} at ${message.timestamp.toLocaleTimeString()}`}
             >
               {message.role === "assistant" && (
-                <img src={avatar} alt="Sairam's avatar" className="w-8 h-8 rounded-full" aria-hidden="true" />
+                <img src={avatar} alt="Sairam's avatar" className="w-8 h-8 rounded-full" aria-hidden="true" loading="lazy" />
               )}
               <div
                 className={`max-w-[70%] rounded-2xl px-4 py-3 ${
@@ -197,7 +197,7 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
           ))}
           {isLoading && (
             <div className="flex gap-3" role="status" aria-live="polite" aria-label="Sairam is typing">
-              <img src={avatar} alt="Sairam's avatar" className="w-8 h-8 rounded-full" aria-hidden="true" />
+              <img src={avatar} alt="Sairam's avatar" className="w-8 h-8 rounded-full" aria-hidden="true" loading="lazy" />
               <div className="bg-secondary rounded-2xl px-4 py-3">
                 <div className="flex gap-1" aria-hidden="true">
                   <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" />

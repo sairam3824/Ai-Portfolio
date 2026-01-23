@@ -1,9 +1,12 @@
 # 🚀 AI-Powered Portfolio Website
 
-> A modern, interactive portfolio website featuring an AI chatbot assistant, built with React, TypeScript, and Supabase. Showcasing competitive programming achievements, projects, and technical expertise.
+> A modern, high-performance portfolio website featuring an AI chatbot assistant powered by RAG (Retrieval-Augmented Generation), built with React 18, TypeScript, and Supabase. Showcasing competitive programming achievements, technical projects, and professional expertise with an emphasis on accessibility and performance.
 
 [![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://saiii.in)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-18.3-blue)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-5.4-646CFF)](https://vitejs.dev/)
 
 ## ✨ Features
 
@@ -41,16 +44,18 @@
 
 ### 🛠️ Technical Features
 
-- **Supabase Backend** - PostgreSQL database with Row Level Security
-- **TanStack Query** - Efficient data fetching and caching with optimistic updates
+- **Supabase Backend** - PostgreSQL database with Row Level Security and real-time subscriptions
+- **TanStack Query** - Efficient data fetching, caching, and optimistic updates
 - **React Router v6** - Client-side routing with nested routes and loading states
-- **Form Validation** - Zod schema validation with React Hook Form
-- **SEO Optimized** - Meta tags, Open Graph, Twitter Cards, and sitemap
-- **Performance Optimized** - Code splitting, lazy loading, and route-based chunking
-- **Accessibility** - ARIA labels, keyboard navigation, and screen reader support
-- **Responsive Design** - Mobile-first approach with Tailwind breakpoints
+- **Form Validation** - Type-safe Zod schema validation with React Hook Form
+- **SEO Optimized** - Meta tags, Open Graph, Twitter Cards, sitemap.xml, and robots.txt
+- **Performance Optimized** - Code splitting, lazy loading, route-based chunking, and asset optimization
+- **Accessibility** - WCAG 2.1 AA compliant with ARIA labels, keyboard navigation, and screen reader support
+- **Responsive Design** - Mobile-first approach with Tailwind breakpoints (sm, md, lg, xl, 2xl)
 - **Theme Support** - Dark/Light mode with next-themes and system preference detection
-- **Interactive UI** - Custom cursor effects, smooth animations, and micro-interactions
+- **Interactive UI** - Custom cursor effects, smooth Framer Motion animations, and micro-interactions
+- **Error Handling** - Comprehensive ErrorBoundary and graceful degradation
+- **Analytics** - Vercel Analytics integration for performance monitoring
 
 ## 🏗️ Tech Stack
 
@@ -466,6 +471,7 @@ The chatbot uses a sophisticated multi-step RAG (Retrieval-Augmented Generation)
 ```bash
 # Development
 npm run dev          # Start Vite dev server with HMR (Hot Module Replacement)
+npm run dev:api      # Start Express API server with watch mode (if using)
 npm run preview      # Preview production build locally
 
 # Building
@@ -485,8 +491,50 @@ bun install          # Install with bun (fastest)
 
 - Use `npm run dev` for hot reload during development
 - Run `npm run lint` before committing to catch issues
-- Use `npm run build:dev` to debug production builds
+- Use `npm run build:dev` to debug production builds with source maps
 - Preview builds with `npm run preview` before deploying
+- Check bundle size with `npm run build -- --mode analyze` (requires plugin)
+
+## 🧪 Testing
+
+### Current Status
+Testing infrastructure is planned for future implementation.
+
+### Planned Testing Stack
+- **Vitest** - Fast unit testing framework powered by Vite
+- **React Testing Library** - Component testing with user-centric queries
+- **Playwright** - End-to-end testing for critical user flows
+- **MSW (Mock Service Worker)** - API mocking for reliable tests
+
+### Future Test Scripts
+```bash
+npm run test              # Run unit tests
+npm run test:watch        # Run tests in watch mode
+npm run test:coverage     # Generate coverage report
+npm run test:e2e          # Run end-to-end tests
+```
+
+## 📈 Performance
+
+### Optimization Strategies
+- **Code Splitting** - Route-based chunks reduce initial bundle size
+- **Lazy Loading** - Components load on-demand for faster initial render
+- **Asset Optimization** - Images optimized and served with proper formats
+- **Tree Shaking** - Unused code eliminated during build
+- **Minification** - JavaScript and CSS minified for production
+- **Caching** - TanStack Query provides intelligent caching layer
+
+### Performance Metrics (Target)
+- **First Contentful Paint (FCP)** - < 1.5s
+- **Largest Contentful Paint (LCP)** - < 2.5s
+- **Time to Interactive (TTI)** - < 3.5s
+- **Cumulative Layout Shift (CLS)** - < 0.1
+- **First Input Delay (FID)** - < 100ms
+
+### Monitoring
+- Vercel Analytics tracks Core Web Vitals
+- Performance metrics available in Vercel dashboard
+- Real user monitoring for production insights
 
 ## 📝 License
 
@@ -528,23 +576,130 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Lucide Icons](https://lucide.dev/) - Beautiful & consistent icon toolkit
 - [Zod](https://zod.dev/) - TypeScript-first schema validation
 
+## 🐛 Known Issues & Limitations
+
+### Current Known Issues
+1. **Image Optimization** - Badge images in `/public/badges/` are not optimized (500KB+ each)
+2. **Dependencies** - Some peer dependencies need to be installed (`npm install` to fix)
+3. **Console Logs** - Development console statements present in some production files
+
+### Limitations
+- No automated testing suite (planned for future)
+- Limited offline functionality (PWA support planned)
+- No real-time collaboration features
+- Email notifications require manual SMTP configuration
+- AI chatbot requires separate N8N instance setup
+
 ## 🤝 Contributing
 
-Contributions are welcome! If you'd like to improve this portfolio template:
+Contributions are welcome! Here's how you can help improve this portfolio:
 
+### Getting Started
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 🗺️ Roadmap
+### Contribution Guidelines
+- **Code Style**: Follow the existing ESLint configuration
+- **Commits**: Use conventional commit messages (feat:, fix:, docs:, etc.)
+- **Testing**: Add tests for new features (when testing infrastructure is implemented)
+- **Documentation**: Update README and inline comments for significant changes
+- **Types**: Maintain TypeScript type safety throughout the codebase
 
-- [ ] Add blog post search and filtering
-- [ ] Implement dark mode toggle animation
-- [ ] Add project filtering by technology
-- [ ] Create admin analytics dashboard
-- [ ] Add email notifications for contact form
-- [ ] Implement blog post comments
-- [ ] Add RSS feed for blog
-- [ ] Create API documentation
+### Priority Areas for Contribution
+- 🧪 Setting up Vitest testing infrastructure
+- 🖼️ Image optimization and lazy loading implementation
+- ♿ Accessibility improvements and WCAG compliance
+- 📝 Documentation enhancements and tutorials
+- 🐛 Bug fixes and issue resolution
+- 🎨 UI/UX improvements and new components
+
+## 🗺️ Roadmap & Future Enhancements
+
+### 🎯 High Priority
+- [ ] **Testing Infrastructure** - Set up Vitest, React Testing Library, and Playwright
+- [ ] **Image Optimization** - Convert badge images to WebP and implement lazy loading
+- [ ] **Performance** - Implement lazy loading for route components
+- [ ] **Accessibility Audit** - Ensure WCAG 2.1 AA compliance across all pages
+- [ ] **Error Monitoring** - Integrate Sentry or similar for production error tracking
+
+### 🚀 Feature Enhancements
+- [ ] **Blog Search & Filtering** - Add search bar and tag-based filtering for blog posts
+- [ ] **Project Filtering** - Filter projects by technology stack and category
+- [ ] **Blog Comments** - Implement comment system with moderation
+- [ ] **Email Notifications** - Automated alerts for new contact form submissions
+- [ ] **RSS Feed** - Generate RSS/Atom feed for blog subscribers
+- [ ] **PWA Support** - Add service worker and manifest for offline functionality
+- [ ] **Blog Post Views** - Track and display view counts for blog posts
+- [ ] **Newsletter System** - Automated email campaigns for blog subscribers
+
+### 🎨 UI/UX Improvements
+- [ ] **Dark Mode Animation** - Smooth transition animation for theme toggle
+- [ ] **Loading Skeletons** - Add skeleton screens for better perceived performance
+- [ ] **Breadcrumb Navigation** - Implement breadcrumbs for better navigation context
+- [ ] **Storybook** - Component library documentation and showcase
+
+### 🔧 Developer Experience
+- [ ] **API Documentation** - OpenAPI/Swagger docs for API endpoints
+- [ ] **Contributing Guidelines** - Detailed contribution guide for open source contributors
+- [ ] **Code Coverage** - Achieve 80%+ test coverage
+- [ ] **CI/CD Pipeline** - Automated testing and deployment workflows
+- [ ] **TypeScript Strict Mode** - Enable strict mode for better type safety
+
+### 📊 Analytics & SEO
+- [ ] **Advanced Analytics** - Custom event tracking for user interactions
+- [ ] **JSON-LD Structured Data** - Rich snippets for better search engine visibility
+- [ ] **Dynamic OG Images** - Auto-generated Open Graph images per blog post
+- [ ] **Performance Monitoring** - Real-time performance dashboards
+
+### 🔐 Security & Compliance
+- [ ] **Rate Limiting** - API rate limiting to prevent abuse
+- [ ] **Input Sanitization** - Enhanced XSS protection and input validation
+- [ ] **Security Headers** - Implement comprehensive security headers
+- [ ] **GDPR Compliance** - Cookie consent and data privacy features
+
+## 📞 Contact & Support
+
+For questions, suggestions, or collaboration opportunities:
+
+- **Website**: [saiii.in](https://saiii.in)
+- **Email**: contact@saiii.in
+- **LinkedIn**: [Connect with me](https://www.linkedin.com/in/sairam-maruri/)
+- **GitHub**: [Follow for more projects](https://github.com/yourusername)
+
+### Reporting Issues
+Found a bug or have a feature request? Please open an issue on GitHub with:
+- Clear description of the issue or feature
+- Steps to reproduce (for bugs)
+- Expected vs actual behavior
+- Screenshots (if applicable)
+
+---
+
+<div align="center">
+  
+### ⭐ Star this repo if you found it helpful!
+
+<p>Built with ❤️ by <strong>Sai Ram Maruri</strong></p>
+
+<p>
+  <a href="https://saiii.in">Portfolio</a> •
+  <a href="https://saiii.in/blogs">Blog</a> •
+  <a href="https://saiii.in/projects">Projects</a> •
+  <a href="https://saiii.in/contact">Contact</a>
+</p>
+
+<p>
+  <img src="https://img.shields.io/badge/Made%20with-React-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React">
+  <img src="https://img.shields.io/badge/Styled%20with-Tailwind-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind">
+  <img src="https://img.shields.io/badge/Powered%20by-Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase">
+  <img src="https://img.shields.io/badge/Deployed%20on-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel">
+</p>
+
+<p>
+  <sub>If you like this project, consider giving it a ⭐ on GitHub!</sub>
+</p>
+
+</div>

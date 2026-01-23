@@ -13,8 +13,8 @@ import { BlogSection } from "@/features/blog";
 import { CertificationSection } from "@/features/certifications";
 import { ContactSection } from "@/features/contact";
 import { ChatDialog } from "@/features/chat";
-import logo from "@/assets/logo.png";
-import avatar from "@/assets/avatar.png";
+import logo from "@/assets/logo.webp";
+import avatar from "@/assets/avatar.webp";
 
 type Section = "me" | "resume" | "projects" | "skills" | "education" | "blog" | "certification" | "contact";
 
@@ -116,7 +116,13 @@ const Index = () => {
       </div>
       <div className="container mx-auto px-4 py-8 max-w-4xl relative z-10 flex-1">
         <div className="flex justify-center mb-8 animate-fade-in">
-          <img src={logo} alt="Logo" className="w-12 h-12 object-contain" />
+          <img 
+            src={logo} 
+            alt="Logo" 
+            className="w-12 h-12 object-contain"
+            loading="eager"
+            fetchPriority="high"
+          />
         </div>
 
         <div className="text-center space-y-6 mb-12 animate-fade-in">
@@ -167,6 +173,8 @@ const Index = () => {
                 alt="Sai Ram Avatar - Professional headshot of Sai Rama Linga Reddy Maruri"
                 className="w-48 h-48 object-cover rounded-full cursor-pointer hover:scale-105 transition-transform"
                 onDoubleClick={() => navigate('/profile')}
+                loading="eager"
+                fetchPriority="high"
               />
             </div>
           </div>
