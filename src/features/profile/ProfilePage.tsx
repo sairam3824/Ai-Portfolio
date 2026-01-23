@@ -409,7 +409,7 @@ export const ProfilePage = () => {
           <h2 className="text-2xl font-bold text-foreground mb-4">Education</h2>
           <Card className="p-6">
             <h3 className="font-semibold text-foreground">B.Tech Computer Science</h3>
-            <p className="text-sm text-muted-foreground">Vellore Institute of Technology • 2022-2026 • CGPA: 8.24/10</p>
+            <p className="text-sm text-muted-foreground">Vellore Institute of Technology • 2022-2026 • CGPA: 8.31/10</p>
             <p className="text-xs text-muted-foreground mt-2"> Data Structures & Algorithms, Operating Systems, OOP, Software Engineering (Design Patterns, System Design), Computer Networks, Deep Learning, NoSQL databases</p>
           </Card>
         </section>
