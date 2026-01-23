@@ -42,18 +42,26 @@ export const AboutSection = () => {
 
       <div className="space-y-6 text-muted-foreground">
         <p className="text-lg leading-relaxed">
-          I’m a dedicated DSA and problem-solving enthusiast with 1,000+ problems solved, holding the Guardian badge on LeetCode with a rating of 2400+, and a 3★ rating (1600+) on CodeChef. This consistent practice in data structures and algorithms has strengthened my ability to design efficient, scalable, and reliable solutions—skills I actively apply to real-world engineering and AI challenges.
+          I am a GenAI & ML Engineer with a strong foundation in data structures, algorithms, and scalable system design, backed by solving 1,000+ problems, earning the LeetCode Guardian badge (2400+ rating) and a 3★ CodeChef rating (1600+). This discipline has shaped my ability to build efficient, reliable, and production-grade AI and cloud systems.
         </p>
 
         <p className="leading-relaxed">
-          My core interests include Artificial Intelligence, Machine Learning, AI Agents, and Generative AI, with a growing proficiency in Large Language Models (LLMs) and their applications. I actively explore model architectures, optimization strategies, and stay updated with the latest advancements across AI and data science.
+          My core expertise lies in Artificial Intelligence, Machine Learning, AI Agents, and Generative AI, with hands-on experience designing LLM-powered applications, RAG pipelines, vector-database search systems, and agentic workflows. I actively work on SaaS-grade optimization, production-ready GenAI systems, and scalable cloud-based AI pipelines.
         </p>
 
         <p className="leading-relaxed">
-          I also bring hands-on experience with Amazon Web Services (AWS), enabling me to design and deploy scalable, secure, and cost-efficient data pipelines and AI/ML workflows. For me, it’s not just about using powerful tools—it's about understanding them deeply and building solutions that truly make an impact.
+          I specialize in building cloud-native GenAI systems on AWS, deploying secure, cost-efficient, and scalable AI/ML pipelines — from experimentation to production.
         </p>
 
-        <p className="leading-relaxed">Learn always, Build always.</p>
+        <p className="leading-relaxed">
+          I work extensively with modern AI developer tooling including Cursor AI, Claude Code, Codex, VS Code, Kiro, Surf, Antigravity, and Rovo Dev to design high-performance, agent-driven applications.
+        </p>
+
+        <p className="leading-relaxed">
+          For me, it's not just about using powerful tools — it's about engineering intelligent systems that solve real-world problems at scale.
+        </p>
+
+        <p className="leading-relaxed">Learn always. Build always.</p>
 
         <div className="pt-4 space-y-2">
           <div className="flex items-center gap-3">
