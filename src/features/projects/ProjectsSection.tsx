@@ -4,6 +4,14 @@ import { ExternalLink } from "lucide-react";
 
 const projects = [
   {
+    title: "🧠 HireMind (Job Cloud)",
+    description:
+      "Automated job crawler and matching platform connecting job seekers with ideal roles. Features intelligent resume matching, company insights, and real-time data integration.",
+    tech: ["Next.js", "Supabase", "Python", "AWS EC2", "Docker", "Redis"],
+    github: "https://github.com/sairam3824/job-cloud",
+    category: "AI Job Platform",
+  },
+  {
     title: "🚀 AI Research Platform (Orravyn.cloud)",
     description:
       "Enterprise-grade collaborative AI research and deployment platform enabling scalable LLM experimentation, model fine-tuning, and cloud-based ML workflows. Features automated deployment pipelines and real-time collaboration tools.",
