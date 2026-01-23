@@ -9,7 +9,7 @@ export const EducationSection = () => {
       place: "Amaravati, Andhra Pradesh, India",
       notes: [
         "Relevant Coursework: Data Structures & Algorithms, Operating Systems, OOP, Software Engineering (Design Patterns, System Design), Computer Networks, Deep Learning, NoSQL databases",
-        "CGPA: 8.24",
+        "CGPA: 8.31",
       ],
     },
     {
