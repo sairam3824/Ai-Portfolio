@@ -122,8 +122,8 @@ export const ProfilePage = () => {
   const projects = [
     { title: "AI Research Platform", tech: "Node.js, Python, AWS, LLMs", link: "https://orravyn.cloud" },
     { title: "AI Portfolio", tech: "React, TypeScript, Supabase, n8n", link: "https://saiii.in" },
+    { title: "HireMind (Job Cloud)", tech: "Next.js, Supabase, Python, AWS", link: "https://job-cloud.vercel.app" },
     { title: "Bone Fracture Classification", tech: "PyTorch, WideResNet, 94% accuracy", link: "https://github.com/sairam3824/Bone-Fracture-Classification" },
-    { title: "Customer Churn Prediction", tech: "Machine Learning, 89% precision", link: "https://github.com/sairam3824/Customer-Churn-Prediction" },
   ];
 
   const skills = [
