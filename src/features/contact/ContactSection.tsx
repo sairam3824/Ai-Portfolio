@@ -159,7 +159,7 @@ export const ContactSection = () => {
                 className="group hover:scale-105 transition-transform duration-300 cursor-pointer"
               >
                 <div className="text-4xl font-extrabold text-blue-600 dark:text-blue-500 group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
-                  2400+
+                  2500+
                 </div>
                 <div className="text-sm md:text-base text-muted-foreground font-medium group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   LeetCode Rating
@@ -222,7 +222,7 @@ export const ContactSection = () => {
             rel="noopener noreferrer"
             className="px-4 py-2 bg-purple-50 text-purple-600 text-sm rounded-full hover:bg-purple-100 transition-colors duration-200 cursor-pointer inline-flex items-center gap-1"
           >
-            🛡️ LeetCode Knight (2400+) @programmer3824
+            🛡️ LeetCode Knight (2500+) @programmer3824
           </a>
 
         </div>

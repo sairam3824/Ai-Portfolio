@@ -42,7 +42,7 @@ export const AboutSection = () => {
 
       <div className="space-y-6 text-muted-foreground">
         <p className="text-lg leading-relaxed">
-          I am a GenAI & ML Engineer with a strong foundation in data structures, algorithms, and scalable system design, backed by solving 1,000+ problems, earning the LeetCode Guardian badge (2400+ rating) and a 3★ CodeChef rating (1600+). This discipline has shaped my ability to build efficient, reliable, and production-grade AI and cloud systems.
+          I am a GenAI & ML Engineer with a strong foundation in data structures, algorithms, and scalable system design, backed by solving 1,000+ problems, earning the LeetCode Guardian badge (2500+ rating) and a 3★ CodeChef rating (1600+). This discipline has shaped my ability to build efficient, reliable, and production-grade AI and cloud systems.
         </p>
 
         <p className="leading-relaxed">
@@ -78,7 +78,7 @@ export const AboutSection = () => {
           </div>
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-accent"></div>
-            <span>LeetCode 2400+ Rating • Guardian Badge</span>
+            <span>LeetCode 2500+ Rating • Guardian Badge</span>
           </div>
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-accent"></div>
