@@ -14,7 +14,7 @@ const TermsAndConditions = () => {
             </Button>
           </Link>
           <h1 className="text-4xl font-bold text-foreground mb-2">Terms and Conditions</h1>
-          <p className="text-muted-foreground">Last updated: January 2025</p>
+          <p className="text-muted-foreground">Last updated: January 2026</p>
         </div>
 
         <div className="prose prose-gray dark:prose-invert max-w-none">
