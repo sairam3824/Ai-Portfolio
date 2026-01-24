@@ -3,7 +3,7 @@
 > A modern, high-performance portfolio website featuring an AI chatbot assistant powered by RAG (Retrieval-Augmented Generation), built with React 18, TypeScript, and Supabase. Showcasing competitive programming achievements, technical projects, and professional expertise with an emphasis on accessibility and performance.
 
 [![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://saiii.in)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18.3-blue)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-5.4-646CFF)](https://vitejs.dev/)
@@ -536,9 +536,11 @@ npm run test:e2e          # Run end-to-end tests
 - Performance metrics available in Vercel dashboard
 - Real user monitoring for production insights
 
-## 📝 License
+## 📝 Legal & License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- **License**: This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+- **Privacy Policy**: See the [PRIVACY](PRIVACY.md) file for details on data handling.
+- **Terms & Conditions**: See the [TERMS](TERMS.md) file for usage terms.
 
 ## 👤 Author
 
