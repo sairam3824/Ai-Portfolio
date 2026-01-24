@@ -202,7 +202,7 @@ export const ProfilePage = () => {
               {/* Circle 1 */}
               <div className="flex flex-col items-center group cursor-default">
                 <div className="w-32 h-32 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-105 transition-all">
-                  <p className="text-3xl font-bold text-primary/80">3</p>
+                  <p className="text-3xl font-bold text-primary/80">4</p>
                 </div>
                 <p className="text-sm font-medium text-foreground mt-2 text-center">Live<br />Projects</p>
               </div>
@@ -210,7 +210,7 @@ export const ProfilePage = () => {
               {/* Circle 2 */}
               <div className="flex flex-col items-center group cursor-default">
                 <div className="w-32 h-32 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-105 transition-all">
-                  <p className="text-3xl font-bold text-primary/80">15+</p>
+                  <p className="text-3xl font-bold text-primary/80">20+</p>
                 </div>
                 <p className="text-sm font-medium text-foreground mt-2 text-center">Total<br />Projects</p>
               </div>
