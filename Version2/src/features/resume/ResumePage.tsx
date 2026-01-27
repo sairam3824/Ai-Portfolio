@@ -5,10 +5,8 @@ import {
     MapPin,
     Github,
     Linkedin,
-    ExternalLink,
     Award,
     Code2,
-    BookOpen,
     Eye
 } from "lucide-react";
 

@@ -13,7 +13,7 @@ interface BlogCardProps {
     onTagClick?: (tag: string) => void;
 }
 
-export const BlogCard = ({ post, onTagClick }: BlogCardProps) => {
+export const BlogCard = ({ post }: BlogCardProps) => {
     const isExternal = !!post.externalLink;
     // @ts-ignore - dynamic icon lookup
     const IconComponent = LucideIcons[post.icon] || FileText;

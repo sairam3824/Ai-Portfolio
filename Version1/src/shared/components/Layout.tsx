@@ -4,7 +4,7 @@ import { Home, MessageCircle } from "lucide-react";
 import { Button } from "@/shared/ui/button";
 import SectionNavigation from "./SectionNavigation";
 import { ModeToggle } from "./mode-toggle";
-import logo from "@/assets/logo.webp";
+import avatar from "@/assets/avatar.webp";
 
 const ChatDialog = lazy(() => import("@/features/chat").then(m => ({ default: m.ChatDialog })));
 
@@ -22,9 +22,9 @@ const Layout = ({ children, title }: LayoutProps) => {
           <div className="flex items-center gap-4 min-w-0 flex-1">
             <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity flex-shrink-0">
               <img
-                src={logo}
+                src={avatar}
                 alt="Logo"
-                className="w-8 h-8 object-contain"
+                className="w-8 h-8 object-cover rounded-full"
                 loading="eager"
                 fetchPriority="high"
               />

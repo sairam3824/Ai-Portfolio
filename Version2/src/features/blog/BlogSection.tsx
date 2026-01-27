@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
-import { Search, X, BookOpen, Sparkles } from "lucide-react";
+import { Search, X, BookOpen } from "lucide-react";
 import { BlogCard } from "./BlogCard";
 import { useBlogPosts } from "./useBlogPosts";
 

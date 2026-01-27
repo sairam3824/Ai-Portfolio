@@ -13,7 +13,6 @@ import { BlogSection } from "@/features/blog";
 import { CertificationSection } from "@/features/certifications";
 import { ContactSection } from "@/features/contact";
 import { ChatDialog } from "@/features/chat";
-import logo from "@/assets/logo.webp";
 import avatar from "@/assets/avatar.webp";
 
 type Section = "me" | "resume" | "projects" | "skills" | "education" | "blog" | "certification" | "contact";
@@ -117,9 +116,9 @@ const Index = () => {
       <div className="container mx-auto px-4 py-8 max-w-4xl relative z-10 flex-1">
         <div className="flex justify-center mb-8 animate-fade-in">
           <img
-            src={logo}
+            src={avatar}
             alt="Logo"
-            className="w-12 h-12 object-contain"
+            className="w-12 h-12 object-cover rounded-full"
             loading="eager"
             fetchPriority="high"
           />

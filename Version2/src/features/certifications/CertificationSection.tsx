@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Sparkles, Award } from "lucide-react";
+import { Award } from "lucide-react";
 
 const certifications = [
     {

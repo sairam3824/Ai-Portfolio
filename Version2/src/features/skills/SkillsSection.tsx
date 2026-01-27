@@ -1,11 +1,9 @@
 import {
     Code2,
     Brain,
-    Database,
     Cloud,
     Terminal,
     Zap,
-    ExternalLink,
     Search,
     Cpu,
     Target

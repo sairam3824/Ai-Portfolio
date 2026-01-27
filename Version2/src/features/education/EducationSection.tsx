@@ -4,7 +4,7 @@ import {
     MapPin,
     BookOpen,
     Award,
-    Sparkles,
+
     TrendingUp,
     Library
 } from "lucide-react";

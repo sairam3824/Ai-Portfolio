@@ -1,12 +1,9 @@
 import {
-    Send,
     Zap,
     Code2,
     Trophy,
     Globe,
     Search,
-    Sparkles,
-    ArrowRight
 } from 'lucide-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';

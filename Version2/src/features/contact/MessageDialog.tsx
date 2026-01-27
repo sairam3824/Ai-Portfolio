@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Send, MessageSquare, X, Shield, Sparkles, AlertCircle, CheckCircle2 } from "lucide-react";
+import { Send, MessageSquare, X, Shield, AlertCircle, CheckCircle2 } from "lucide-react";
 
 interface MessageDialogProps {
     open: boolean;

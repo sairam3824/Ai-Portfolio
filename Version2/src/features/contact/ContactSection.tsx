@@ -8,7 +8,7 @@ import {
     Trophy,
     MessageSquare,
     Download,
-    Sparkles,
+
     ExternalLink,
     MapPin,
     Share2,
