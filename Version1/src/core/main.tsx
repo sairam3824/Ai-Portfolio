@@ -8,7 +8,7 @@ import { ErrorBoundary, ThemeProvider } from "@/shared/components";
 createRoot(document.getElementById("root")!).render(
   <ErrorBoundary>
     <HelmetProvider>
-      <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme" attribute="class">
+      <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme" attribute="class">
         <App />
       </ThemeProvider>
     </HelmetProvider>

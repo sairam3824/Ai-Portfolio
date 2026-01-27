@@ -63,6 +63,15 @@ const Home = () => {
                 <p className="text-xl text-gray-500 font-medium max-w-2xl mx-auto leading-relaxed">
                     GenAI Engineer building scalable agentic workflows and <br /> next-generation cloud architectures.
                 </p>
+
+                {/* Classic Version Link */}
+                <a
+                    href="/v1/"
+                    className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-blue-600 transition-colors group"
+                >
+                    <span>Looking for the classic version?</span>
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </a>
             </div>
 
             {/* Command Center Input - Clean Pill */}
