@@ -4,7 +4,7 @@ import { Toaster as Sonner } from "@/shared/ui/sonner";
 import { TooltipProvider } from "@/shared/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { SEO, RouteLoadingBar, PageLoader } from "@/shared/components";
+import { SEO, RouteLoadingBar, PageLoader, VersionSwitch } from "@/shared/components";
 
 // Eager load: Homepage (Index) - Critical for initial render
 import Index from "./Index";
@@ -49,9 +49,10 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <SEO />
+      <VersionSwitch />
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename="/v1">
         <ScrollToTop />
         <RouteLoadingBar />
         <Suspense fallback={<PageLoader />}>

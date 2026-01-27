@@ -8,4 +8,6 @@ export { RouteLoadingBar } from './RouteLoadingBar';
 export { PageTransition } from './PageTransition';
 export { PageLoader, MinimalLoader } from './PageLoader';
 export * from "./theme-provider";
+export * from "./VersionSwitch";
+
 export * from "./mode-toggle";

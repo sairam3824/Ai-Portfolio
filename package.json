@@ -1,0 +1,9 @@
+{
+  "name": "ai-portfolio-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "postinstall": "cd Version1 && npm install && cd ../Version2 && npm install",
+    "build": "cd Version2 && npm run build && cd ../Version1 && npm run build && mkdir -p ../Version2/dist/v1 && cp -r dist/* ../Version2/dist/v1/"
+  }
+}
