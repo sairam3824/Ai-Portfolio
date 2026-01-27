@@ -180,9 +180,10 @@ const Sidebar = () => {
 
             {/* Footer Links at Bottom of Sidebar */}
             <div className="mt-auto px-8 pb-4 pt-4">
-                <div className="flex gap-4">
+                <div className="flex gap-4 flex-wrap">
                     <Link to="/privacy" className="text-xs font-medium text-gray-500 hover:text-gray-700 hover:underline">Privacy</Link>
                     <Link to="/terms" className="text-xs font-medium text-gray-500 hover:text-gray-700 hover:underline">Terms</Link>
+                    <a href="/v1/" className="text-xs font-medium text-gray-400 hover:text-blue-600 hover:underline">Classic Version</a>
                 </div>
             </div>
         </nav>
