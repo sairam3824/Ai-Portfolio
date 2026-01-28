@@ -9,10 +9,27 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import avatar from './assets/avatar.webp';
+import { useTypewriter } from './hooks/useTypewriter';
+
 
 const Home = () => {
     const navigate = useNavigate();
     const [searchQuery, setSearchQuery] = useState('');
+
+    const placeholder = useTypewriter({
+        texts: [
+            "Ask me anything...",
+            "What are my skills?",
+            "Tell me about my projects...",
+            "What's my experience?",
+            "How can I help you?",
+            "Ask about my education...",
+            "This is beta version 🚀"
+        ],
+        speed: 100,
+        deleteSpeed: 50,
+        delayBetweenTexts: 2000,
+    });
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();
@@ -85,8 +102,8 @@ const Home = () => {
                             type="text"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            placeholder="Ask about my skills, projects, or experience..."
-                            className="flex-1 bg-transparent border-none outline-none text-gray-900 placeholder:text-gray-400 font-medium text-lg h-full"
+                            placeholder={placeholder}
+                            className="flex-1 bg-transparent border-none outline-none text-gray-900 placeholder:text-gray-400 font-medium text-lg h-full transition-all duration-300"
                         />
                     </div>
                 </form>
