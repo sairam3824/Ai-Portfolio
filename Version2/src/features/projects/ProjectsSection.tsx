@@ -152,21 +152,16 @@ const projects = [
 export const ProjectsSection = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredProjects, setFilteredProjects] = useState(projects);
-    const [selectedCategory, setSelectedCategory] = useState("All");
-
-    const categories = ["All", ...Array.from(new Set(projects.map(p => p.category)))];
 
     useEffect(() => {
         const query = searchQuery.toLowerCase().trim();
         const filtered = projects.filter((p) => {
-            const matchesQuery = p.title.toLowerCase().includes(query) ||
+            return p.title.toLowerCase().includes(query) ||
                 p.description.toLowerCase().includes(query) ||
                 p.tech.some(t => t.toLowerCase().includes(query));
-            const matchesCategory = selectedCategory === "All" || p.category === selectedCategory;
-            return matchesQuery && matchesCategory;
         });
         setFilteredProjects(filtered);
-    }, [searchQuery, selectedCategory]);
+    }, [searchQuery]);
 
     return (
         <div className="home-container relative py-12 px-4 max-w-7xl mx-auto min-h-full">
@@ -197,35 +192,19 @@ export const ProjectsSection = () => {
             </header>
 
             {/* Controls: Search & Filters */}
-            <div className="flex flex-col items-center gap-10 mb-20 relative z-10 px-4">
-                <div className="w-full max-w-3xl space-y-8">
-                    {/* Search Bar */}
-                    <div className="relative group">
-                        <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
-                        <input
-                            type="text"
-                            placeholder="Search projects by name, tech, or mission..."
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full pl-16 pr-6 py-5 bg-white border border-gray-100 rounded-[2rem] outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all font-medium text-gray-700 text-lg shadow-2xl shadow-gray-200/50"
-                        />
+            {/* Controls: Search */}
+            <div className="flex justify-center mb-20 relative z-10 px-4">
+                <div className="bg-white p-2 rounded-full shadow-xl shadow-gray-200/40 border border-gray-100 flex items-center max-w-lg w-full group focus-within:border-blue-300 focus-within:shadow-blue-500/10 transition-all duration-300">
+                    <div className="pl-4 text-gray-400 group-focus-within:text-blue-500 transition-colors">
+                        <Search className="w-5 h-5" />
                     </div>
-
-                    {/* Category Chips */}
-                    <div className="flex flex-wrap gap-3 justify-center">
-                        {categories.map((cat, i) => (
-                            <button
-                                key={i}
-                                onClick={() => setSelectedCategory(cat)}
-                                className={`px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest transition-all duration-300 ${selectedCategory === cat
-                                    ? "bg-blue-600 text-white shadow-xl shadow-blue-500/30 scale-105"
-                                    : "bg-white border border-gray-100 text-gray-400 hover:border-blue-200 hover:text-gray-900 shadow-sm"
-                                    }`}
-                            >
-                                {cat}
-                            </button>
-                        ))}
-                    </div>
+                    <input
+                        type="text"
+                        placeholder="Search projects..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="w-full bg-transparent border-none focus:outline-none focus:ring-0 text-sm font-bold text-gray-700 placeholder-gray-400 h-12 px-4 uppercase tracking-wider"
+                    />
                 </div>
             </div>
 
@@ -300,7 +279,7 @@ export const ProjectsSection = () => {
             )}
 
             {/* Journey Footer */}
-            <footer className="mt-24 text-center pb-20 animate-fade-in">
+            <footer className="mt-24 text-center pb-8 animate-fade-in">
                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
                     <span className="w-16 h-px bg-gray-200" />
                     Building Solutions • Solving Problems

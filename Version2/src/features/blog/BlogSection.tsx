@@ -89,41 +89,39 @@ export const BlogSection = () => {
             </header>
 
             <div className="max-w-4xl mx-auto">
-                <div className="sticky top-4 z-40 bg-white/60 backdrop-blur-xl py-2 px-2 mb-12 border border-white/50 shadow-xl shadow-blue-500/5 rounded-full transition-all">
-                    <div className="flex flex-col md:flex-row gap-2 items-center justify-between p-1">
-                        <div className="flex gap-1 overflow-x-auto w-full md:w-auto no-scrollbar">
-                            {PRESET_CATEGORIES.map((cat) => (
-                                <button
-                                    key={cat.id}
-                                    onClick={() => setSelectedCategory(cat.id)}
-                                    className={`px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all whitespace-nowrap ${selectedCategory === cat.id
-                                        ? "bg-gray-900 text-white shadow-lg shadow-gray-900/20"
-                                        : "text-gray-500 hover:bg-white hover:text-blue-600 hover:shadow-sm"
-                                        }`}
-                                >
-                                    {cat.label}
-                                </button>
-                            ))}
-                        </div>
+                <div className="sticky top-6 z-40 bg-white p-1.5 rounded-full shadow-2xl shadow-gray-200/50 border border-gray-100 mb-12 flex flex-col md:flex-row gap-2 items-center justify-between max-w-[850px] mx-auto animate-fade-in-up">
+                    <div className="flex gap-1 overflow-x-auto w-full md:w-auto p-1 no-scrollbar mask-gradient">
+                        {PRESET_CATEGORIES.map((cat) => (
+                            <button
+                                key={cat.id}
+                                onClick={() => setSelectedCategory(cat.id)}
+                                className={`px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all whitespace-nowrap duration-300 ${selectedCategory === cat.id
+                                    ? "bg-gray-900 text-white shadow-md scale-105"
+                                    : "text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+                                    }`}
+                            >
+                                {cat.label}
+                            </button>
+                        ))}
+                    </div>
 
-                        <div className="relative w-full md:w-72">
-                            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                            <input
-                                type="text"
-                                placeholder="Search archives..."
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full pl-10 pr-10 py-2.5 bg-gray-50/50 hover:bg-white border border-transparent hover:border-blue-100 rounded-full text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/10 focus:bg-white transition-all text-gray-900 placeholder:text-gray-400"
-                            />
-                            {searchQuery && (
-                                <button
-                                    onClick={() => setSearchQuery("")}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-gray-200 text-gray-400 hover:text-gray-600 transition-colors"
-                                >
-                                    <X className="w-3 h-3" />
-                                </button>
-                            )}
-                        </div>
+                    <div className="relative w-full md:w-[280px] group border-l border-gray-100 ml-2 pl-2">
+                        <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+                        <input
+                            type="text"
+                            placeholder="Search archives..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="w-full pl-12 pr-10 py-3 bg-transparent rounded-full text-sm font-bold text-gray-800 placeholder-gray-400 focus:outline-none focus:bg-gray-50/50 transition-all uppercase tracking-wide"
+                        />
+                        {searchQuery && (
+                            <button
+                                onClick={() => setSearchQuery("")}
+                                className="absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-gray-200 text-gray-400 hover:text-gray-600 transition-colors"
+                            >
+                                <X className="w-3 h-3" />
+                            </button>
+                        )}
                     </div>
                 </div>
 
@@ -154,7 +152,7 @@ export const BlogSection = () => {
             </div>
 
             {/* Engineering Note */}
-            <footer className="mt-20 text-center pb-20 animate-fade-in relative z-10">
+            <footer className="mt-20 text-center pb-8 animate-fade-in relative z-10">
                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
                     <span className="w-16 h-px bg-gray-200" />
                     Sharing Insights • Documenting Journey

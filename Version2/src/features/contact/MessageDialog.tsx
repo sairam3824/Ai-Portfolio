@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
 import { Send, MessageSquare, X, Shield, AlertCircle, CheckCircle2 } from "lucide-react";
+import { supabase } from "../../lib/supabase";
+
+// Memory storage to persist draft across internal route navigation
+// This resets to "" automatically if the browser session is refreshed (page reload)
+let draftSharedMemory = "";
 
 interface MessageDialogProps {
     open: boolean;
@@ -7,7 +12,12 @@ interface MessageDialogProps {
 }
 
 export const MessageDialog = ({ open, onOpenChange }: MessageDialogProps) => {
-    const [message, setMessage] = useState("");
+    const [message, setMessage] = useState(draftSharedMemory);
+
+    // Sync local state to shared draft memory
+    useEffect(() => {
+        draftSharedMemory = message;
+    }, [message]);
     const [isLoading, setIsLoading] = useState(false);
     const [notification, setNotification] = useState<{ title: string; description: string; type: 'success' | 'error' } | null>(null);
 
@@ -28,6 +38,8 @@ export const MessageDialog = ({ open, onOpenChange }: MessageDialogProps) => {
         setTimeout(() => setNotification(null), 4000);
     };
 
+
+
     const handleSendMessage = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -39,29 +51,42 @@ export const MessageDialog = ({ open, onOpenChange }: MessageDialogProps) => {
         setIsLoading(true);
 
         try {
-            const response = await fetch(import.meta.env.VITE_N8N_WEBHOOK_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    message: message.trim(),
-                    timestamp: new Date().toISOString(),
-                    userAgent: navigator.userAgent
-                }),
-            });
+            if (!supabase) throw new Error("Supabase not configured");
 
-            if (response.ok) {
-                showNotification("Transmission Success", "Your message has been dispatched to the secure terminal.", "success");
-                setMessage("");
-                setTimeout(() => onOpenChange(false), 2000);
-            } else {
-                throw new Error('Failed to send message');
+            const { error } = await supabase
+                .from('portfolio_messages')
+                .insert([
+                    {
+                        content: message.trim(),
+                        timestamp: new Date().toISOString(),
+                        user_agent: navigator.userAgent
+                    }
+                ]);
+
+            if (error) throw error;
+
+            showNotification("Transmission Success", "Your message has been dispatched to the secure terminal.", "success");
+            setMessage("");
+            draftSharedMemory = "";
+            setTimeout(() => onOpenChange(false), 2000);
+        } catch (error: any) {
+            console.error("Error sending message:", error);
+
+            // Fallback for demo if supabase keys are still placeholders
+            const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || "";
+            if (!supabaseUrl || supabaseUrl.includes("YOUR_SUPABASE")) {
+                setTimeout(() => {
+                    showNotification("Transmission Success", "Message simulated (Supabase not configured).", "success");
+                    setMessage("");
+                    draftSharedMemory = "";
+                    setIsLoading(false);
+                    setTimeout(() => onOpenChange(false), 2000);
+                }, 1000);
+                return;
             }
-        } catch (error) {
-            console.error("Error sending anonymous message:", error);
-            showNotification("Transmission Failure", "Network instability detected. Please re-attempt the protocol.", "error");
-        } finally {
+
+            // Show actual error from Supabase
+            showNotification("Transmission Failure", error?.message || "Check console for details.", "error");
             setIsLoading(false);
         }
     };

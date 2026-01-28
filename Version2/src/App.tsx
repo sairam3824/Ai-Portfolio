@@ -13,6 +13,7 @@ const BlogsPage = lazy(() => import('./features/blog').then(module => ({ default
 const BlogPostPage = lazy(() => import('./features/blog').then(module => ({ default: module.BlogPostPage })));
 const ProjectsPage = lazy(() => import('./features/projects').then(module => ({ default: module.ProjectsPage })));
 const ResumePage = lazy(() => import('./features/resume').then(module => ({ default: module.ResumePage })));
+const AdminPage = lazy(() => import('./features/admin/AdminPage'));
 const PrivacyPage = lazy(() => import('./features/legal').then(module => ({ default: module.PrivacyPage })));
 const TermsPage = lazy(() => import('./features/legal').then(module => ({ default: module.TermsPage })));
 const CodingProfilesPage = lazy(() => import('./features/coding-profiles').then(module => ({ default: module.CodingProfilesPage })));
@@ -31,7 +32,6 @@ import {
     Shield,
     CreditCard,
     Users,
-    Loader2,
     X
 } from 'lucide-react';
 
@@ -62,8 +62,24 @@ const ScrollToTop = () => {
 };
 
 const LoadingFallback = () => (
-    <div className="flex items-center justify-center min-h-[50vh]">
-        <Loader2 className="w-8 h-8 text-blue-600 animate-spin" />
+    <div className="flex flex-col items-center justify-center min-h-[60vh] gap-6 animate-in fade-in duration-700">
+        <div className="relative">
+            <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-2xl animate-pulse" />
+            <div className="relative z-10 bg-white p-4 rounded-2xl shadow-xl shadow-blue-500/10 border border-blue-50">
+                <BrainCircuit className="w-10 h-10 text-blue-600 animate-pulse" />
+            </div>
+            {/* Spinning Ring */}
+            <div className="absolute -inset-2 border-2 border-blue-100 rounded-full animate-spin" style={{ animationDuration: '3s', borderTopColor: 'transparent', borderRightColor: 'transparent' }} />
+        </div>
+
+        <div className="flex flex-col items-center gap-2">
+            <h3 className="text-sm font-black text-gray-900 uppercase tracking-[0.2em]">Initializing</h3>
+            <div className="flex gap-1.5">
+                <div className="w-1 h-1 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                <div className="w-1 h-1 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                <div className="w-1 h-1 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+            </div>
+        </div>
     </div>
 );
 
@@ -111,7 +127,7 @@ function App() {
                     <div id="main-content" className="flex-1 flex flex-col h-full overflow-y-auto min-w-0 transition-all duration-300 relative">
                         <MobileHeader />
 
-                        <main className="flex-1 w-full max-w-[1600px] mx-auto p-4 md:p-12 pb-24 md:pb-12">
+                        <main className="flex-1 w-full max-w-[1600px] mx-auto p-4 md:p-12 pb-24 md:pb-0">
                             <Suspense fallback={<LoadingFallback />}>
                                 <Routes>
                                     <Route path="/" element={<Home />} />
@@ -125,6 +141,7 @@ function App() {
                                     <Route path="/blogs/:id" element={<BlogPostPage />} />
                                     <Route path="/certifications" element={<CertificationsPage />} />
                                     <Route path="/contact" element={<ContactPage />} />
+                                    <Route path="/admin" element={<AdminPage />} />
                                     <Route path="/privacy" element={<PrivacyPage />} />
                                     <Route path="/terms" element={<TermsPage />} />
                                     <Route path="*" element={<NotFoundPage />} />

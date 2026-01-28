@@ -113,7 +113,7 @@ export const CertificationSection = () => {
             </ul>
 
             {/* Journey Footer */}
-            <footer className="mt-12 text-center pb-20 animate-fade-in text-gray-400">
+            <footer className="mt-12 text-center pb-8 animate-fade-in text-gray-400">
                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
                     <span className="w-16 h-px bg-gray-200" />
                     Verified Expertise • Lifelong Learning

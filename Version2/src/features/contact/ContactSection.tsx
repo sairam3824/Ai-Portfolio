@@ -99,37 +99,37 @@ export const ContactSection = () => {
                 <div className="lg:col-span-4 grid grid-cols-1 gap-4 md:gap-6">
                     <a
                         href="mailto:sairam.maruri@gmail.com"
-                        className="group flex items-center gap-4 md:gap-6 p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] bg-white border border-gray-100 shadow-xl shadow-gray-200/30 hover:border-blue-200/50 transition-all overflow-hidden"
+                        className="group flex items-center gap-3 md:gap-6 p-4 sm:p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] bg-white border border-gray-100 shadow-xl shadow-gray-200/30 hover:border-blue-200/50 transition-all overflow-hidden"
                     >
-                        <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex-shrink-0 bg-blue-50 flex items-center justify-center text-blue-600 shadow-inner group-hover:bg-blue-600 group-hover:text-white transition-all">
-                            <Mail className="w-6 h-6 md:w-7 md:h-7" />
+                        <div className="w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex-shrink-0 bg-blue-50 flex items-center justify-center text-blue-600 shadow-inner group-hover:bg-blue-600 group-hover:text-white transition-all">
+                            <Mail className="w-5 h-5 md:w-7 md:h-7" />
                         </div>
-                        <div className="space-y-1 min-w-0">
-                            <p className="text-[10px] md:text-[11px] font-bold text-gray-400 uppercase tracking-widest">Email Node</p>
-                            <p className="text-xs sm:text-sm md:text-lg font-extrabold text-gray-900 group-hover:text-blue-600 transition-colors">sairam.maruri@gmail.com</p>
+                        <div className="space-y-0.5 md:space-y-1 min-w-0">
+                            <p className="text-[9px] md:text-[11px] font-bold text-gray-400 uppercase tracking-widest">Email Node</p>
+                            <p className="text-xs sm:text-sm md:text-xl font-extrabold text-gray-900 group-hover:text-blue-600 transition-colors whitespace-nowrap truncate">sairam.maruri@gmail.com</p>
                         </div>
                     </a>
 
                     <a
                         href="tel:+917893865644"
-                        className="group flex items-center gap-4 md:gap-6 p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] bg-white border border-gray-100 shadow-xl shadow-gray-200/30 hover:border-indigo-200/50 transition-all overflow-hidden"
+                        className="group flex items-center gap-3 md:gap-6 p-4 sm:p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] bg-white border border-gray-100 shadow-xl shadow-gray-200/30 hover:border-indigo-200/50 transition-all overflow-hidden"
                     >
-                        <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex-shrink-0 bg-indigo-50 flex items-center justify-center text-indigo-600 shadow-inner group-hover:bg-indigo-600 group-hover:text-white transition-all">
-                            <Phone className="w-6 h-6 md:w-7 md:h-7" />
+                        <div className="w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex-shrink-0 bg-indigo-50 flex items-center justify-center text-indigo-600 shadow-inner group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                            <Phone className="w-5 h-5 md:w-7 md:h-7" />
                         </div>
-                        <div className="space-y-1 min-w-0">
-                            <p className="text-[10px] md:text-[11px] font-bold text-gray-400 uppercase tracking-widest">Voice Protocol</p>
-                            <p className="text-sm sm:text-base md:text-xl font-extrabold text-gray-900 group-hover:text-indigo-600 transition-colors break-words">+91 7893865644</p>
+                        <div className="space-y-0.5 md:space-y-1 min-w-0">
+                            <p className="text-[9px] md:text-[11px] font-bold text-gray-400 uppercase tracking-widest">Voice Protocol</p>
+                            <p className="text-xs sm:text-sm md:text-xl font-extrabold text-gray-900 group-hover:text-indigo-600 transition-colors whitespace-nowrap truncate">+91 7893865644</p>
                         </div>
                     </a>
 
-                    <div className="group flex items-center gap-4 md:gap-6 p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] bg-white border border-gray-100 shadow-xl shadow-gray-200/30 hover:border-blue-200/50 transition-all">
-                        <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex-shrink-0 bg-gray-50 flex items-center justify-center text-gray-400 shadow-inner group-hover:bg-blue-600 group-hover:text-white transition-all">
-                            <MapPin className="w-6 h-6 md:w-7 md:h-7" />
+                    <div className="group flex items-center gap-3 md:gap-6 p-4 sm:p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] bg-white border border-gray-100 shadow-xl shadow-gray-200/30 hover:border-blue-200/50 transition-all">
+                        <div className="w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex-shrink-0 bg-gray-50 flex items-center justify-center text-gray-400 shadow-inner group-hover:bg-blue-600 group-hover:text-white transition-all">
+                            <MapPin className="w-5 h-5 md:w-7 md:h-7" />
                         </div>
-                        <div className="space-y-1">
-                            <p className="text-[10px] md:text-[11px] font-bold text-gray-400 uppercase tracking-widest">Base Loc</p>
-                            <p className="text-base md:text-xl font-extrabold text-gray-900 group-hover:text-blue-600 transition-colors">Amaravati, India</p>
+                        <div className="space-y-0.5 md:space-y-1">
+                            <p className="text-[9px] md:text-[11px] font-bold text-gray-400 uppercase tracking-widest">Base Loc</p>
+                            <p className="text-xs sm:text-base md:text-xl font-extrabold text-gray-900 group-hover:text-blue-600 transition-colors">Amaravati, India</p>
                         </div>
                     </div>
                 </div>
@@ -222,7 +222,7 @@ export const ContactSection = () => {
             />
 
             {/* Journey Footer */}
-            <footer className="mt-24 text-center pb-20 animate-fade-in">
+            <footer className="mt-24 text-center pb-8 animate-fade-in">
                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
                     <span className="w-16 h-px bg-gray-200" />
                     Initiate Protocol • Establish Connection
