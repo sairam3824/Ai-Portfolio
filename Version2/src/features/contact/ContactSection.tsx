@@ -20,7 +20,7 @@ export const ContactSection = () => {
     const [anonymousDialogOpen, setAnonymousDialogOpen] = useState(false);
 
     const stats = [
-        { label: "LeetCode Mastery", value: "800+", rating: "2500+ (Knight)", href: "https://leetcode.com/u/programmer3824/", color: "blue" },
+        { label: "LeetCode Mastery", value: "800+", rating: "2500+ (Guardian)", href: "https://leetcode.com/u/programmer3824/", color: "blue" },
         { label: "CodeChef Ranking", value: "500+", rating: "3⭐ (1600+)", href: "https://www.codechef.com/users/sairam2004", color: "indigo" },
         { label: "GitHub Presence", value: "20+", rating: "Open Source", href: "https://github.com/sairam3824", color: "emerald" },
     ];
@@ -106,7 +106,7 @@ export const ContactSection = () => {
                         </div>
                         <div className="space-y-1 min-w-0">
                             <p className="text-[10px] md:text-[11px] font-bold text-gray-400 uppercase tracking-widest">Email Node</p>
-                            <p className="text-sm sm:text-base md:text-xl font-extrabold text-gray-900 group-hover:text-blue-600 transition-colors break-all">sairam.maruri@gmail.com</p>
+                            <p className="text-xs sm:text-sm md:text-lg font-extrabold text-gray-900 group-hover:text-blue-600 transition-colors">sairam.maruri@gmail.com</p>
                         </div>
                     </a>
 
@@ -225,7 +225,7 @@ export const ContactSection = () => {
             <footer className="mt-24 text-center pb-20 animate-fade-in">
                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
                     <span className="w-16 h-px bg-gray-200" />
-                    B.Tech CS • VIT • 2022-2026
+                    Initiate Protocol • Establish Connection
                     <span className="w-16 h-px bg-gray-200" />
                 </p>
             </footer>
