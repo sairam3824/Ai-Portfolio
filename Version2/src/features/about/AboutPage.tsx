@@ -142,10 +142,10 @@ export const AboutPage = () => {
 
       {/* Closing Tagline */}
       <div className="mt-20 text-center animate-fade-in">
-        <p className="text-xs font-black text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-8">
-          <span className="w-12 h-px bg-gray-200" />
-          B.Tech CS • VIT • 2022-2026
-          <span className="w-12 h-px bg-gray-200" />
+        <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
+          <span className="w-16 h-px bg-gray-200" />
+          Passionate Engineer • Creative Thinker
+          <span className="w-16 h-px bg-gray-200" />
         </p>
       </div>
     </div>
