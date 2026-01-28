@@ -20,16 +20,16 @@ export const SkillsSection = () => {
             color: "indigo",
             description: "Architecting intelligent systems with cutting-edge models.",
             skills: [
-                { name: "OpenAI API", level: "Advanced" },
-                { name: "Claude API", level: "Advanced" },
-                { name: "Gemini API", level: "Advanced" },
-                { name: "Hugging Face", level: "Advanced" },
-                { name: "LangChain", level: "Advanced" },
-                { name: "RAG Systems", level: "Advanced" },
-                { name: "Prompt Engineering", level: "Advanced" },
-                { name: "Model Fine-tuning", level: "Intermediate" },
-                { name: "AI Agent Development", level: "Advanced" },
-                { name: "Vector Databases", level: "Intermediate" },
+                { name: "OpenAI API", level: "Advanced", url: "https://platform.openai.com/docs" },
+                { name: "Claude API", level: "Advanced", url: "https://docs.anthropic.com/claude/docs" },
+                { name: "Gemini API", level: "Advanced", url: "https://ai.google.dev/docs" },
+                { name: "Hugging Face", level: "Advanced", url: "https://huggingface.co/docs" },
+                { name: "LangChain", level: "Advanced", url: "https://python.langchain.com/docs/get_started/introduction" },
+                { name: "RAG Systems", level: "Advanced", url: "https://python.langchain.com/docs/use_cases/question_answering/" },
+                { name: "Prompt Engineering", level: "Advanced", url: "https://www.promptingguide.ai/" },
+                { name: "Model Fine-tuning", level: "Intermediate", url: "https://huggingface.co/docs/transformers/training" },
+                { name: "AI Agent Development", level: "Advanced", url: "https://python.langchain.com/docs/use_cases/agents/" },
+                { name: "Vector Databases", level: "Intermediate", url: "https://www.pinecone.io/learn/vector-database/" },
             ],
         },
         {
@@ -38,13 +38,13 @@ export const SkillsSection = () => {
             color: "blue",
             description: "Building robust, scalable applications with precision.",
             skills: [
-                { name: "Java", level: "Advanced" },
-                { name: "C++", level: "Advanced" },
-                { name: "Python", level: "Advanced" },
-                { name: "DataStructures & Algorithms", level: "Advanced" },
-                { name: "Competitive Programming", level: "Advanced" },
-                { name: "Problem Solving", level: "Advanced" },
-                { name: "Object Oriented Programming", level: "Advanced" },
+                { name: "Java", level: "Advanced", url: "https://dev.java/" },
+                { name: "C++", level: "Advanced", url: "https://isocpp.org/" },
+                { name: "Python", level: "Advanced", url: "https://www.python.org/" },
+                { name: "DataStructures & Algorithms", level: "Advanced", url: "https://www.geeksforgeeks.org/data-structures/" },
+                { name: "Competitive Programming", level: "Advanced", url: "https://cp-algorithms.com/" },
+                { name: "Problem Solving", level: "Advanced", url: "https://leetcode.com/" },
+                { name: "Object Oriented Programming", level: "Advanced", url: "https://en.wikipedia.org/wiki/Object-oriented_programming" },
             ],
         },
         {
@@ -53,14 +53,14 @@ export const SkillsSection = () => {
             color: "amber",
             description: "Developing predictive models and computer vision pipelines.",
             skills: [
-                { name: "TensorFlow", level: "Intermediate" },
-                { name: "PyTorch", level: "Intermediate" },
-                { name: "Scikit-learn", level: "Intermediate" },
-                { name: "Computer Vision", level: "Advanced" },
-                { name: "NLP", level: "Advanced" },
-                { name: "Deep Learning", level: "Advanced" },
-                { name: "Machine Learning", level: "Advanced" },
-                { name: "Reinforcement Learning", level: "Beginner" },
+                { name: "TensorFlow", level: "Intermediate", url: "https://www.tensorflow.org/" },
+                { name: "PyTorch", level: "Intermediate", url: "https://pytorch.org/" },
+                { name: "Scikit-learn", level: "Intermediate", url: "https://scikit-learn.org/" },
+                { name: "Computer Vision", level: "Advanced", url: "https://opencv.org/" },
+                { name: "NLP", level: "Advanced", url: "https://huggingface.co/tasks/natural-language-processing" },
+                { name: "Deep Learning", level: "Advanced", url: "https://www.deeplearning.ai/" },
+                { name: "Machine Learning", level: "Advanced", url: "https://en.wikipedia.org/wiki/Machine_learning" },
+                { name: "Reinforcement Learning", level: "Beginner", url: "https://spinningup.openai.com/en/latest/" },
             ],
         },
         {
@@ -69,12 +69,12 @@ export const SkillsSection = () => {
             color: "sky",
             description: "Deploying and scaling applications on modern infrastructure.",
             skills: [
-                { name: "AWS", level: "Intermediate" },
-                { name: "Azure", level: "Intermediate" },
-                { name: "n8n", level: "Intermediate" },
-                { name: "Docker", level: "Beginner" },
-                { name: "Git", level: "Advanced" },
-                { name: "Linux", level: "Intermediate" },
+                { name: "AWS", level: "Intermediate", url: "https://aws.amazon.com/" },
+                { name: "Azure", level: "Intermediate", url: "https://azure.microsoft.com/" },
+                { name: "n8n", level: "Intermediate", url: "https://n8n.io/" },
+                { name: "Docker", level: "Beginner", url: "https://www.docker.com/" },
+                { name: "Git", level: "Advanced", url: "https://git-scm.com/" },
+                { name: "Linux", level: "Intermediate", url: "https://www.linux.org/" },
             ],
         },
         {
@@ -83,12 +83,12 @@ export const SkillsSection = () => {
             color: "rose",
             description: "Creating full-stack functional applications.",
             skills: [
-                { name: "Django", level: "Intermediate" },
-                { name: "Node.js", level: "Intermediate" },
-                { name: "React.js", level: "Intermediate" },
-                { name: "MySQL", level: "Intermediate" },
-                { name: "MongoDB", level: "Intermediate" },
-                { name: "Streamlit", level: "Advanced" },
+                { name: "Django", level: "Intermediate", url: "https://www.djangoproject.com/" },
+                { name: "Node.js", level: "Intermediate", url: "https://nodejs.org/" },
+                { name: "React.js", level: "Intermediate", url: "https://react.dev/" },
+                { name: "MySQL", level: "Intermediate", url: "https://www.mysql.com/" },
+                { name: "MongoDB", level: "Intermediate", url: "https://www.mongodb.com/" },
+                { name: "Streamlit", level: "Advanced", url: "https://streamlit.io/" },
             ],
         },
         {
@@ -97,10 +97,10 @@ export const SkillsSection = () => {
             color: "emerald",
             description: "Foundational knowledge for systems engineering.",
             skills: [
-                { name: "DBMS", level: "Intermediate" },
-                { name: "Computer Networks", level: "Intermediate" },
-                { name: "Operating Systems", level: "Intermediate" },
-                { name: "System Design", level: "Beginner" },
+                { name: "DBMS", level: "Intermediate", url: "https://www.geeksforgeeks.org/dbms/" },
+                { name: "Computer Networks", level: "Intermediate", url: "https://www.geeksforgeeks.org/computer-network-tutorials/" },
+                { name: "Operating Systems", level: "Intermediate", url: "https://www.geeksforgeeks.org/operating-systems/" },
+                { name: "System Design", level: "Beginner", url: "https://github.com/donnemartin/system-design-primer" },
             ],
         },
     ];
@@ -158,7 +158,7 @@ export const SkillsSection = () => {
                         placeholder="Filter skills by name..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full pl-16 pr-6 py-4 bg-white border border-gray-100 rounded-2xl outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all font-medium text-gray-700 text-lg shadow-xl shadow-gray-200/40"
+                        className="w-full pl-16 pr-6 py-4 bg-white border border-gray-100 rounded-full outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all font-medium text-gray-700 text-lg shadow-xl shadow-gray-200/40"
                     />
                 </div>
             </div>
@@ -187,12 +187,15 @@ export const SkillsSection = () => {
 
                         {/* Skills List */}
                         <div className="flex flex-col gap-3 flex-1">
-                            {cat.skills.map((s, j) => (
-                                <div
+                            {cat.skills.map((s: any, j) => (
+                                <a
                                     key={j}
-                                    className="flex items-center justify-between p-3 rounded-xl bg-gray-50/50 hover:bg-gray-100 transition-colors group/skill"
+                                    href={s.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center justify-between p-3 rounded-xl bg-gray-50/50 hover:bg-gray-100 transition-colors group/skill cursor-pointer"
                                 >
-                                    <span className="font-bold text-gray-700 text-sm tracking-tight">{s.name}</span>
+                                    <span className="font-bold text-gray-700 text-sm tracking-tight group-hover/skill:text-blue-600 transition-colors">{s.name}</span>
                                     <div className="flex items-center gap-2">
                                         <span className={`text-[9px] font-black uppercase tracking-widest px-2 py-1 rounded-md ${s.level === 'Advanced' ? 'bg-blue-100 text-blue-700' :
                                             s.level === 'Intermediate' ? 'bg-yellow-100 text-yellow-700' :
@@ -201,7 +204,7 @@ export const SkillsSection = () => {
                                             {s.level}
                                         </span>
                                     </div>
-                                </div>
+                                </a>
                             ))}
                         </div>
                     </div>
@@ -219,7 +222,7 @@ export const SkillsSection = () => {
             <footer className="mt-24 text-center pb-20 animate-fade-in">
                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
                     <span className="w-16 h-px bg-gray-200" />
-                    B.Tech CS • VIT • 2022-2026
+                    Continuously Improving • Mastering New Tech
                     <span className="w-16 h-px bg-gray-200" />
                 </p>
             </footer>

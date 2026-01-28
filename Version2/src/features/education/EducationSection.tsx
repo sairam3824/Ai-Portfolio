@@ -152,7 +152,7 @@ export const EducationSection = () => {
             <footer className="mt-24 text-center pb-20 animate-fade-in">
                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
                     <span className="w-16 h-px bg-gray-200" />
-                    B.Tech CS • VIT • 2022-2026
+                    Academic Excellence • Continuous Growth
                     <span className="w-16 h-px bg-gray-200" />
                 </p>
             </footer>
