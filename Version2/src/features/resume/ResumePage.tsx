@@ -7,6 +7,8 @@ import {
     Linkedin,
     Award,
     Code2,
+    Cloud,
+    Brain,
     Eye
 } from "lucide-react";
 
@@ -66,8 +68,8 @@ export const ResumePage = () => {
                                 <span>Amaravati, India</span>
                             </div>
                             <div className="flex items-center gap-4 mt-2">
-                                <a href="https://github.com/sairam3824" className="text-gray-400 hover:text-gray-900"><Github className="w-5 h-5" /></a>
-                                <a href="https://www.linkedin.com/in/sairam-maruri" className="text-gray-400 hover:text-blue-600"><Linkedin className="w-5 h-5" /></a>
+                                <a href="https://github.com/sairam3824" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-gray-900"><Github className="w-5 h-5" /></a>
+                                <a href="https://www.linkedin.com/in/sairam-maruri" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800"><Linkedin className="w-5 h-5" /></a>
                             </div>
                         </div>
                     </header>
@@ -81,6 +83,7 @@ export const ResumePage = () => {
                         <p className="text-gray-700 leading-relaxed text-sm md:text-base">
                             Advanced GenAI Engineer and Competitive Programmer (LeetCode Guardian) with expertise in building scalable AI agents, RAG pipelines, and cloud-native inputs architectures. Proven track record of solving 1,500+ algorithmic problems and deploying enterprise-grade AI solutions on AWS. Passionate about bridging the gap between theoretical research and production systems.
                         </p>
+
                     </section>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 print:grid-cols-3">
@@ -97,31 +100,31 @@ export const ResumePage = () => {
                                 <div className="space-y-6">
                                     <div className="group">
                                         <div className="flex justify-between items-baseline mb-2">
-                                            <h4 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">HireMind (Job Cloud)</h4>
-                                            <span className="text-xs font-bold bg-blue-50 text-blue-600 px-2 py-0.5 rounded">Next.js, Python, AWS</span>
+                                            <h4 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">End-to-End AI Research Platform</h4>
+                                            <span className="text-xs font-bold bg-blue-50 text-blue-600 px-2 py-0.5 rounded">Python, FAISS, Django, AWS</span>
                                         </div>
                                         <p className="text-sm text-gray-600 leading-relaxed mb-2">
-                                            Automated job crawler and matching platform connecting job seekers with ideal roles. Features intelligent resume matching, company insights, and real-time data integration using Supabase and Docker.
+                                            Scalable research platform (orravyn.cloud) with RAG using FAISS, multi-doc summarization, GPT-4/Claude integration, and Django REST APIs — served 100+ concurrent users and cut AI pipeline latency ~30%.
                                         </p>
                                     </div>
 
                                     <div className="group">
                                         <div className="flex justify-between items-baseline mb-2">
-                                            <h4 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Enterprise RAG Platform</h4>
-                                            <span className="text-xs font-bold bg-blue-50 text-blue-600 px-2 py-0.5 rounded">LangChain, Vector DB, LLMs</span>
+                                            <h4 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Medical Image Classification</h4>
+                                            <span className="text-xs font-bold bg-blue-50 text-blue-600 px-2 py-0.5 rounded">Python, PyTorch, TensorFlow</span>
                                         </div>
                                         <p className="text-sm text-gray-600 leading-relaxed mb-2">
-                                            Sophisticated Retrieval-Augmented Generation system combining vector databases and LLMs for intelligent document processing and semantic search across large corporate knowledge bases.
+                                            WideResNet-based CNN with augmentation and careful hyperparameter tuning on 10k+ X-rays, achieving 92% bone-fracture classification accuracy and reducing overfitting by ~20%.
                                         </p>
                                     </div>
 
                                     <div className="group">
                                         <div className="flex justify-between items-baseline mb-2">
-                                            <h4 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">AI Research Portal</h4>
-                                            <span className="text-xs font-bold bg-blue-50 text-blue-600 px-2 py-0.5 rounded">Node.js, Docker, AWS</span>
+                                            <h4 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Large-Scale ML System for Customer Prediction</h4>
+                                            <span className="text-xs font-bold bg-blue-50 text-blue-600 px-2 py-0.5 rounded">Python, scikit-learn, XGBoost</span>
                                         </div>
                                         <p className="text-sm text-gray-600 leading-relaxed mb-2">
-                                            Collaborative AI research and deployment platform enabling scalable LLM experimentation. Implemented n8n workflows for automated model fine-tuning pipelines.
+                                            Distributed ML pipeline with Random Forest/XGBoost, feature engineering and validation on 100k+ records — improved prediction accuracy (~99%) and reduced churn by ~25%.
                                         </p>
                                     </div>
                                 </div>
@@ -139,7 +142,20 @@ export const ResumePage = () => {
                                         <span className="text-sm font-bold text-gray-500">2022 - 2026</span>
                                     </div>
                                     <p className="text-sm text-gray-600 font-medium">Bachelor of Technology - Computer Science & Engineering</p>
-                                    <p className="text-sm text-blue-600 font-bold mt-1">CGPA: 9.0</p>
+                                    <p className="text-sm text-blue-600 font-bold mt-1">CGPA: 8.31</p>
+                                </div>
+                            </section>
+
+                            {/* Research Interests */}
+                            <section>
+                                <h3 className="text-xs font-black uppercase tracking-[0.2em] text-gray-400 mb-6 flex items-center gap-2">
+                                    <span className="w-8 h-px bg-blue-600" />
+                                    Research Interests
+                                </h3>
+                                <div className="flex flex-wrap gap-1.5">
+                                    {["Reinforcement Learning", "Scaling Laws", "Code Generation", "AI Safety & Alignment", "Interpretability"].map(s => (
+                                        <span key={s} className="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase border border-gray-100">{s}</span>
+                                    ))}
                                 </div>
                             </section>
                         </div>
@@ -156,8 +172,8 @@ export const ResumePage = () => {
                                     <div>
                                         <h5 className="text-xs font-bold text-gray-900 uppercase mb-2">Languages</h5>
                                         <div className="flex flex-wrap gap-1.5">
-                                            {["Java", "C++", "Python", "TypeScript", "SQL"].map(s => (
-                                                <span key={s} className="px-2 py-1 bg-gray-50 text-gray-600 text-[10px] font-bold rounded uppercase">{s}</span>
+                                            {["Java", "C++", "Python", "GO", "SQL"].map(s => (
+                                                <span key={s} className="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase">{s}</span>
                                             ))}
                                         </div>
                                     </div>
@@ -165,8 +181,8 @@ export const ResumePage = () => {
                                     <div>
                                         <h5 className="text-xs font-bold text-gray-900 uppercase mb-2">AI / ML</h5>
                                         <div className="flex flex-wrap gap-1.5">
-                                            {["PyTorch", "LangChain", "RAG", "LLMs", "OpenCV", "Vectors"].map(s => (
-                                                <span key={s} className="px-2 py-1 bg-gray-50 text-gray-600 text-[10px] font-bold rounded uppercase">{s}</span>
+                                            {["PyTorch", "TensorFlow", "LangChain", "RAG", "LLMs", "Vector DB"].map(s => (
+                                                <span key={s} className="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase">{s}</span>
                                             ))}
                                         </div>
                                     </div>
@@ -174,13 +190,15 @@ export const ResumePage = () => {
                                     <div>
                                         <h5 className="text-xs font-bold text-gray-900 uppercase mb-2">Cloud & Dev</h5>
                                         <div className="flex flex-wrap gap-1.5">
-                                            {["AWS", "Docker", "Git", "Likux", "React", "Next.js"].map(s => (
-                                                <span key={s} className="px-2 py-1 bg-gray-50 text-gray-600 text-[10px] font-bold rounded uppercase">{s}</span>
+                                            {["AWS", "Docker", "Terraform", "CI/CD", "Git"].map(s => (
+                                                <span key={s} className="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase">{s}</span>
                                             ))}
                                         </div>
                                     </div>
                                 </div>
                             </section>
+
+
 
                             <section>
                                 <h3 className="text-xs font-black uppercase tracking-[0.2em] text-gray-400 mb-6 flex items-center gap-2">
@@ -190,7 +208,7 @@ export const ResumePage = () => {
                                 <ul className="space-y-3">
                                     <li className="text-xs text-gray-600 leading-relaxed flex gap-2">
                                         <Award className="w-3.5 h-3.5 text-blue-600 shrink-0" />
-                                        <span>LeetCode Guardian (Top 2% globally)</span>
+                                        <span>LeetCode Guardian (Top 1%)</span>
                                     </li>
                                     <li className="text-xs text-gray-600 leading-relaxed flex gap-2">
                                         <Award className="w-3.5 h-3.5 text-orange-500 shrink-0" />
@@ -198,7 +216,7 @@ export const ResumePage = () => {
                                     </li>
                                     <li className="text-xs text-gray-600 leading-relaxed flex gap-2">
                                         <Award className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                                        <span>Solved 1,500+ Algorithmic Problems</span>
+                                        <span>Solved 1000+ Algorithmic Problems</span>
                                     </li>
                                 </ul>
                             </section>
@@ -210,12 +228,16 @@ export const ResumePage = () => {
                                 </h3>
                                 <ul className="space-y-3">
                                     <li className="text-xs text-gray-600 leading-relaxed flex gap-2">
-                                        <Code2 className="w-3.5 h-3.5 text-gray-400 shrink-0" />
-                                        <span>Oracle Cloud Infrastructure 2024 GenAI</span>
+                                        <Cloud className="w-3.5 h-3.5 text-orange-500 shrink-0" />
+                                        <span>AWS Certified Cloud Practitioner</span>
                                     </li>
                                     <li className="text-xs text-gray-600 leading-relaxed flex gap-2">
-                                        <Code2 className="w-3.5 h-3.5 text-gray-400 shrink-0" />
-                                        <span>AWS Certified Cloud Practitioner (In Progress)</span>
+                                        <Brain className="w-3.5 h-3.5 text-red-600 shrink-0" />
+                                        <span>Oracle Generative AI Professional</span>
+                                    </li>
+                                    <li className="text-xs text-gray-600 leading-relaxed flex gap-2">
+                                        <Brain className="w-3.5 h-3.5 text-red-600 shrink-0" />
+                                        <span>Oracle AI Vector Search Professional</span>
                                     </li>
                                 </ul>
                             </section>
@@ -235,7 +257,7 @@ export const ResumePage = () => {
             <footer className="mt-auto pt-16 text-center pb-8 animate-fade-in print:hidden">
                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
                     <span className="w-16 h-px bg-gray-300" />
-                    B.Tech CS • VIT • 2022-2026
+                    Professional History • Career Highlights
                     <span className="w-16 h-px bg-gray-300" />
                 </p>
             </footer>

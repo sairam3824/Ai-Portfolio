@@ -116,7 +116,7 @@ export const CertificationSection = () => {
             <footer className="mt-12 text-center pb-20 animate-fade-in text-gray-400">
                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
                     <span className="w-16 h-px bg-gray-200" />
-                    B.Tech CS • VIT • 2022-2026
+                    Verified Expertise • Lifelong Learning
                     <span className="w-16 h-px bg-gray-200" />
                 </p>
             </footer>
