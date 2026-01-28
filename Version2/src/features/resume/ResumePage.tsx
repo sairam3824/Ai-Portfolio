@@ -6,7 +6,6 @@ import {
     Github,
     Linkedin,
     Award,
-    Code2,
     Cloud,
     Brain,
     Eye
