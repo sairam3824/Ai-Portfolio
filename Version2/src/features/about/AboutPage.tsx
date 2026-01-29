@@ -27,9 +27,9 @@ export const AboutPage = () => {
   ];
 
   return (
-    <div className="home-container relative py-12 px-4 max-w-6xl mx-auto min-h-full overflow-visible">
+    <div className="relative py-12 px-4 max-w-6xl mx-auto min-h-full overflow-visible flex flex-col items-start">
       <Helmet>
-        <title>About Sai Ram | GenAI Engineer & Architect</title>
+        <title>Sai Ram Maruri | GenAI Engineer & Architect</title>
         <meta name="description" content="Learn about Sai Ram Maruri's journey from competitive programmer to GenAI Architect. Expertise in LLMs, RAG systems, and cloud-native AI solutions." />
       </Helmet>
       {/* Background Narrative blurs */}
@@ -37,16 +37,13 @@ export const AboutPage = () => {
       <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-indigo-600/5 blur-[120px] rounded-full -z-10" />
 
       {/* Header: Pure Impact */}
-      <header className="relative z-10 mb-20 animate-fade-in">
+      <header className="relative z-10 mb-20 animate-fade-in w-full text-left">
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50/50 backdrop-blur-sm border border-blue-100 rounded-full mb-6 text-blue-600 font-bold text-[10px] uppercase tracking-widest">
           <Sparkles className="w-3 h-3" />
           Evolution of an Engineer
         </div>
-        <h1 className="text-7xl md:text-9xl font-black tracking-[ -0.05em] text-gray-900 leading-[0.85] mb-8">
-          GenAI <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600">
-            Pioneer.
-          </span>
+        <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-[-0.05em] text-gray-900 leading-tight mb-8">
+          GenAI <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600">Pioneer.</span>
         </h1>
         <p className="text-xl md:text-2xl text-gray-500 font-medium max-w-3xl leading-relaxed">
           I am Sai Ram Maruri — engineering autonomous systems that solve complexity with surgical precision.
@@ -54,7 +51,7 @@ export const AboutPage = () => {
       </header>
 
       {/* The Bento Masterclass */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 relative z-10">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 relative z-10 w-full">
 
         {/* Main Bio Card - Span 8 */}
         <div className="md:col-span-8 p-10 rounded-[3rem] bg-white border border-gray-100 shadow-2xl shadow-gray-200/50 flex flex-col justify-between group hover:border-blue-200/50 hover:-translate-y-2 transition-all duration-700">
@@ -118,7 +115,7 @@ export const AboutPage = () => {
         </div>
 
         {/* Expertise List - Span 8 */}
-        <div className="md:col-span-8 p-10 rounded-[3rem] bg-gray-50/50 backdrop-blur-xl border border-gray-100 flex flex-col justify-between relative overflow-hidden group hover:bg-white hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
+        <div className="md:col-span-8 p-10 rounded-[3rem] bg-gray-50/50 backdrop-blur-xl border border-gray-100 flex flex-col justify-start relative overflow-hidden group hover:bg-white hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
           <div className="absolute -bottom-10 -right-10 text-[180px] font-black text-gray-900/[0.02] select-none">AI</div>
           <div className="space-y-6">
             <h3 className="text-2xl font-black text-gray-900 flex items-center gap-3">
@@ -129,7 +126,7 @@ export const AboutPage = () => {
               Designing LLM-powered applications, RAG pipelines, vector-database search systems, and agentic workflows for SaaS-grade optimization.
             </p>
           </div>
-          <div className="flex flex-wrap gap-3 mt-8">
+          <div className="flex flex-wrap gap-3 mt-10">
             {tools.map((tool, i) => (
               <div key={i} className="px-5 py-2.5 bg-white border border-gray-100 rounded-2xl text-xs font-bold text-gray-700 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-default flex items-center gap-2">
                 <Terminal className="w-3 h-3 text-blue-500" />
