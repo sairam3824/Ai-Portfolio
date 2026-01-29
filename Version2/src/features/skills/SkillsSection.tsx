@@ -4,14 +4,11 @@ import {
     Cloud,
     Terminal,
     Zap,
-    Search,
     Cpu,
     Target
 } from "lucide-react";
-import { useState, useMemo } from "react";
 
 export const SkillsSection = () => {
-    const [searchQuery, setSearchQuery] = useState("");
 
     const skillCategories = [
         {
@@ -41,10 +38,8 @@ export const SkillsSection = () => {
                 { name: "Java", level: "Advanced", url: "https://dev.java/" },
                 { name: "C++", level: "Advanced", url: "https://isocpp.org/" },
                 { name: "Python", level: "Advanced", url: "https://www.python.org/" },
-                { name: "DataStructures & Algorithms", level: "Advanced", url: "https://www.geeksforgeeks.org/data-structures/" },
-                { name: "Competitive Programming", level: "Advanced", url: "https://cp-algorithms.com/" },
-                { name: "Problem Solving", level: "Advanced", url: "https://leetcode.com/" },
-                { name: "Object Oriented Programming", level: "Advanced", url: "https://en.wikipedia.org/wiki/Object-oriented_programming" },
+                { name: "Go", level: "Intermediate", url: "https://go.dev/" },
+                { name: "SQL", level: "Advanced", url: "https://en.wikipedia.org/wiki/SQL" },
             ],
         },
         {
@@ -57,10 +52,10 @@ export const SkillsSection = () => {
                 { name: "PyTorch", level: "Intermediate", url: "https://pytorch.org/" },
                 { name: "Scikit-learn", level: "Intermediate", url: "https://scikit-learn.org/" },
                 { name: "Computer Vision", level: "Advanced", url: "https://opencv.org/" },
-                { name: "NLP", level: "Advanced", url: "https://huggingface.co/tasks/natural-language-processing" },
+                { name: "NLP", level: "Advanced", url: "" },
                 { name: "Deep Learning", level: "Advanced", url: "https://www.deeplearning.ai/" },
                 { name: "Machine Learning", level: "Advanced", url: "https://en.wikipedia.org/wiki/Machine_learning" },
-                { name: "Reinforcement Learning", level: "Beginner", url: "https://spinningup.openai.com/en/latest/" },
+                { name: "Reinforcement Learning", level: "Beginner", url: "" },
             ],
         },
         {
@@ -71,10 +66,13 @@ export const SkillsSection = () => {
             skills: [
                 { name: "AWS", level: "Intermediate", url: "https://aws.amazon.com/" },
                 { name: "Azure", level: "Intermediate", url: "https://azure.microsoft.com/" },
+                { name: "GCP", level: "Intermediate", url: "https://cloud.google.com/" },
+                { name: "Kubernetes", level: "Intermediate", url: "https://kubernetes.io/" },
+                { name: "Terraform", level: "Intermediate", url: "https://www.terraform.io/" },
+                { name: "CI/CD", level: "Intermediate", url: "https://en.wikipedia.org/wiki/CI/CD" },
                 { name: "n8n", level: "Intermediate", url: "https://n8n.io/" },
                 { name: "Docker", level: "Beginner", url: "https://www.docker.com/" },
                 { name: "Git", level: "Advanced", url: "https://git-scm.com/" },
-                { name: "Linux", level: "Intermediate", url: "https://www.linux.org/" },
             ],
         },
         {
@@ -88,7 +86,7 @@ export const SkillsSection = () => {
                 { name: "React.js", level: "Intermediate", url: "https://react.dev/" },
                 { name: "MySQL", level: "Intermediate", url: "https://www.mysql.com/" },
                 { name: "MongoDB", level: "Intermediate", url: "https://www.mongodb.com/" },
-                { name: "Streamlit", level: "Advanced", url: "https://streamlit.io/" },
+                { name: "Streamlit", level: "Intermediate", url: "https://streamlit.io/" },
             ],
         },
         {
@@ -98,21 +96,17 @@ export const SkillsSection = () => {
             description: "Foundational knowledge for systems engineering.",
             skills: [
                 { name: "DBMS", level: "Intermediate", url: "https://www.geeksforgeeks.org/dbms/" },
+                { name: "NoSQL", level: "Intermediate", url: "https://www.geeksforgeeks.org/introduction-to-nosql/" },
                 { name: "Computer Networks", level: "Intermediate", url: "https://www.geeksforgeeks.org/computer-network-tutorials/" },
                 { name: "Operating Systems", level: "Intermediate", url: "https://www.geeksforgeeks.org/operating-systems/" },
-                { name: "System Design", level: "Beginner", url: "https://github.com/donnemartin/system-design-primer" },
+                { name: "DataStructures & Algorithms", level: "Advanced", url: "https://www.geeksforgeeks.org/data-structures/" },
+                { name: "Competitive Programming", level: "Advanced", url: "https://cp-algorithms.com/" },
+                { name: "Object Oriented Programming", level: "Advanced", url: "https://en.wikipedia.org/wiki/Object-oriented_programming" },
+                { name: "System Design", level: "Beginner", url: "" },
             ],
         },
     ];
 
-    const filteredCategories = useMemo(() => {
-        if (!searchQuery) return skillCategories;
-        const query = searchQuery.toLowerCase().trim();
-        return skillCategories.map(cat => ({
-            ...cat,
-            skills: cat.skills.filter(s => s.name.toLowerCase().includes(query))
-        })).filter(cat => cat.skills.length > 0);
-    }, [searchQuery]);
 
     const getColorClasses = (color: string) => {
         const maps: { [key: string]: string } = {
@@ -149,23 +143,10 @@ export const SkillsSection = () => {
                 </p>
             </header>
 
-            {/* Search Control */}
-            <div className="max-w-2xl mx-auto mb-16 relative z-10 px-4">
-                <div className="relative group">
-                    <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
-                    <input
-                        type="text"
-                        placeholder="Filter skills by name..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full pl-16 pr-6 py-4 bg-white border border-gray-100 rounded-full outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all font-medium text-gray-700 text-lg shadow-xl shadow-gray-200/40"
-                    />
-                </div>
-            </div>
 
             {/* Skills Bento Grid - Lists Layout */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
-                {filteredCategories.map((cat, i) => (
+                {skillCategories.map((cat, i) => (
                     <div
                         key={i}
                         className="group relative flex flex-col p-8 rounded-[2.5rem] bg-white border border-gray-100 shadow-xl shadow-gray-200/30 hover:shadow-2xl hover:border-blue-200/50 transition-all duration-300 h-full"
@@ -187,37 +168,40 @@ export const SkillsSection = () => {
 
                         {/* Skills List */}
                         <div className="flex flex-col gap-3 flex-1">
-                            {cat.skills.map((s: any, j) => (
-                                <a
-                                    key={j}
-                                    href={s.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center justify-between p-3 rounded-xl bg-gray-50/50 hover:bg-gray-100 transition-colors group/skill cursor-pointer"
-                                >
-                                    <span className="font-bold text-gray-700 text-sm tracking-tight group-hover/skill:text-blue-600 transition-colors">{s.name}</span>
-                                    <div className="flex items-center gap-2">
-                                        <span className={`text-[9px] font-black uppercase tracking-widest px-2 py-1 rounded-md ${s.level === 'Advanced' ? 'bg-blue-100 text-blue-700' :
-                                            s.level === 'Intermediate' ? 'bg-yellow-100 text-yellow-700' :
-                                                'bg-orange-100 text-orange-700'
-                                            }`}>
-                                            {s.level}
+                            {cat.skills.map((s: any, j) => {
+                                const CardTag = s.url ? 'a' : 'div';
+                                const commonProps = {
+                                    key: j,
+                                    className: `flex items-center justify-between p-3 rounded-xl bg-gray-50/50 transition-colors group/skill ${s.url ? 'hover:bg-gray-100 cursor-pointer' : 'cursor-default'}`
+                                };
+
+                                const linkProps = s.url ? {
+                                    href: s.url,
+                                    target: "_blank",
+                                    rel: "noopener noreferrer"
+                                } : {};
+
+                                return (
+                                    <CardTag {...commonProps} {...linkProps}>
+                                        <span className={`font-bold text-sm tracking-tight transition-colors text-gray-700 ${s.url ? 'group-hover/skill:text-blue-600' : ''}`}>
+                                            {s.name}
                                         </span>
-                                    </div>
-                                </a>
-                            ))}
+                                        <div className="flex items-center gap-2">
+                                            <span className={`text-[9px] font-black uppercase tracking-widest px-2 py-1 rounded-md ${s.level === 'Advanced' ? 'bg-blue-100 text-blue-700' :
+                                                s.level === 'Intermediate' ? 'bg-yellow-100 text-yellow-700' :
+                                                    'bg-orange-100 text-orange-700'
+                                                }`}>
+                                                {s.level}
+                                            </span>
+                                        </div>
+                                    </CardTag>
+                                );
+                            })}
                         </div>
                     </div>
                 ))}
             </div>
 
-            {/* Empty State */}
-            {filteredCategories.length === 0 && (
-                <div className="text-center py-20 animate-fade-in">
-                    <Code2 className="w-16 h-16 text-gray-200 mx-auto mb-4" />
-                    <p className="text-gray-400 font-bold uppercase tracking-[0.2em] text-sm">No skill matching your query</p>
-                </div>
-            )}
             {/* Journey Footer */}
             <footer className="mt-24 text-center pb-8 animate-fade-in">
                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
