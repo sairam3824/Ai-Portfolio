@@ -80,13 +80,3 @@ To explore the portfolios, you can run each version locally.
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👤 Author
-
-**Sai Ram Maruri**
-*   **Role:** GenAI Engineer & Architect
-*   **Email:** sairam.maruri@gmail.com
-*   **LinkedIn:** [sairam-maruri](https://www.linkedin.com/in/sairam-maruri)
-*   **GitHub:** [sairam3824](https://github.com/sairam3824)
-
----
-*Built with ❤️ and AI.*
