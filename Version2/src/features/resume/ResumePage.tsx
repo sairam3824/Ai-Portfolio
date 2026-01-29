@@ -13,7 +13,7 @@ import {
 
 export const ResumePage = () => {
     return (
-        <div className="min-h-screen bg-gray-50/50 py-12 px-4 md:px-8 print:p-0 print:bg-white flex flex-col">
+        <div className="min-h-screen bg-white py-12 px-4 md:px-8 print:p-0 print:bg-white flex flex-col">
             {/* Actions Bar - Hidden on Print */}
             <div className="max-w-4xl mx-auto mb-8 flex justify-between items-center w-full print:hidden animate-fade-in">
                 <h1 className="text-2xl font-black text-gray-900 tracking-tight">Digital Resume</h1>
@@ -100,7 +100,7 @@ export const ResumePage = () => {
                                     <div className="group">
                                         <div className="flex justify-between items-baseline mb-2">
                                             <h4 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">End-to-End AI Research Platform</h4>
-                                            <span className="text-xs font-bold bg-blue-50 text-blue-600 px-2 py-0.5 rounded">Python, FAISS, Django, AWS</span>
+                                            <span className="text-xs font-bold bg-gray-100 text-gray-700 px-2 py-0.5 rounded">Python, FAISS, Django, AWS</span>
                                         </div>
                                         <p className="text-sm text-gray-600 leading-relaxed mb-2">
                                             Scalable research platform (orravyn.cloud) with RAG using FAISS, multi-doc summarization, GPT-4/Claude integration, and Django REST APIs — served 100+ concurrent users and cut AI pipeline latency ~30%.
@@ -110,7 +110,7 @@ export const ResumePage = () => {
                                     <div className="group">
                                         <div className="flex justify-between items-baseline mb-2">
                                             <h4 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Medical Image Classification</h4>
-                                            <span className="text-xs font-bold bg-blue-50 text-blue-600 px-2 py-0.5 rounded">Python, PyTorch, TensorFlow</span>
+                                            <span className="text-xs font-bold bg-gray-100 text-gray-700 px-2 py-0.5 rounded">Python, PyTorch, TensorFlow</span>
                                         </div>
                                         <p className="text-sm text-gray-600 leading-relaxed mb-2">
                                             WideResNet-based CNN with augmentation and careful hyperparameter tuning on 10k+ X-rays, achieving 92% bone-fracture classification accuracy and reducing overfitting by ~20%.
@@ -120,7 +120,7 @@ export const ResumePage = () => {
                                     <div className="group">
                                         <div className="flex justify-between items-baseline mb-2">
                                             <h4 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">Large-Scale ML System for Customer Prediction</h4>
-                                            <span className="text-xs font-bold bg-blue-50 text-blue-600 px-2 py-0.5 rounded">Python, scikit-learn, XGBoost</span>
+                                            <span className="text-xs font-bold bg-gray-100 text-gray-700 px-2 py-0.5 rounded">Python, scikit-learn, XGBoost</span>
                                         </div>
                                         <p className="text-sm text-gray-600 leading-relaxed mb-2">
                                             Distributed ML pipeline with Random Forest/XGBoost, feature engineering and validation on 100k+ records — improved prediction accuracy (~99%) and reduced churn by ~25%.
@@ -153,7 +153,7 @@ export const ResumePage = () => {
                                 </h3>
                                 <div className="flex flex-wrap gap-1.5">
                                     {["Reinforcement Learning", "Scaling Laws", "Code Generation", "AI Safety & Alignment", "Interpretability"].map(s => (
-                                        <span key={s} className="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase border border-gray-100">{s}</span>
+                                        <span key={s} className="px-2 py-1 bg-gray-50 text-gray-700 text-[10px] font-bold rounded uppercase border border-gray-200">{s}</span>
                                     ))}
                                 </div>
                             </section>
@@ -172,7 +172,7 @@ export const ResumePage = () => {
                                         <h5 className="text-xs font-bold text-gray-900 uppercase mb-2">Languages</h5>
                                         <div className="flex flex-wrap gap-1.5">
                                             {["Java", "C++", "Python", "GO", "SQL"].map(s => (
-                                                <span key={s} className="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase">{s}</span>
+                                                <span key={s} className="px-2 py-1 bg-gray-100 text-gray-700 text-[10px] font-bold rounded uppercase">{s}</span>
                                             ))}
                                         </div>
                                     </div>
@@ -181,7 +181,7 @@ export const ResumePage = () => {
                                         <h5 className="text-xs font-bold text-gray-900 uppercase mb-2">AI / ML</h5>
                                         <div className="flex flex-wrap gap-1.5">
                                             {["PyTorch", "TensorFlow", "LangChain", "RAG", "LLMs", "Vector DB"].map(s => (
-                                                <span key={s} className="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase">{s}</span>
+                                                <span key={s} className="px-2 py-1 bg-gray-100 text-gray-700 text-[10px] font-bold rounded uppercase">{s}</span>
                                             ))}
                                         </div>
                                     </div>
@@ -190,7 +190,7 @@ export const ResumePage = () => {
                                         <h5 className="text-xs font-bold text-gray-900 uppercase mb-2">Cloud & Dev</h5>
                                         <div className="flex flex-wrap gap-1.5">
                                             {["AWS", "Docker", "Terraform", "CI/CD", "Git"].map(s => (
-                                                <span key={s} className="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] font-bold rounded uppercase">{s}</span>
+                                                <span key={s} className="px-2 py-1 bg-gray-100 text-gray-700 text-[10px] font-bold rounded uppercase">{s}</span>
                                             ))}
                                         </div>
                                     </div>
