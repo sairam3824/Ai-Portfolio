@@ -157,12 +157,12 @@ export const ContactSection = () => {
                             </div>
                         </div>
 
-                        <a
-                            href="/Sai_Ram_Maruri_Resume_2025.pdf"
-                            download
-                            className="mt-auto group flex items-center justify-between p-5 md:p-8 rounded-[2rem] md:rounded-[2.5rem] bg-gray-900 text-white hover:bg-blue-600 transition-all shadow-xl shadow-gray-900/20 hover:shadow-blue-500/30"
-                        >
-                            <div className="flex items-center gap-3 md:gap-6 min-w-0">
+                        <div className="mt-auto group flex items-center justify-between p-5 md:p-8 rounded-[2rem] md:rounded-[2.5rem] bg-gray-900 text-white hover:bg-black transition-all shadow-xl shadow-gray-900/20">
+                            <a
+                                href="/Sai_Ram_Maruri_Resume_2025.pdf"
+                                download
+                                className="flex items-center gap-3 md:gap-6 min-w-0 hover:text-blue-400 transition-colors"
+                            >
                                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
                                     <Download className="w-5 h-5 md:w-6 md:h-6 text-white" />
                                 </div>
@@ -170,9 +170,16 @@ export const ContactSection = () => {
                                     <p className="text-[9px] md:text-[10px] font-bold text-white/50 uppercase tracking-widest truncate">MANIFESTO</p>
                                     <p className="text-sm md:text-lg font-extrabold tracking-tight truncate">Resume</p>
                                 </div>
-                            </div>
-                            <ExternalLink className="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity flex-shrink-0 ml-2" />
-                        </a>
+                            </a>
+                            <a
+                                href="/Sai_Ram_Maruri_Resume_2025.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-3 rounded-xl bg-white/5 hover:bg-blue-600 transition-all group/arrow"
+                            >
+                                <ExternalLink className="w-5 h-5 opacity-70 group-hover/arrow:opacity-100 transition-opacity" />
+                            </a>
+                        </div>
                     </div>
                 </div>
 
