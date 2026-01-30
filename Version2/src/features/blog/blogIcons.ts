@@ -1,0 +1,42 @@
+import {
+    BrainCircuit,
+    Cloud,
+    Server,
+    Cpu,
+    SlidersHorizontal,
+    Puzzle,
+    Shield,
+    Languages,
+    Code2,
+    Trophy,
+    Bot,
+    Database,
+    Globe,
+    BookOpen,
+    FileText,
+    Coffee
+} from 'lucide-react';
+
+export const BlogIconMap: Record<string, any> = {
+    "ServerStack": Server,
+    "BrainCircuit": BrainCircuit,
+    "Cloud": Cloud,
+    "CloudServer": Cloud,
+    "CppLogo": Code2,
+    "CpuChip": Cpu,
+    "AdjustmentsHorizontal": SlidersHorizontal,
+    "JavaLogo": Coffee,
+    "PuzzlePiece": Puzzle,
+    "llm-Hallucination": BrainCircuit,
+    "Shield": Shield,
+    "Language": Languages,
+    "Chip": Cpu,
+    "Code2": Code2,
+    "Trophy": Trophy,
+    "Robot": Bot,
+    "PythonLogo": Code2,
+    "Database": Database,
+    "Globe": Globe,
+    "BookOpen": BookOpen,
+    "Default": FileText
+};

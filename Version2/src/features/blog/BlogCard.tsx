@@ -6,7 +6,7 @@ import {
     ArrowRight,
     FileText
 } from "lucide-react";
-import * as LucideIcons from "lucide-react";
+import { BlogIconMap } from "./blogIcons";
 
 interface BlogCardProps {
     post: BlogPost;
@@ -15,8 +15,7 @@ interface BlogCardProps {
 
 export const BlogCard = ({ post }: BlogCardProps) => {
     const isExternal = !!post.externalLink;
-    // @ts-ignore - dynamic icon lookup
-    const IconComponent = LucideIcons[post.icon] || FileText;
+    const IconComponent = BlogIconMap[post.icon] || FileText;
 
     const CardContent = () => (
         <div className="group flex flex-col md:flex-row gap-6 p-6 rounded-2xl hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-100">
