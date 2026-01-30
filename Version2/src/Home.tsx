@@ -8,7 +8,7 @@ import {
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import avatar from './assets/avatar.webp';
+import avatar from './assets/avatar_optimized.jpg';
 import { useTypewriter } from './hooks/useTypewriter';
 
 
@@ -39,7 +39,7 @@ const Home = () => {
     };
 
     return (
-        <div className="home-container relative min-h-full flex flex-col items-center py-12 px-4">
+        <div className="home-container relative min-h-full flex flex-col items-center py-12 px-4 w-full mx-auto">
             <Helmet>
                 <title>Sai Ram Maruri | GenAI Pioneer & Full Stack Engineer</title>
                 <meta name="description" content="Portfolio of Sai Ram Maruri - GenAI Pioneer specializing in autonomous systems, LLM agents, and full-stack engineering. Transforming complexity into intelligent solutions." />
@@ -83,7 +83,7 @@ const Home = () => {
 
                 {/* Classic Version Link */}
                 <a
-                    href="/v1/"
+                    href={import.meta.env.DEV ? "http://localhost:3000/v1/" : "/v1/"}
                     className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-blue-600 transition-colors group"
                 >
                     <span>Looking for the classic version?</span>
