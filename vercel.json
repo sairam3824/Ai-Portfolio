@@ -4,11 +4,15 @@
     "framework": "vite",
     "rewrites": [
         {
-            "source": "/v1/:path*",
+            "source": "/v1",
             "destination": "/v1/index.html"
         },
         {
-            "source": "/(.*)",
+            "source": "/v1/((?!.*\\.).*)",
+            "destination": "/v1/index.html"
+        },
+        {
+            "source": "/((?!.*\\.).*)",
             "destination": "/index.html"
         }
     ]
