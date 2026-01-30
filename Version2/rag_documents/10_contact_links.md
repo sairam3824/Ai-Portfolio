@@ -4,7 +4,6 @@
 
 ### Portfolio Websites
 - **Main AI Portfolio**: https://saiii.in
-- **Alternative Portfolio**: https://sairam.vercel.app
 
 ### Social & Professional Networks
 - **LinkedIn**: https://www.linkedin.com/in/sairam-maruri
@@ -23,7 +22,6 @@
 - **AI Portfolio**: https://saiii.in
 - **Research Platform (Orravyn)**: https://orravyn.cloud
 - **HireMind Job Platform**: https://job-cloud.vercel.app
-- **Personal Portfolio**: https://sairam.vercel.app
 
 ## How to Connect
 For professional inquiries, collaboration opportunities, or questions:
