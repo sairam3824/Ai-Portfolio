@@ -14,6 +14,7 @@ import {
     Share2,
     Zap
 } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 import { MessageDialog } from "./MessageDialog";
 
 export const ContactSection = () => {
@@ -27,7 +28,7 @@ export const ContactSection = () => {
 
     const socials = [
         { icon: <Github className="w-5 h-5" />, label: "GitHub", href: "https://github.com/sairam3824", color: "blue" },
-        { icon: <Linkedin className="w-5 h-5" />, label: "LinkedIn", href: "https://www.linkedin.com/in/sairam-maruri", color: "blue" },
+        { icon: <Linkedin className="w-5 h-5" />, label: "LinkedIn", href: "https://www.linkedin.com/in/sairam-maruri/", color: "blue" },
     ];
 
     const getColorClasses = (color: string) => {
@@ -42,9 +43,13 @@ export const ContactSection = () => {
 
     return (
         <div className="home-container relative py-12 px-4 max-w-7xl mx-auto min-h-full">
-            {/* Ambient Background Glows */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 blur-[120px] rounded-full -z-10" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/5 blur-[120px] rounded-full -z-10" />
+            <Helmet>
+                <title>Contact | Sai Ram Maruri</title>
+                <meta name="description" content="Get in touch with Sai Ram Maruri. Connect, collaborate, and explore opportunities together." />
+            </Helmet>
+            {/* Ambient Background Glows — hidden on mobile for GPU perf */}
+            <div className="hidden md:block absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 blur-[120px] rounded-full -z-10" />
+            <div className="hidden md:block absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/5 blur-[120px] rounded-full -z-10" />
 
             {/* Header section */}
             <header className="text-center space-y-8 mb-20 animate-fade-in px-4">
@@ -52,7 +57,7 @@ export const ContactSection = () => {
                     <Share2 className="w-4 h-4 text-blue-500" />
                     <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Node Synchronization</span>
                 </div>
-                <h1 className="text-5xl md:text-8xl font-black tracking-tighter text-gray-900 leading-[1.0]">
+                <h1 className="text-3xl sm:text-5xl md:text-8xl font-black tracking-tighter text-gray-900 leading-[1.0]">
                     The Human <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                         Interface.
@@ -67,7 +72,7 @@ export const ContactSection = () => {
                 {/* Primary Contact Card - Message Dialog CTA */}
                 <div
                     onClick={() => setAnonymousDialogOpen(true)}
-                    className="lg:col-span-8 group relative flex flex-col p-8 md:p-14 rounded-[2.5rem] md:rounded-[3rem] bg-gradient-to-br from-blue-600 to-indigo-700 text-white shadow-2xl shadow-blue-500/20 hover:scale-[1.01] transition-all cursor-pointer overflow-hidden"
+                    className="lg:col-span-8 group relative flex flex-col p-5 sm:p-8 md:p-14 rounded-[2.5rem] md:rounded-[3rem] bg-gradient-to-br from-blue-600 to-indigo-700 text-white shadow-2xl shadow-blue-500/20 hover:scale-[1.01] transition-all cursor-pointer overflow-hidden"
                 >
                     <div className="absolute top-0 right-0 p-8 md:p-12 opacity-10 group-hover:scale-110 transition-transform">
                         <MessageSquare className="w-48 h-48 md:w-80 md:h-80" />
@@ -79,7 +84,7 @@ export const ContactSection = () => {
                                 <Zap className="w-7 h-7 md:w-8 md:h-8 text-white" />
                             </div>
                             <div className="space-y-4">
-                                <h2 className="text-4xl md:text-7xl font-black tracking-tighter leading-[1.1]">
+                                <h2 className="text-2xl sm:text-4xl md:text-7xl font-black tracking-tighter leading-[1.1]">
                                     Send a Secure <br />Message.
                                 </h2>
                                 <p className="text-blue-100 text-base md:text-xl font-medium max-w-sm md:max-w-xl leading-relaxed">
@@ -217,7 +222,7 @@ export const ContactSection = () => {
                         ))}
                     </div>
 
-                    <div className="absolute -bottom-10 -right-10 text-[200px] md:text-[300px] font-black text-gray-900/[0.02] select-none pointer-events-none group-hover:scale-110 transition-transform">
+                    <div className="hidden sm:block absolute -bottom-10 -right-10 text-[200px] md:text-[300px] font-black text-gray-900/[0.02] select-none pointer-events-none group-hover:scale-110 transition-transform">
                         <Code2 className="w-full h-full" />
                     </div>
                 </div>

@@ -8,6 +8,7 @@ import {
     TrendingUp,
     Library
 } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 export const EducationSection = () => {
     const education = [
@@ -64,9 +65,13 @@ export const EducationSection = () => {
 
     return (
         <div className="home-container relative py-12 px-4 max-w-7xl mx-auto min-h-full">
-            {/* Ambient Background Glows */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 blur-[120px] rounded-full -z-10" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/5 blur-[120px] rounded-full -z-10" />
+            <Helmet>
+                <title>Education | Sai Ram Maruri</title>
+                <meta name="description" content="Academic background and education of Sai Ram Maruri — B.Tech in Computer Science from VIT." />
+            </Helmet>
+            {/* Ambient Background Glows — hidden on mobile for GPU perf */}
+            <div className="hidden md:block absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 blur-[120px] rounded-full -z-10" />
+            <div className="hidden md:block absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/5 blur-[120px] rounded-full -z-10" />
 
             {/* Header section */}
             <header className="text-center space-y-8 mb-20 animate-fade-in px-4">
@@ -74,7 +79,7 @@ export const EducationSection = () => {
                     <TrendingUp className="w-4 h-4 text-blue-500" />
                     <span className="text-xs font-black uppercase tracking-[0.2em] text-gray-500">Knowledge Acquisition</span>
                 </div>
-                <h1 className="text-5xl md:text-8xl font-black tracking-tighter text-gray-900 leading-[0.9]">
+                <h1 className="text-3xl sm:text-5xl md:text-8xl font-black tracking-tighter text-gray-900 leading-[0.9]">
                     Academic <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                         Odyssey.
@@ -140,7 +145,7 @@ export const EducationSection = () => {
                             </div>
 
                             {/* Ghost Typography */}
-                            <div className="absolute -bottom-10 -right-10 text-[150px] md:text-[200px] font-black text-gray-900/[0.02] select-none pointer-events-none group-hover:scale-110 transition-transform">
+                            <div className="hidden sm:block absolute -bottom-10 -right-10 text-[150px] md:text-[200px] font-black text-gray-900/[0.02] select-none pointer-events-none group-hover:scale-110 transition-transform">
                                 {it.org[0]}
                             </div>
                         </div>

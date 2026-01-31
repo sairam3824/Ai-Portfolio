@@ -10,12 +10,17 @@ import {
     Brain,
     Eye
 } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 export const ResumePage = () => {
     return (
         <div className="min-h-screen bg-white py-12 px-4 md:px-8 print:p-0 print:bg-white flex flex-col">
+            <Helmet>
+                <title>Resume | Sai Ram Maruri</title>
+                <meta name="description" content="Professional resume of Sai Ram Maruri — GenAI Engineer, Full Stack Developer, and competitive programmer." />
+            </Helmet>
             {/* Actions Bar - Hidden on Print */}
-            <div className="max-w-4xl mx-auto mb-8 flex justify-between items-center w-full print:hidden animate-fade-in">
+            <div className="max-w-4xl mx-auto mb-8 flex flex-col sm:flex-row justify-between items-center gap-4 w-full print:hidden animate-fade-in">
                 <h1 className="text-2xl font-black text-gray-900 tracking-tight">Digital Resume</h1>
                 <div className="flex gap-4">
                     <a
@@ -43,11 +48,11 @@ export const ResumePage = () => {
                 {/* Top Accent Line */}
                 <div className="h-2 bg-gradient-to-r from-blue-600 to-indigo-600 print:h-1" />
 
-                <div className="p-8 md:p-12 print:p-8 space-y-8">
+                <div className="p-5 sm:p-8 md:p-12 print:p-8 space-y-8">
                     {/* Header */}
                     <header className="border-b border-gray-100 pb-8 flex flex-col md:flex-row justify-between gap-6 md:items-start">
                         <div className="space-y-2">
-                            <h1 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tighter uppercase leading-none">
+                            <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-gray-900 tracking-tighter uppercase leading-none">
                                 Sai Ram <span className="text-blue-600">Maruri</span>
                             </h1>
                             <p className="text-lg font-medium text-gray-500 tracking-wide uppercase">GenAI Engineer & Architect</p>
@@ -68,7 +73,7 @@ export const ResumePage = () => {
                             </div>
                             <div className="flex items-center gap-4 mt-2">
                                 <a href="https://github.com/sairam3824" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-gray-900"><Github className="w-5 h-5" /></a>
-                                <a href="https://www.linkedin.com/in/sairam-maruri" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800"><Linkedin className="w-5 h-5" /></a>
+                                <a href="https://www.linkedin.com/in/sairam-maruri/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800"><Linkedin className="w-5 h-5" /></a>
                             </div>
                         </div>
                     </header>
