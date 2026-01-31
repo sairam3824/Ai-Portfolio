@@ -32,9 +32,9 @@ export const AboutPage = () => {
         <title>Sai Ram Maruri | GenAI Engineer & Architect</title>
         <meta name="description" content="Learn about Sai Ram Maruri's journey from competitive programmer to GenAI Architect. Expertise in LLMs, RAG systems, and cloud-native AI solutions." />
       </Helmet>
-      {/* Background Narrative blurs */}
-      <div className="absolute -top-20 right-0 w-[500px] h-[500px] bg-blue-600/5 blur-[120px] rounded-full -z-10" />
-      <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-indigo-600/5 blur-[120px] rounded-full -z-10" />
+      {/* Background Narrative blurs — hidden on mobile for GPU perf */}
+      <div className="hidden md:block absolute -top-20 right-0 w-[500px] h-[500px] bg-blue-600/5 blur-[120px] rounded-full -z-10" />
+      <div className="hidden md:block absolute top-1/2 left-0 w-[400px] h-[400px] bg-indigo-600/5 blur-[120px] rounded-full -z-10" />
 
       {/* Header: Pure Impact */}
       <header className="relative z-10 mb-20 animate-fade-in w-full text-left">
@@ -42,7 +42,7 @@ export const AboutPage = () => {
           <Sparkles className="w-3 h-3" />
           Evolution of an Engineer
         </div>
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-[-0.05em] text-gray-900 leading-tight mb-8">
+        <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-[-0.05em] text-gray-900 leading-tight mb-8">
           GenAI <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600">Pioneer.</span>
         </h1>
         <p className="text-xl md:text-2xl text-gray-500 font-medium max-w-3xl leading-relaxed">
@@ -116,7 +116,7 @@ export const AboutPage = () => {
 
         {/* Expertise List - Span 8 */}
         <div className="md:col-span-8 p-10 rounded-[3rem] bg-gray-50/50 backdrop-blur-xl border border-gray-100 flex flex-col justify-start relative overflow-hidden group hover:bg-white hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
-          <div className="absolute -bottom-10 -right-10 text-[180px] font-black text-gray-900/[0.02] select-none">AI</div>
+          <div className="hidden sm:block absolute -bottom-10 -right-10 text-[180px] font-black text-gray-900/[0.02] select-none">AI</div>
           <div className="space-y-6">
             <h3 className="text-2xl font-black text-gray-900 flex items-center gap-3">
               Core Expertise
