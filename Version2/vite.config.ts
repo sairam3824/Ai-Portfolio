@@ -20,6 +20,8 @@ export default defineConfig({
             registerType: 'autoUpdate',
             workbox: {
                 globPatterns: ['**/*.{js,css,html,ico,png,svg,webp}'],
+                navigateFallback: '/index.html',
+                navigateFallbackDenylist: [/^\/v1/],
                 runtimeCaching: [
                     {
                         urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
@@ -78,6 +80,8 @@ export default defineConfig({
             output: {
                 manualChunks: {
                     vendor: ['react', 'react-dom', 'react-router-dom', 'react-helmet-async'],
+                    icons: ['lucide-react'],
+                    supabase: ['@supabase/supabase-js'],
                 },
             },
         },
