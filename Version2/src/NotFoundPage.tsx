@@ -4,14 +4,14 @@ import { Ghost, ArrowLeft } from 'lucide-react';
 const NotFoundPage = () => {
     return (
         <div className="home-container relative min-h-full flex flex-col items-center justify-center p-4">
-            {/* Ambient Background Elements */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-500/10 blur-[120px] rounded-full -z-10 animate-pulse" />
+            {/* Ambient Background Elements — hidden on mobile for GPU perf */}
+            <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-500/10 blur-[120px] rounded-full -z-10 animate-pulse" />
 
             <div className="text-center space-y-8 animate-fade-in relative z-10 max-w-lg mx-auto">
                 <div className="relative inline-block">
                     <div className="absolute inset-0 bg-blue-100 blur-3xl opacity-20" />
                     <Ghost className="w-32 h-32 md:w-40 md:h-40 text-blue-100 mx-auto animate-bounce-slow opacity-80" strokeWidth={0.5} />
-                    <h1 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-9xl font-black text-gray-900/5 select-none">
+                    <h1 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-7xl sm:text-9xl font-black text-gray-900/5 select-none">
                         404
                     </h1>
                 </div>
