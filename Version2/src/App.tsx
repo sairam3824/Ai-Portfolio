@@ -163,13 +163,14 @@ const Sidebar = () => {
     const location = useLocation();
 
     return (
-        <nav className="hidden lg:flex flex-col w-72 h-full py-6 pl-4 pr-6 bg-white shrink-0 overflow-y-auto no-scrollbar border-r border-gray-50/50">
+        <nav className="hidden lg:flex flex-col w-60 h-full py-6 pl-3 pr-5 bg-white shrink-0 overflow-y-auto no-scrollbar border-r border-gray-50/50">
             <div className="pl-4 mb-8">
                 <Link to="/" className="block">
                     <h1 className="text-2xl font-normal text-gray-700">
                         Sai Rama Linga Reddy Maruri
                     </h1>
                     <p className="text-sm text-gray-500">sairam.maruri@gmail.com</p>
+                    <p className="text-sm text-gray-500">+91 7893865644</p>
                 </Link>
             </div>
 
