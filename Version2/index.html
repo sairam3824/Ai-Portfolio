@@ -3,15 +3,15 @@
 
 <head>
 
-
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SFNS5F7ZSB"></script>
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-SFNS5F7ZSB"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-SFNS5F7ZSB');
+        document.addEventListener('DOMContentLoaded', function () {
+            gtag('js', new Date());
+            gtag('config', 'G-SFNS5F7ZSB');
+        });
     </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
@@ -31,13 +31,42 @@
     <meta name="twitter:title" content="Sairam Maruri | AI Engineer" />
     <meta name="twitter:image" content="/preview.webp" />
 
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Sai Ram Maruri",
+      "url": "https://sairammaruri.com",
+      "jobTitle": "GenAI Engineer & Full Stack Developer",
+      "sameAs": [
+        "https://github.com/sairam3824",
+        "https://www.linkedin.com/in/sairam-maruri/",
+        "https://leetcode.com/u/programmer3824/"
+      ]
+    }
+    </script>
+
+    <!-- DNS prefetch for external domains -->
+    <link rel="dns-prefetch" href="https://jxehfeeibqlgqfkdzbhl.supabase.co">
+
+    <!-- Font preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    <!-- Preload Google Fonts CSS -->
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700;800&family=Roboto:wght@400;500&display=swap">
+
+    <!-- Non-blocking font load -->
     <link
         href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700;800&family=Roboto:wght@400;500&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700;800&family=Roboto:wght@400;500&display=swap"
+            rel="stylesheet">
+    </noscript>
 </head>
 
 <body>
