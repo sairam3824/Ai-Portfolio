@@ -14,7 +14,8 @@ import {
     Globe,
     BookOpen,
     FileText,
-    Coffee
+    Coffee,
+    Terminal
 } from 'lucide-react';
 
 export const BlogIconMap: Record<string, any> = {
@@ -38,5 +39,6 @@ export const BlogIconMap: Record<string, any> = {
     "Database": Database,
     "Globe": Globe,
     "BookOpen": BookOpen,
+    "Terminal": Terminal,
     "Default": FileText
 };
