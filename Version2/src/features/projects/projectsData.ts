@@ -48,7 +48,7 @@ export const projectsData: ProjectData[] = [
         category: "AI Platform",
         iconName: "Brain",
         featured: true,
-        tagline: "Written research paper",
+        tagline: "Written conference paper",
     },
     {
         title: "AI-Powered Portfolio",
@@ -70,6 +70,8 @@ export const projectsData: ProjectData[] = [
         github: "https://github.com/sairam3824/Bone-Fracture-Classification",
         category: "Computer Vision",
         iconName: "Cpu",
+        featured: true,
+        tagline: "Achieved 94% accuracy with Deep CNNs",
     },
     {
         title: "Customer Churn Prediction",
@@ -79,6 +81,7 @@ export const projectsData: ProjectData[] = [
         github: "https://github.com/sairam3824/Customer-Churn-Prediction",
         category: "Machine Learning",
         iconName: "Globe",
+        tagline: "89% precision in predicting user drop-off",
     },
     {
         title: "Lung Cancer Detection",
@@ -88,6 +91,7 @@ export const projectsData: ProjectData[] = [
         github: "https://github.com/sairam3824/lungcancer",
         category: "Medical AI",
         iconName: "Brain",
+        tagline: "Early detection using Deep Learning on CT scans",
     },
     {
         title: "Enterprise RAG System",
@@ -97,6 +101,7 @@ export const projectsData: ProjectData[] = [
         github: "https://github.com/sairam3824/unthinkable-RAG",
         category: "NLP & RAG",
         iconName: "Code2",
+        tagline: "Unlocking document intelligence with vector search",
     },
     {
         title: "SpaceX ML: Landing Success",
@@ -106,6 +111,7 @@ export const projectsData: ProjectData[] = [
         github: "https://github.com/sairam3824/SpaceX-Booster-Landing-Prediction",
         category: "Predictive Analytics",
         iconName: "Rocket",
+        tagline: "Predicting booster landings with aerospace data",
     },
     {
         title: "Traffic Prediction System",
@@ -115,6 +121,7 @@ export const projectsData: ProjectData[] = [
         github: "https://github.com/sairam3824/Traffic-prediction",
         category: "Predictive Analytics",
         iconName: "Globe",
+        tagline: "Forecasting congestion with time-series analysis",
     },
     {
         title: "Integrated AI Text Assistant",
@@ -124,6 +131,7 @@ export const projectsData: ProjectData[] = [
         github: "https://github.com/sairam3824/Integrated-AI-Text-Assistant",
         category: "AI Assistant",
         iconName: "Terminal",
+        tagline: "Multi-modal reasoning with state-of-the-art NLP",
     },
     {
         title: "MCP Server Architecture",
@@ -133,6 +141,7 @@ export const projectsData: ProjectData[] = [
         github: "https://github.com/sairam3824/Basic-MCP-Server-Practice",
         category: "AI Infrastructure",
         iconName: "Code2",
+        tagline: "Enabling agent interoperability via Model Context Protocol",
     },
     {
         title: "NutriVision: AI Analyzer",
@@ -142,6 +151,7 @@ export const projectsData: ProjectData[] = [
         github: "https://github.com/sairam3824/NutriVision",
         category: "Computer Vision",
         iconName: "Cpu",
+        tagline: "Instant nutritional analysis from food images",
     },
     {
         title: "LangChain AI Agents",
@@ -151,6 +161,7 @@ export const projectsData: ProjectData[] = [
         github: "https://github.com/sairam3824/Langchain-LLM-PET-app",
         category: "Conversational AI",
         iconName: "Brain",
+        tagline: "Personality-driven conversational AI experiences",
     },
     {
         title: "Algorithm Solutions",
@@ -160,5 +171,6 @@ export const projectsData: ProjectData[] = [
         github: "https://github.com/sairam3824/Competitive-Programming",
         category: "Algorithms",
         iconName: "Code2",
+        tagline: "Mastering complex algorithms in C++ & Python",
     },
 ];

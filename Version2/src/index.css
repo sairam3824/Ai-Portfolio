@@ -102,3 +102,14 @@ a {
 .stagger-10 { animation-delay: 500ms; }
 .stagger-11 { animation-delay: 550ms; }
 .stagger-12 { animation-delay: 600ms; }
+
+/* Editorial section number watermark */
+.editorial-number {
+    font-size: clamp(5rem, 10vw, 8rem);
+    font-weight: 900;
+    line-height: 1;
+    color: rgb(243 244 246 / 0.8);
+    letter-spacing: -0.04em;
+    user-select: none;
+    pointer-events: none;
+}
