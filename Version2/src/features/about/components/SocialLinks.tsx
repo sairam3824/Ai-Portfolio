@@ -2,7 +2,7 @@ import { Github, Linkedin } from "lucide-react";
 
 export const SOCIAL_LINKS = [
     { icon: Github, label: "GitHub", href: "https://github.com/sairam3824", category: "social" },
-    { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/sairam-maruri", category: "social" },
+    { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/sairam-maruri/", category: "social" },
 ];
 
 export const SocialLinks = () => {
