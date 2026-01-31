@@ -319,7 +319,7 @@ you may not use this file except in compliance with the License.
 - 🌐 Portfolio: [saiii.in](https://saiii.in)
 - 💼 LinkedIn: [sairam-maruri](https://www.linkedin.com/in/sairam-maruri/)
 - 💻 GitHub: [@sairam3824](https://github.com/sairam3824)
-- 📧 Email: contact@saiii.in
+- 📧 Email: sairam.maruri@gmail.com
 
 ## 🙏 Acknowledgments
 
@@ -350,8 +350,6 @@ For questions or support:
 <div align="center">
 
 ### ⭐ Star this repo if you found it helpful!
-
-<p>Built with ❤️ by <strong>Sai Ram Maruri</strong></p>
 
 <p>
   <a href="https://saiii.in">Portfolio</a> •
