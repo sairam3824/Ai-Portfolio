@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactNode } from "react";
 import {
     Search,
     Code2,
@@ -13,141 +13,22 @@ import {
     Terminal
 } from "lucide-react";
 import { Helmet } from "react-helmet-async";
+import { projectsData } from "./projectsData";
 
-const projects = [
-    {
-        title: "HireMind (Job Cloud)",
-        description:
-            "Automated job crawler and matching platform connecting job seekers with ideal roles. Features intelligent resume matching, company insights, and real-time data integration.",
-        tech: ["Next.js", "Supabase", "Python", "AWS EC2", "Docker"],
-        github: "https://github.com/sairam3824/job-cloud",
-        link: "https://job-cloud.vercel.app",
-        category: "AI Job Platform",
-        icon: <Zap className="w-5 h-5" />,
-        featured: true
-    },
-    {
-        title: "AI Research Platform",
-        description:
-            "Enterprise-grade collaborative AI research and deployment platform enabling scalable LLM experimentation and model fine-tuning.",
-        tech: ["Node.js", "Python", "AWS", "n8n", "Docker", "LLMs"],
-        github: "https://github.com/Somisetti-Sridhar/research-portal-test-save",
-        link: "https://orravyn.cloud",
-        category: "AI Platform",
-        icon: <Brain className="w-5 h-5" />,
-        featured: true
-    },
-    {
-        title: "AI-Powered Portfolio",
-        description:
-            "Next-generation AI-integrated portfolio featuring intelligent chat assistance and dynamic AI-driven user interactions.",
-        tech: ["React", "TypeScript", "Tailwind CSS", "n8n", "AI APIs"],
-        github: "https://github.com/sairam3824/Ai-Portfolio",
-        link: "https://saiii.in",
-        category: "AI Integration",
-        icon: <Rocket className="w-5 h-5" />,
-        featured: true
-    },
-    {
-        title: "Bone Fracture Classification",
-        description:
-            "Advanced computer vision system using Deep CNN architectures to detect and classify bone fractures with 94% accuracy.",
-        tech: ["PyTorch", "WideResNet", "OpenCV", "Medical AI"],
-        github: "https://github.com/sairam3824/Bone-Fracture-Classification",
-        category: "Computer Vision",
-        icon: <Cpu className="w-5 h-5" />
-    },
-    {
-        title: "Customer Churn Prediction",
-        description:
-            "Production-ready predictive analytics system using ensemble ML algorithms to identify at-risk customers with 89% precision.",
-        tech: ["Scikit-learn", "Pandas", "XGBoost", "MLOps"],
-        github: "https://github.com/sairam3824/Customer-Churn-Prediction",
-        category: "Machine Learning",
-        icon: <Globe className="w-5 h-5" />
-    },
-    {
-        title: "Lung Cancer Detection",
-        description:
-            "Deep learning-based medical imaging system for early detection and classification of lung cancer from CT scans.",
-        tech: ["Deep Learning", "CNN", "Python", "Healthcare AI"],
-        github: "https://github.com/sairam3824/lungcancer",
-        category: "Medical AI",
-        icon: <Brain className="w-5 h-5" />
-    },
-    {
-        title: "Enterprise RAG System",
-        description:
-            "Sophisticated Retrieval-Augmented Generation system combining vector databases and LLMs for intelligent document processing.",
-        tech: ["Python", "RAG", "Vector DB", "Embeddings"],
-        github: "https://github.com/sairam3824/unthinkable-RAG",
-        category: "NLP & RAG",
-        icon: <Code2 className="w-5 h-5" />
-    },
-    {
-        title: "SpaceX ML: Landing Success",
-        description:
-            "Aerospace ML project analyzing SpaceX launch data to predict booster landing success using ensemble methods.",
-        tech: ["Machine Learning", "Python", "Pandas", "Aerospace"],
-        github: "https://github.com/sairam3824/SpaceX-Booster-Landing-Prediction",
-        category: "Predictive Analytics",
-        icon: <Rocket className="w-5 h-5" />
-    },
-    {
-        title: "Traffic Prediction System",
-        description:
-            "Machine learning system for predicting traffic patterns and congestion using historical data analysis and forecasting.",
-        tech: ["Machine Learning", "Python", "Time Series", "Data Analysis"],
-        github: "https://github.com/sairam3824/Traffic-prediction",
-        category: "Predictive Analytics",
-        icon: <Globe className="w-5 h-5" />
-    },
-    {
-        title: "Integrated AI Text Assistant",
-        description:
-            "Multi-modal AI assistant leveraging state-of-the-art NLP models for advanced reasoning and intelligent automation.",
-        tech: ["LLMs", "React", "Node.js", "Fine-tuning"],
-        github: "https://github.com/sairam3824/Integrated-AI-Text-Assistant",
-        category: "AI Assistant",
-        icon: <Terminal className="w-5 h-5" />
-    },
-    {
-        title: "MCP Server Architecture",
-        description:
-            "Foundational implementation of Model Context Protocol (MCP) servers for AI agent interoperability and communication.",
-        tech: ["MCP", "Python", "LangChain", "Agent Architecture"],
-        github: "https://github.com/sairam3824/Basic-MCP-Server-Practice",
-        category: "AI Infrastructure",
-        icon: <Code2 className="w-5 h-5" />
-    },
-    {
-        title: "NutriVision: AI Analyzer",
-        description:
-            "Computer vision-powered nutrition system that identifies food items from images and provides detailed nutritional info.",
-        tech: ["Computer Vision", "Deep Learning", "Python"],
-        github: "https://github.com/sairam3824/NutriVision",
-        category: "Computer Vision",
-        icon: <Cpu className="w-5 h-5" />
-    },
-    {
-        title: "LangChain AI Agents",
-        description:
-            "Conversational AI agent built with LangChain, featuring creative pet naming and personality analysis.",
-        tech: ["LangChain", "Gemini API", "Prompt Engineering"],
-        github: "https://github.com/sairam3824/Langchain-LLM-PET-app",
-        category: "Conversational AI",
-        icon: <Brain className="w-5 h-5" />
-    },
-    {
-        title: "Algorithm Solutions",
-        description:
-            "Comprehensive collection of algorithmic problem-solving solutions from competitive programming platforms.",
-        tech: ["C++", "Python", "Algorithms", "Data Structures"],
-        github: "https://github.com/sairam3824/Competitive-Programming",
-        category: "Algorithms",
-        icon: <Code2 className="w-5 h-5" />
-    },
-];
+const iconMap: Record<string, ReactNode> = {
+    Zap: <Zap className="w-5 h-5" />,
+    Brain: <Brain className="w-5 h-5" />,
+    Rocket: <Rocket className="w-5 h-5" />,
+    Cpu: <Cpu className="w-5 h-5" />,
+    Globe: <Globe className="w-5 h-5" />,
+    Code2: <Code2 className="w-5 h-5" />,
+    Terminal: <Terminal className="w-5 h-5" />,
+};
+
+const projects = projectsData.map(p => ({
+    ...p,
+    icon: iconMap[p.iconName] || <Code2 className="w-5 h-5" />,
+}));
 
 export const ProjectsSection = () => {
     const [searchQuery, setSearchQuery] = useState("");
@@ -165,9 +46,9 @@ export const ProjectsSection = () => {
 
     return (
         <div className="home-container relative py-12 px-4 max-w-7xl mx-auto min-h-full">
-            {/* Ambient Background Glows */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 blur-[120px] rounded-full -z-10" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/5 blur-[120px] rounded-full -z-10" />
+            {/* Ambient Background Glows — hidden on mobile for GPU perf */}
+            <div className="hidden md:block absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 blur-[120px] rounded-full -z-10" />
+            <div className="hidden md:block absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/5 blur-[120px] rounded-full -z-10" />
 
             <Helmet>
                 <title>AI & Engineering Projects | Sai Ram Maruri</title>
@@ -180,7 +61,7 @@ export const ProjectsSection = () => {
                     <Rocket className="w-4 h-4 text-blue-500" />
                     <span className="text-xs font-black uppercase tracking-[0.2em] text-gray-500">Innovation Portfolio</span>
                 </div>
-                <h1 className="text-5xl md:text-8xl font-black tracking-tighter text-gray-900 leading-[0.9]">
+                <h1 className="text-3xl sm:text-5xl md:text-8xl font-black tracking-tighter text-gray-900 leading-[0.9]">
                     The Project <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                         Forge.
@@ -263,7 +144,7 @@ export const ProjectsSection = () => {
                         </div>
 
                         {/* Background Decor */}
-                        <div className="absolute -bottom-8 -right-8 text-[120px] font-black text-gray-900/[0.02] select-none group-hover:scale-110 transition-transform">
+                        <div className="hidden sm:block absolute -bottom-8 -right-8 text-[120px] font-black text-gray-900/[0.02] select-none group-hover:scale-110 transition-transform">
                             {project.title[0]}
                         </div>
                     </div>
