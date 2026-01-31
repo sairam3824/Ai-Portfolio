@@ -6,6 +6,8 @@ import {
     Globe,
     Cpu
 } from "lucide-react";
+import { Helmet } from "react-helmet-async";
+import { codingProfilesData } from "./codingProfilesData";
 
 export const CodingProfilesPage = () => {
     const colorStyles = {
@@ -83,72 +85,30 @@ export const CodingProfilesPage = () => {
         }
     };
 
-    const codingProfiles = [
-        {
-            label: "LeetCode",
-            href: "https://leetcode.com/u/programmer3824/",
-            stats: "2500+ • Guardian",
-            desc: "Expert algorithmic proficiency with Guardian rank among the top 1% of global coders.",
-            color: "orange",
-            icon: <img src="/LeetCode_logo_rvs.webp" alt="LeetCode" className="w-full h-full object-contain" />,
-            featured: true
-        },
-        {
-            label: "CodeChef",
-            href: "https://www.codechef.com/users/sairam2004",
-            stats: "3★ • 1600+",
-            desc: "Consistent performance in long and short format competitive programming contests.",
-            color: "yellow",
-            icon: <img src="/codechef.webp" alt="CodeChef" className="w-full h-full object-cover" />,
-            featured: true
-        },
-        {
-            label: "LeetCode Streak",
-            href: "https://leetcode.com/u/sairam3824/",
-            stats: "Daily Active",
-            desc: "Dedicated daily problem-solving regimen maintaining high analytical momentum.",
-            color: "cyan",
-            icon: <Activity className="w-5 h-5" />
-        },
-        {
-            label: "InterviewBit",
-            href: "https://www.interviewbit.com/profile/sai-rama-linga-reddy-maruri/",
-            stats: "Active",
-            desc: "Mastering complex data structures and curated interview patterns.",
-            color: "indigo",
-            icon: <Target className="w-5 h-5" />
-        },
-        {
-            label: "TakeUForward",
-            href: "https://takeuforward.org/plus/profile/sairam3824",
-            stats: "Active",
-            desc: "Deep-diving into high-level DSA concepts and technical interview preparation.",
-            color: "emerald",
-            icon: <Cpu className="w-5 h-5" />
-        },
-        {
-            label: "Codeforces",
-            href: "https://codeforces.com/profile/sairam3824",
-            stats: "Active",
-            desc: "Engaging in rapid problem-solving and real-time algorithmic competitions.",
-            color: "rose",
-            icon: <Globe className="w-5 h-5" />
-        },
-        {
-            label: "Codolio",
-            href: "https://codolio.com/profile/sairam3824",
-            stats: "Global Rank",
-            desc: "Unified analytics dashboard showcasing global programming footprint.",
-            color: "slate",
-            icon: <Code className="w-5 h-5" />
-        },
-    ];
+    const iconMap: Record<string, React.ReactNode> = {
+        "leetcode-img": <img src="/LeetCode_logo_rvs.webp" alt="LeetCode" className="w-full h-full object-contain" loading="lazy" />,
+        "codechef-img": <img src="/codechef.webp" alt="CodeChef" className="w-full h-full object-cover" loading="lazy" />,
+        Activity: <Activity className="w-5 h-5" />,
+        Target: <Target className="w-5 h-5" />,
+        Cpu: <Cpu className="w-5 h-5" />,
+        Globe: <Globe className="w-5 h-5" />,
+        Code: <Code className="w-5 h-5" />,
+    };
+
+    const codingProfiles = codingProfilesData.map(p => ({
+        ...p,
+        icon: iconMap[p.iconName] || <Code className="w-5 h-5" />,
+    }));
 
     return (
         <div className="home-container relative py-12 px-4 max-w-6xl mx-auto min-h-full overflow-hidden">
-            {/* Ambient Background Elements */}
-            <div className="absolute top-0 -left-20 w-96 h-96 bg-blue-400/10 blur-[120px] rounded-full -z-10 animate-pulse" />
-            <div className="absolute bottom-0 -right-20 w-96 h-96 bg-indigo-400/10 blur-[120px] rounded-full -z-10 animate-pulse delay-700" />
+            <Helmet>
+                <title>Coding Profiles | Sai Ram Maruri</title>
+                <meta name="description" content="Explore Sai Ram Maruri's competitive programming profiles — LeetCode Guardian, CodeChef 3-Star rankings and more." />
+            </Helmet>
+            {/* Ambient Background Elements — hidden on mobile for GPU perf */}
+            <div className="hidden md:block absolute top-0 -left-20 w-96 h-96 bg-blue-400/10 blur-[120px] rounded-full -z-10 animate-pulse" />
+            <div className="hidden md:block absolute bottom-0 -right-20 w-96 h-96 bg-indigo-400/10 blur-[120px] rounded-full -z-10 animate-pulse delay-700" />
 
             {/* Header section with distinct typography */}
             <header className="text-center space-y-6 mb-20 animate-fade-in">
@@ -156,7 +116,7 @@ export const CodingProfilesPage = () => {
                     <Code className="w-4 h-4 text-blue-500" />
                     <span className="text-xs font-black uppercase tracking-[0.2em] text-gray-500">Global Leaderboards</span>
                 </div>
-                <h1 className="text-5xl md:text-7xl font-black tracking-tight text-gray-900 leading-tight">
+                <h1 className="text-3xl sm:text-5xl md:text-7xl font-black tracking-tight text-gray-900 leading-tight">
                     Coding <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">DNA</span>
                 </h1>
                 <p className="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
@@ -231,7 +191,7 @@ export const CodingProfilesPage = () => {
                             </div>
 
                             {/* Decorative background number/letter */}
-                            <div className="absolute -bottom-6 -right-4 text-[120px] font-black text-gray-900/5 select-none transition-all group-hover:text-gray-900/[0.08] group-hover:scale-110">
+                            <div className="hidden sm:block absolute -bottom-6 -right-4 text-[120px] font-black text-gray-900/5 select-none transition-all group-hover:text-gray-900/[0.08] group-hover:scale-110">
                                 {profile.label[0]}
                             </div>
                         </a>
