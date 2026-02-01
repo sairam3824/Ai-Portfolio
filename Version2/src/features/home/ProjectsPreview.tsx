@@ -35,7 +35,7 @@ const ProjectsPreview = () => {
                             {project.tagline ? (
                                 <div className="flex items-center gap-1.5 mt-1">
                                     <Zap className="w-3 h-3 text-blue-500 shrink-0" />
-                                    <span className="text-xs font-semibold text-blue-600 truncate">{project.tagline}</span>
+                                    <span className="text-xs font-semibold text-blue-500 truncate">{project.tagline}</span>
                                 </div>
                             ) : (
                                 <p className="text-xs text-gray-400 line-clamp-1 mt-0.5">{project.description}</p>
@@ -48,15 +48,17 @@ const ProjectsPreview = () => {
                                 ))}
                             </div>
                         </div>
-                        <div className="flex gap-1 shrink-0">
+                        <div className="flex flex-col gap-1.5 mt-2 overflow-hidden">
                             {project.github && (
-                                <a href={project.github} target="_blank" rel="noopener noreferrer" className="p-1.5 rounded-lg text-blue-400 hover:text-blue-600 hover:bg-blue-50 transition-all">
-                                    <Github className="w-3.5 h-3.5" />
+                                <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 group/link min-w-0">
+                                    <Github className="w-3 h-3 text-blue-400 group-hover/link:text-blue-500 transition-colors shrink-0" />
+                                    <span className="text-[10px] font-bold text-blue-400 group-hover/link:text-blue-500 transition-colors truncate lowercase">{project.github.replace("https://github.com/", "").replace(/\/$/, "")}</span>
                                 </a>
                             )}
                             {project.link && (
-                                <a href={project.link} target="_blank" rel="noopener noreferrer" className="p-1.5 rounded-lg text-gray-400 hover:text-blue-600 hover:bg-blue-50 transition-all">
-                                    <ExternalLink className="w-3.5 h-3.5" />
+                                <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 group/link min-w-0">
+                                    <ExternalLink className="w-3 h-3 text-blue-400 group-hover/link:text-blue-500 transition-colors shrink-0" />
+                                    <span className="text-[10px] font-bold text-blue-400 group-hover/link:text-blue-500 transition-colors truncate lowercase">{project.link.replace(/^https?:\/\//, "").replace(/\/$/, "")}</span>
                                 </a>
                             )}
                         </div>
