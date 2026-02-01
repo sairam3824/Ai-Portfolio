@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { Github, Linkedin, Mail, ExternalLink, ArrowRight, Code, Target, Activity, Globe, Cpu } from "lucide-react";
+import { Github, Linkedin, Mail, ExternalLink, ArrowRight, Code, Target, Activity, Globe, Cpu, Zap } from "lucide-react";
 import { useTypewriter } from "./hooks/useTypewriter";
 import avatar from "./assets/avatar_optimized.jpg";
 import { projectsData } from "./features/projects/projectsData";
@@ -236,9 +236,12 @@ const Home = () => {
                                         {project.title}
                                     </h3>
                                     {project.tagline && (
-                                        <p className="text-sm font-bold text-blue-600 italic mt-1">
-                                            {project.tagline}
-                                        </p>
+                                        <div className="flex items-center gap-1.5 mt-1">
+                                            <Zap className="w-3 h-3 text-blue-500 shrink-0" />
+                                            <p className="text-[11px] font-black uppercase tracking-widest text-blue-500">
+                                                {project.tagline}
+                                            </p>
+                                        </div>
                                     )}
                                 </div>
                                 <p className="text-gray-500 leading-relaxed mb-6 flex-1">
@@ -252,15 +255,17 @@ const Home = () => {
                                             </span>
                                         ))}
                                     </div>
-                                    <div className="flex items-center gap-4 text-sm font-medium">
+                                    <div className="flex items-center gap-6 text-[10px] font-bold tracking-tight overflow-hidden">
                                         {project.github && (
-                                            <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-gray-500 hover:text-gray-900 transition-colors">
-                                                <Github className="w-4 h-4" /> Code
+                                            <a href={project.github} target="_blank" rel="noopener noreferrer" className="min-w-0 flex items-center gap-2 text-blue-500 hover:text-blue-600 transition-colors">
+                                                <Github className="w-3.5 h-3.5 shrink-0" />
+                                                <span className="truncate lowercase">{project.github.replace("https://github.com/", "").replace(/\/$/, "")}</span>
                                             </a>
                                         )}
                                         {project.link && (
-                                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-gray-500 hover:text-gray-900 transition-colors">
-                                                <ExternalLink className="w-4 h-4" /> Live
+                                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="min-w-0 flex items-center gap-2 text-blue-500 hover:text-blue-600 transition-colors">
+                                                <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+                                                <span className="truncate lowercase">{project.link.replace(/^https?:\/\//, "").replace(/\/$/, "")}</span>
                                             </a>
                                         )}
                                     </div>
