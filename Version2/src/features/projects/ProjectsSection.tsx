@@ -39,6 +39,7 @@ export const ProjectsSection = () => {
         const filtered = projects.filter((p) => {
             return p.title.toLowerCase().includes(query) ||
                 p.description.toLowerCase().includes(query) ||
+                (p.tagline && p.tagline.toLowerCase().includes(query)) ||
                 p.tech.some(t => t.toLowerCase().includes(query));
         });
         setFilteredProjects(filtered);
@@ -111,10 +112,20 @@ export const ProjectsSection = () => {
                         </div>
 
                         <div className="space-y-3 flex-1">
-                            <h3 className="text-xl font-black text-gray-900 tracking-tight group-hover:text-blue-600 transition-colors">
-                                {project.title}
-                            </h3>
-                            <p className="text-gray-500 font-medium leading-relaxed italic text-sm md:text-base line-clamp-3">
+                            <div className="space-y-1">
+                                <h3 className="text-xl font-black text-gray-900 tracking-tight group-hover:text-blue-600 transition-colors">
+                                    {project.title}
+                                </h3>
+                                {project.tagline && (
+                                    <div className="flex items-center gap-1.5">
+                                        <Zap className="w-2.5 h-2.5 text-blue-500 shrink-0" />
+                                        <p className="text-blue-500 text-[10px] font-black uppercase tracking-widest">
+                                            {project.tagline}
+                                        </p>
+                                    </div>
+                                )}
+                            </div>
+                            <p className="text-gray-500 font-medium leading-relaxed italic text-sm md:text-base">
                                 "{project.description}"
                             </p>
                         </div>
@@ -127,17 +138,17 @@ export const ProjectsSection = () => {
                                     </span>
                                 ))}
                             </div>
-                            <div className="flex gap-3 pt-4 border-t border-gray-50">
+                            <div className="flex gap-3 pt-4 border-t border-gray-50 overflow-hidden">
                                 {project.github && (
-                                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 py-3 bg-gray-900 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-gray-800 transition-colors active:scale-95">
-                                        <Github className="w-3.5 h-3.5" />
-                                        Code
+                                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex-1 min-w-0 flex items-center justify-center gap-2 py-3 bg-gray-900 text-white rounded-xl text-[10px] font-bold tracking-tight hover:bg-gray-800 transition-colors active:scale-95 px-2">
+                                        <Github className="w-3.5 h-3.5 shrink-0" />
+                                        <span className="truncate">{project.github.replace("https://github.com/", "").replace(/\/$/, "").toLowerCase()}</span>
                                     </a>
                                 )}
                                 {project.link && (
-                                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 py-3 bg-blue-600 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-blue-500 transition-colors shadow-lg shadow-blue-500/20 active:scale-95">
-                                        <ExternalLink className="w-3.5 h-3.5" />
-                                        Live
+                                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex-1 min-w-0 flex items-center justify-center gap-2 py-3 bg-blue-600 text-white rounded-xl text-[10px] font-bold tracking-tight hover:bg-blue-500 transition-colors shadow-lg shadow-blue-500/20 active:scale-95 px-2">
+                                        <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+                                        <span className="truncate">{project.link.replace(/^https?:\/\//, "").replace(/\/$/, "").toLowerCase()}</span>
                                     </a>
                                 )}
                             </div>
