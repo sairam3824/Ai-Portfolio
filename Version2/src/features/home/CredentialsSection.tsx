@@ -16,7 +16,7 @@ const achievements = [
     { label: "LeetCode Guardian", sub: "Top 1% Global", icon: Trophy, color: "text-amber-600", bg: "bg-amber-50", border: "border-gray-100 hover:border-amber-200" },
     { label: "CodeChef 3-Star", sub: "1600+ Rating", icon: Sparkles, color: "text-purple-600", bg: "bg-purple-50", border: "border-gray-100 hover:border-purple-200" },
     { label: "1000+ Problems", sub: "DSA Solved", icon: Cpu, color: "text-blue-600", bg: "bg-blue-50", border: "border-gray-100 hover:border-blue-200" },
-    { label: "Vibe Coding", sub: "SaaS in < 8h", icon: Activity, color: "text-emerald-600", bg: "bg-emerald-50", border: "border-gray-100 hover:border-emerald-200" },
+    { label: "Vibe Coding", sub: "SaaS in < 10h", icon: Activity, color: "text-emerald-600", bg: "bg-emerald-50", border: "border-gray-100 hover:border-emerald-200" },
 ];
 
 const rightNowItems = [
