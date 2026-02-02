@@ -75,6 +75,24 @@ export const projectsData: ProjectData[] = [
         tagline: "AI-Native Interaction & Agentic Search",
     },
     {
+        title: "Traffic Congestion Prediction",
+        description:
+            "Hybrid deep learning system (LSTM-CNN-GRU) for real-time traffic forecasting. Features Graph Neural Networks for spatial city-wide analysis and interactive Google Maps routing.",
+        tech: [
+            "LSTM-CNN-GRU",
+            "PyTorch Geometric",
+            "Next.js 16",
+            "Google Maps API",
+            "Flask",
+        ],
+        github: "https://github.com/sairam3824/Traffic-prediction",
+        link: "https://traffic.saiii.in",
+        category: "Deep Learning",
+        iconName: "Activity",
+        featured: true,
+        tagline: "LSTM-CNN-GRU Ensemble • 92% Prediction Accuracy",
+    },
+    {
         title: "Classic Personal Portfolio",
         description:
             "Clean, responsive personal portfolio built with vanilla web technologies. Features smooth Swiper.js animations, dark/light theme toggling, and optimized SEO structure.",
@@ -96,6 +114,26 @@ export const projectsData: ProjectData[] = [
         iconName: "Brain",
         featured: true,
         tagline: "Microservices Architecture • Real-time Intelligence",
+    },
+    {
+        title: "Bone Fracture Classification",
+        description:
+            "Deep learning system using WideResNet to automate bone fracture detection from X-rays. Achieved 92% accuracy using transfer learning and optimized medical imaging pipelines.",
+        tech: ["WideResNet", "TensorFlow", "Keras", "OpenCV", "Python"],
+        github: "https://github.com/sairam3824/Bone-Fracture-Classification",
+        category: "Computer Vision",
+        iconName: "Cpu",
+        tagline: "Automated Medical Diagnostics • 92% Accuracy",
+    },
+    {
+        title: "Customer Churn Prediction",
+        description:
+            "Advanced ML system utilizing Random Forest and XGBoost to predict customer attrition. Reached 99.9% precision with high-performance production-ready classification models.",
+        tech: ["XGBoost", "Random Forest", "Scikit-learn", "Pandas", "Python"],
+        github: "https://github.com/sairam3824/Customer-Churn-Prediction",
+        category: "Machine Learning",
+        iconName: "Globe",
+        tagline: "High-Precision Predictive Engine • 99.9% Recall",
     },
     {
         title: "ShopInsight: Shopify Analytics",
@@ -153,23 +191,6 @@ export const projectsData: ProjectData[] = [
         tagline: "AI-Powered Hiring • Automated Evaluation",
     },
     {
-        title: "Traffic Congestion Prediction",
-        description:
-            "Hybrid deep learning system (LSTM-CNN-GRU) for real-time traffic forecasting. Features Graph Neural Networks for spatial city-wide analysis and interactive Google Maps routing.",
-        tech: [
-            "LSTM-CNN-GRU",
-            "PyTorch Geometric",
-            "Next.js 16",
-            "Google Maps API",
-            "Flask",
-        ],
-        github: "https://github.com/sairam3824/Traffic-prediction",
-        category: "Deep Learning",
-        iconName: "Activity",
-        featured: true,
-        tagline: "LSTM-CNN-GRU Ensemble • 92% Prediction Accuracy",
-    },
-    {
         title: "Lung Cancer Detection",
         description:
             "Advanced DL system using CSPDarkNet architectures to classify lung CT scans into Benign, Malignant, and Normal cases. Features real-time predictions and visual explanations via Grad-CAM heatmaps.",
@@ -178,26 +199,6 @@ export const projectsData: ProjectData[] = [
         category: "Medical AI",
         iconName: "Brain",
         tagline: "Automated CT Analysis • CSPDarkNet Architectures",
-    },
-    {
-        title: "Bone Fracture Classification",
-        description:
-            "Deep learning system using WideResNet to automate bone fracture detection from X-rays. Achieved 92% accuracy using transfer learning and optimized medical imaging pipelines.",
-        tech: ["WideResNet", "TensorFlow", "Keras", "OpenCV", "Python"],
-        github: "https://github.com/sairam3824/Bone-Fracture-Classification",
-        category: "Computer Vision",
-        iconName: "Cpu",
-        tagline: "Automated Medical Diagnostics • 92% Accuracy",
-    },
-    {
-        title: "Customer Churn Prediction",
-        description:
-            "Advanced ML system utilizing Random Forest and XGBoost to predict customer attrition. Reached 99.9% precision with high-performance production-ready classification models.",
-        tech: ["XGBoost", "Random Forest", "Scikit-learn", "Pandas", "Python"],
-        github: "https://github.com/sairam3824/Customer-Churn-Prediction",
-        category: "Machine Learning",
-        iconName: "Globe",
-        tagline: "High-Precision Predictive Engine • 99.9% Recall",
     },
     {
         title: "SpaceX ML: Landing Success",
