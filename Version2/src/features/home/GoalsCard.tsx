@@ -1,4 +1,4 @@
-import { Rocket, BookOpen, Code2, Compass, Target } from "lucide-react";
+import { Rocket, BookOpen, Code2, Compass, Bot } from "lucide-react";
 import BentoCard from "./BentoCard";
 
 const currentlyItems = [
@@ -25,9 +25,9 @@ const currentlyItems = [
         labelColor: "text-amber-600",
     },
     {
-        icon: Target,
-        label: "Targeting",
-        value: "100+ Coding Contests",
+        icon: Bot,
+        label: "Crafting",
+        value: "A2A Agent Cards",
         containerBg: "bg-rose-50/40",
         containerBorder: "border-rose-100/50",
         containerHover: "hover:bg-rose-50/70",
@@ -38,7 +38,7 @@ const currentlyItems = [
     {
         icon: Compass,
         label: "Exploring",
-        value: "Multi-Agent AI Systems",
+        value: "Agentic Workflows",
         containerBg: "bg-violet-50/40",
         containerBorder: "border-violet-100/50",
         containerHover: "hover:bg-violet-50/70",
