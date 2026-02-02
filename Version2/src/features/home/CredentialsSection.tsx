@@ -1,15 +1,14 @@
-import { Trophy, ExternalLink, Globe, Target, Activity, Cpu, Sparkles, Rocket, Code, Compass, BookOpen } from "lucide-react";
+import { Trophy, ExternalLink, Globe, Bot, Activity, Cpu, Sparkles, Rocket, Code, Compass, BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
 import { certifications } from "../certifications/certificationsData";
 
 const topCerts = certifications.slice(0, 4);
 
 const researchInterests = [
-    "Reinforcement Learning",
     "Scaling Laws",
     "Code Generation",
     "AI Safety & Alignment",
-    "Interpretability",
+    "A2A Agent Cards",
 ];
 
 const achievements = [
@@ -22,8 +21,8 @@ const achievements = [
 const rightNowItems = [
     { label: "BUILDING", text: "AI-Powered SaaS Products", icon: Rocket, color: "text-emerald-600", bg: "bg-emerald-50", border: "border-gray-100 hover:border-emerald-200", labelColor: "text-emerald-600" },
     { label: "SOLVING", text: "1000+ DSA Problems & Counting", icon: Code, color: "text-amber-600", bg: "bg-amber-50", border: "border-gray-100 hover:border-amber-200", labelColor: "text-amber-600" },
-    { label: "TARGETING", text: "100+ Coding Contests", icon: Target, color: "text-rose-600", bg: "bg-rose-50", border: "border-gray-100 hover:border-rose-200", labelColor: "text-rose-600" },
-    { label: "EXPLORING", text: "Multi-Agent AI Systems", icon: Compass, color: "text-violet-600", bg: "bg-violet-50", border: "border-gray-100 hover:border-violet-200", labelColor: "text-violet-600" },
+    { label: "CRAFTING", text: "A2A Agent Cards", icon: Bot, color: "text-rose-600", bg: "bg-rose-50", border: "border-gray-100 hover:border-rose-200", labelColor: "text-rose-600" },
+    { label: "EXPLORING", text: "Agentic Workflows", icon: Compass, color: "text-violet-600", bg: "bg-violet-50", border: "border-gray-100 hover:border-violet-200", labelColor: "text-violet-600" },
     { label: "LEARNING", text: "Reinforcement Learning & RLHF", icon: BookOpen, color: "text-blue-600", bg: "bg-blue-50", border: "border-gray-100 hover:border-blue-200", labelColor: "text-blue-600" },
 ];
 
