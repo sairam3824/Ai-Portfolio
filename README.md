@@ -1,6 +1,12 @@
 # Ai-Portfolio 🚀
 
-**Live at: [saiii.in](https://saiii.in)**
+**Live Portfolio:** [saiii.in](https://saiii.in)
+
+**Other Live Projects:**
+*   [hiremind.saiii.in](https://hiremind.saiii.in)
+*   [systemdesign.saiii.in](https://systemdesign.saiii.in)
+*   [orravyn.cloud](https://orravyn.cloud)
+*   [traffic.saiii.in](https://traffic.saiii.in)
 
 Welcome to the **Ai-Portfolio** repository! This project showcases two distinct versions of a modern, AI-integrated portfolio website, demonstrating the evolution of design and technical capabilities.
 
