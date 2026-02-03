@@ -107,7 +107,7 @@ const Home = () => {
     return (
         <div className="relative min-h-full w-full">
             <Helmet>
-                <title>Sai Ram Maruri | GenAI Pioneer &amp; Full Stack Engineer</title>
+                <title>Home | Sai Ram Maruri</title>
                 <meta
                     name="description"
                     content="Portfolio of Sai Ram Maruri - GenAI Pioneer specializing in autonomous systems, LLM agents, and full-stack engineering. Transforming complexity into intelligent solutions."
