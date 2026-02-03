@@ -5,6 +5,7 @@ const contentLoaders: Record<string, () => Promise<{ default?: { content: string
     "aws-lambda": () => import('./posts/aws-lambda'),
     "aws-sagemaker": () => import('./posts/aws-sagemaker'),
     "claude-code": () => import('./posts/claude-code'),
+    "cursor-ai": () => import('./posts/cursor-ai'),
     "cpp": () => import('./posts/cpp'),
     "dl-algorithms": () => import('./posts/dl-algorithms'),
     "fine-tuning-llms": () => import('./posts/fineTuning-LLMs'),
@@ -26,6 +27,7 @@ const contentLoaders: Record<string, () => Promise<{ default?: { content: string
     "weekly-novmid": () => import('./posts/tech-biweekly-digest-nov-mid-2025'),
     "weekly-oct20": () => import('./posts/tech-biweekly-digest-oct-20-2025'),
     "vector-database": () => import('./posts/vector-databases-foundation-modern-ai'),
+    "tech-monthly-digest-jan-2026": () => import('./posts/tech-monthly-digest-jan-2026'),
 };
 
 export async function getBlogContent(id: string): Promise<string | null> {

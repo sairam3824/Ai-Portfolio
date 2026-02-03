@@ -14,10 +14,31 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
     {
+        id: "tech-monthly-digest-jan-2026",
+        title: "Tech Monthly Digest: January 2026 – Agents, IDEs, and Cloud AI in Motion",
+        excerpt:
+            "January 2026 pushed AI development from \"nice-to-have assistants\" to always-on engineering teammates. From GPT-5.1 in production tools to agent-first IDEs and maturing orchestration frameworks, this monthly digest highlights the updates that actually matter for builders.",
+        date: "February 1, 2026",
+        readTime: "15 min read",
+        tags: ["AI/ML", "Agents", "Developer Tools", "Cloud Computing", "BiWeekly Digest"],
+        icon: "Globe",
+        iconColor: "purple",
+    },
+    {
+        id: "cursor-ai",
+        title: "Cursor: The AI-Native IDE Redefining How Developers Ship Software",
+        excerpt: "Cursor is an AI-first IDE that combines full-project understanding, agentic workflows, and powerful model integrations to help developers ship features, refactors, and fixes dramatically faster in 2025–2026.",
+        date: "January 28, 2026",
+        readTime: "16 min read",
+        tags: ["AI/ML", "Developer Tools", "IDEs", "AI Coding", "Agents", "Productivity"],
+        icon: "Code2",
+        iconColor: "blue",
+    },
+    {
         id: "openai-codex",
         title: "OpenAI Codex: The Cloud-Native AI Coding Agent Reshaping Software Engineering",
         excerpt: "OpenAI Codex is a cloud-based AI coding agent that runs in a sandboxed environment, handling tasks like writing features, fixing bugs, and answering codebase questions in parallel, bringing a new paradigm to software development in 2025.",
-        date: "February 1, 2026",
+        date: "January 20, 2026",
         readTime: "13 min read",
         tags: ["AI/ML", "Developer Tools", "Coding Assistant", "Cloud Computing", "Productivity"],
         icon: "Robot",
@@ -27,7 +48,7 @@ export const blogPosts: BlogPost[] = [
         id: "claude-code",
         title: "Claude Code: Anthropic's AI-Powered CLI That Changes How You Write Software",
         excerpt: "Claude Code is Anthropic's agentic coding tool that lives in your terminal. It understands your entire codebase, edits files, runs commands, and handles complex multi-step engineering tasks, redefining what developer productivity looks like in 2025.",
-        date: "January 25, 2026",
+        date: "January 15, 2026",
         readTime: "14 min read",
         tags: ["AI/ML", "Developer Tools", "CLI", "Coding Assistant", "Productivity"],
         icon: "Terminal",
