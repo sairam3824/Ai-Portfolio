@@ -12,7 +12,6 @@ import {
     Folder,
     Terminal
 } from "lucide-react";
-import { Helmet } from "react-helmet-async";
 import { projectsData } from "./projectsData";
 
 const iconMap: Record<string, ReactNode> = {
@@ -50,11 +49,6 @@ export const ProjectsSection = () => {
             {/* Ambient Background Glows — hidden on mobile for GPU perf */}
             <div className="hidden md:block absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 blur-[120px] rounded-full -z-10" />
             <div className="hidden md:block absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/5 blur-[120px] rounded-full -z-10" />
-
-            <Helmet>
-                <title>AI & Engineering Projects | Sai Ram Maruri</title>
-                <meta name="description" content="Explore my portfolio of AI, Machine Learning, and Full-stack projects. Featuring HireMind, Research Platforms, and more." />
-            </Helmet>
 
             {/* Header section */}
             <header className="text-center space-y-8 mb-20 animate-fade-in px-4">
