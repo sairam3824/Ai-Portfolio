@@ -29,7 +29,7 @@ export const AboutPage = () => {
   return (
     <div className="relative py-12 px-4 max-w-6xl mx-auto min-h-full overflow-visible flex flex-col items-start">
       <Helmet>
-        <title>Sai Ram Maruri | GenAI Engineer & Architect</title>
+        <title>About | Sai Ram Maruri</title>
         <meta name="description" content="Learn about Sai Ram Maruri's journey from competitive programmer to GenAI Architect. Expertise in LLMs, RAG systems, and cloud-native AI solutions." />
       </Helmet>
       {/* Background Narrative blurs — hidden on mobile for GPU perf */}
