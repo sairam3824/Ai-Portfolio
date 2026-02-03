@@ -1,6 +1,5 @@
 import { memo } from "react";
 import { Award, ExternalLink } from "lucide-react";
-import { Helmet } from "react-helmet-async";
 import { certifications } from "./certificationsData";
 
 const CertificationItem = memo(({ cert }: { cert: { title: string; link: string } }) => (
@@ -36,10 +35,6 @@ CertificationItem.displayName = 'CertificationItem';
 export const CertificationSection = () => {
     return (
         <div className="home-container relative py-12 px-4 max-w-7xl mx-auto min-h-full">
-            <Helmet>
-                <title>Certifications | Sai Ram Maruri</title>
-                <meta name="description" content="Industry-recognized certifications validating technical mastery across cloud architectures and AI systems." />
-            </Helmet>
             {/* Ambient Background Glows — hidden on mobile for GPU perf */}
             <div className="hidden md:block absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 blur-[120px] rounded-full -z-10" />
             <div className="hidden md:block absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/5 blur-[120px] rounded-full -z-10" />
