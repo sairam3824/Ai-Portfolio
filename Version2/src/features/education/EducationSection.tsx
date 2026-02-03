@@ -8,7 +8,6 @@ import {
     TrendingUp,
     Library
 } from "lucide-react";
-import { Helmet } from "react-helmet-async";
 
 export const EducationSection = () => {
     const education = [
@@ -65,10 +64,6 @@ export const EducationSection = () => {
 
     return (
         <div className="home-container relative py-12 px-4 max-w-7xl mx-auto min-h-full">
-            <Helmet>
-                <title>Education | Sai Ram Maruri</title>
-                <meta name="description" content="Academic background and education of Sai Ram Maruri — B.Tech in Computer Science from VIT." />
-            </Helmet>
             {/* Ambient Background Glows — hidden on mobile for GPU perf */}
             <div className="hidden md:block absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 blur-[120px] rounded-full -z-10" />
             <div className="hidden md:block absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/5 blur-[120px] rounded-full -z-10" />
