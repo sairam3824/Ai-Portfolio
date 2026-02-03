@@ -3,7 +3,7 @@ export const claudeCode = {
   title: "Claude Code: Anthropic's AI-Powered CLI That Changes How You Write Software",
   excerpt:
     "Claude Code is Anthropic's agentic coding tool that lives in your terminal. It understands your entire codebase, edits files, runs commands, and handles complex multi-step engineering tasks, redefining what developer productivity looks like in 2025.",
-  date: "January 25, 2026",
+  date: "January 15, 2026",
   readTime: "14 min read",
   tags: ["AI/ML", "Developer Tools", "CLI", "Coding Assistant", "Productivity"],
   icon: "Terminal",
