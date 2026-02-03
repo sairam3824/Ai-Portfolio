@@ -1,6 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
 import { Search, X, BookOpen } from "lucide-react";
-import { Helmet } from "react-helmet-async";
 import { BlogCard } from "./BlogCard";
 import { useBlogPosts } from "./useBlogPosts";
 
@@ -68,10 +67,6 @@ export const BlogSection = () => {
 
     return (
         <div className="home-container relative py-12 px-4 max-w-7xl mx-auto min-h-full">
-            <Helmet>
-                <title>Technical Blog | Sai Ram Maruri</title>
-                <meta name="description" content="Insights on AI architectures, engineering protocols, and the future of digital intelligence by Sai Ram Maruri." />
-            </Helmet>
             {/* Ambient Background Glows — hidden on mobile for GPU perf */}
             <div className="hidden md:block absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 blur-[120px] rounded-full -z-10" />
             <div className="hidden md:block absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/5 blur-[120px] rounded-full -z-10" />
@@ -93,16 +88,16 @@ export const BlogSection = () => {
                 </p>
             </header>
 
-            <div className="max-w-4xl mx-auto">
-                <div className="sticky top-6 z-40 bg-white p-1.5 rounded-full shadow-2xl shadow-gray-200/50 border border-gray-100 mb-12 flex flex-col md:flex-row gap-2 items-center justify-between max-w-[850px] mx-auto animate-fade-in-up">
-                    <div className="flex gap-1 overflow-x-auto w-full md:w-auto p-1 no-scrollbar mask-gradient">
+            <div className="max-w-5xl mx-auto">
+                <div className="sticky top-6 z-40 mb-12 flex flex-col md:flex-row gap-6 items-center justify-center animate-fade-in-up">
+                    <div className="flex gap-1 overflow-x-auto p-1 no-scrollbar">
                         {PRESET_CATEGORIES.map((cat) => (
                             <button
                                 key={cat.id}
                                 onClick={() => setSelectedCategory(cat.id)}
-                                className={`px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all whitespace-nowrap duration-300 ${selectedCategory === cat.id
+                                className={`px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all whitespace-nowrap duration-300 ${selectedCategory === cat.id
                                     ? "bg-gray-900 text-white shadow-md scale-105"
-                                    : "text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+                                    : "text-gray-500 hover:bg-white hover:text-gray-900 border border-transparent hover:border-gray-100"
                                     }`}
                             >
                                 {cat.label}
@@ -110,14 +105,14 @@ export const BlogSection = () => {
                         ))}
                     </div>
 
-                    <div className="relative w-full md:w-[280px] group border-l border-gray-100 ml-2 pl-2">
-                        <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+                    <div className="relative w-full md:w-[280px] group">
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
                         <input
                             type="text"
                             placeholder="Search archives..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full pl-12 pr-10 py-3 bg-transparent rounded-full text-sm font-bold text-gray-800 placeholder-gray-400 focus:outline-none focus:bg-gray-50/50 transition-all uppercase tracking-wide"
+                            className="w-full pl-10 pr-10 py-2.5 bg-white border border-gray-100 rounded-full text-sm font-bold text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600/10 focus:border-blue-600/20 transition-all uppercase tracking-wide shadow-sm text-center"
                         />
                         {searchQuery && (
                             <button
