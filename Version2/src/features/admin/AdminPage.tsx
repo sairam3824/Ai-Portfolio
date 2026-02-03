@@ -1,7 +1,7 @@
-
 import { useState } from "react";
 import { supabase } from "../../lib/supabase";
 import { Lock, User, Key, LogOut, MessageSquare, Clock, Smartphone, RefreshCw, Trash2, AlertCircle } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 interface Message {
     id: number;
@@ -73,6 +73,9 @@ const AdminPage = () => {
     if (!isAuthenticated) {
         return (
             <div className="min-h-screen bg-white flex flex-col items-center justify-center p-6 sm:p-12">
+                <Helmet>
+                    <title>Admin | Sai Ram Maruri</title>
+                </Helmet>
                 <div className="w-full max-w-sm space-y-12">
                     {/* Header */}
                     <div className="text-center space-y-4">
@@ -132,6 +135,9 @@ const AdminPage = () => {
 
     return (
         <div className="min-h-screen bg-white">
+            <Helmet>
+                <title>Admin Dashboard | Sai Ram Maruri</title>
+            </Helmet>
             {/* Header */}
             <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
                 <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
