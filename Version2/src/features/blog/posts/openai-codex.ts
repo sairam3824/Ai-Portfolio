@@ -3,7 +3,7 @@ export const openaiCodex = {
   title: "OpenAI Codex: The Cloud-Native AI Coding Agent Reshaping Software Engineering",
   excerpt:
     "OpenAI Codex is a cloud-based AI coding agent that runs in a sandboxed environment, handling tasks like writing features, fixing bugs, and answering codebase questions in parallel, bringing a new paradigm to software development in 2025.",
-  date: "February 1, 2026",
+  date: "January 20, 2026",
   readTime: "13 min read",
   tags: ["AI/ML", "Developer Tools", "Coding Assistant", "Cloud Computing", "Productivity"],
   icon: "Robot",
