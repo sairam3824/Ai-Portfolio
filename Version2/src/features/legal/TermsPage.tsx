@@ -1,14 +1,14 @@
 import { ArrowLeft } from "lucide-react";
-import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import Seo from "../../shared/Seo";
 
 const TermsPage = () => {
   return (
     <div className="home-container relative min-h-full py-12 px-4 md:px-8 max-w-5xl mx-auto">
-      <Helmet>
-        <title>Terms & Conditions | Sai Ram Maruri</title>
-        <meta name="description" content="Terms of service for Sai Ram Maruri's portfolio website." />
-      </Helmet>
+      <Seo
+        title="Terms & Conditions | Sai Ram Maruri"
+        description="Terms of service for Sai Ram Maruri's portfolio website."
+      />
       <div className="mb-12">
         <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight">Terms and Conditions</h1>
         <p className="text-gray-500 font-medium">Last updated: January 2026</p>

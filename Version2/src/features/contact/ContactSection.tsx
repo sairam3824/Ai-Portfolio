@@ -14,7 +14,6 @@ import {
     Share2,
     Zap
 } from "lucide-react";
-import { Helmet } from "react-helmet-async";
 import { MessageDialog } from "./MessageDialog";
 
 export const ContactSection = () => {
@@ -43,10 +42,6 @@ export const ContactSection = () => {
 
     return (
         <div className="home-container relative py-12 px-4 max-w-7xl mx-auto min-h-full">
-            <Helmet>
-                <title>Contact | Sai Ram Maruri</title>
-                <meta name="description" content="Get in touch with Sai Ram Maruri. Connect, collaborate, and explore opportunities together." />
-            </Helmet>
             {/* Ambient Background Glows — hidden on mobile for GPU perf */}
             <div className="hidden md:block absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 blur-[120px] rounded-full -z-10" />
             <div className="hidden md:block absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/5 blur-[120px] rounded-full -z-10" />
