@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { getBlogPost } from "./blogData";
 import { getBlogContent } from "./blogContent";
 import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
+import Seo from "../../shared/Seo";
 
 const BlogPostPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -43,24 +44,31 @@ const BlogPostPage = () => {
         }
     };
 
+    const publishedDate = post.date ? new Date(post.date) : null;
+    const publishedTime = publishedDate && !Number.isNaN(publishedDate.getTime())
+        ? publishedDate.toISOString()
+        : undefined;
+
     return (
         <div className="max-w-3xl mx-auto px-6 py-12 md:py-20 animate-fade-in min-h-screen bg-white">
+            <Seo
+                title={`${post.title} | Sai Ram Maruri`}
+                description={post.excerpt}
+                type="article"
+                publishedTime={publishedTime}
+            />
             <Helmet>
-                <title>{post.title} | Sai Ram Maruri</title>
-                <meta name="description" content={post.excerpt} />
-                <meta property="og:title" content={post.title} />
-                <meta property="og:description" content={post.excerpt} />
                 <script type="application/ld+json">
                     {JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "BlogPosting",
-                        "headline": post.title,
-                        "datePublished": post.date,
-                        "author": {
+                        headline: post.title,
+                        datePublished: publishedTime ?? post.date,
+                        author: {
                             "@type": "Person",
-                            "name": "Sai Ram Maruri"
+                            name: "Sai Ram Maruri",
                         },
-                        "description": post.excerpt
+                        description: post.excerpt,
                     })}
                 </script>
             </Helmet>
