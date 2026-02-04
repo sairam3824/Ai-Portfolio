@@ -28,9 +28,9 @@ const rightNowItems = [
 
 const CredentialsSection = () => {
     return (
-        <section className="py-16 md:py-24 relative overflow-hidden">
+        <section className="py-16 md:py-24 relative overflow-hidden content-auto">
             {/* Decorative background elements */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-3xl -z-10 -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-3xl -z-10 -translate-y-1/2 translate-x-1/2 hidden" />
 
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                 <div>
