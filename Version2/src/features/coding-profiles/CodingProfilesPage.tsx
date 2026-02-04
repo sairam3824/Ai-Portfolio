@@ -6,8 +6,8 @@ import {
     Globe,
     Cpu
 } from "lucide-react";
-import { Helmet } from "react-helmet-async";
 import { codingProfilesData } from "./codingProfilesData";
+import Seo from "../../shared/Seo";
 
 export const CodingProfilesPage = () => {
     const colorStyles = {
@@ -86,8 +86,8 @@ export const CodingProfilesPage = () => {
     };
 
     const iconMap: Record<string, React.ReactNode> = {
-        "leetcode-img": <img src="/LeetCode_logo_rvs.webp" alt="LeetCode" className="w-full h-full object-contain" loading="lazy" />,
-        "codechef-img": <img src="/codechef.webp" alt="CodeChef" className="w-full h-full object-cover" loading="lazy" />,
+        "leetcode-img": <img src="/LeetCode_logo_rvs.webp" alt="LeetCode" className="w-full h-full object-contain" loading="lazy" decoding="async" />,
+        "codechef-img": <img src="/codechef.webp" alt="CodeChef" className="w-full h-full object-cover" loading="lazy" decoding="async" />,
         Activity: <Activity className="w-5 h-5" />,
         Target: <Target className="w-5 h-5" />,
         Cpu: <Cpu className="w-5 h-5" />,
@@ -102,10 +102,10 @@ export const CodingProfilesPage = () => {
 
     return (
         <div className="home-container relative py-12 px-4 max-w-6xl mx-auto min-h-full overflow-hidden">
-            <Helmet>
-                <title>Coding Profiles | Sai Ram Maruri</title>
-                <meta name="description" content="Explore Sai Ram Maruri's competitive programming profiles — LeetCode Guardian, CodeChef 3-Star rankings and more." />
-            </Helmet>
+            <Seo
+                title="Coding Profiles | Sai Ram Maruri"
+                description="Explore Sai Ram Maruri's competitive programming profiles — LeetCode Guardian, CodeChef 3-Star rankings and more."
+            />
             {/* Ambient Background Elements — hidden on mobile for GPU perf */}
             <div className="hidden md:block absolute top-0 -left-20 w-96 h-96 bg-blue-400/10 blur-[120px] rounded-full -z-10 animate-pulse" />
             <div className="hidden md:block absolute bottom-0 -right-20 w-96 h-96 bg-indigo-400/10 blur-[120px] rounded-full -z-10 animate-pulse delay-700" />
