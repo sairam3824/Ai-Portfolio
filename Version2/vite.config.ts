@@ -18,6 +18,8 @@ export default defineConfig({
         }),
         VitePWA({
             registerType: 'autoUpdate',
+            minify: false,
+            disable: process.env.DISABLE_PWA === 'true',
             workbox: {
                 globPatterns: ['**/*.{js,css,html,ico,png,svg,webp}'],
                 navigateFallback: '/index.html',
