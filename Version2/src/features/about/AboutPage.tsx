@@ -7,7 +7,7 @@ import {
   Zap,
   Target
 } from "lucide-react";
-import { Helmet } from "react-helmet-async";
+import Seo from "../../shared/Seo";
 
 export const AboutPage = () => {
   const stats = [
@@ -28,10 +28,10 @@ export const AboutPage = () => {
 
   return (
     <div className="relative py-12 px-4 max-w-6xl mx-auto min-h-full overflow-visible flex flex-col items-start">
-      <Helmet>
-        <title>About | Sai Ram Maruri</title>
-        <meta name="description" content="Learn about Sai Ram Maruri's journey from competitive programmer to GenAI Architect. Expertise in LLMs, RAG systems, and cloud-native AI solutions." />
-      </Helmet>
+      <Seo
+        title="About | Sai Ram Maruri"
+        description="Learn about Sai Ram Maruri's journey from competitive programmer to GenAI Architect. Expertise in LLMs, RAG systems, and cloud-native AI solutions."
+      />
       {/* Background Narrative blurs — hidden on mobile for GPU perf */}
       <div className="hidden md:block absolute -top-20 right-0 w-[500px] h-[500px] bg-blue-600/5 blur-[120px] rounded-full -z-10" />
       <div className="hidden md:block absolute top-1/2 left-0 w-[400px] h-[400px] bg-indigo-600/5 blur-[120px] rounded-full -z-10" />
