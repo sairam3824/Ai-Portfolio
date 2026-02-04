@@ -68,6 +68,13 @@ a {
 
 .content-auto {
     content-visibility: auto;
+    contain-intrinsic-size: 900px;
+}
+
+@media (min-width: 768px) {
+    .content-auto {
+        contain-intrinsic-size: 700px;
+    }
 }
 
 /* Reduce heavy blur on mobile */

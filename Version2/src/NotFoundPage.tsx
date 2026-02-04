@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
 import { Ghost, ArrowLeft } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
+import Seo from './shared/Seo';
 
 const NotFoundPage = () => {
     return (
         <div className="home-container relative min-h-full flex flex-col items-center justify-center p-4">
-            <Helmet>
-                <title>404 | Sai Ram Maruri</title>
-            </Helmet>
+            <Seo
+                title="404 | Sai Ram Maruri"
+                description="The page you are looking for could not be found."
+                robots="noindex,follow"
+            />
             {/* Ambient Background Elements — hidden on mobile for GPU perf */}
             <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-500/10 blur-[120px] rounded-full -z-10 animate-pulse" />
 
