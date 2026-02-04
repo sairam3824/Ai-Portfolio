@@ -10,15 +10,15 @@ import {
     Brain,
     Eye
 } from "lucide-react";
-import { Helmet } from "react-helmet-async";
+import Seo from "../../shared/Seo";
 
 export const ResumePage = () => {
     return (
         <div className="min-h-screen bg-white py-12 px-4 md:px-8 print:p-0 print:bg-white flex flex-col">
-            <Helmet>
-                <title>Resume | Sai Ram Maruri</title>
-                <meta name="description" content="Professional resume of Sai Ram Maruri — GenAI Engineer, Full Stack Developer, and competitive programmer." />
-            </Helmet>
+            <Seo
+                title="Resume | Sai Ram Maruri"
+                description="Professional resume of Sai Ram Maruri — GenAI Engineer, Full Stack Developer, and competitive programmer."
+            />
             {/* Actions Bar - Hidden on Print */}
             <div className="max-w-4xl mx-auto mb-8 flex flex-col sm:flex-row justify-between items-center gap-4 w-full print:hidden animate-fade-in">
                 <h1 className="text-2xl font-black text-gray-900 tracking-tight">Digital Resume</h1>
