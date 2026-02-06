@@ -66,9 +66,32 @@ a {
     -webkit-tap-highlight-color: transparent;
 }
 
+/* GPU acceleration for animations */
+.animate-fade-in,
+.animate-in,
+.animate-pulse,
+.animate-spin,
+.animate-bounce {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* Optimize images */
+img {
+    content-visibility: auto;
+}
+
 .content-auto {
     content-visibility: auto;
     contain-intrinsic-size: 900px;
+}
+
+/* Optimize font rendering */
+body {
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 @media (min-width: 768px) {
