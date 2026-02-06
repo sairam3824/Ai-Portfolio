@@ -1,10 +1,12 @@
 import { useParams, Navigate, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import { getBlogPost } from "./blogData";
 import { getBlogContent } from "./blogContent";
 import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
 import Seo from "../../shared/Seo";
+
+const SITE_URL = "https://sairammaruri.com";
 
 const BlogPostPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -25,11 +27,18 @@ const BlogPostPage = () => {
         });
     }, [id]);
 
+    const wordCount = useMemo(() => {
+        if (!content) return 0;
+        const text = content.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+        return text.split(' ').filter(word => word.length > 0).length;
+    }, [content]);
+
     if (!post) {
         return <Navigate to="/blogs" replace />;
     }
 
     const shareUrl = typeof window !== "undefined" ? window.location.href : "";
+    const postUrl = `${SITE_URL}/blogs/${id}`;
 
     const handleShare = async () => {
         try {
@@ -49,6 +58,43 @@ const BlogPostPage = () => {
         ? publishedDate.toISOString()
         : undefined;
 
+    const breadcrumbs = [
+        { name: "Home", url: "/" },
+        { name: "Blogs", url: "/blogs" },
+        { name: post.title, url: `/blogs/${id}` }
+    ];
+
+    const blogPostingSchema = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "@id": `${postUrl}#article`,
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": postUrl
+        },
+        "headline": post.title,
+        "description": post.excerpt,
+        "image": `${SITE_URL}/preview.webp`,
+        "datePublished": publishedTime ?? post.date,
+        "dateModified": publishedTime ?? post.date,
+        "wordCount": wordCount > 0 ? wordCount : undefined,
+        "author": {
+            "@type": "Person",
+            "@id": `${SITE_URL}/#person`,
+            "name": "Sai Ram Maruri",
+            "url": SITE_URL
+        },
+        "publisher": {
+            "@type": "Person",
+            "@id": `${SITE_URL}/#person`,
+            "name": "Sai Ram Maruri",
+            "url": SITE_URL
+        },
+        "keywords": post.tags?.join(", "),
+        "articleSection": "Technology",
+        "inLanguage": "en-US"
+    };
+
     return (
         <div className="max-w-3xl mx-auto px-6 py-12 md:py-20 animate-fade-in min-h-screen bg-white">
             <Seo
@@ -56,20 +102,13 @@ const BlogPostPage = () => {
                 description={post.excerpt}
                 type="article"
                 publishedTime={publishedTime}
+                modifiedTime={publishedTime}
+                breadcrumbs={breadcrumbs}
+                keywords={post.tags}
             />
             <Helmet>
                 <script type="application/ld+json">
-                    {JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "BlogPosting",
-                        headline: post.title,
-                        datePublished: publishedTime ?? post.date,
-                        author: {
-                            "@type": "Person",
-                            name: "Sai Ram Maruri",
-                        },
-                        description: post.excerpt,
-                    })}
+                    {JSON.stringify(blogPostingSchema)}
                 </script>
             </Helmet>
             <Link
