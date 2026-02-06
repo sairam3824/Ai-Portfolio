@@ -2,79 +2,142 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) with performance optimization -->
     <script defer src="https://www.googletagmanager.com/gtag/js?id=G-SFNS5F7ZSB"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-SFNS5F7ZSB', { send_page_view: false });
         document.addEventListener('DOMContentLoaded', function () {
-            gtag('js', new Date());
-            gtag('config', 'G-SFNS5F7ZSB');
+            gtag('event', 'page_view', { page_location: window.location.href });
         });
     </script>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="AI Engineer & Software Developer portfolio of Sairam Maruri. Specializing in AI, ML, and scalable software solutions." />
-    <link rel="canonical" href="https://sairammaruri.com/" />
-    <title>Sairam Maruri</title>
 
-    <!-- Social Preview Tags -->
-    <meta property="og:title" content="Sairam Maruri | AI Engineer & Software Developer" />
-    <meta property="og:description" content="Explore my AI/ML projects, technical blogs, and professional journey." />
-    <meta property="og:image" content="/preview.webp" />
+    <!-- Primary Meta Tags -->
+    <title>Sairam Maruri | AI Engineer & Software Developer</title>
+    <meta name="title" content="Sairam Maruri | AI Engineer & Software Developer" />
+    <meta name="description"
+        content="AI Engineer & Software Developer portfolio of Sairam Maruri. Specializing in GenAI, Machine Learning, and scalable software solutions." />
+    <meta name="keywords" content="AI Engineer, Software Developer, GenAI, Machine Learning, Full Stack Developer, Portfolio, Sairam Maruri" />
+    <meta name="author" content="Sai Ram Maruri" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://sairammaruri.com/" />
+
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Mobile Web App -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Sai Ram" />
+    <meta name="application-name" content="Sai Ram Maruri Portfolio" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://sairammaruri.com/" />
+    <meta property="og:title" content="Sairam Maruri | AI Engineer & Software Developer" />
+    <meta property="og:description" content="Explore my AI/ML projects, technical blogs, and professional journey." />
+    <meta property="og:image" content="https://sairammaruri.com/preview.webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Sai Ram Maruri - AI Engineer Portfolio" />
     <meta property="og:site_name" content="Sai Ram Maruri" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://sairammaruri.com/" />
     <meta name="twitter:title" content="Sairam Maruri | AI Engineer" />
     <meta name="twitter:description" content="Explore my AI/ML projects, technical blogs, and professional journey." />
-    <meta name="twitter:image" content="/preview.webp" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="twitter:image" content="https://sairammaruri.com/preview.webp" />
+    <meta name="twitter:creator" content="@sairammaruri" />
 
-    <!-- Structured Data -->
+    <!-- Structured Data: Person -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Sai Ram Maruri",
-      "url": "https://sairammaruri.com",
-      "jobTitle": "GenAI Engineer & Full Stack Developer",
-      "sameAs": [
-        "https://github.com/sairam3824",
-        "https://www.linkedin.com/in/sairam-maruri/",
-        "https://leetcode.com/u/programmer3824/"
-      ]
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://sairammaruri.com/#person",
+        "name": "Sai Ram Maruri",
+        "alternateName": "Sairam Maruri",
+        "url": "https://sairammaruri.com",
+        "image": "https://sairammaruri.com/preview.webp",
+        "jobTitle": "GenAI Engineer & Full Stack Developer",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Self-Employed"
+        },
+        "knowsAbout": ["Artificial Intelligence", "Machine Learning", "Deep Learning", "Generative AI", "Full Stack Development", "Python", "React", "AWS"],
+        "sameAs": [
+            "https://github.com/sairam3824",
+            "https://www.linkedin.com/in/sairam-maruri/",
+            "https://leetcode.com/u/programmer3824/"
+        ]
     }
     </script>
 
-    <!-- DNS prefetch for external domains -->
-    <link rel="dns-prefetch" href="https://jxehfeeibqlgqfkdzbhl.supabase.co">
+    <!-- Structured Data: WebSite with Search -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://sairammaruri.com/#website",
+        "url": "https://sairammaruri.com",
+        "name": "Sai Ram Maruri Portfolio",
+        "description": "AI Engineer & Software Developer portfolio showcasing projects, blogs, and professional experience",
+        "publisher": {
+            "@id": "https://sairammaruri.com/#person"
+        },
+        "inLanguage": "en-US"
+    }
+    </script>
 
-    <!-- Font preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Structured Data: ProfilePage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "mainEntity": {
+            "@id": "https://sairammaruri.com/#person"
+        },
+        "dateCreated": "2024-01-01",
+        "dateModified": "2026-02-05"
+    }
+    </script>
 
-    <!-- Preload Google Fonts CSS -->
+    <!-- DNS prefetch and preconnect for external domains -->
+    <link rel="dns-prefetch" href="https://jxehfeeibqlgqfkdzbhl.supabase.co" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Preload critical resources -->
     <link rel="preload" as="style"
-        href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700;800&family=Roboto:wght@400;500&display=swap">
+        href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap" />
 
     <!-- Non-blocking font load -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700;800&family=Roboto:wght@400;500&display=swap"
-        rel="stylesheet" media="print" onload="this.media='all'">
+        href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript>
         <link
-            href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700;800&family=Roboto:wght@400;500&display=swap"
-            rel="stylesheet">
+            href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap"
+            rel="stylesheet" />
     </noscript>
 </head>
 
 <body>
-
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
 </body>
