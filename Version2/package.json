@@ -25,9 +25,11 @@
         "autoprefixer": "^10.4.19",
         "postcss": "^8.4.38",
         "tailwindcss": "^3.4.3",
+        "terser": "^5.27.0",
         "typescript": "^5.2.2",
         "vite": "^5.2.0",
         "vite-plugin-compression": "^0.5.1",
-        "vite-plugin-pwa": "^1.2.0"
+        "vite-plugin-pwa": "^1.2.0",
+        "web-vitals": "^3.5.2"
     }
 }
