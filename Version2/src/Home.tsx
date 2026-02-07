@@ -10,6 +10,7 @@ const Home = () => {
     const title = useTypewriter({
         texts: [
             "GenAI Engineer",
+            "ML Engineer",
             "Software Developer",
             "Cloud Architect",
             "AI Agent Builder",
@@ -26,7 +27,7 @@ const Home = () => {
         <div className="relative min-h-full w-full">
             <Seo
                 title="Home | Sai Ram Maruri"
-                description="Portfolio of Sai Ram Maruri - GenAI Pioneer specializing in autonomous systems, LLM agents, and full-stack engineering. Transforming complexity into intelligent solutions."
+                description="Portfolio of Sai Ram Maruri - GenAI & ML Engineer building production AI that ships. Specializing in LLM agents, RAG systems, agentic workflows, and cloud-native AI on AWS."
             />
 
             {/* Ambient Background Glows — hidden on mobile for GPU perf */}
@@ -55,7 +56,7 @@ const Home = () => {
                             </div>
 
                             <p className="text-base sm:text-lg text-gray-500 font-medium max-w-xl leading-relaxed mb-6">
-                                Building scalable agentic workflows and next-generation cloud architectures. Transforming complexity into intelligent solutions.
+                                GenAI & ML Engineer & Vibe Coder who architects and ships production SaaS AI on cloud — powered by Claude Code, built to scale, designed to deliver.
                             </p>
 
                             {/* Status pill */}
