@@ -7,6 +7,10 @@ const BlogsPage = () => {
             <Seo
                 title="Blogs | Sai Ram Maruri"
                 description="Technical blog posts, tutorials, and deep dives into GenAI, LLMs, and Software Engineering by Sai Ram Maruri."
+                breadcrumbs={[
+                    { name: "Home", url: "/" },
+                    { name: "Blogs", url: "/blogs" },
+                ]}
             />
             <BlogSection />
         </div>
