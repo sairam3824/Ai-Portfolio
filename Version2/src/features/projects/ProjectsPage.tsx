@@ -7,6 +7,10 @@ const ProjectsPage = () => {
             <Seo
                 title="Projects | Sai Ram Maruri"
                 description="Explore a collection of GenAI, Full Stack, and Machine Learning projects by Sai Ram Maruri."
+                breadcrumbs={[
+                    { name: "Home", url: "/" },
+                    { name: "Projects", url: "/projects" },
+                ]}
             />
             <ProjectsSection />
         </div>
