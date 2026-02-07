@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sairammaruri.com/sitemap.xml
+Sitemap: https://saiii.in/sitemap.xml
