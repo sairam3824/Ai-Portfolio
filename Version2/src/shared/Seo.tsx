@@ -51,6 +51,25 @@ const Seo = ({
         }))
     } : null;
 
+    const webPageSchema = {
+        "@context": "https://schema.org",
+        "@type": type === "article" ? "Article" : "WebPage",
+        "@id": url,
+        "name": title,
+        "description": description,
+        "url": url,
+        "image": fullImage,
+        "isPartOf": {
+            "@id": "https://sairammaruri.com/#website"
+        },
+        "about": {
+            "@id": "https://sairammaruri.com/#person"
+        },
+        "inLanguage": "en-US",
+        ...(publishedTime && { "datePublished": publishedTime }),
+        ...(modifiedTime && { "dateModified": modifiedTime }),
+    };
+
     return (
         <Helmet>
             <title>{title}</title>
@@ -89,6 +108,10 @@ const Seo = ({
                     )}
                 </>
             )}
+
+            <script type="application/ld+json">
+                {JSON.stringify(webPageSchema)}
+            </script>
 
             {breadcrumbSchema && (
                 <script type="application/ld+json">
