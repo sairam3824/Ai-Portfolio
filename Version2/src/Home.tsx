@@ -26,7 +26,7 @@ const Home = () => {
     return (
         <div className="relative min-h-full w-full">
             <Seo
-                title="Home | Sai Ram Maruri"
+                title="Sai Ram Maruri | GenAI & ML Engineer"
                 description="Portfolio of Sai Ram Maruri - GenAI & ML Engineer building production AI that ships. Specializing in LLM agents, RAG systems, agentic workflows, and cloud-native AI on AWS."
             />
 
