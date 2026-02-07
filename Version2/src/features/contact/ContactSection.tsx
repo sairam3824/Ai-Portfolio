@@ -14,6 +14,12 @@ import {
     Share2,
     Zap
 } from "lucide-react";
+
+const XIcon = ({ className }: { className?: string }) => (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+);
 import { MessageDialog } from "./MessageDialog";
 
 export const ContactSection = () => {
@@ -28,6 +34,7 @@ export const ContactSection = () => {
     const socials = [
         { icon: <Github className="w-5 h-5" />, label: "GitHub", href: "https://github.com/sairam3824", color: "blue" },
         { icon: <Linkedin className="w-5 h-5" />, label: "LinkedIn", href: "https://www.linkedin.com/in/sairam-maruri/", color: "blue" },
+        { icon: <XIcon className="w-5 h-5" />, label: "X / Twitter", href: "https://x.com/sairammaruri", color: "blue" },
     ];
 
     const getColorClasses = (color: string) => {
@@ -139,7 +146,7 @@ export const ContactSection = () => {
                     <div className="flex flex-col h-full gap-8 md:gap-12">
                         <div>
                             <h3 className="text-[10px] md:text-[11px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-6 md:mb-10">Network Nodes</h3>
-                            <div className="grid grid-cols-2 gap-4 md:gap-6">
+                            <div className="grid grid-cols-3 gap-4 md:gap-6">
                                 {socials.map((social, i) => (
                                     <a
                                         key={i}
