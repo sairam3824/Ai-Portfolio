@@ -65,7 +65,7 @@ export const projectsData: ProjectData[] = [
         category: "AI Platform",
         iconName: "Brain",
         featured: true,
-        tagline: "Privacy-First Engineering Platform • Built with Claude Code",
+        tagline: "Built with Claude Code under 6hrs.",
     },
     {
         title: "HireMind",
@@ -77,7 +77,7 @@ export const projectsData: ProjectData[] = [
         category: "AI Agent",
         iconName: "Zap",
         featured: true,
-        tagline: "Automated AI Career Agent • Real-time Job Matching",
+        tagline: "Automated AI Career Agent • Build with Antigravity under 10hrs.",
     },
     {
         title: "AI Research Platform (Orravyn)",
@@ -101,7 +101,7 @@ export const projectsData: ProjectData[] = [
         category: "Web Development",
         iconName: "Rocket",
         featured: true,
-        tagline: "AI-Native Interaction • Agentic Search",
+        tagline: "AI-Native Interaction",
     },
     {
         title: "Traffic Congestion Prediction",

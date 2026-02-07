@@ -23,8 +23,10 @@ export const skillCategories: SkillCategory[] = [
             { name: "Llama 3.1/3.2", level: "Advanced", url: "https://llama.meta.com/", company: "Meta" },
             { name: "Grok", level: "Advanced", url: "https://grok.x.ai/", company: "xAI" },
             { name: "GPT-4", level: "Advanced", url: "https://openai.com/gpt-4", company: "OpenAI" },
-            { name: "Claude 3.5 Sonnet", level: "Advanced", url: "https://www.anthropic.com/news/claude-3-5-sonnet", company: "Anthropic" },
+            { name: "Claude (Opus/Sonnet)", level: "Advanced", url: "https://www.anthropic.com/", company: "Anthropic" },
             { name: "Gemini Pro/Ultra", level: "Advanced", url: "https://deepmind.google/technologies/gemini/", company: "Google" },
+            { name: "DeepSeek", level: "Advanced", url: "https://www.deepseek.com/", company: "DeepSeek" },
+            { name: "Mistral", level: "Advanced", url: "https://mistral.ai/", company: "Mistral AI" },
         ],
     },
     {
@@ -62,6 +64,9 @@ export const skillCategories: SkillCategory[] = [
         description: "Deploying and scaling applications on modern infrastructure.",
         skills: [
             { name: "AWS Bedrock", level: "Advanced", url: "https://aws.amazon.com/bedrock/", company: "AWS" },
+            { name: "AWS SageMaker", level: "Advanced", url: "https://aws.amazon.com/sagemaker/", company: "AWS" },
+            { name: "AWS Lambda", level: "Advanced", url: "https://aws.amazon.com/lambda/", company: "AWS" },
+            { name: "AWS EC2", level: "Advanced", url: "https://aws.amazon.com/ec2/", company: "AWS" },
             { name: "Vertex AI", level: "Advanced", url: "https://cloud.google.com/vertex-ai", company: "Google Cloud" },
             { name: "Docker", level: "Advanced", url: "https://www.docker.com/", company: "Docker" },
             { name: "Kubernetes", level: "Advanced", url: "https://kubernetes.io/", company: "CNCF" },
@@ -84,6 +89,21 @@ export const skillCategories: SkillCategory[] = [
         ],
     },
     {
+        category: "Full-Stack Dev",
+        iconName: "Monitor",
+        color: "violet",
+        description: "Building end-to-end web applications with modern frameworks.",
+        skills: [
+            { name: "React", level: "Advanced", url: "https://react.dev/", company: "Meta" },
+            { name: "Next.js", level: "Advanced", url: "https://nextjs.org/", company: "Vercel" },
+            { name: "TypeScript", level: "Advanced", url: "https://www.typescriptlang.org/", company: "Microsoft" },
+            { name: "Python", level: "Advanced", url: "https://www.python.org/", company: "PSF" },
+            { name: "FastAPI", level: "Advanced", url: "https://fastapi.tiangolo.com/", company: "Tiangolo" },
+            { name: "Django", level: "Advanced", url: "https://www.djangoproject.com/", company: "Django" },
+            { name: "Node.js", level: "Advanced", url: "https://nodejs.org/", company: "OpenJS" },
+        ],
+    },
+    {
         category: "Agent Frameworks",
         iconName: "Zap",
         color: "rose",
@@ -93,7 +113,7 @@ export const skillCategories: SkillCategory[] = [
             { name: "LangGraph", level: "Advanced", url: "https://langchain-ai.github.io/langgraph/", company: "LangChain" },
             { name: "n8n", level: "Advanced", url: "https://n8n.io/", company: "n8n" },
             { name: "Zapier", level: "Advanced", url: "https://zapier.com/", company: "Zapier" },
-            { name: "OpenAI Agent Builder", level: "Advanced", url: "https://platform.openai.com/docs/assistants/overview", company: "OpenAI" },
+            { name: "OpenAI Agent SDK", level: "Advanced", url: "https://platform.openai.com/docs/assistants/overview", company: "OpenAI" },
         ],
     },
 ];
