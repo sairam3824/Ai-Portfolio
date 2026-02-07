@@ -27,7 +27,15 @@ const iconMap: Record<string, ReactNode> = {
 const projects = projectsData.map(p => ({
     ...p,
     icon: iconMap[p.iconName] || <Code2 className="w-5 h-5" />,
-}));
+})).sort((a, b) => {
+    // Prioritize projects with a live link
+    const aHasLink = !!a.link;
+    const bHasLink = !!b.link;
+
+    if (aHasLink && !bHasLink) return -1;
+    if (!aHasLink && bHasLink) return 1;
+    return 0;
+});
 
 export const ProjectsSection = () => {
     const [searchQuery, setSearchQuery] = useState("");
