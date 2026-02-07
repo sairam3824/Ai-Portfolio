@@ -6,6 +6,7 @@ const HeroCard = () => {
     const title = useTypewriter({
         texts: [
             "GenAI Engineer",
+            "ML Engineer",
             "Software Developer",
             "Cloud Architect",
             "AI Agent Builder",
