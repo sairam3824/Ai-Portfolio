@@ -66,6 +66,7 @@
     <meta name="twitter:image" content="https://sairammaruri.com/preview.webp" />
     <meta name="twitter:creator" content="@sairammaruri" />
 
+
     <!-- Structured Data: Person -->
     <script type="application/ld+json">
     {
@@ -85,7 +86,10 @@
         "sameAs": [
             "https://github.com/sairam3824",
             "https://www.linkedin.com/in/sairam-maruri/",
-            "https://leetcode.com/u/programmer3824/"
+            "https://leetcode.com/u/programmer3824/",
+
+            "https://www.codechef.com/users/sairam2004",
+            "https://codeforces.com/profile/sairam3824"
         ]
     }
     </script>
@@ -97,12 +101,51 @@
         "@type": "WebSite",
         "@id": "https://sairammaruri.com/#website",
         "url": "https://sairammaruri.com",
-        "name": "Sai Ram Maruri Portfolio",
-        "description": "AI Engineer & Software Developer portfolio showcasing projects, blogs, and professional experience",
+        "name": "Sai Ram Maruri",
+        "alternateName": ["Sairam Maruri", "Sai Ram Maruri Portfolio"],
+        "description": "GenAI & ML Engineer portfolio — projects, blogs, resume, skills, and competitive programming stats",
         "publisher": {
             "@id": "https://sairammaruri.com/#person"
         },
-        "inLanguage": "en-US"
+        "inLanguage": "en-US",
+        "hasPart": [
+            {
+                "@type": "WebPage",
+                "@id": "https://sairammaruri.com/about",
+                "name": "About",
+                "url": "https://sairammaruri.com/about"
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://sairammaruri.com/projects",
+                "name": "Projects",
+                "url": "https://sairammaruri.com/projects"
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://sairammaruri.com/resume",
+                "name": "Resume",
+                "url": "https://sairammaruri.com/resume"
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://sairammaruri.com/skills",
+                "name": "Skills",
+                "url": "https://sairammaruri.com/skills"
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://sairammaruri.com/blogs",
+                "name": "Blogs",
+                "url": "https://sairammaruri.com/blogs"
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://sairammaruri.com/coding-profiles",
+                "name": "Coding Profiles",
+                "url": "https://sairammaruri.com/coding-profiles"
+            }
+        ]
     }
     </script>
 
@@ -115,7 +158,59 @@
             "@id": "https://sairammaruri.com/#person"
         },
         "dateCreated": "2024-01-01",
-        "dateModified": "2026-02-05"
+        "dateModified": "2026-02-07"
+    }
+    </script>
+
+    <!-- Structured Data: SiteNavigationElement for Google Sitelinks -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+            {
+                "@type": "SiteNavigationElement",
+                "position": 1,
+                "name": "About",
+                "description": "3+ years experience building production AI — GenAI & ML Engineer background",
+                "url": "https://sairammaruri.com/about"
+            },
+            {
+                "@type": "SiteNavigationElement",
+                "position": 2,
+                "name": "Projects",
+                "description": "Production AI/ML projects — RAG systems, LLM agents, and SaaS applications",
+                "url": "https://sairammaruri.com/projects"
+            },
+            {
+                "@type": "SiteNavigationElement",
+                "position": 3,
+                "name": "Resume",
+                "description": "Professional experience, qualifications, and downloadable resume",
+                "url": "https://sairammaruri.com/resume"
+            },
+            {
+                "@type": "SiteNavigationElement",
+                "position": 4,
+                "name": "Skills",
+                "description": "43+ technical skills across GenAI, Cloud (AWS), and Full Stack development",
+                "url": "https://sairammaruri.com/skills"
+            },
+            {
+                "@type": "SiteNavigationElement",
+                "position": 5,
+                "name": "Blogs",
+                "description": "30+ technical articles on GenAI, LLMs, RAG, and AI engineering",
+                "url": "https://sairammaruri.com/blogs"
+            },
+            {
+                "@type": "SiteNavigationElement",
+                "position": 6,
+                "name": "Coding Profiles",
+                "description": "LeetCode Guardian (Top 1%), CodeChef 3-Star — 1000+ problems solved",
+                "url": "https://sairammaruri.com/coding-profiles"
+            }
+        ]
     }
     </script>
 
