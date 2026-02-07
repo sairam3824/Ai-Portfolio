@@ -7,6 +7,10 @@ const ContactPage = () => {
             <Seo
                 title="Contact | Sai Ram Maruri"
                 description="Get in touch with Sai Ram Maruri for collaborations, opportunities, or technical inquiries."
+                breadcrumbs={[
+                    { name: "Home", url: "/" },
+                    { name: "Contact", url: "/contact" },
+                ]}
             />
             <ContactSection />
         </div>

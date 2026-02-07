@@ -18,6 +18,10 @@ export const ResumePage = () => {
             <Seo
                 title="Resume | Sai Ram Maruri"
                 description="Professional resume of Sai Ram Maruri — GenAI Engineer, Full Stack Developer, and competitive programmer."
+                breadcrumbs={[
+                    { name: "Home", url: "/" },
+                    { name: "Resume", url: "/resume" },
+                ]}
             />
             {/* Actions Bar - Hidden on Print */}
             <div className="max-w-4xl mx-auto mb-8 flex flex-col sm:flex-row justify-between items-center gap-4 w-full print:hidden animate-fade-in">

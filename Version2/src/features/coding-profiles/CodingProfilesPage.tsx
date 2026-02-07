@@ -105,6 +105,10 @@ export const CodingProfilesPage = () => {
             <Seo
                 title="Coding Profiles | Sai Ram Maruri"
                 description="Explore Sai Ram Maruri's competitive programming profiles — LeetCode Guardian, CodeChef 3-Star rankings and more."
+                breadcrumbs={[
+                    { name: "Home", url: "/" },
+                    { name: "Coding Profiles", url: "/coding-profiles" },
+                ]}
             />
             {/* Ambient Background Elements — hidden on mobile for GPU perf */}
             <div className="hidden md:block absolute top-0 -left-20 w-96 h-96 bg-blue-400/10 blur-[120px] rounded-full -z-10 animate-pulse" />
