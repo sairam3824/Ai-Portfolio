@@ -7,6 +7,10 @@ const EducationPage = () => {
             <Seo
                 title="Education | Sai Ram Maruri"
                 description="Academic background and educational journey of Sai Ram Maruri — Computer Science and Engineering at VIT."
+                breadcrumbs={[
+                    { name: "Home", url: "/" },
+                    { name: "Education", url: "/education" },
+                ]}
             />
             <EducationSection />
         </div>
