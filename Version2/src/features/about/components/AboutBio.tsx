@@ -26,19 +26,23 @@ export const AboutBio = () => {
             <div className="pt-4 space-y-2">
                 <div className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                    <span>3 Years of Programming Experience</span>
+                    <span>3+ Years of Programming Experience</span>
                 </div>
                 <div className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                    <span>Completed 20+ Projects</span>
+                    <span>5+ Production Projects • 43+ Skills</span>
                 </div>
                 <div className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                    <span>Proficient in AI, ML, LLMs & AWS</span>
+                    <span>30+ Published Blog Articles</span>
                 </div>
                 <div className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                    <span>LeetCode 2500+ Rating • Guardian Badge</span>
+                    <span>9 Industry Certifications (Oracle, AWS, IBM)</span>
+                </div>
+                <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 rounded-full bg-blue-600"></div>
+                    <span>LeetCode 2500+ Rating • Guardian Badge (Top 1%)</span>
                 </div>
                 <div className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-blue-600"></div>
@@ -46,7 +50,7 @@ export const AboutBio = () => {
                 </div>
                 <div className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                    <span>50+ Contests Participated •  1000+ Problems</span>
+                    <span>50+ Contests Participated • 1000+ Problems Solved</span>
                 </div>
             </div>
         </div>
