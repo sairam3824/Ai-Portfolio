@@ -6,7 +6,7 @@ import { getBlogContent } from "./blogContent";
 import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
 import Seo from "../../shared/Seo";
 
-const SITE_URL = "https://sairammaruri.com";
+const SITE_URL = "https://saiii.in";
 
 const BlogPostPage = () => {
     const { id } = useParams<{ id: string }>();
