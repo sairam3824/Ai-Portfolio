@@ -11,14 +11,14 @@
             ]
         },
         {
-            "source": "/(.*\\.(js|css|woff2|webp|jpg|jpeg|png|svg|ico|avif))",
+            "source": "/:path*.:ext(js|css|woff2|webp|jpg|jpeg|png|svg|ico|avif)",
             "headers": [
                 { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" },
                 { "key": "X-Content-Type-Options", "value": "nosniff" }
             ]
         },
         {
-            "source": "/(.*\\.(xml|txt|json|webmanifest))",
+            "source": "/:path*.:ext(xml|txt|json|webmanifest)",
             "headers": [
                 { "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=86400" }
             ]
