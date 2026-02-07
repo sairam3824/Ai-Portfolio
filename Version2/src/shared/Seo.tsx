@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 
-const SITE_URL = "https://sairammaruri.com";
+const SITE_URL = "https://saiii.in";
 const DEFAULT_IMAGE = `${SITE_URL}/preview.webp`;
 const SITE_NAME = "Sai Ram Maruri";
 const AUTHOR_NAME = "Sai Ram Maruri";
@@ -60,10 +60,10 @@ const Seo = ({
         "url": url,
         "image": fullImage,
         "isPartOf": {
-            "@id": "https://sairammaruri.com/#website"
+            "@id": "https://saiii.in/#website"
         },
         "about": {
-            "@id": "https://sairammaruri.com/#person"
+            "@id": "https://saiii.in/#person"
         },
         "inLanguage": "en-US",
         ...(publishedTime && { "datePublished": publishedTime }),
