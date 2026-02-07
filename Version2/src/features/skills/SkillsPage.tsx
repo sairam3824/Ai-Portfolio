@@ -7,6 +7,10 @@ const SkillsPage = () => {
             <Seo
                 title="Skills | Sai Ram Maruri"
                 description="Technical skills matrix of Sai Ram Maruri — covering GenAI, Full Stack, Cloud, and Software Engineering."
+                breadcrumbs={[
+                    { name: "Home", url: "/" },
+                    { name: "Skills", url: "/skills" },
+                ]}
             />
             <SkillsSection />
         </div>
