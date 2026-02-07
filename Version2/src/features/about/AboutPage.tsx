@@ -37,6 +37,10 @@ export const AboutPage = () => {
       <Seo
         title="About | Sai Ram Maruri"
         description="Learn about Sai Ram Maruri - GenAI & ML Engineer with 3+ years experience, 1000+ problems solved, 30+ blog articles, and 9 industry certifications. Building production AI that ships."
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "About", url: "/about" },
+        ]}
       />
       {/* Background Narrative blurs — hidden on mobile for GPU perf */}
       <div className="hidden md:block absolute -top-20 right-0 w-[500px] h-[500px] bg-blue-600/5 blur-[120px] rounded-full -z-10" />
