@@ -75,8 +75,8 @@ const BlogPostPage = () => {
         "headline": post.title,
         "description": post.excerpt,
         "image": `${SITE_URL}/preview.webp`,
-        "datePublished": publishedTime ?? post.date,
-        "dateModified": publishedTime ?? post.date,
+        "datePublished": publishedTime,
+        "dateModified": publishedTime,
         "wordCount": wordCount > 0 ? wordCount : undefined,
         "author": {
             "@type": "Person",
