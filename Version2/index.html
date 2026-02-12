@@ -5,16 +5,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-    <!-- Google tag (gtag.js) with performance optimization -->
-    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-SFNS5F7ZSB"></script>
+    <!-- Google tag (gtag.js) — deferred until after first paint -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-SFNS5F7ZSB', { send_page_view: false });
-        document.addEventListener('DOMContentLoaded', function () {
-            gtag('event', 'page_view', { page_location: window.location.href });
-        });
+        (function loadGtag() {
+            var cb = function () {
+                var s = document.createElement('script');
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-SFNS5F7ZSB';
+                s.async = true;
+                s.onload = function () {
+                    gtag('js', new Date());
+                    gtag('config', 'G-SFNS5F7ZSB', { send_page_view: false });
+                    gtag('event', 'page_view', { page_location: window.location.href });
+                };
+                document.head.appendChild(s);
+            };
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(cb, { timeout: 3000 });
+            } else {
+                setTimeout(cb, 2000);
+            }
+        })();
     </script>
 
     <!-- Primary Meta Tags -->
@@ -214,23 +226,19 @@
     }
     </script>
 
-    <!-- DNS prefetch and preconnect for external domains -->
+    <!-- DNS prefetch for external domains -->
     <link rel="dns-prefetch" href="https://jxehfeeibqlgqfkdzbhl.supabase.co" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Preload critical resources -->
-    <link rel="preload" as="style"
-        href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap" />
-
-    <!-- Non-blocking font load -->
+    <!-- Non-blocking Roboto font load (Google Sans removed — not publicly available) -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
         rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript>
         <link
-            href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
             rel="stylesheet" />
     </noscript>
 </head>

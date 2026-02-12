@@ -1,23 +1,49 @@
-import { useEffect, Suspense, lazy, useState } from 'react';
+import { useEffect, useCallback, Suspense, lazy, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Home from './Home';
 
+// Route chunk loaders — stored for prefetching on hover
+const routeLoaders = {
+    about: () => import('./features/about'),
+    education: () => import('./features/education'),
+    contact: () => import('./features/contact'),
+    certifications: () => import('./features/certifications'),
+    skills: () => import('./features/skills'),
+    blog: () => import('./features/blog'),
+    projects: () => import('./features/projects'),
+    resume: () => import('./features/resume'),
+    codingProfiles: () => import('./features/coding-profiles'),
+};
+
 // Lazy load feature pages
-const AboutPage = lazy(() => import('./features/about').then(module => ({ default: module.AboutPage })));
-const EducationPage = lazy(() => import('./features/education').then(module => ({ default: module.EducationPage })));
-const ContactPage = lazy(() => import('./features/contact').then(module => ({ default: module.ContactPage })));
-const CertificationsPage = lazy(() => import('./features/certifications').then(module => ({ default: module.CertificationsPage })));
-const SkillsPage = lazy(() => import('./features/skills').then(module => ({ default: module.SkillsPage })));
-const BlogsPage = lazy(() => import('./features/blog').then(module => ({ default: module.BlogsPage })));
-const BlogPostPage = lazy(() => import('./features/blog').then(module => ({ default: module.BlogPostPage })));
-const ProjectsPage = lazy(() => import('./features/projects').then(module => ({ default: module.ProjectsPage })));
-const ResumePage = lazy(() => import('./features/resume').then(module => ({ default: module.ResumePage })));
+const AboutPage = lazy(() => routeLoaders.about().then(module => ({ default: module.AboutPage })));
+const EducationPage = lazy(() => routeLoaders.education().then(module => ({ default: module.EducationPage })));
+const ContactPage = lazy(() => routeLoaders.contact().then(module => ({ default: module.ContactPage })));
+const CertificationsPage = lazy(() => routeLoaders.certifications().then(module => ({ default: module.CertificationsPage })));
+const SkillsPage = lazy(() => routeLoaders.skills().then(module => ({ default: module.SkillsPage })));
+const BlogsPage = lazy(() => routeLoaders.blog().then(module => ({ default: module.BlogsPage })));
+const BlogPostPage = lazy(() => routeLoaders.blog().then(module => ({ default: module.BlogPostPage })));
+const ProjectsPage = lazy(() => routeLoaders.projects().then(module => ({ default: module.ProjectsPage })));
+const ResumePage = lazy(() => routeLoaders.resume().then(module => ({ default: module.ResumePage })));
 const AdminPage = lazy(() => import('./features/admin/AdminPage'));
 const PrivacyPage = lazy(() => import('./features/legal').then(module => ({ default: module.PrivacyPage })));
 const TermsPage = lazy(() => import('./features/legal').then(module => ({ default: module.TermsPage })));
-const CodingProfilesPage = lazy(() => import('./features/coding-profiles').then(module => ({ default: module.CodingProfilesPage })));
+const CodingProfilesPage = lazy(() => routeLoaders.codingProfiles().then(module => ({ default: module.CodingProfilesPage })));
 const NotFoundPage = lazy(() => import('./NotFoundPage'));
+
+// Map nav paths to route loaders for prefetching
+const pathToLoader: Record<string, () => Promise<unknown>> = {
+    '/about': routeLoaders.about,
+    '/education': routeLoaders.education,
+    '/contact': routeLoaders.contact,
+    '/certifications': routeLoaders.certifications,
+    '/skills': routeLoaders.skills,
+    '/blogs': routeLoaders.blog,
+    '/projects': routeLoaders.projects,
+    '/resume': routeLoaders.resume,
+    '/coding-profiles': routeLoaders.codingProfiles,
+};
 
 import {
     Home as HomeIcon,
@@ -84,6 +110,13 @@ const LoadingFallback = () => (
 );
 
 const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+    // Prefetch all routes when menu opens
+    useEffect(() => {
+        if (isOpen) {
+            Object.values(pathToLoader).forEach(loader => loader());
+        }
+    }, [isOpen]);
+
     if (!isOpen) return null;
 
     return (
@@ -161,6 +194,10 @@ function App() {
 
 const Sidebar = () => {
     const location = useLocation();
+    const prefetch = useCallback((path: string) => {
+        const loader = pathToLoader[path];
+        if (loader) loader();
+    }, []);
 
     return (
         <nav className="hidden lg:flex flex-col w-60 h-full py-6 pl-3 pr-5 bg-white shrink-0 overflow-y-auto no-scrollbar border-r border-gray-50/50">
@@ -182,6 +219,8 @@ const Sidebar = () => {
                         <Link
                             key={item.path}
                             to={item.path}
+                            onMouseEnter={() => prefetch(item.path)}
+                            onFocus={() => prefetch(item.path)}
                             className={`flex items-center px-4 py-3.5 rounded-r-full transition-all duration-300 font-medium text-[15px] ${isActive
                                 ? 'bg-blue-50 text-blue-800'
                                 : 'text-gray-600 hover:bg-gray-50'
@@ -221,16 +260,15 @@ const MobileHeader = () => {
     );
 }
 
+const BOTTOM_BAR_ITEMS = [
+    { path: '/', icon: HomeIcon, label: 'Home' },
+    { path: '/projects', icon: Folder, label: 'Work' },
+    { path: '/skills', icon: BrainCircuit, label: 'Skills' },
+    { path: '/contact', icon: Mail, label: 'Contact' },
+] as const;
+
 const MobileNav = ({ onMenuClick }: { onMenuClick: () => void }) => {
     const location = useLocation();
-
-    // Main items for mobile bottom bar
-    const BOTTOM_BAR_ITEMS = [
-        { path: '/', icon: HomeIcon, label: 'Home' },
-        { path: '/projects', icon: Folder, label: 'Work' },
-        { path: '/skills', icon: BrainCircuit, label: 'Skills' },
-        { path: '/contact', icon: Mail, label: 'Contact' },
-    ];
 
     return (
         <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 pb-safe">

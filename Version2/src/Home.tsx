@@ -4,7 +4,9 @@ import { useTypewriter } from "./hooks/useTypewriter";
 import avatar from "./assets/avatar_optimized.jpg";
 import Seo from "./shared/Seo";
 
-const HomeSections = lazy(() => import("./features/home/HomeSections"));
+// Start loading HomeSections immediately (don't wait for render)
+const homeSectionsPromise = import("./features/home/HomeSections");
+const HomeSections = lazy(() => homeSectionsPromise);
 
 const Home = () => {
     const title = useTypewriter({
