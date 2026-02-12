@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Send, MessageSquare, X, Shield, AlertCircle, CheckCircle2 } from "lucide-react";
-import { supabase } from "../../lib/supabase";
+import type { SupabaseClient } from "@supabase/supabase-js";
 
 // Memory storage to persist draft across internal route navigation
 // This resets to "" automatically if the browser session is refreshed (page reload)
@@ -13,6 +13,7 @@ interface MessageDialogProps {
 
 export const MessageDialog = ({ open, onOpenChange }: MessageDialogProps) => {
     const [message, setMessage] = useState(draftSharedMemory);
+    const supabaseRef = useRef<SupabaseClient | null | undefined>(undefined);
 
     // Sync local state to shared draft memory
     useEffect(() => {
@@ -51,9 +52,15 @@ export const MessageDialog = ({ open, onOpenChange }: MessageDialogProps) => {
         setIsLoading(true);
 
         try {
-            if (!supabase) throw new Error("Supabase not configured");
+            // Lazy load supabase only when user actually sends a message
+            if (supabaseRef.current === undefined) {
+                const { supabase } = await import("../../lib/supabase");
+                supabaseRef.current = supabase;
+            }
 
-            const { error } = await supabase
+            if (!supabaseRef.current) throw new Error("Supabase not configured");
+
+            const { error } = await supabaseRef.current
                 .from('portfolio_messages')
                 .insert([
                     {
