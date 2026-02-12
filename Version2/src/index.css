@@ -66,17 +66,6 @@ a {
     -webkit-tap-highlight-color: transparent;
 }
 
-/* GPU acceleration for animations */
-.animate-fade-in,
-.animate-in,
-.animate-pulse,
-.animate-spin,
-.animate-bounce {
-    will-change: transform, opacity;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-}
-
 /* Optimize images */
 img {
     content-visibility: auto;
@@ -109,6 +98,7 @@ body {
 
 /* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -120,18 +110,53 @@ body {
 }
 
 /* Stagger delay utilities for bento grid entrance */
-.stagger-1 { animation-delay: 50ms; }
-.stagger-2 { animation-delay: 100ms; }
-.stagger-3 { animation-delay: 150ms; }
-.stagger-4 { animation-delay: 200ms; }
-.stagger-5 { animation-delay: 250ms; }
-.stagger-6 { animation-delay: 300ms; }
-.stagger-7 { animation-delay: 350ms; }
-.stagger-8 { animation-delay: 400ms; }
-.stagger-9 { animation-delay: 450ms; }
-.stagger-10 { animation-delay: 500ms; }
-.stagger-11 { animation-delay: 550ms; }
-.stagger-12 { animation-delay: 600ms; }
+.stagger-1 {
+    animation-delay: 50ms;
+}
+
+.stagger-2 {
+    animation-delay: 100ms;
+}
+
+.stagger-3 {
+    animation-delay: 150ms;
+}
+
+.stagger-4 {
+    animation-delay: 200ms;
+}
+
+.stagger-5 {
+    animation-delay: 250ms;
+}
+
+.stagger-6 {
+    animation-delay: 300ms;
+}
+
+.stagger-7 {
+    animation-delay: 350ms;
+}
+
+.stagger-8 {
+    animation-delay: 400ms;
+}
+
+.stagger-9 {
+    animation-delay: 450ms;
+}
+
+.stagger-10 {
+    animation-delay: 500ms;
+}
+
+.stagger-11 {
+    animation-delay: 550ms;
+}
+
+.stagger-12 {
+    animation-delay: 600ms;
+}
 
 /* Editorial section number watermark */
 .editorial-number {

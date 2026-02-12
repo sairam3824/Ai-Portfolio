@@ -123,24 +123,19 @@ export default defineConfig({
     build: {
         target: 'esnext',
         modulePreload: {
-            polyfill: true,
+            polyfill: false,
         },
+        cssCodeSplit: true,
         rollupOptions: {
             output: {
                 manualChunks: (id) => {
                     if (id.includes('node_modules')) {
-                        if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+                        if (id.includes('react') || id.includes('react-dom') || id.includes('react-router') || id.includes('react-helmet-async')) {
                             return 'vendor';
                         }
-                        if (id.includes('react-helmet-async')) {
-                            return 'vendor';
-                        }
-                        if (id.includes('lucide-react')) {
-                            return 'icons';
-                        }
-                        if (id.includes('@supabase')) {
-                            return 'supabase';
-                        }
+                        if (id.includes('lucide-react')) return 'icons';
+                        if (id.includes('@supabase')) return 'supabase';
+                        if (id.includes('web-vitals')) return 'web-vitals';
                     }
                 },
             },
@@ -152,6 +147,7 @@ export default defineConfig({
             compress: {
                 drop_console: true,
                 drop_debugger: true,
+                passes: 2,
             },
         },
     },
