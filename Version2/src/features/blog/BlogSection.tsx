@@ -11,12 +11,26 @@ const PRESET_CATEGORIES = [
     { id: "career", label: "Career" },
 ];
 
-const mapTagToCategory = (tag: string) => {
+const categoryKeywords: [string, string[]][] = [
+    ["ai", ["ai", "ml", "llm", "gpt"]],
+    ["cloud", ["cloud", "aws"]],
+    ["programming", ["code", "dev", "react"]],
+    ["career", ["career", "interview"]],
+];
+
+const tagCategoryCache = new Map<string, string>();
+
+const mapTagToCategory = (tag: string): string => {
+    const cached = tagCategoryCache.get(tag);
+    if (cached) return cached;
     const t = tag.toLowerCase();
-    if (t.includes("ai") || t.includes("ml") || t.includes("llm") || t.includes("gpt")) return "ai";
-    if (t.includes("cloud") || t.includes("aws")) return "cloud";
-    if (t.includes("code") || t.includes("dev") || t.includes("react")) return "programming";
-    if (t.includes("career") || t.includes("interview")) return "career";
+    for (const [cat, keywords] of categoryKeywords) {
+        if (keywords.some(k => t.includes(k))) {
+            tagCategoryCache.set(tag, cat);
+            return cat;
+        }
+    }
+    tagCategoryCache.set(tag, "all");
     return "all";
 };
 

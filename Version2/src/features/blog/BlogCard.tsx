@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
 import { BlogPost } from "./blogData";
 import {
@@ -13,14 +14,12 @@ interface BlogCardProps {
     onTagClick?: (tag: string) => void;
 }
 
-export const BlogCard = ({ post }: BlogCardProps) => {
-    const isExternal = !!post.externalLink;
+const CardContent = memo(({ post }: { post: BlogPost }) => {
     const IconComponent = BlogIconMap[post.icon] || FileText;
 
-    const CardContent = () => (
+    return (
         <div className="group flex flex-col md:flex-row gap-6 p-6 rounded-2xl hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-100">
-            {/* Icon/Thumbnail area */}
-            <div className={`shrink-0 w-16 h-16 rounded-xl flex items-center justify-center bg-gray-100/50 group-hover:scale-105 transition-transform duration-300 text-gray-500`}>
+            <div className="shrink-0 w-16 h-16 rounded-xl flex items-center justify-center bg-gray-100/50 group-hover:scale-105 transition-transform duration-300 text-gray-500">
                 <IconComponent className="w-8 h-8" strokeWidth={1.5} />
             </div>
 
@@ -64,18 +63,20 @@ export const BlogCard = ({ post }: BlogCardProps) => {
             </div>
         </div>
     );
+});
 
-    if (isExternal) {
+export const BlogCard = ({ post }: BlogCardProps) => {
+    if (post.externalLink) {
         return (
             <a href={post.externalLink} target="_blank" rel="noopener noreferrer" className="block">
-                <CardContent />
+                <CardContent post={post} />
             </a>
         );
     }
 
     return (
         <Link to={`/blogs/${post.id}`} className="block">
-            <CardContent />
+            <CardContent post={post} />
         </Link>
     );
 };
