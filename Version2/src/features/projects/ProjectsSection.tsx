@@ -1,4 +1,4 @@
-import { useState, useEffect, ReactNode } from "react";
+import { useState, useMemo, ReactNode } from "react";
 import {
     Search,
     Code2,
@@ -39,17 +39,16 @@ const projects = projectsData.map(p => ({
 
 export const ProjectsSection = () => {
     const [searchQuery, setSearchQuery] = useState("");
-    const [filteredProjects, setFilteredProjects] = useState(projects);
 
-    useEffect(() => {
+    const filteredProjects = useMemo(() => {
         const query = searchQuery.toLowerCase().trim();
-        const filtered = projects.filter((p) => {
-            return p.title.toLowerCase().includes(query) ||
-                p.description.toLowerCase().includes(query) ||
-                (p.tagline && p.tagline.toLowerCase().includes(query)) ||
-                p.tech.some(t => t.toLowerCase().includes(query));
-        });
-        setFilteredProjects(filtered);
+        if (!query) return projects;
+        return projects.filter((p) =>
+            p.title.toLowerCase().includes(query) ||
+            p.description.toLowerCase().includes(query) ||
+            (p.tagline && p.tagline.toLowerCase().includes(query)) ||
+            p.tech.some(t => t.toLowerCase().includes(query))
+        );
     }, [searchQuery]);
 
     return (
