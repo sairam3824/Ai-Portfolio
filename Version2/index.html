@@ -38,7 +38,7 @@
         content="AI Engineer, Software Developer, GenAI, Machine Learning, Full Stack Developer, Portfolio, Sairam Maruri" />
     <meta name="author" content="Sai Ram Maruri" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <link rel="canonical" href="https://saiii.in/" />
+    <!-- canonical is set dynamically per-route by react-helmet-async (Seo.tsx) -->
 
     <!-- Favicon and App Icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -76,7 +76,7 @@
     <meta name="twitter:title" content="Sairam Maruri | AI Engineer" />
     <meta name="twitter:description" content="Explore my AI/ML projects, technical blogs, and professional journey." />
     <meta name="twitter:image" content="https://saiii.in/preview.webp" />
-    <meta name="twitter:creator" content="@sairammaruri" />
+    <meta name="twitter:site" content="Sai Ram Maruri" />
 
 
     <!-- Structured Data: Person -->
@@ -170,7 +170,7 @@
             "@id": "https://saiii.in/#person"
         },
         "dateCreated": "2024-01-01",
-        "dateModified": "2026-02-09"
+        "dateModified": "2026-02-13"
     }
     </script>
 
@@ -245,6 +245,19 @@
 
 <body>
     <div id="root"></div>
+    <!-- Unregister stale service workers from previous PWA-enabled deployments -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function (registrations) {
+                registrations.forEach(function (r) { r.unregister(); });
+            });
+            if (caches) {
+                caches.keys().then(function (names) {
+                    names.forEach(function (name) { caches.delete(name); });
+                });
+            }
+        }
+    </script>
     <script type="module" src="/src/main.tsx"></script>
 </body>
 

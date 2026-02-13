@@ -30,7 +30,7 @@ const Seo = ({
     image = DEFAULT_IMAGE,
     type = "website",
     canonical,
-    robots = "index, follow, max-image-preview:large",
+    robots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     publishedTime,
     modifiedTime,
     breadcrumbs,
@@ -95,7 +95,7 @@ const Seo = ({
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
             <meta name="twitter:image" content={fullImage} />
-            <meta name="twitter:creator" content="@sairammaruri" />
+            <meta name="twitter:site" content="Sai Ram Maruri" />
 
             {type === "article" && (
                 <>

@@ -2,206 +2,235 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://saiii.in/</loc>
-    <lastmod>2026-02-03</lastmod>
+    <lastmod>2026-02-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://saiii.in/about</loc>
-    <lastmod>2026-02-03</lastmod>
+    <lastmod>2026-02-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://saiii.in/projects</loc>
-    <lastmod>2026-02-03</lastmod>
+    <lastmod>2026-02-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://saiii.in/skills</loc>
-    <lastmod>2026-02-03</lastmod>
+    <lastmod>2026-02-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://saiii.in/education</loc>
-    <lastmod>2026-02-03</lastmod>
+    <lastmod>2026-02-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://saiii.in/coding-profiles</loc>
-    <lastmod>2026-02-03</lastmod>
+    <lastmod>2026-02-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://saiii.in/resume</loc>
-    <lastmod>2026-02-03</lastmod>
+    <lastmod>2026-02-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs</loc>
-    <lastmod>2026-02-03</lastmod>
+    <lastmod>2026-02-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://saiii.in/certifications</loc>
-    <lastmod>2026-02-03</lastmod>
+    <lastmod>2026-02-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://saiii.in/contact</loc>
-    <lastmod>2026-02-03</lastmod>
+    <lastmod>2026-02-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/tech-monthly-digest-jan-2026</loc>
+    <lastmod>2026-01-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/cursor-ai</loc>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/openai-codex</loc>
+    <lastmod>2026-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/claude-code</loc>
+    <lastmod>2026-01-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/biweekly-tech-2025-11-23-12-07</loc>
+    <lastmod>2025-12-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/modern-ides-2025</loc>
+    <lastmod>2025-12-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/weekly-novmid</loc>
+    <lastmod>2025-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/coding-journey</loc>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/langchain</loc>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/n8n</loc>
+    <lastmod>2025-11-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/weekly-nov3</loc>
+    <lastmod>2025-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/vector-database</loc>
+    <lastmod>2025-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/weekly-oct20</loc>
+    <lastmod>2025-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/fine-tuning-llms</loc>
+    <lastmod>2025-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/rag</loc>
+    <lastmod>2025-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/llm-poisoning</loc>
+    <lastmod>2025-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/llm-hallucination</loc>
+    <lastmod>2025-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/python</loc>
+    <lastmod>2025-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/openai-agent-builder</loc>
+    <lastmod>2025-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/mcp-servers</loc>
+    <lastmod>2025-09-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/aws-bedrock</loc>
+    <lastmod>2025-09-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/aws-lambda</loc>
+    <lastmod>2025-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/java</loc>
+    <lastmod>2025-08-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/cpp</loc>
+    <lastmod>2025-08-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/aws-sagemaker</loc>
+    <lastmod>2025-08-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/llms</loc>
+    <lastmod>2025-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/ai-vs-genai</loc>
+    <lastmod>2025-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/dl-algorithms</loc>
+    <lastmod>2025-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://saiii.in/blogs/ml-algorithms</loc>
+    <lastmod>2025-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
