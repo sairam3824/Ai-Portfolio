@@ -66,14 +66,10 @@ a {
     -webkit-tap-highlight-color: transparent;
 }
 
-/* Optimize images */
-img {
-    content-visibility: auto;
-}
-
+/* Optimize off-screen sections (not individual images — bare content-visibility on img causes CLS) */
 .content-auto {
     content-visibility: auto;
-    contain-intrinsic-size: 900px;
+    contain-intrinsic-size: auto 700px;
 }
 
 /* Optimize font rendering */
@@ -85,7 +81,7 @@ body {
 
 @media (min-width: 768px) {
     .content-auto {
-        contain-intrinsic-size: 700px;
+        contain-intrinsic-size: auto 900px;
     }
 }
 
