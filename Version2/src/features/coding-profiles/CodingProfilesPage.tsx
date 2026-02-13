@@ -86,8 +86,8 @@ export const CodingProfilesPage = () => {
     };
 
     const iconMap: Record<string, React.ReactNode> = {
-        "leetcode-img": <img src="/LeetCode_logo_rvs.webp" alt="LeetCode" className="w-full h-full object-contain" loading="lazy" decoding="async" />,
-        "codechef-img": <img src="/codechef.webp" alt="CodeChef" className="w-full h-full object-cover" loading="lazy" decoding="async" />,
+        "leetcode-img": <img src="/LeetCode_logo_rvs.webp" alt="LeetCode" className="w-full h-full object-contain" width="24" height="24" loading="lazy" decoding="async" />,
+        "codechef-img": <img src="/codechef.webp" alt="CodeChef" className="w-full h-full object-cover" width="24" height="24" loading="lazy" decoding="async" />,
         Activity: <Activity className="w-5 h-5" />,
         Target: <Target className="w-5 h-5" />,
         Cpu: <Cpu className="w-5 h-5" />,
