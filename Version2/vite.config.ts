@@ -1,13 +1,34 @@
-import { defineConfig } from 'vite';
+import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import viteCompression from 'vite-plugin-compression';
 import { VitePWA } from 'vite-plugin-pwa';
 
+// Inject <link rel="preload"> for the hashed avatar image so the browser
+// can start downloading it immediately instead of waiting for React to render.
+function preloadAvatarPlugin(): Plugin {
+    return {
+        name: 'preload-avatar',
+        enforce: 'post',
+        transformIndexHtml(html, ctx) {
+            const bundle = ctx.bundle;
+            if (!bundle) return html;
+            for (const fileName of Object.keys(bundle)) {
+                if (fileName.includes('avatar_optimized') && fileName.endsWith('.jpg')) {
+                    const tag = `<link rel="preload" as="image" href="/${fileName}" fetchpriority="high" />`;
+                    return html.replace('</head>', `    ${tag}\n</head>`);
+                }
+            }
+            return html;
+        },
+    };
+}
+
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [
         react(),
+        preloadAvatarPlugin(),
         viteCompression({
             algorithm: 'gzip',
             ext: '.gz',
