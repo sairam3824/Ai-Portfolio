@@ -233,7 +233,7 @@ const HomeSections = () => {
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-                            {skillCategories.map((cat) => (
+                            {skillCategories.filter((cat) => cat.category !== "Full-Stack Dev").map((cat) => (
                                 <div key={cat.category} className="flex flex-col gap-4">
                                     <h4 className="text-xs font-bold tracking-widest uppercase text-gray-400">{cat.category}</h4>
                                     <div className="flex flex-wrap gap-x-4 gap-y-3">
@@ -320,6 +320,8 @@ const HomeSections = () => {
                                     src="/LeetCode_logo_rvs.webp"
                                     alt="LeetCode"
                                     className="w-6 h-6 object-contain"
+                                    width="24"
+                                    height="24"
                                     loading="lazy"
                                     decoding="async"
                                 />
@@ -330,6 +332,8 @@ const HomeSections = () => {
                                     src="/codechef.webp"
                                     alt="CodeChef"
                                     className="w-6 h-6 object-contain"
+                                    width="24"
+                                    height="24"
                                     loading="lazy"
                                     decoding="async"
                                 />

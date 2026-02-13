@@ -62,7 +62,9 @@ const HeroCard = () => {
                         className="relative w-full h-full rounded-full object-cover shadow-lg ring-2 ring-white"
                         width="160"
                         height="160"
-                        loading="lazy"
+                        loading="eager"
+                        decoding="async"
+                        fetchPriority="high"
                     />
                     <div className="absolute bottom-2 right-2 w-4 h-4 bg-emerald-500 rounded-full border-[2.5px] border-white shadow-sm" />
                 </div>
