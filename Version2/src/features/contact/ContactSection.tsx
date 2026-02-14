@@ -15,26 +15,23 @@ import {
     Zap
 } from "lucide-react";
 
-const XIcon = ({ className }: { className?: string }) => (
-    <svg viewBox="0 0 24 24" className={className} fill="currentColor">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-    </svg>
-);
+
 import { MessageDialog } from "./MessageDialog";
+import { projectsData } from "../projects/projectsData";
 
 export const ContactSection = () => {
     const [anonymousDialogOpen, setAnonymousDialogOpen] = useState(false);
 
     const stats = [
-        { label: "LeetCode Mastery", value: "800+", rating: "2500+ (Guardian)", href: "https://leetcode.com/u/programmer3824/", color: "blue" },
-        { label: "CodeChef Ranking", value: "500+", rating: "3⭐ (1600+)", href: "https://www.codechef.com/users/sairam2004", color: "indigo" },
-        { label: "GitHub Presence", value: "20+", rating: "Open Source", href: "https://github.com/sairam3824", color: "emerald" },
+        { label: "LeetCode Rating", value: "2500+", rating: "Guardian Badge", ratingColor: "text-amber-600 bg-amber-50 border-amber-200", href: "https://leetcode.com/u/programmer3824/", color: "blue" },
+        { label: "LeetCode Streak", value: "1000+", rating: "Problems Solved", ratingColor: "text-blue-600 bg-blue-50 border-blue-200", href: "https://leetcode.com/sairam3824", color: "blue" },
+        { label: "CodeChef", value: "3★", rating: "1600+ Rating", ratingColor: "text-purple-600 bg-purple-50 border-purple-200", href: "https://www.codechef.com/users/sairam2004", color: "indigo" },
+        { label: "GitHub Presence", value: `${projectsData.length}+`, rating: "Open Source", ratingColor: "text-emerald-600 bg-emerald-50 border-emerald-200", href: "https://github.com/sairam3824", color: "emerald" },
     ];
 
     const socials = [
         { icon: <Github className="w-5 h-5" />, label: "GitHub", href: "https://github.com/sairam3824", color: "blue" },
         { icon: <Linkedin className="w-5 h-5" />, label: "LinkedIn", href: "https://www.linkedin.com/in/sairam-maruri/", color: "blue" },
-        { icon: <XIcon className="w-5 h-5" />, label: "X / Twitter", href: "https://x.com/sairammaruri", color: "blue" },
     ];
 
     const getColorClasses = (color: string) => {
@@ -82,7 +79,7 @@ export const ContactSection = () => {
 
                     <div className="relative z-10 flex flex-col h-full justify-between gap-10 md:gap-16">
                         <div className="space-y-6 md:space-y-8">
-                            <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl shadow-black/5">
+                            <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-xl shadow-black/5">
                                 <Zap className="w-7 h-7 md:w-8 md:h-8 text-white" />
                             </div>
                             <div className="space-y-4">
@@ -108,12 +105,12 @@ export const ContactSection = () => {
                         href="mailto:sairam.maruri@gmail.com"
                         className="group flex items-center gap-3 md:gap-6 p-4 sm:p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] bg-white border border-gray-100 shadow-xl shadow-gray-200/30 hover:border-blue-200/50 transition-all overflow-hidden"
                     >
-                        <div className="w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex-shrink-0 bg-blue-50 flex items-center justify-center text-blue-600 shadow-inner group-hover:bg-blue-600 group-hover:text-white transition-all">
+                        <div className="w-10 h-10 md:w-16 md:h-16 rounded-2xl md:rounded-3xl flex-shrink-0 bg-blue-50 flex items-center justify-center text-blue-600 shadow-inner group-hover:bg-blue-600 group-hover:text-white transition-all">
                             <Mail className="w-5 h-5 md:w-7 md:h-7" />
                         </div>
                         <div className="space-y-0.5 md:space-y-1 min-w-0">
                             <p className="text-[9px] md:text-[11px] font-bold text-gray-400 uppercase tracking-widest">Email Node</p>
-                            <p className="text-xs sm:text-sm md:text-xl font-extrabold text-gray-900 group-hover:text-blue-600 transition-colors whitespace-nowrap truncate">sairam.maruri@gmail.com</p>
+                            <p className="text-xs sm:text-sm md:text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors whitespace-nowrap truncate">sairam.maruri@gmail.com</p>
                         </div>
                     </a>
 
@@ -121,22 +118,22 @@ export const ContactSection = () => {
                         href="tel:+917893865644"
                         className="group flex items-center gap-3 md:gap-6 p-4 sm:p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] bg-white border border-gray-100 shadow-xl shadow-gray-200/30 hover:border-indigo-200/50 transition-all overflow-hidden"
                     >
-                        <div className="w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex-shrink-0 bg-indigo-50 flex items-center justify-center text-indigo-600 shadow-inner group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                        <div className="w-10 h-10 md:w-16 md:h-16 rounded-2xl md:rounded-3xl flex-shrink-0 bg-indigo-50 flex items-center justify-center text-indigo-600 shadow-inner group-hover:bg-indigo-600 group-hover:text-white transition-all">
                             <Phone className="w-5 h-5 md:w-7 md:h-7" />
                         </div>
                         <div className="space-y-0.5 md:space-y-1 min-w-0">
                             <p className="text-[9px] md:text-[11px] font-bold text-gray-400 uppercase tracking-widest">Voice Protocol</p>
-                            <p className="text-xs sm:text-sm md:text-xl font-extrabold text-gray-900 group-hover:text-indigo-600 transition-colors whitespace-nowrap truncate">+91 7893865644</p>
+                            <p className="text-xs sm:text-sm md:text-xl font-bold text-gray-800 group-hover:text-indigo-600 transition-colors whitespace-nowrap truncate">+91 7893865644</p>
                         </div>
                     </a>
 
                     <div className="group flex items-center gap-3 md:gap-6 p-4 sm:p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] bg-white border border-gray-100 shadow-xl shadow-gray-200/30 hover:border-blue-200/50 transition-all">
-                        <div className="w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex-shrink-0 bg-gray-50 flex items-center justify-center text-gray-400 shadow-inner group-hover:bg-blue-600 group-hover:text-white transition-all">
+                        <div className="w-10 h-10 md:w-16 md:h-16 rounded-2xl md:rounded-3xl flex-shrink-0 bg-gray-50 flex items-center justify-center text-gray-400 shadow-inner group-hover:bg-blue-600 group-hover:text-white transition-all">
                             <MapPin className="w-5 h-5 md:w-7 md:h-7" />
                         </div>
                         <div className="space-y-0.5 md:space-y-1">
                             <p className="text-[9px] md:text-[11px] font-bold text-gray-400 uppercase tracking-widest">Base Loc</p>
-                            <p className="text-xs sm:text-base md:text-xl font-extrabold text-gray-900 group-hover:text-blue-600 transition-colors">Amaravati, India</p>
+                            <p className="text-xs sm:text-base md:text-xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors">Amaravati, India</p>
                         </div>
                     </div>
                 </div>
@@ -146,7 +143,7 @@ export const ContactSection = () => {
                     <div className="flex flex-col h-full gap-8 md:gap-12">
                         <div>
                             <h3 className="text-[10px] md:text-[11px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-6 md:mb-10">Network Nodes</h3>
-                            <div className="grid grid-cols-3 gap-4 md:gap-6">
+                            <div className="grid grid-cols-2 gap-4 md:gap-6">
                                 {socials.map((social, i) => (
                                     <a
                                         key={i}
@@ -158,7 +155,7 @@ export const ContactSection = () => {
                                         <div className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center shadow-sm transition-all group-hover:bg-blue-600 group-hover:text-white ${getColorClasses(social.color)}`}>
                                             {social.icon}
                                         </div>
-                                        <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.15em] text-gray-900 transition-colors group-hover:text-blue-600">{social.label}</span>
+                                        <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.15em] text-gray-800 transition-colors group-hover:text-blue-600">{social.label}</span>
                                     </a>
                                 ))}
                             </div>
@@ -170,19 +167,19 @@ export const ContactSection = () => {
                                 download
                                 className="flex items-center gap-3 md:gap-6 min-w-0 hover:text-blue-400 transition-colors"
                             >
-                                <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
+                                <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-white/10 flex items-center justify-center flex-shrink-0">
                                     <Download className="w-5 h-5 md:w-6 md:h-6 text-white" />
                                 </div>
                                 <div className="text-left min-w-0">
                                     <p className="text-[9px] md:text-[10px] font-bold text-white/50 uppercase tracking-widest truncate">MANIFESTO</p>
-                                    <p className="text-sm md:text-lg font-extrabold tracking-tight truncate">Resume</p>
+                                    <p className="text-sm md:text-lg font-bold tracking-tight truncate">Resume</p>
                                 </div>
                             </a>
                             <a
                                 href="/Sai_Ram_Maruri_Resume_2025.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="p-3 rounded-xl bg-white/5 hover:bg-blue-600 transition-all group/arrow"
+                                className="p-3 rounded-2xl bg-white/5 hover:bg-blue-600 transition-all group/arrow"
                             >
                                 <ExternalLink className="w-5 h-5 opacity-70 group-hover/arrow:opacity-100 transition-opacity" />
                             </a>
@@ -192,39 +189,39 @@ export const ContactSection = () => {
 
                 {/* Coding DNA Stats */}
                 <div className="lg:col-span-8 bg-white border border-gray-100 rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-14 shadow-xl shadow-gray-200/30 overflow-hidden relative">
-                    <div className="flex items-center gap-5 mb-10 md:mb-16">
+                    <div className="flex items-center gap-5 mb-10 md:mb-14">
                         <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 shadow-inner flex-shrink-0">
                             <Trophy className="w-6 h-6 md:w-8 md:h-8" />
                         </div>
                         <div>
                             <h3 className="text-[10px] md:text-[11px] font-bold text-gray-400 uppercase tracking-[0.2em]">Competitive Profile</h3>
-                            <p className="text-2xl md:text-4xl font-black text-gray-900 tracking-tight">Architectural DNA</p>
+                            <p className="text-2xl md:text-4xl font-black text-gray-800 tracking-tight">Architectural DNA</p>
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 relative z-10">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 relative z-10">
                         {stats.map((stat, i) => (
                             <a
                                 key={i}
                                 href={stat.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] bg-gray-50/50 hover:bg-white border border-transparent hover:border-blue-100 hover:shadow-2xl transition-all"
+                                className="group p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] bg-gray-50/50 hover:bg-white border border-transparent hover:border-blue-100 hover:shadow-2xl transition-all"
                             >
-                                <div className="space-y-4 md:space-y-6">
-                                    <p className="text-[10px] md:text-[11px] font-bold text-gray-400 uppercase tracking-widest">{stat.label}</p>
-                                    <div>
-                                        <p className="text-4xl md:text-5xl font-black text-gray-900 tracking-tighter group-hover:text-blue-600 transition-colors">{stat.value}</p>
-                                        <div className="mt-2 inline-flex items-center px-3 py-1 rounded-full bg-blue-50/50 text-blue-600 text-[10px] md:text-[11px] font-black uppercase tracking-widest border border-blue-100/50">
+                                <div className="flex flex-col h-full">
+                                    <p className="text-[9px] md:text-[10px] font-bold text-gray-400 uppercase tracking-widest h-8 flex items-start">{stat.label}</p>
+                                    <p className="text-3xl md:text-4xl font-black text-gray-800 tracking-tighter group-hover:text-blue-600 transition-colors leading-tight mt-2">{stat.value}</p>
+                                    <div className="mt-auto pt-3">
+                                        <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-widest border ${stat.ratingColor}`}>
                                             {stat.rating}
-                                        </div>
+                                        </span>
                                     </div>
                                 </div>
                             </a>
                         ))}
                     </div>
 
-                    <div className="hidden sm:block absolute -bottom-10 -right-10 text-[200px] md:text-[300px] font-black text-gray-900/[0.02] select-none pointer-events-none group-hover:scale-110 transition-transform">
+                    <div className="hidden sm:block absolute -bottom-10 -right-10 text-[200px] md:text-[300px] font-black text-gray-800/[0.02] select-none pointer-events-none group-hover:scale-110 transition-transform">
                         <Code2 className="w-full h-full" />
                     </div>
                 </div>
@@ -237,7 +234,7 @@ export const ContactSection = () => {
 
             {/* Journey Footer */}
             <footer className="mt-24 text-center pb-8 animate-fade-in">
-                <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
+                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
                     <span className="w-16 h-px bg-gray-200" />
                     Initiate Protocol • Establish Connection
                     <span className="w-16 h-px bg-gray-200" />

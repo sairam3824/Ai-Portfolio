@@ -84,8 +84,8 @@ const AdminPage = () => {
                         <div className="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
                             <Lock className="w-7 h-7" />
                         </div>
-                        <h1 className="text-3xl font-black text-gray-900 tracking-tight">Admin Terminal</h1>
-                        <p className="text-gray-400 text-[10px] font-black uppercase tracking-[0.3em]">Secure Buffer Access Only</p>
+                        <h1 className="text-3xl font-black text-gray-800 tracking-tight">Admin Terminal</h1>
+                        <p className="text-gray-400 text-[10px] font-bold uppercase tracking-[0.3em]">Secure Buffer Access Only</p>
                     </div>
 
                     <form onSubmit={handleLogin} className="space-y-8">
@@ -98,7 +98,7 @@ const AdminPage = () => {
 
                         <div className="space-y-6">
                             <div className="group space-y-2">
-                                <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-5">Username</label>
+                                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-5">Username</label>
                                 <div className="relative">
                                     <User className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-300 group-focus-within:text-blue-600 transition-colors" />
                                     <input
@@ -112,7 +112,7 @@ const AdminPage = () => {
                             </div>
 
                             <div className="group space-y-2">
-                                <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-5">Password</label>
+                                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-5">Password</label>
                                 <div className="relative">
                                     <Key className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-300 group-focus-within:text-blue-600 transition-colors" />
                                     <input
@@ -150,7 +150,7 @@ const AdminPage = () => {
                             <Lock className="w-5 h-5" />
                         </div>
                         <div>
-                            <h1 className="font-black text-gray-900 tracking-tight leading-none">Command Center</h1>
+                            <h1 className="font-black text-gray-800 tracking-tight leading-none">Command Center</h1>
                             <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Incoming Transmissions</span>
                         </div>
                     </div>
@@ -168,7 +168,7 @@ const AdminPage = () => {
             {/* Content */}
             <main className="max-w-7xl mx-auto px-4 md:px-8 py-8 md:py-12">
                 <div className="flex items-center justify-between mb-8">
-                    <h2 className="text-xl font-black text-gray-900 tracking-tight">Messages ({messages.length})</h2>
+                    <h2 className="text-xl font-bold text-gray-800 tracking-tight">Messages ({messages.length})</h2>
                     <button
                         onClick={fetchMessages}
                         disabled={loading}
@@ -210,7 +210,7 @@ const AdminPage = () => {
                                     <div className="flex flex-wrap items-center gap-4">
                                         <div className="flex items-center gap-2">
                                             <div className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
-                                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600">Transmission Node</span>
+                                            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600">Transmission Node</span>
                                         </div>
                                         <div className="flex items-center gap-2 text-gray-400 text-[10px] font-bold uppercase tracking-widest">
                                             <Clock className="w-3.5 h-3.5" />
@@ -218,7 +218,7 @@ const AdminPage = () => {
                                         </div>
                                     </div>
 
-                                    <p className="text-gray-900 text-xl md:text-2xl font-medium leading-relaxed max-w-4xl whitespace-pre-wrap">
+                                    <p className="text-gray-800 text-xl md:text-2xl font-medium leading-relaxed max-w-4xl whitespace-pre-wrap">
                                         {msg.content}
                                     </p>
 
@@ -255,7 +255,7 @@ const AdminPage = () => {
                         </div>
 
                         <div className="text-center space-y-3">
-                            <h3 className="text-2xl font-black text-gray-900 tracking-tight">Purge Data?</h3>
+                            <h3 className="text-2xl font-bold text-gray-800 tracking-tight">Purge Data?</h3>
                             <p className="text-gray-500 text-sm font-medium leading-relaxed">
                                 You are about to permanently delete this transmission from the nexus terminal. This action is irreversible.
                             </p>

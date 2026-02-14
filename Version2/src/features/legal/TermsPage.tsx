@@ -10,7 +10,7 @@ const TermsPage = () => {
         description="Terms of service for Sai Ram Maruri's portfolio website."
       />
       <div className="mb-12">
-        <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight">Terms and Conditions</h1>
+        <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-gray-800 mb-4 tracking-tight">Terms and Conditions</h1>
         <p className="text-gray-500 font-medium">Last updated: January 2026</p>
       </div>
 
@@ -20,7 +20,7 @@ const TermsPage = () => {
             <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
             Back to Home
           </Link>
-          <h2 className="text-2xl font-semibold mb-3 text-gray-900 border-b border-gray-200 pb-2">Introduction</h2>
+          <h2 className="text-2xl font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2">Introduction</h2>
           <p className="mb-4">
             Welcome to the personal portfolio website of Sai Rama Linga Reddy Maruri (the "Website").
             These Terms and Conditions ("Terms") govern your access to and use of the Website and any
@@ -33,7 +33,7 @@ const TermsPage = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-900 border-b border-gray-200 pb-2">Use of the Website</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-gray-800 border-b border-gray-200 pb-2">Use of the Website</h2>
           <h3 className="text-xl font-medium mb-3 text-gray-800">Permitted Use</h3>
           <p className="mb-4">You may use this website for:</p>
           <ul className="list-disc pl-6 mb-4 space-y-2">
@@ -56,7 +56,7 @@ const TermsPage = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-900 border-b border-gray-200 pb-2">Intellectual Property</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-gray-800 border-b border-gray-200 pb-2">Intellectual Property</h2>
           <p className="mb-4">
             All content on the Website—including text, graphics, logos, photographs, videos, designs,
             and code—is owned by me or used with permission from the respective owners. You may not
@@ -70,7 +70,7 @@ const TermsPage = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-900 border-b border-gray-200 pb-2">User-Generated Content</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-gray-800 border-b border-gray-200 pb-2">User-Generated Content</h2>
           <p className="mb-4">
             When you submit information through contact forms, email, or chat features, you grant me a
             non-exclusive right to use that information for the sole purpose of responding to your
@@ -83,7 +83,7 @@ const TermsPage = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-900 border-b border-gray-200 pb-2">Disclaimers</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-gray-800 border-b border-gray-200 pb-2">Disclaimers</h2>
           <h3 className="text-xl font-medium mb-3 text-gray-800">Website Availability</h3>
           <p className="mb-4">
             I strive to keep the Website available at all times but do not guarantee uninterrupted or
@@ -106,7 +106,7 @@ const TermsPage = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-900 border-b border-gray-200 pb-2">Limitation of Liability</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-gray-800 border-b border-gray-200 pb-2">Limitation of Liability</h2>
           <p className="mb-4">
             To the fullest extent permitted by law, I shall not be liable for any direct, indirect,
             incidental, special, consequential, or punitive damages arising from your use of—or inability
@@ -115,7 +115,7 @@ const TermsPage = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-900 border-b border-gray-200 pb-2">Privacy</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-gray-800 border-b border-gray-200 pb-2">Privacy</h2>
           <p className="mb-4">
             Your privacy is important to me. Please refer to my Privacy Policy to understand how your
             personal information is collected, used, and protected.
@@ -123,7 +123,7 @@ const TermsPage = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-900 border-b border-gray-200 pb-2">Modifications to Terms</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-gray-800 border-b border-gray-200 pb-2">Modifications to Terms</h2>
           <p className="mb-4">
             I reserve the right to modify these Terms at any time. Changes will be posted on this page
             with an updated revision date. Material changes will be highlighted where appropriate.
@@ -133,7 +133,7 @@ const TermsPage = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-900 border-b border-gray-200 pb-2">Termination</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-gray-800 border-b border-gray-200 pb-2">Termination</h2>
           <p className="mb-4">
             I may terminate or suspend your access to the Website at any time, without prior notice,
             for conduct that I believe violates these Terms or is harmful to other users, me, or third
@@ -142,7 +142,7 @@ const TermsPage = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-900 border-b border-gray-200 pb-2">Governing Law</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-gray-800 border-b border-gray-200 pb-2">Governing Law</h2>
           <p className="mb-4">
             These Terms shall be governed by and construed in accordance with the laws of the
             jurisdiction where I reside, without regard to conflict of law principles. Any disputes
@@ -152,7 +152,7 @@ const TermsPage = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-900 border-b border-gray-200 pb-2">Severability</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-gray-800 border-b border-gray-200 pb-2">Severability</h2>
           <p className="mb-4">
             If any provision of these Terms is found to be unenforceable or invalid, that provision
             shall be limited or eliminated to the minimum extent necessary so that these Terms shall
@@ -161,7 +161,7 @@ const TermsPage = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-900 border-b border-gray-200 pb-2 text-center mt-12">Contact Information</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-gray-800 border-b border-gray-200 pb-2 text-center mt-12">Contact Information</h2>
           <p className="mb-4 text-center">
             If you have questions about these Terms and Conditions, please reach out via the contact form
             on the Website or by email at the address provided there.

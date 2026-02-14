@@ -118,16 +118,16 @@ export const MessageDialog = ({ open, onOpenChange }: MessageDialogProps) => {
                     <div className="flex items-start justify-between mb-8">
                         <div className="space-y-4">
                             <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
+                                <div className="w-10 h-10 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
                                     <MessageSquare className="w-5 h-5" />
                                 </div>
                                 <div className="px-3 py-1 rounded-full bg-gray-50 border border-gray-100 flex items-center gap-2">
                                     <Shield className="w-3 h-3 text-emerald-500" />
-                                    <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">Anonymous Protocol</span>
+                                    <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500">Anonymous Protocol</span>
                                 </div>
                             </div>
                             <div>
-                                <h2 className="text-3xl font-black text-gray-900 tracking-tight">
+                                <h2 className="text-3xl font-black text-gray-800 tracking-tight">
                                     Establish Link.
                                 </h2>
                                 <p className="text-gray-400 text-sm font-medium mt-1 leading-relaxed">
@@ -138,7 +138,7 @@ export const MessageDialog = ({ open, onOpenChange }: MessageDialogProps) => {
                         <button
                             onClick={() => onOpenChange(false)}
                             disabled={isLoading}
-                            className="w-10 h-10 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-400 hover:text-gray-900 hover:border-gray-200 transition-all disabled:opacity-30"
+                            className="w-10 h-10 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-400 hover:text-gray-800 hover:border-gray-200 transition-all disabled:opacity-30"
                         >
                             <X className="w-5 h-5" />
                         </button>
@@ -154,7 +154,7 @@ export const MessageDialog = ({ open, onOpenChange }: MessageDialogProps) => {
                                 className="w-full min-h-[180px] p-6 bg-gray-50 border border-gray-100 rounded-3xl resize-none outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all text-gray-700 font-medium placeholder:text-gray-300"
                                 disabled={isLoading}
                             />
-                            <div className="absolute bottom-4 right-4 text-[10px] font-black text-gray-300 uppercase tracking-widest pointer-events-none group-focus-within:text-blue-200 transition-colors">
+                            <div className="absolute bottom-4 right-4 text-[10px] font-bold text-gray-300 uppercase tracking-widest pointer-events-none group-focus-within:text-blue-200 transition-colors">
                                 Nexus Terminal v2
                             </div>
                         </div>
@@ -200,7 +200,7 @@ export const MessageDialog = ({ open, onOpenChange }: MessageDialogProps) => {
                             {notification.type === 'success' ? <CheckCircle2 className="w-6 h-6" /> : <AlertCircle className="w-6 h-6" />}
                         </div>
                         <div className="space-y-1">
-                            <h4 className="text-sm font-black text-gray-900 uppercase tracking-tight">{notification.title}</h4>
+                            <h4 className="text-sm font-black text-gray-800 uppercase tracking-tight">{notification.title}</h4>
                             <p className="text-xs text-gray-400 font-medium leading-relaxed">{notification.description}</p>
                         </div>
                     </div>
