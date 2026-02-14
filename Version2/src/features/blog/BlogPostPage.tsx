@@ -3,7 +3,7 @@ import { useEffect, useState, useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import { getBlogPost } from "./blogData";
 import { getBlogContent } from "./blogContent";
-import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Share2, MessageCircle } from "lucide-react";
 import Seo from "../../shared/Seo";
 
 const SITE_URL = "https://saiii.in";
@@ -74,7 +74,7 @@ const BlogPostPage = () => {
         },
         "headline": post.title,
         "description": post.excerpt,
-        "image": `${SITE_URL}/preview.webp`,
+        "image": `${SITE_URL}/preview.png`,
         "datePublished": publishedTime,
         "dateModified": publishedTime,
         "wordCount": wordCount > 0 ? wordCount : undefined,
@@ -113,7 +113,7 @@ const BlogPostPage = () => {
             </Helmet>
             <Link
                 to="/blogs"
-                className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 transition-colors mb-12 font-medium"
+                className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-800 transition-colors mb-12 font-medium"
             >
                 <ArrowLeft className="w-4 h-4" />
                 Back to Writing
@@ -121,7 +121,7 @@ const BlogPostPage = () => {
 
             <article>
                 <header className="mb-12">
-                    <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight tracking-tight">
+                    <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight tracking-tight">
                         {post.title}
                     </h1>
 
@@ -151,7 +151,7 @@ const BlogPostPage = () => {
                 ) : (
                     <div
                         className="prose prose-lg prose-slate max-w-none
-                    prose-headings:font-bold prose-headings:text-gray-900
+                    prose-headings:font-bold prose-headings:text-gray-800
                     prose-p:text-gray-700 prose-p:leading-relaxed
                     prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline
                     prose-img:rounded-xl prose-img:shadow-md"
@@ -166,6 +166,30 @@ const BlogPostPage = () => {
                                 {tag}
                             </span>
                         ))}
+                    </div>
+                </div>
+
+                {/* Contact CTA */}
+                <div className="mt-12 bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-6 md:p-8">
+                    <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
+                            <MessageCircle className="w-5 h-5 text-blue-600" />
+                        </div>
+                        <div className="space-y-3">
+                            <h3 className="text-lg font-semibold text-gray-900">
+                                Have suggestions or want to discuss?
+                            </h3>
+                            <p className="text-gray-600 text-sm leading-relaxed">
+                                Found something interesting, have feedback, or want to discuss ideas around this topic? I'd love to hear from you. Drop me a message — I read and respond to every one.
+                            </p>
+                            <Link
+                                to="/contact"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-xl hover:bg-blue-700 transition-colors shadow-sm hover:shadow-md"
+                            >
+                                <MessageCircle className="w-4 h-4" />
+                                Get in Touch
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </article>

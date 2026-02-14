@@ -89,7 +89,7 @@ export const BlogSection = () => {
             <header className="text-center space-y-8 mb-20 animate-fade-in px-4">
                 <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/40 backdrop-blur-md border border-white/40 rounded-full shadow-sm">
                     <BookOpen className="w-4 h-4 text-blue-500" />
-                    <span className="text-xs font-black uppercase tracking-[0.2em] text-gray-500">Technical Publication</span>
+                    <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Technical Publication</span>
                 </div>
                 <h1 className="text-3xl sm:text-5xl md:text-8xl font-black tracking-tighter text-gray-900 leading-[0.9]">
                     The Nexus <br />
@@ -109,9 +109,9 @@ export const BlogSection = () => {
                             <button
                                 key={cat.id}
                                 onClick={() => setSelectedCategory(cat.id)}
-                                className={`px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all whitespace-nowrap duration-300 ${selectedCategory === cat.id
+                                className={`px-5 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all whitespace-nowrap duration-300 ${selectedCategory === cat.id
                                     ? "bg-gray-900 text-white shadow-md scale-105"
-                                    : "text-gray-500 hover:bg-white hover:text-gray-900 border border-transparent hover:border-gray-100"
+                                    : "text-gray-500 hover:bg-white hover:text-gray-800 border border-transparent hover:border-gray-100"
                                     }`}
                             >
                                 {cat.label}
@@ -167,7 +167,7 @@ export const BlogSection = () => {
 
             {/* Engineering Note */}
             <footer className="mt-20 text-center pb-8 animate-fade-in relative z-10">
-                <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
+                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
                     <span className="w-16 h-px bg-gray-200" />
                     Sharing Insights • Documenting Journey
                     <span className="w-16 h-px bg-gray-200" />

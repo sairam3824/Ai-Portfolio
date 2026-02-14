@@ -28,6 +28,7 @@ const contentLoaders: Record<string, () => Promise<{ default?: { content: string
     "weekly-oct20": () => import('./posts/tech-biweekly-digest-oct-20-2025'),
     "vector-database": () => import('./posts/vector-databases-foundation-modern-ai'),
     "tech-monthly-digest-jan-2026": () => import('./posts/tech-monthly-digest-jan-2026'),
+    "context-engineering": () => import('./posts/context-engineering'),
 };
 
 export async function getBlogContent(id: string): Promise<string | null> {

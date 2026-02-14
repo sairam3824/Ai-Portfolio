@@ -14,6 +14,17 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
     {
+        id: "context-engineering",
+        title: "Context Engineering: The Skill That Replaced Prompt Engineering for Production AI in 2026",
+        excerpt:
+            "Prompt engineering got you started. Context engineering gets you to production. Learn why the most critical skill for building reliable AI agents and enterprise LLM applications in 2026 is no longer what you say to the model — it's what the model knows when it starts thinking.",
+        date: "February 13, 2026",
+        readTime: "16 min read",
+        tags: ["AI/ML", "Context Engineering", "Prompt Engineering", "LLM", "AI Agents", "Production AI", "RAG"],
+        icon: "BrainCircuit",
+        iconColor: "purple",
+    },
+    {
         id: "tech-monthly-digest-jan-2026",
         title: "Tech Monthly Digest: January 2026 – Agents, IDEs, and Cloud AI in Motion",
         excerpt:

@@ -19,7 +19,7 @@ const CardContent = memo(({ post }: { post: BlogPost }) => {
 
     return (
         <div className="group flex flex-col md:flex-row gap-6 p-6 rounded-2xl hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-100">
-            <div className="shrink-0 w-16 h-16 rounded-xl flex items-center justify-center bg-gray-100/50 group-hover:scale-105 transition-transform duration-300 text-gray-500">
+            <div className="shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center bg-gray-100/50 group-hover:scale-105 transition-transform duration-300 text-gray-500">
                 <IconComponent className="w-8 h-8" strokeWidth={1.5} />
             </div>
 
@@ -36,7 +36,7 @@ const CardContent = memo(({ post }: { post: BlogPost }) => {
                     </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors leading-tight">
+                <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors leading-tight">
                     {post.title}
                 </h3>
 
