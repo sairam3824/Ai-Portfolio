@@ -7,11 +7,12 @@ import {
   Target
 } from "lucide-react";
 import Seo from "../../shared/Seo";
+import { projectsData } from "../projects/projectsData";
 
 export const AboutPage = () => {
   const stats = [
     { label: "Building", value: "3+ Years", icon: <Layers className="w-4 h-4" />, color: "blue" },
-    { label: "Projects", value: "20+", icon: <Zap className="w-4 h-4" />, color: "amber" },
+    { label: "Projects", value: `${projectsData.length}+`, icon: <Zap className="w-4 h-4" />, color: "amber" },
     { label: "Problems", value: "1000+", icon: <Binary className="w-4 h-4" />, color: "emerald" },
     { label: "Blog Articles", value: "30+", icon: <Sparkles className="w-4 h-4" />, color: "blue" },
     { label: "Certifications", value: "9+", icon: <Target className="w-4 h-4" />, color: "amber" },
@@ -48,9 +49,9 @@ export const AboutPage = () => {
 
       {/* Header: Pure Impact */}
       <header className="relative z-10 mb-20 animate-fade-in w-full text-left">
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50/50 backdrop-blur-sm border border-blue-100 rounded-full mb-6 text-blue-600 font-bold text-[10px] uppercase tracking-widest">
-          <Sparkles className="w-3 h-3" />
-          Evolution of an Engineer
+        <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/40 backdrop-blur-md border border-white/40 rounded-full shadow-sm mb-6">
+          <Sparkles className="w-4 h-4 text-blue-500" />
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Evolution of an Engineer</span>
         </div>
         <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-[-0.05em] text-gray-900 leading-tight mb-8">
           GenAI <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600">Engineer.</span>
@@ -67,14 +68,14 @@ export const AboutPage = () => {
         <div className="md:col-span-8 p-10 rounded-[3rem] bg-white border border-gray-100 shadow-2xl shadow-gray-200/50 flex flex-col justify-between group hover:border-blue-200/50 hover:-translate-y-2 transition-all duration-700">
           <div className="space-y-8">
             <div className="flex items-center gap-4">
-              <div className="p-3 bg-blue-600 rounded-2xl text-white">
+              <div className="p-3 bg-blue-600 rounded-full text-white">
                 <Code className="w-6 h-6" />
               </div>
-              <h2 className="text-3xl font-black text-gray-900 tracking-tight italic">Learn always. Build always.</h2>
+              <h2 className="text-3xl font-black text-gray-800 tracking-tight italic">Learn always. Build always.</h2>
             </div>
             <div className="space-y-6 text-gray-600 font-medium text-lg leading-relaxed max-w-2xl">
               <p>
-                With a foundation built on <span className="text-gray-900 font-bold">1,000+ solved algorithmic challenges</span>, I've evolved from competitive programming (LeetCode Guardian) to architecting and shipping production-grade SaaS AI systems on AWS.
+                With a foundation built on <span className="text-gray-800 font-bold">1,000+ solved algorithmic challenges</span>, I've evolved from competitive programming (LeetCode Guardian) to architecting and shipping production-grade SaaS AI systems on AWS.
               </p>
               <p>
                 I specialize in <span className="text-blue-600 font-bold">cloud-native AI pipelines</span> — building agentic workflows, RAG systems, and LLM-powered applications using Claude Code, Cursor AI, and the modern vibe coding stack. Every system I build balances cost, speed, and intelligence.
@@ -86,16 +87,16 @@ export const AboutPage = () => {
         {/* Stat Strip - Span 4 (2 columns x 3 rows) */}
         <div className="md:col-span-4 grid grid-cols-2 gap-4">
           {stats.map((stat, i) => (
-            <div key={i} className="p-4 rounded-2xl bg-white border border-gray-100 shadow-sm flex flex-col gap-2 group hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-              <div className={`p-2.5 rounded-xl bg-white shadow-sm w-fit group-hover:scale-110 transition-transform ${stat.color === 'blue' ? 'text-blue-500' :
+            <div key={i} className="p-5 rounded-[1.5rem] bg-white border border-gray-100 shadow-sm flex flex-col gap-2 group hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+              <div className={`p-2.5 rounded-full bg-white shadow-sm w-fit group-hover:scale-110 transition-transform ${stat.color === 'blue' ? 'text-blue-500' :
                 stat.color === 'amber' ? 'text-amber-500' :
                   'text-emerald-500'
                 }`}>
                 {stat.icon}
               </div>
               <div>
-                <p className="text-2xl font-black text-gray-900">{stat.value}</p>
-                <p className="text-[10px] font-black uppercase tracking-widest text-gray-400">{stat.label}</p>
+                <p className="text-2xl font-bold text-gray-800">{stat.value}</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{stat.label}</p>
               </div>
             </div>
           ))}
@@ -104,7 +105,7 @@ export const AboutPage = () => {
         {/* Badge Grid - Span 4 */}
         <div className="md:col-span-4 p-10 rounded-[3rem] bg-white border border-gray-100 shadow-xl shadow-gray-200/40 flex flex-col justify-start overflow-hidden relative group hover:border-blue-200/50 hover:-translate-y-2 transition-all duration-500">
           <div className="absolute top-0 right-0 w-40 h-40 bg-blue-500/5 blur-[60px] rounded-full group-hover:bg-blue-500/10 transition-all" />
-          <h3 className="text-xs font-black uppercase tracking-widest text-blue-600 mb-4 flex items-center gap-3">
+          <h3 className="text-xs font-bold uppercase tracking-widest text-blue-600 mb-4 flex items-center gap-3">
             Verified Authority <div className="h-px flex-1 bg-gray-100" />
           </h3>
           <p className="text-sm text-gray-400 font-bold italic mb-8">
@@ -119,7 +120,7 @@ export const AboutPage = () => {
                     'bg-emerald-500'
                   }`} />
                 <div>
-                  <p className="text-xl font-black tracking-tight text-gray-900">{badge.label}</p>
+                  <p className="text-xl font-bold tracking-tight text-gray-800">{badge.label}</p>
                   <p className="text-sm font-bold text-gray-500">{badge.value}</p>
                   <p className="text-[10px] font-medium text-gray-400 uppercase tracking-wide">{badge.sub}</p>
                 </div>
@@ -130,9 +131,9 @@ export const AboutPage = () => {
 
         {/* Expertise List - Span 8 */}
         <div className="md:col-span-8 p-10 rounded-[3rem] bg-white border border-gray-100 shadow-xl shadow-gray-200/40 flex flex-col justify-start relative overflow-hidden group hover:border-blue-200/50 hover:-translate-y-2 transition-all duration-500">
-          <div className="hidden sm:block absolute -bottom-10 -right-10 text-[180px] font-black text-gray-900/[0.02] select-none">AI</div>
+          <div className="hidden sm:block absolute -bottom-10 -right-10 text-[180px] font-black text-gray-800/[0.02] select-none">AI</div>
           <div className="space-y-6">
-            <h3 className="text-2xl font-black text-gray-900 flex items-center gap-3">
+            <h3 className="text-2xl font-bold text-gray-800 flex items-center gap-3">
               Core Expertise
               <span className="text-blue-600 font-mono text-lg">&gt;_</span>
             </h3>
@@ -142,7 +143,7 @@ export const AboutPage = () => {
           </div>
           <div className="space-y-6 mt-10">
             <div>
-              <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-3">Dev Tools</p>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">Dev Tools</p>
               <div className="flex flex-wrap gap-3">
                 {devTools.map((tool, i) => (
                   <div key={i} className="px-5 py-2.5 bg-white border border-gray-100 rounded-2xl text-xs font-bold text-gray-700 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-default flex items-center gap-2">
@@ -153,7 +154,7 @@ export const AboutPage = () => {
               </div>
             </div>
             <div>
-              <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-3">LLM Ecosystem</p>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">LLM Ecosystem</p>
               <div className="flex flex-wrap gap-3">
                 {llmEcosystem.map((model, i) => (
                   <div key={i} className="px-5 py-2.5 bg-white border border-gray-100 rounded-2xl text-xs font-bold text-gray-700 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-default flex items-center gap-2">
@@ -169,7 +170,7 @@ export const AboutPage = () => {
 
       {/* Closing Tagline */}
       <div className="mt-20 w-full text-center animate-fade-in">
-        <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
+        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
           <span className="w-16 h-px bg-gray-200" />
           Passionate Engineer • Creative Thinker
           <span className="w-16 h-px bg-gray-200" />

@@ -38,7 +38,7 @@ export const CodingProfiles = () => {
                         href={profile.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group p-4 rounded-xl bg-card border-2 border-border hover:border-blue-500 transition-all duration-300 hover:scale-105 flex items-center gap-3"
+                        className="group p-4 rounded-2xl bg-card border-2 border-border hover:border-blue-500 transition-all duration-300 hover:scale-105 flex items-center gap-3"
                         aria-label={profile.label}
                     >
                         <profile.icon className="w-5 h-5 text-blue-600 group-hover:text-blue-400 transition-colors" />
