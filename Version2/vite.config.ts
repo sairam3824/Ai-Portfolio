@@ -32,13 +32,13 @@ export default defineConfig({
         viteCompression({
             algorithm: 'gzip',
             ext: '.gz',
-            threshold: 1024,
+            threshold: 512,
             deleteOriginFile: false,
         }),
         viteCompression({
             algorithm: 'brotliCompress',
             ext: '.br',
-            threshold: 1024,
+            threshold: 512,
             deleteOriginFile: false,
         }),
         VitePWA({
