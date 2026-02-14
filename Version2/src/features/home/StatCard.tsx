@@ -24,11 +24,11 @@ const StatCard = ({ label, value, icon, color, href, ghostChar, delay = 0 }: Sta
     return (
         <a href={href} target={href.startsWith("/") ? undefined : "_blank"} rel="noopener noreferrer">
             <BentoCard className="col-span-6 md:col-span-3 cursor-pointer h-full" ghostChar={ghostChar} delay={delay}>
-                <div className={`w-9 h-9 rounded-lg ${colors.bg} ${colors.text} ${colors.hoverBg} group-hover:text-white flex items-center justify-center mb-3 transition-all duration-300 border ${colors.border}`}>
+                <div className={`w-9 h-9 rounded-2xl ${colors.bg} ${colors.text} ${colors.hoverBg} group-hover:text-white flex items-center justify-center mb-3 transition-all duration-300 border ${colors.border}`}>
                     {icon}
                 </div>
                 <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-0.5 block">{label}</span>
-                <span className="text-sm sm:text-base font-bold text-gray-900 tracking-tight">{value}</span>
+                <span className="text-sm sm:text-base font-bold text-gray-800 tracking-tight">{value}</span>
             </BentoCard>
         </a>
     );
