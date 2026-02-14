@@ -43,7 +43,7 @@ export const CertificationSection = () => {
             <header className="text-center space-y-8 mb-16 animate-fade-in px-4">
                 <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/40 backdrop-blur-md border border-white/40 rounded-full shadow-sm">
                     <Award className="w-4 h-4 text-blue-500" />
-                    <span className="text-xs font-black uppercase tracking-[0.2em] text-gray-500">Verified Authority</span>
+                    <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Verified Authority</span>
                 </div>
                 <h1 className="text-3xl sm:text-5xl md:text-8xl font-black tracking-tighter text-gray-900 leading-[0.9]">
                     The Credential <br />
@@ -64,7 +64,7 @@ export const CertificationSection = () => {
 
             {/* Journey Footer */}
             <footer className="mt-12 text-center pb-8 animate-fade-in text-gray-400">
-                <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
+                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
                     <span className="w-16 h-px bg-gray-200" />
                     Verified Expertise • Lifelong Learning
                     <span className="w-16 h-px bg-gray-200" />

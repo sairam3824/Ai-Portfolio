@@ -99,7 +99,7 @@ const LoadingFallback = () => (
         </div>
 
         <div className="flex flex-col items-center gap-2">
-            <h3 className="text-sm font-black text-gray-900 uppercase tracking-[0.2em]">Initializing</h3>
+            <h3 className="text-sm font-black text-gray-800 uppercase tracking-[0.2em]">Initializing</h3>
             <div className="flex gap-1.5">
                 <div className="w-1 h-1 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
                 <div className="w-1 h-1 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
@@ -110,19 +110,18 @@ const LoadingFallback = () => (
 );
 
 const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
-    // Prefetch all routes when menu opens
-    useEffect(() => {
-        if (isOpen) {
-            Object.values(pathToLoader).forEach(loader => loader());
-        }
-    }, [isOpen]);
+    // Prefetch individual route on touch/hover instead of all at once
+    const prefetchRoute = useCallback((path: string) => {
+        const loader = pathToLoader[path];
+        if (loader) loader();
+    }, []);
 
     if (!isOpen) return null;
 
     return (
-        <div className="lg:hidden fixed inset-0 z-[100] bg-white text-gray-900 overflow-y-auto animate-in fade-in zoom-in-95 duration-200">
+        <div className="lg:hidden fixed inset-0 z-[100] bg-white text-gray-800 overflow-y-auto animate-in fade-in zoom-in-95 duration-200">
             <div className="sticky top-0 bg-white/80 backdrop-blur-md p-4 flex justify-between items-center border-b border-gray-100 mb-4 z-10">
-                <span className="text-xl font-bold tracking-tight text-gray-900">Menu</span>
+                <span className="text-xl font-bold tracking-tight text-gray-800">Menu</span>
                 <button onClick={onClose} className="p-2 bg-gray-50 rounded-full hover:bg-gray-100 transition-colors">
                     <X className="w-6 h-6 text-gray-500" />
                 </button>
@@ -133,9 +132,11 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
                         key={item.path}
                         to={item.path}
                         onClick={onClose}
+                        onTouchStart={() => prefetchRoute(item.path)}
+                        onMouseEnter={() => prefetchRoute(item.path)}
                         className="flex flex-col items-center justify-center p-6 bg-gray-50/50 border border-gray-100 rounded-2xl active:scale-95 transition-all hover:bg-white hover:shadow-md hover:border-transparent"
                     >
-                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-3 ${item.bg}`}>
+                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-3 ${item.bg}`}>
                             <item.icon className={`w-6 h-6 ${item.color}`} />
                         </div>
                         <span className="font-semibold text-sm text-gray-700">{item.label}</span>
@@ -153,7 +154,7 @@ function App() {
         <HelmetProvider>
             <Router>
                 <ScrollToTop />
-                <div className="flex h-screen bg-white font-sans text-gray-900 selection:bg-blue-100 selection:text-blue-900 overflow-hidden">
+                <div className="flex h-screen bg-white font-sans text-gray-800 selection:bg-blue-100 selection:text-blue-900 overflow-hidden">
                     <Sidebar />
 
                     {/* Main Content Wrapper - Scrolls independently */}
@@ -203,11 +204,11 @@ const Sidebar = () => {
         <nav className="hidden lg:flex flex-col w-60 h-full py-6 pl-3 pr-5 bg-white shrink-0 overflow-y-auto no-scrollbar border-r border-gray-50/50">
             <div className="pl-4 mb-8">
                 <Link to="/" className="block">
-                    <h1 className="text-2xl font-normal text-gray-700">
+                    <h1 className="text-2xl font-bold text-gray-800">
                         Sai Rama Linga Reddy Maruri
                     </h1>
-                    <p className="text-sm text-gray-500">sairam.maruri@gmail.com</p>
-                    <p className="text-sm text-gray-500">+91 7893865644</p>
+                    <p className="text-sm font-medium text-gray-500">sairam.maruri@gmail.com</p>
+                    <p className="text-sm font-medium text-gray-500">+91 7893865644</p>
                 </Link>
             </div>
 
@@ -221,7 +222,7 @@ const Sidebar = () => {
                             to={item.path}
                             onMouseEnter={() => prefetch(item.path)}
                             onFocus={() => prefetch(item.path)}
-                            className={`flex items-center px-4 py-3.5 rounded-r-full transition-all duration-300 font-medium text-[15px] ${isActive
+                            className={`flex items-center px-4 py-3.5 rounded-r-full transition-all duration-300 font-semibold text-[15px] ${isActive
                                 ? 'bg-blue-50 text-blue-800'
                                 : 'text-gray-600 hover:bg-gray-50'
                                 }`}
@@ -251,7 +252,7 @@ const MobileHeader = () => {
     return (
         <div className="lg:hidden sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-100 px-4 py-3 flex items-center justify-between">
             <Link to="/">
-                <span className="text-lg font-medium text-gray-900">Sai Rama Linga Reddy</span>
+                <span className="text-lg font-medium text-gray-800">Sai Rama Linga Reddy</span>
             </Link>
             <Link to="/resume" className="p-2 bg-gray-50 rounded-full text-gray-600">
                 <FileText className="w-5 h-5" />
@@ -279,7 +280,7 @@ const MobileNav = ({ onMenuClick }: { onMenuClick: () => void }) => {
                         <Link
                             key={item.path}
                             to={item.path}
-                            className={`flex flex-col items-center gap-1 p-2 rounded-xl transition-all ${isActive ? 'text-blue-700' : 'text-gray-500'
+                            className={`flex flex-col items-center gap-1 p-2 rounded-2xl transition-all ${isActive ? 'text-blue-700' : 'text-gray-500'
                                 }`}
                         >
                             <item.icon className={`w-6 h-6 ${isActive ? 'fill-blue-100' : ''}`} strokeWidth={2} />
