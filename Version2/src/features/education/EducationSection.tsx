@@ -72,7 +72,7 @@ export const EducationSection = () => {
             <header className="text-center space-y-8 mb-20 animate-fade-in px-4">
                 <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/40 backdrop-blur-md border border-white/40 rounded-full shadow-sm">
                     <TrendingUp className="w-4 h-4 text-blue-500" />
-                    <span className="text-xs font-black uppercase tracking-[0.2em] text-gray-500">Knowledge Acquisition</span>
+                    <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Knowledge Acquisition</span>
                 </div>
                 <h1 className="text-3xl sm:text-5xl md:text-8xl font-black tracking-tighter text-gray-900 leading-[0.9]">
                     Academic <br />
@@ -96,18 +96,18 @@ export const EducationSection = () => {
                         <div className="absolute top-6 right-6 md:top-8 md:right-8">
                             <div className={`flex items-center gap-2 px-3 py-1 md:px-4 md:py-1.5 rounded-full ${getColorClasses(it.color)}`}>
                                 <Award className="w-3.5 h-3.5" />
-                                <span className="text-[9px] md:text-[10px] font-black uppercase tracking-widest">{it.grade}</span>
+                                <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest">{it.grade}</span>
                             </div>
                         </div>
 
                         <div className="flex flex-col lg:flex-row gap-8 md:gap-10 items-start">
                             <div className="flex-1 space-y-6">
                                 <div className="space-y-4">
-                                    <div className={`w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl flex items-center justify-center shadow-inner ${getColorClasses(it.color)}`}>
+                                    <div className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl md:rounded-3xl flex items-center justify-center shadow-inner ${getColorClasses(it.color)}`}>
                                         {it.icon}
                                     </div>
                                     <div className="space-y-1">
-                                        <h3 className={`text-2xl md:text-4xl font-black text-gray-900 tracking-tight`}>
+                                        <h3 className={`text-2xl md:text-4xl font-black text-gray-800 tracking-tight`}>
                                             {it.org}
                                         </h3>
                                         <p className="text-blue-600 font-black uppercase text-[10px] md:text-xs tracking-widest flex flex-wrap items-center gap-2">
@@ -128,10 +128,10 @@ export const EducationSection = () => {
                                 </div>
 
                                 <div className="pt-6 border-t border-gray-50">
-                                    <h4 className="text-[9px] md:text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-4">Core Track</h4>
+                                    <h4 className="text-[9px] md:text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-4">Core Track</h4>
                                     <div className="flex flex-wrap gap-2">
                                         {it.courses.map((course, j) => (
-                                            <span key={j} className="px-2.5 py-1 md:px-3 md:py-1.5 bg-gray-50 text-gray-500 rounded-lg text-[9px] md:text-[10px] font-bold border border-transparent hover:border-blue-100 hover:text-blue-600 transition-all">
+                                            <span key={j} className="px-2.5 py-1 md:px-3 md:py-1.5 bg-gray-50 text-gray-500 rounded-full text-[9px] md:text-[10px] font-bold border border-transparent hover:border-blue-100 hover:text-blue-600 transition-all">
                                                 {course}
                                             </span>
                                         ))}
@@ -140,7 +140,7 @@ export const EducationSection = () => {
                             </div>
 
                             {/* Ghost Typography */}
-                            <div className="hidden sm:block absolute -bottom-10 -right-10 text-[150px] md:text-[200px] font-black text-gray-900/[0.02] select-none pointer-events-none group-hover:scale-110 transition-transform">
+                            <div className="hidden sm:block absolute -bottom-10 -right-10 text-[150px] md:text-[200px] font-black text-gray-800/[0.02] select-none pointer-events-none group-hover:scale-110 transition-transform">
                                 {it.org[0]}
                             </div>
                         </div>
@@ -150,7 +150,7 @@ export const EducationSection = () => {
 
             {/* Journey Footer */}
             <footer className="mt-24 text-center pb-8 animate-fade-in">
-                <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
+                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
                     <span className="w-16 h-px bg-gray-200" />
                     Academic Excellence • Continuous Growth
                     <span className="w-16 h-px bg-gray-200" />

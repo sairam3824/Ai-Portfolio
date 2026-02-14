@@ -13,7 +13,7 @@ export const SkillsSection = () => {
             <header className="text-center space-y-8 mb-20 animate-fade-in px-4">
                 <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/40 backdrop-blur-md border border-white/40 rounded-full shadow-sm">
                     <Target className="w-4 h-4 text-blue-500" />
-                    <span className="text-xs font-black uppercase tracking-[0.2em] text-gray-500">Technical Arsenal</span>
+                    <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Technical Arsenal</span>
                 </div>
                 <h1 className="text-3xl sm:text-5xl md:text-8xl font-black tracking-tighter text-gray-900 leading-[0.9]">
                     The Skill <br />
@@ -36,7 +36,7 @@ export const SkillsSection = () => {
                     >
                         {/* Category Header */}
                         <div className="mb-6">
-                            <h3 className="text-2xl font-black text-gray-900 tracking-tight leading-tight mb-2">
+                            <h3 className="text-2xl font-bold text-gray-800 tracking-tight leading-tight mb-2">
                                 {cat.category}
                             </h3>
                             <p className="text-sm font-medium text-gray-500 leading-relaxed">
@@ -74,7 +74,7 @@ export const SkillsSection = () => {
 
             {/* Journey Footer */}
             <footer className="mt-24 text-center pb-8 animate-fade-in">
-                <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
+                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
                     <span className="w-16 h-px bg-gray-200" />
                     Continuously Improving • Mastering New Tech
                     <span className="w-16 h-px bg-gray-200" />
