@@ -3,6 +3,7 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import { useTypewriter } from "./hooks/useTypewriter";
 import avatar from "./assets/avatar_optimized.jpg";
 import Seo from "./shared/Seo";
+import { StatsSection } from "./features/home/StatsSection";
 
 // Start loading HomeSections immediately (don't wait for render)
 const homeSectionsPromise = import("./features/home/HomeSections");
@@ -40,10 +41,10 @@ const Home = () => {
                 {/* ═══════════════════════════════════════════
                     HERO — Magazine Cover
                 ═══════════════════════════════════════════ */}
-                <section className="py-16 md:py-24 animate-fade-in-up">
-                    <p className="text-xs font-semibold tracking-[0.25em] uppercase text-gray-400 mb-8">Vol. 01 — 2026 Edition</p>
+                <section className="pt-12 md:pt-20 pb-6 md:pb-10 animate-fade-in-up">
+                    <p className="text-xs font-semibold tracking-[0.25em] uppercase text-gray-400 mb-4">Vol. 01 — 2026 Edition</p>
 
-                    <div className="flex flex-col-reverse md:flex-row items-center md:items-start gap-10 md:gap-16">
+                    <div className="flex flex-col-reverse md:flex-row items-center md:items-start gap-8 md:gap-12">
                         <div className="flex-1">
                             <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-gray-900 tracking-tighter leading-[0.9] mb-4">
                                 Sairam{" "}
@@ -51,7 +52,7 @@ const Home = () => {
                             </h1>
 
                             <div className="h-9 sm:h-10 mb-6">
-                                <span className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-400 tracking-tight">
+                                <span className="text-xl sm:text-2xl md:text-3xl font-medium text-gray-500 tracking-tight font-display">
                                     {title}
                                     <span className="text-blue-400 animate-pulse ml-px">|</span>
                                 </span>
@@ -100,7 +101,7 @@ const Home = () => {
                                     className="flex items-center gap-5 px-2 py-2 group"
                                 >
                                     <Github className="w-6 h-6 text-blue-600" />
-                                    <span className="font-medium text-lg text-gray-900">github.com/sairam3824</span>
+                                    <span className="font-medium text-lg text-gray-800">github.com/sairam3824</span>
                                 </a>
 
                                 <a
@@ -110,17 +111,22 @@ const Home = () => {
                                     className="flex items-center gap-5 px-2 py-2 group"
                                 >
                                     <Linkedin className="w-6 h-6 text-blue-600" />
-                                    <span className="font-medium text-lg text-gray-900 truncate">linkedin.com/in/sairam-maruri</span>
+                                    <span className="font-medium text-lg text-gray-800 truncate">linkedin.com/in/sairam-maruri</span>
                                 </a>
 
                                 <a href="mailto:sairam.maruri@gmail.com" className="flex items-center gap-5 px-2 py-2 group">
                                     <Mail className="w-6 h-6 text-blue-600" />
-                                    <span className="font-medium text-lg text-gray-900 truncate">sairam.maruri@gmail.com</span>
+                                    <span className="font-medium text-lg text-gray-800 truncate">sairam.maruri@gmail.com</span>
                                 </a>
                             </div>
                         </div>
                     </div>
                 </section>
+
+                {/* ═══════════════════════════════════════════
+                    STATS — Key Metrics
+                ═══════════════════════════════════════════ */}
+                <StatsSection />
 
                 <Suspense
                     fallback={

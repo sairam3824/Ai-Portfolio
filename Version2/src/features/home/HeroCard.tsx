@@ -35,7 +35,7 @@ const HeroCard = () => {
 
             <div className="flex flex-col-reverse md:flex-row items-center md:items-start gap-8">
                 <div className="flex-1">
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 tracking-tighter leading-[0.95] mb-3">
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-gray-800 tracking-tighter leading-[0.95] mb-3">
                         Sairam{" "}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-500">
                             Maruri.
