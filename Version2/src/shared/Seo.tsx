@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 
 const SITE_URL = "https://saiii.in";
-const DEFAULT_IMAGE = `${SITE_URL}/preview.webp`;
+const DEFAULT_IMAGE = `${SITE_URL}/preview.png`;
 const SITE_NAME = "Sai Ram Maruri";
 const AUTHOR_NAME = "Sai Ram Maruri";
 
