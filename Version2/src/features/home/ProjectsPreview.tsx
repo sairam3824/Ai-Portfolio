@@ -9,7 +9,7 @@ const ProjectsPreview = () => {
     return (
         <BentoCard className="col-span-12 md:col-span-5 row-span-2" ghostChar="P" delay={400}>
             <div className="flex items-center justify-between mb-5">
-                <h3 className="text-2xl font-black text-gray-900 tracking-tight">Projects</h3>
+                <h3 className="text-2xl font-bold text-gray-800 tracking-tight">Projects</h3>
                 <Link
                     to="/projects"
                     className="flex items-center gap-1.5 text-[11px] font-semibold text-blue-600 hover:text-blue-700 tracking-wide transition-colors"
@@ -31,7 +31,7 @@ const ProjectsPreview = () => {
                             {project.title[0]}
                         </div>
                         <div className="flex-1 min-w-0 pt-1">
-                            <h4 className="text-lg font-bold text-gray-900 truncate group-hover:text-blue-600 transition-colors">{project.title}</h4>
+                            <h4 className="text-lg font-bold text-gray-800 truncate group-hover:text-blue-600 transition-colors">{project.title}</h4>
                             {project.tagline ? (
                                 <div className="flex items-center gap-1.5 mt-1">
                                     <Zap className="w-3 h-3 text-blue-500 shrink-0" />

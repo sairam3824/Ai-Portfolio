@@ -7,13 +7,18 @@ const codingAssistants = [
     "VS Code",
     "Kiro",
     "GitHub Copilot",
+    "Ollama",
 ];
 
 const models = [
     "GPT-4o",
     "Claude 3.5 Sonnet",
+    "Claude Opus 4.5",
     "Gemini 3 Pro",
     "Llama 3",
+    "Llama 8B",
+    "Code Llama",
+    "DeepSeek",
     "Mistral",
     "Qwen",
 ];
@@ -32,7 +37,7 @@ const VibeCoderCard = () => {
         <BentoCard className="col-span-12 sm:col-span-6 md:col-span-4 row-span-2 !bg-gradient-to-br !from-blue-50/40 !to-white" ghostChar="~" delay={420}>
             <div className="flex items-center gap-4 mb-6">
                 <div>
-                    <h3 className="text-2xl font-black text-gray-900 tracking-tight">Vibe Coder</h3>
+                    <h3 className="text-2xl font-bold text-gray-800 tracking-tight">Vibe Coder</h3>
                 </div>
             </div>
 

@@ -10,9 +10,9 @@ const AvatarCard = () => {
                     href="https://github.com/sairam3824"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded-xl bg-blue-50/50 hover:bg-blue-100/80 text-gray-600 hover:text-blue-700 transition-all duration-300 group ring-1 ring-blue-100/50"
+                    className="flex items-center gap-3 p-3 rounded-2xl bg-blue-50/50 hover:bg-blue-100/80 text-gray-600 hover:text-blue-700 transition-all duration-300 group ring-1 ring-blue-100/50"
                 >
-                    <div className="p-2 bg-white rounded-lg text-blue-600 shadow-sm group-hover:scale-110 transition-transform">
+                    <div className="p-2 bg-white rounded-2xl text-blue-600 shadow-sm group-hover:scale-110 transition-transform">
                         <Github className="w-4 h-4" />
                     </div>
                     <span className="font-semibold text-sm">github.com/sairam3824</span>
@@ -22,9 +22,9 @@ const AvatarCard = () => {
                     href="https://www.linkedin.com/in/sairam-maruri/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded-xl bg-blue-50/50 hover:bg-blue-100/80 text-gray-600 hover:text-blue-700 transition-all duration-300 group ring-1 ring-blue-100/50"
+                    className="flex items-center gap-3 p-3 rounded-2xl bg-blue-50/50 hover:bg-blue-100/80 text-gray-600 hover:text-blue-700 transition-all duration-300 group ring-1 ring-blue-100/50"
                 >
-                    <div className="p-2 bg-white rounded-lg text-blue-600 shadow-sm group-hover:scale-110 transition-transform">
+                    <div className="p-2 bg-white rounded-2xl text-blue-600 shadow-sm group-hover:scale-110 transition-transform">
                         <Linkedin className="w-4 h-4" />
                     </div>
                     <span className="font-semibold text-sm truncate">linkedin.com/in/sairam-maruri</span>
@@ -32,9 +32,9 @@ const AvatarCard = () => {
 
                 <a
                     href="mailto:sairam.maruri@gmail.com"
-                    className="flex items-center gap-3 p-3 rounded-xl bg-blue-50/50 hover:bg-blue-100/80 text-gray-600 hover:text-blue-700 transition-all duration-300 group ring-1 ring-blue-100/50"
+                    className="flex items-center gap-3 p-3 rounded-2xl bg-blue-50/50 hover:bg-blue-100/80 text-gray-600 hover:text-blue-700 transition-all duration-300 group ring-1 ring-blue-100/50"
                 >
-                    <div className="p-2 bg-white rounded-lg text-blue-600 shadow-sm group-hover:scale-110 transition-transform">
+                    <div className="p-2 bg-white rounded-2xl text-blue-600 shadow-sm group-hover:scale-110 transition-transform">
                         <Mail className="w-4 h-4" />
                     </div>
                     <span className="font-semibold text-sm">sairam.maruri@gmail.com</span>

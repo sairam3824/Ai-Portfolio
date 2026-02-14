@@ -63,7 +63,7 @@ const GoalsCard = ({ className = "" }: { className?: string }) => {
     return (
         <BentoCard className={`col-span-12 ${className}`} delay={700}>
             <div className="flex flex-col h-full">
-                <h3 className="text-xl font-black text-gray-900 tracking-tight mb-3">
+                <h3 className="text-xl font-bold text-gray-800 tracking-tight mb-3">
                     Right Now
                 </h3>
                 <div className="flex flex-col gap-2 flex-1">
@@ -72,10 +72,10 @@ const GoalsCard = ({ className = "" }: { className?: string }) => {
                         return (
                             <div
                                 key={i}
-                                className={`flex items-center gap-2.5 p-2 rounded-xl ${item.containerBg} border ${item.containerBorder} ${item.containerHover} transition-colors`}
+                                className={`flex items-center gap-2.5 p-2 rounded-2xl ${item.containerBg} border ${item.containerBorder} ${item.containerHover} transition-colors`}
                             >
                                 <div
-                                    className={`w-7 h-7 rounded-md ${item.iconBg} flex items-center justify-center shrink-0`}
+                                    className={`w-7 h-7 rounded-2xl ${item.iconBg} flex items-center justify-center shrink-0`}
                                 >
                                     <Icon className={`w-3.5 h-3.5 ${item.iconColor}`} />
                                 </div>

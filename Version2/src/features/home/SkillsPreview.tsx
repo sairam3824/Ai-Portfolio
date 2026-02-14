@@ -16,7 +16,7 @@ const SkillsPreview = () => {
     return (
         <BentoCard className="col-span-12 md:col-span-9" ghostChar="S" delay={450}>
             <div className="flex items-center justify-between mb-6">
-                <h3 className="text-xl font-black text-gray-900 tracking-tight">Skills Matrix</h3>
+                <h3 className="text-xl font-bold text-gray-800 tracking-tight">Skills Matrix</h3>
                 <Link
                     to="/skills"
                     className="flex items-center gap-1.5 text-[11px] font-semibold text-blue-600 hover:text-blue-700 tracking-wide transition-colors"
@@ -47,12 +47,12 @@ const SkillsPreview = () => {
                         <Link
                             key={i}
                             to="/skills"
-                            className="group/cat flex flex-col sm:flex-row sm:items-start gap-4 py-2 border-b border-gray-100 last:border-0 hover:bg-gray-50/50 transition-all px-2 -mx-2 rounded-lg"
+                            className="group/cat flex flex-col sm:flex-row sm:items-start gap-4 py-2 border-b border-gray-100 last:border-0 hover:bg-gray-50/50 transition-all px-2 -mx-2 rounded-2xl"
                         >
                             {/* Header / Left Side */}
                             <div className="sm:w-48 shrink-0 pt-1">
                                 <div className="flex items-center gap-2 mb-0.5">
-                                    <h4 className="text-base font-medium text-gray-900 tracking-tight">{cat.category}</h4>
+                                    <h4 className="text-base font-medium text-gray-800 tracking-tight">{cat.category}</h4>
                                     <ExternalLink className="w-3 h-3 text-gray-300 opacity-0 group-hover/cat:opacity-100 transition-opacity" />
                                 </div>
                             </div>

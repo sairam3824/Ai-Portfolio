@@ -12,17 +12,17 @@ const AchievementsPreview = () => {
     return (
         <BentoCard className="w-full" ghostChar="A" delay={550}>
             <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-2xl bg-amber-50 flex items-center justify-center">
                     <Trophy className="w-4 h-4 text-amber-600" />
                 </div>
-                <h3 className="text-xl font-black text-gray-900 tracking-tight">Achievements</h3>
+                <h3 className="text-xl font-bold text-gray-800 tracking-tight">Achievements</h3>
             </div>
 
             <div className="flex flex-col gap-2">
                 {achievements.map((achievement, i) => (
                     <div
                         key={i}
-                        className="flex items-center gap-3 p-2 rounded-xl bg-amber-50/50 border border-amber-100/50 hover:bg-amber-50 transition-colors"
+                        className="flex items-center gap-3 p-2 rounded-2xl bg-amber-50/50 border border-amber-100/50 hover:bg-amber-50 transition-colors"
                     >
                         <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0" />
                         <span className="text-sm font-medium text-gray-700 leading-snug">{achievement}</span>

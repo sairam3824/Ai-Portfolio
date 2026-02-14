@@ -10,7 +10,7 @@ const ContactCTA = () => {
             {/* Subtle grid pattern */}
             <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
 
-            <h3 className="relative text-xl font-black tracking-tight mb-2">Let's Build Together</h3>
+            <h3 className="relative text-xl font-bold tracking-tight mb-2">Let's Build Together</h3>
             <p className="relative text-sm text-gray-400 mb-6 max-w-xs leading-relaxed">
                 Open to collaborations, research, and innovative AI projects.
             </p>
@@ -18,13 +18,13 @@ const ContactCTA = () => {
             <div className="relative flex flex-col sm:flex-row gap-2.5 w-full max-w-xs">
                 <Link
                     to="/contact"
-                    className="flex-1 flex items-center justify-center gap-2 px-5 py-3 bg-white text-gray-900 rounded-xl text-[11px] font-bold uppercase tracking-wider hover:bg-blue-50 transition-colors shadow-sm"
+                    className="flex-1 flex items-center justify-center gap-2 px-5 py-3 bg-white text-gray-800 rounded-2xl text-[11px] font-bold uppercase tracking-wider hover:bg-blue-50 transition-colors shadow-sm"
                 >
                     Contact <ArrowRight className="w-3 h-3" />
                 </Link>
                 <Link
                     to="/resume"
-                    className="flex-1 flex items-center justify-center gap-2 px-5 py-3 bg-white/[0.08] text-white/90 rounded-xl text-[11px] font-bold uppercase tracking-wider hover:bg-white/[0.15] transition-colors border border-white/[0.08]"
+                    className="flex-1 flex items-center justify-center gap-2 px-5 py-3 bg-white/[0.08] text-white/90 rounded-2xl text-[11px] font-bold uppercase tracking-wider hover:bg-white/[0.15] transition-colors border border-white/[0.08]"
                 >
                     <FileText className="w-3 h-3" />
                     Resume

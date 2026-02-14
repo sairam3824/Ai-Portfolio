@@ -15,7 +15,7 @@ const BentoCard = ({ children, className = "", ghostChar, delay = 0 }: BentoCard
         >
             {children}
             {ghostChar && (
-                <div className="absolute -bottom-3 -right-1 text-[90px] font-black text-gray-900/[0.015] select-none pointer-events-none group-hover:text-gray-900/[0.03] transition-all duration-700">
+                <div className="absolute -bottom-3 -right-1 text-[90px] font-black text-gray-800/[0.015] select-none pointer-events-none group-hover:text-gray-800/[0.03] transition-all duration-700">
                     {ghostChar}
                 </div>
             )}
