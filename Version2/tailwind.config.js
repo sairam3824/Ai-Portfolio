@@ -8,12 +8,17 @@ export default {
         extend: {
             fontFamily: {
                 sans: [
+                    'Inter',
                     '-apple-system',
                     'BlinkMacSystemFont',
                     '"Segoe UI"',
                     'Roboto',
                     '"Helvetica Neue"',
                     'Arial',
+                    'sans-serif',
+                ],
+                display: [
+                    'Outfit',
                     'sans-serif',
                 ],
             },
