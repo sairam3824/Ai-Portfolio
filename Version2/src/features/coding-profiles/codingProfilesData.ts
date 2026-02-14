@@ -23,7 +23,7 @@ export const codingProfilesData: CodingProfileData[] = [
         href: "https://www.codechef.com/users/sairam2004",
         stats: "3\u2605 \u2022 1600+",
         desc: "Consistent performance in long and short format competitive programming contests.",
-        color: "yellow",
+        color: "blue",
         iconName: "codechef-img",
         featured: true,
     },
