@@ -103,7 +103,7 @@ export const BlogSection = () => {
             </header>
 
             <div className="max-w-5xl mx-auto">
-                <div className="sticky top-6 z-40 mb-12 flex flex-col md:flex-row gap-6 items-center justify-center animate-fade-in-up">
+                <div className="sticky top-[60px] lg:top-6 z-40 mb-12 flex flex-col md:flex-row gap-6 items-center justify-center animate-fade-in-up">
                     <div className="flex gap-1 overflow-x-auto p-1 no-scrollbar">
                         {PRESET_CATEGORIES.map((cat) => (
                             <button
