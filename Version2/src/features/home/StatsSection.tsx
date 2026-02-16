@@ -62,7 +62,7 @@ export const StatsSection = () => {
                 {stats.map((stat) => (
                     <div
                         key={stat.label}
-                        className="group flex flex-col items-center justify-center p-2"
+                        className="group flex flex-col items-center justify-center p-2 last:col-span-2 last:md:col-span-1 last:justify-self-center"
                     >
                         <div className={`p-2.5 rounded-full ${stat.bg} mb-3 group-hover:scale-110 transition-transform duration-300`}>
                             <stat.icon className={`w-5 h-5 ${stat.color}`} />

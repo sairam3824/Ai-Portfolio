@@ -93,7 +93,7 @@ export const EducationSection = () => {
                         className={`group relative flex flex-col p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] bg-white border border-gray-100 shadow-xl shadow-gray-200/40 hover:border-blue-200/50 transition-all duration-500 overflow-hidden ${it.featured ? 'lg:col-span-12' : 'lg:col-span-6'}`}
                     >
                         {/* Status Label */}
-                        <div className="absolute top-6 right-6 md:top-8 md:right-8">
+                        <div className="static sm:absolute sm:top-6 sm:right-6 md:top-8 md:right-8 mb-4 sm:mb-0 self-start">
                             <div className={`flex items-center gap-2 px-3 py-1 md:px-4 md:py-1.5 rounded-full ${getColorClasses(it.color)}`}>
                                 <Award className="w-3.5 h-3.5" />
                                 <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest">{it.grade}</span>
