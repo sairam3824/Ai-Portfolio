@@ -91,7 +91,7 @@ const Home = () => {
                             </div>
 
                             {/* Let's Connect List */}
-                            <div className="w-full max-w-[320px] flex flex-col gap-6 mt-4">
+                            <div className="w-full max-w-[280px] sm:max-w-[320px] flex flex-col gap-6 mt-4">
                                 <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 text-center">Let's Connect</h3>
 
                                 <a
@@ -101,7 +101,7 @@ const Home = () => {
                                     className="flex items-center gap-5 px-2 py-2 group"
                                 >
                                     <Github className="w-6 h-6 text-blue-600" />
-                                    <span className="font-medium text-lg text-gray-800">github.com/sairam3824</span>
+                                    <span className="font-medium text-sm sm:text-lg text-gray-800">github.com/sairam3824</span>
                                 </a>
 
                                 <a
@@ -111,12 +111,12 @@ const Home = () => {
                                     className="flex items-center gap-5 px-2 py-2 group"
                                 >
                                     <Linkedin className="w-6 h-6 text-blue-600" />
-                                    <span className="font-medium text-lg text-gray-800 truncate">linkedin.com/in/sairam-maruri</span>
+                                    <span className="font-medium text-sm sm:text-lg text-gray-800 truncate">linkedin.com/in/sairam-maruri</span>
                                 </a>
 
                                 <a href="mailto:sairam.maruri@gmail.com" className="flex items-center gap-5 px-2 py-2 group">
                                     <Mail className="w-6 h-6 text-blue-600" />
-                                    <span className="font-medium text-lg text-gray-800 truncate">sairam.maruri@gmail.com</span>
+                                    <span className="font-medium text-sm sm:text-lg text-gray-800 truncate">sairam.maruri@gmail.com</span>
                                 </a>
                             </div>
                         </div>
