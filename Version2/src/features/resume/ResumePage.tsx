@@ -107,9 +107,9 @@ export const ResumePage = () => {
 
                                 <div className="space-y-6">
                                     <div className="group">
-                                        <div className="flex justify-between items-baseline mb-2">
+                                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-2 mb-2">
                                             <h4 className="text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors">End-to-End AI Research Platform</h4>
-                                            <span className="text-xs font-bold bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full border border-blue-100">Python, FAISS, Django, AWS</span>
+                                            <span className="text-xs font-bold bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full border border-blue-100 self-start">Python, FAISS, Django, AWS</span>
                                         </div>
                                         <p className="text-sm text-gray-600 leading-relaxed mb-2">
                                             Scalable research platform (orravyn.cloud) with RAG using FAISS, multi-doc summarization, GPT-4/Claude integration, and Django REST APIs — served 100+ concurrent users and cut AI pipeline latency ~30%.
@@ -117,9 +117,9 @@ export const ResumePage = () => {
                                     </div>
 
                                     <div className="group">
-                                        <div className="flex justify-between items-baseline mb-2">
+                                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-2 mb-2">
                                             <h4 className="text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors">Medical Image Classification</h4>
-                                            <span className="text-xs font-bold bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full border border-blue-100">Python, PyTorch, TensorFlow</span>
+                                            <span className="text-xs font-bold bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full border border-blue-100 self-start">Python, PyTorch, TensorFlow</span>
                                         </div>
                                         <p className="text-sm text-gray-600 leading-relaxed mb-2">
                                             WideResNet-based CNN with augmentation and careful hyperparameter tuning on 10k+ X-rays, achieving 92% bone-fracture classification accuracy and reducing overfitting by ~20%.
@@ -127,9 +127,9 @@ export const ResumePage = () => {
                                     </div>
 
                                     <div className="group">
-                                        <div className="flex justify-between items-baseline mb-2">
+                                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-2 mb-2">
                                             <h4 className="text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors">Large-Scale ML System for Customer Prediction</h4>
-                                            <span className="text-xs font-bold bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full border border-blue-100">Python, scikit-learn, XGBoost</span>
+                                            <span className="text-xs font-bold bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full border border-blue-100 self-start">Python, scikit-learn, XGBoost</span>
                                         </div>
                                         <p className="text-sm text-gray-600 leading-relaxed mb-2">
                                             Distributed ML pipeline with Random Forest/XGBoost, feature engineering and validation on 100k+ records — improved prediction accuracy (~99%) and reduced churn by ~25%.

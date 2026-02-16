@@ -96,7 +96,7 @@ export const ProjectsSection = () => {
                 {filteredProjects.map((project, i) => (
                     <div
                         key={i}
-                        className="group relative flex flex-col p-8 rounded-[2.5rem] bg-white border border-gray-100 shadow-xl shadow-gray-200/40 hover:border-blue-200/50 transition-all duration-500"
+                        className="group relative flex flex-col p-5 sm:p-8 rounded-2xl sm:rounded-[2.5rem] bg-white border border-gray-100 shadow-xl shadow-gray-200/40 hover:border-blue-200/50 transition-all duration-500"
                     >
                         {/* Status Label */}
                         <div className="absolute top-8 right-8">

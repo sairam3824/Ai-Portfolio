@@ -139,7 +139,7 @@ export const CodingProfilesPage = () => {
             </header>
 
             {/* Bento Style Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-6 md:grid-rows-4 gap-6 auto-rows-[140px]">
+            <div className="grid grid-cols-1 md:grid-cols-6 md:grid-rows-4 gap-6 auto-rows-auto md:auto-rows-[140px]">
                 {codingProfiles.map((profile, i) => {
                     const isFeatured = profile.featured;
                     const colSpan = isFeatured ? 'md:col-span-3' : 'md:col-span-2';
