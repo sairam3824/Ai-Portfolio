@@ -150,6 +150,11 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
 function App() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+    useEffect(() => {
+        document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
+        return () => { document.body.style.overflow = ''; };
+    }, [isMobileMenuOpen]);
+
     return (
         <HelmetProvider>
             <Router>
@@ -280,7 +285,7 @@ const MobileNav = ({ onMenuClick }: { onMenuClick: () => void }) => {
                         <Link
                             key={item.path}
                             to={item.path}
-                            className={`flex flex-col items-center gap-1 p-2 rounded-2xl transition-all ${isActive ? 'text-blue-700' : 'text-gray-500'
+                            className={`flex flex-col items-center gap-1 p-2 rounded-2xl transition-all active:scale-95 ${isActive ? 'text-blue-700' : 'text-gray-500'
                                 }`}
                         >
                             <item.icon className={`w-6 h-6 ${isActive ? 'fill-blue-100' : ''}`} strokeWidth={2} />
