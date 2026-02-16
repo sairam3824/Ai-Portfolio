@@ -71,7 +71,7 @@ export const ContactSection = () => {
                 {/* Primary Contact Card - Message Dialog CTA */}
                 <div
                     onClick={() => setAnonymousDialogOpen(true)}
-                    className="lg:col-span-8 group relative flex flex-col p-5 sm:p-8 md:p-14 rounded-[2.5rem] md:rounded-[3rem] bg-gradient-to-br from-blue-600 to-indigo-700 text-white shadow-2xl shadow-blue-500/20 hover:scale-[1.01] transition-all cursor-pointer overflow-hidden"
+                    className="lg:col-span-8 group relative flex flex-col p-5 sm:p-8 md:p-14 rounded-2xl sm:rounded-[2.5rem] md:rounded-[3rem] bg-gradient-to-br from-blue-600 to-indigo-700 text-white shadow-2xl shadow-blue-500/20 hover:scale-[1.01] transition-all cursor-pointer overflow-hidden"
                 >
                     <div className="absolute top-0 right-0 p-8 md:p-12 opacity-10 group-hover:scale-110 transition-transform">
                         <MessageSquare className="w-48 h-48 md:w-80 md:h-80" />
@@ -139,7 +139,7 @@ export const ContactSection = () => {
                 </div>
 
                 {/* Social Cluster */}
-                <div className="lg:col-span-4 bg-white border border-gray-100 rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-12 shadow-xl shadow-gray-200/30 relative h-full">
+                <div className="lg:col-span-4 bg-white border border-gray-100 rounded-2xl sm:rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-12 shadow-xl shadow-gray-200/30 relative h-full">
                     <div className="flex flex-col h-full gap-8 md:gap-12">
                         <div>
                             <h3 className="text-[10px] md:text-[11px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-6 md:mb-10">Network Nodes</h3>
@@ -188,7 +188,7 @@ export const ContactSection = () => {
                 </div>
 
                 {/* Coding DNA Stats */}
-                <div className="lg:col-span-8 bg-white border border-gray-100 rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-14 shadow-xl shadow-gray-200/30 overflow-hidden relative">
+                <div className="lg:col-span-8 bg-white border border-gray-100 rounded-2xl sm:rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-14 shadow-xl shadow-gray-200/30 overflow-hidden relative">
                     <div className="flex items-center gap-5 mb-10 md:mb-14">
                         <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 shadow-inner flex-shrink-0">
                             <Trophy className="w-6 h-6 md:w-8 md:h-8" />

@@ -192,7 +192,7 @@ export const MessageDialog = ({ open, onOpenChange }: MessageDialogProps) => {
 
             {/* Premium Notification Toast */}
             {notification && (
-                <div className={`fixed top-8 right-8 z-[110] max-w-xs w-full animate-fade-in`}>
+                <div className={`fixed top-4 left-4 right-4 sm:left-auto sm:right-8 sm:max-w-xs z-[110] w-auto animate-fade-in`}>
                     <div className={`p-5 rounded-3xl shadow-2xl flex gap-4 border bg-white ${notification.type === 'success' ? 'border-emerald-100' : 'border-rose-100'
                         }`}>
                         <div className={`w-12 h-12 rounded-2xl flex flex-shrink-0 items-center justify-center ${notification.type === 'success' ? 'bg-emerald-50 text-emerald-500' : 'bg-rose-50 text-rose-500'
