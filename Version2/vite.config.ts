@@ -102,6 +102,8 @@ export default defineConfig({
                 name: 'Sai Ram Maruri Portfolio',
                 short_name: 'Sai Ram',
                 description: 'AI Engineer & Software Developer Portfolio',
+                lang: 'en',
+                dir: 'ltr',
                 theme_color: '#ffffff',
                 background_color: '#ffffff',
                 display: 'standalone',
