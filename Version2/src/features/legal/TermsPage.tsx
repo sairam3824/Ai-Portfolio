@@ -8,6 +8,7 @@ const TermsPage = () => {
       <Seo
         title="Terms & Conditions | Sai Ram Maruri"
         description="Terms of service for Sai Ram Maruri's portfolio website."
+        robots="noindex, follow"
       />
       <div className="mb-12">
         <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-gray-800 mb-4 tracking-tight">Terms and Conditions</h1>
