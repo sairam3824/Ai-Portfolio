@@ -37,7 +37,7 @@ const Seo = ({
     keywords,
 }: SeoProps) => {
     const { pathname } = useLocation();
-    const url = canonical ?? `${SITE_URL}${pathname === "/" ? "" : pathname}`;
+    const url = canonical ?? `${SITE_URL}${pathname === "/" ? "/" : pathname}`;
     const fullImage = image.startsWith("http") ? image : `${SITE_URL}${image}`;
 
     const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 ? {
@@ -87,7 +87,8 @@ const Seo = ({
             <meta property="og:image" content={fullImage} />
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="630" />
-            <meta property="og:image:alt" content={title} />
+            <meta property="og:image:alt" content="Sai Ram Maruri — GenAI & ML Engineer Portfolio" />
+            <meta property="og:image:type" content="image/png" />
             <meta property="og:site_name" content={SITE_NAME} />
             <meta property="og:locale" content="en_US" />
 
@@ -95,7 +96,6 @@ const Seo = ({
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
             <meta name="twitter:image" content={fullImage} />
-            <meta name="twitter:site" content="Sai Ram Maruri" />
 
             {type === "article" && (
                 <>

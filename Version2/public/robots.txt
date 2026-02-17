@@ -3,4 +3,20 @@ Allow: /
 Disallow: /v1/
 Disallow: /admin
 
+# Explicitly allow AI crawlers (overrides Cloudflare bot-fight injections)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 Sitemap: https://saiii.in/sitemap.xml
