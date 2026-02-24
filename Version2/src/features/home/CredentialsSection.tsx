@@ -35,7 +35,7 @@ const CredentialsSection = () => {
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                 <div>
                     <span className="editorial-number mb-2 block text-blue-600 font-mono">03</span>
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-800 tracking-tight">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 tracking-tight">
                         Credentials<span className="text-blue-600">.</span>
                     </h2>
                 </div>
@@ -46,7 +46,7 @@ const CredentialsSection = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
                 {/* 1. Achievements - High Impact Stats (Span 8) */}
-                <div className="col-span-1 md:col-span-8 group relative overflow-hidden rounded-3xl bg-white p-8 border border-gray-100 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <div className="col-span-1 md:col-span-8 group relative overflow-hidden rounded-3xl bg-white p-5 sm:p-8 border border-gray-100 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full blur-[80px] -mr-16 -mt-16 pointer-events-none" />
 
                     <div className="relative z-10">
@@ -74,7 +74,7 @@ const CredentialsSection = () => {
                 </div>
 
                 {/* 2. Research Interests (Span 4) */}
-                <div className="col-span-1 md:col-span-4 bg-white rounded-3xl p-8 border border-gray-100 shadow-sm relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <div className="col-span-1 md:col-span-4 bg-white rounded-3xl p-5 sm:p-8 border border-gray-100 shadow-sm relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-50 rounded-bl-full -mr-10 -mt-10" />
 
                     <div className="relative z-10 h-full flex flex-col">
