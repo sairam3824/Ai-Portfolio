@@ -69,18 +69,18 @@ export const EducationSection = () => {
             <div className="hidden md:block absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/5 blur-[120px] rounded-full -z-10" />
 
             {/* Header section */}
-            <header className="text-center space-y-8 mb-20 animate-fade-in px-4">
+            <header className="text-center space-y-5 mb-12 sm:mb-20 animate-fade-in px-4">
                 <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/40 backdrop-blur-md border border-white/40 rounded-full shadow-sm">
                     <TrendingUp className="w-4 h-4 text-blue-500" />
                     <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Knowledge Acquisition</span>
                 </div>
-                <h1 className="text-3xl sm:text-5xl md:text-8xl font-black tracking-tighter text-gray-900 leading-[0.9]">
+                <h1 className="text-2xl sm:text-4xl md:text-8xl font-black tracking-tighter text-gray-900 leading-[0.9]">
                     Academic <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                         Odyssey.
                     </span>
                 </h1>
-                <p className="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
+                <p className="text-gray-500 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
                     The foundations of my engineering mental model, built through rigorous study and technical specialization.
                 </p>
             </header>
@@ -107,7 +107,7 @@ export const EducationSection = () => {
                                         {it.icon}
                                     </div>
                                     <div className="space-y-1">
-                                        <h3 className={`text-2xl md:text-4xl font-black text-gray-800 tracking-tight`}>
+                                        <h3 className={`text-xl sm:text-2xl md:text-4xl font-black text-gray-800 tracking-tight`}>
                                             {it.org}
                                         </h3>
                                         <p className="text-blue-600 font-black uppercase text-[10px] md:text-xs tracking-widest flex flex-wrap items-center gap-2">

@@ -51,18 +51,18 @@ export const ContactSection = () => {
             <div className="hidden md:block absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/5 blur-[120px] rounded-full -z-10" />
 
             {/* Header section */}
-            <header className="text-center space-y-8 mb-20 animate-fade-in px-4">
+            <header className="text-center space-y-5 mb-12 sm:mb-20 animate-fade-in px-4">
                 <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/40 backdrop-blur-md border border-white/40 rounded-full shadow-sm">
                     <Share2 className="w-4 h-4 text-blue-500" />
                     <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Node Synchronization</span>
                 </div>
-                <h1 className="text-3xl sm:text-5xl md:text-8xl font-black tracking-tighter text-gray-900 leading-[1.0]">
+                <h1 className="text-2xl sm:text-4xl md:text-8xl font-black tracking-tighter text-gray-900 leading-[1.0]">
                     The Human <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                         Interface.
                     </span>
                 </h1>
-                <p className="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
+                <p className="text-gray-500 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
                     Initiate a connection protocol via digital channels or explore the underlying architectural DNA.
                 </p>
             </header>
@@ -83,7 +83,7 @@ export const ContactSection = () => {
                                 <Zap className="w-7 h-7 md:w-8 md:h-8 text-white" />
                             </div>
                             <div className="space-y-4">
-                                <h2 className="text-2xl sm:text-4xl md:text-7xl font-black tracking-tighter leading-[1.1]">
+                                <h2 className="text-xl sm:text-3xl md:text-6xl font-black tracking-tighter leading-[1.1]">
                                     Send a Secure <br />Message.
                                 </h2>
                                 <p className="text-blue-100 text-base md:text-xl font-medium max-w-sm md:max-w-xl leading-relaxed">
@@ -188,14 +188,14 @@ export const ContactSection = () => {
                 </div>
 
                 {/* Coding DNA Stats */}
-                <div className="lg:col-span-8 bg-white border border-gray-100 rounded-2xl sm:rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-14 shadow-xl shadow-gray-200/30 overflow-hidden relative">
-                    <div className="flex items-center gap-5 mb-10 md:mb-14">
+                <div className="lg:col-span-8 bg-white border border-gray-100 rounded-2xl sm:rounded-[2.5rem] md:rounded-[3rem] p-5 sm:p-8 md:p-14 shadow-xl shadow-gray-200/30 overflow-hidden relative">
+                    <div className="flex items-center gap-5 mb-6 sm:mb-10 md:mb-14">
                         <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 shadow-inner flex-shrink-0">
                             <Trophy className="w-6 h-6 md:w-8 md:h-8" />
                         </div>
                         <div>
                             <h3 className="text-[10px] md:text-[11px] font-bold text-gray-400 uppercase tracking-[0.2em]">Competitive Profile</h3>
-                            <p className="text-2xl md:text-4xl font-black text-gray-800 tracking-tight">Architectural DNA</p>
+                            <p className="text-xl sm:text-2xl md:text-4xl font-black text-gray-800 tracking-tight">Architectural DNA</p>
                         </div>
                     </div>
 
