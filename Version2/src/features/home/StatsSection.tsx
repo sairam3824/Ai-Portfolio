@@ -2,11 +2,12 @@
 import { projectsData } from "../projects/projectsData";
 import { codingProfilesData } from "../coding-profiles/codingProfilesData";
 import { skillCategories } from "../skills/skillsData";
-import { Code2, Zap, Layers, Trophy, Star } from "lucide-react";
+import { Code2, Zap, Layers, Trophy, Star, Globe } from "lucide-react";
 
 export const StatsSection = () => {
     // Calculate stats
     const totalProjects = projectsData.length;
+    const liveSaasProjects = projectsData.filter(p => p.link).length;
     // Calculate total skills across all categories
     const totalSkills = skillCategories.reduce((acc, cat) => acc + cat.skills.length, 0);
 
@@ -54,23 +55,30 @@ export const StatsSection = () => {
             color: "text-purple-500",
             bg: "bg-purple-500/10",
         },
+        {
+            label: "Live SaaS Projects",
+            value: `${liveSaasProjects}+`,
+            icon: Globe,
+            color: "text-teal-500",
+            bg: "bg-teal-500/10",
+        },
     ];
 
     return (
         <section className="py-2 md:py-4 animate-fade-in-up stagger-1">
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-y-8 md:gap-y-0">
+            <div className="grid grid-cols-3 md:grid-cols-6 gap-y-6 md:gap-y-0">
                 {stats.map((stat) => (
                     <div
                         key={stat.label}
-                        className="group flex flex-col items-center justify-center p-2 last:col-span-2 last:md:col-span-1 last:justify-self-center"
+                        className="group flex flex-col items-center p-1 md:p-2"
                     >
-                        <div className={`p-2.5 rounded-full ${stat.bg} mb-3 group-hover:scale-110 transition-transform duration-300`}>
-                            <stat.icon className={`w-5 h-5 ${stat.color}`} />
+                        <div className={`p-2 md:p-2.5 rounded-full ${stat.bg} mb-2 md:mb-3 group-hover:scale-110 transition-transform duration-300`}>
+                            <stat.icon className={`w-4 h-4 md:w-5 md:h-5 ${stat.color}`} />
                         </div>
-                        <span className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight mb-1">
+                        <span className="text-xl sm:text-2xl md:text-3xl font-black text-gray-900 tracking-tight mb-1">
                             {stat.value}
                         </span>
-                        <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-gray-500 text-center">
+                        <span className="text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-wider md:tracking-widest text-gray-500 text-center min-h-[2rem] flex items-start justify-center leading-tight">
                             {stat.label}
                         </span>
                     </div>
