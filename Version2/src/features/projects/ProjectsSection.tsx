@@ -58,25 +58,25 @@ export const ProjectsSection = () => {
             <div className="hidden md:block absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/5 blur-[120px] rounded-full -z-10" />
 
             {/* Header section */}
-            <header className="text-center space-y-8 mb-20 animate-fade-in px-4">
+            <header className="text-center space-y-5 mb-12 sm:mb-20 animate-fade-in px-4">
                 <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/40 backdrop-blur-md border border-white/40 rounded-full shadow-sm">
                     <Rocket className="w-4 h-4 text-blue-500" />
                     <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Innovation Portfolio</span>
                 </div>
-                <h1 className="text-3xl sm:text-5xl md:text-8xl font-black tracking-tighter text-gray-900 leading-[0.9]">
+                <h1 className="text-2xl sm:text-4xl md:text-8xl font-black tracking-tighter text-gray-900 leading-[0.9]">
                     The Project <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                         Forge.
                     </span>
                 </h1>
-                <p className="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
+                <p className="text-gray-500 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
                     A curated collection of mission-critical AI systems, machine learning architectures, and cloud-native solutions.
                 </p>
             </header>
 
             {/* Controls: Search & Filters */}
             {/* Controls: Search */}
-            <div className="flex justify-center mb-20 relative z-10 px-4">
+            <div className="flex justify-center mb-10 sm:mb-20 relative z-10 px-4">
                 <div className="bg-white p-2 rounded-full shadow-xl shadow-gray-200/40 border border-gray-100 flex items-center max-w-lg w-full group focus-within:border-blue-300 focus-within:shadow-blue-500/10 transition-all duration-300">
                     <div className="pl-4 text-gray-400 group-focus-within:text-blue-500 transition-colors">
                         <Search className="w-5 h-5" />
@@ -86,7 +86,8 @@ export const ProjectsSection = () => {
                         placeholder="Search projects..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full bg-transparent border-none focus:outline-none focus:ring-0 text-sm font-bold text-gray-700 placeholder-gray-400 h-12 px-4 uppercase tracking-wider"
+                        onKeyDown={(e) => { if (e.key === "Escape") setSearchQuery(""); }}
+                        className="w-full bg-transparent border-none focus:outline-none focus:ring-0 text-sm font-bold text-gray-700 placeholder-gray-400 h-12 px-4"
                     />
                 </div>
             </div>
@@ -99,7 +100,7 @@ export const ProjectsSection = () => {
                         className="group relative flex flex-col p-5 sm:p-8 rounded-2xl sm:rounded-[2.5rem] bg-white border border-gray-100 shadow-xl shadow-gray-200/40 hover:border-blue-200/50 transition-all duration-500"
                     >
                         {/* Status Label */}
-                        <div className="absolute top-8 right-8">
+                        <div className="absolute top-5 right-5 sm:top-8 sm:right-8">
                             <div className="flex items-center gap-1.5 px-2.5 py-1 bg-emerald-50 text-emerald-600 rounded-full border border-emerald-100">
                                 <div className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
                                 <span className="text-[9px] font-bold uppercase tracking-widest">Active</span>
@@ -156,7 +157,7 @@ export const ProjectsSection = () => {
                         </div>
 
                         {/* Background Decor */}
-                        <div className="hidden sm:block absolute -bottom-8 -right-8 text-[120px] font-black text-gray-800/[0.02] select-none group-hover:scale-110 transition-transform">
+                        <div className="hidden sm:block absolute -bottom-8 -right-8 text-[60px] sm:text-[120px] font-black text-gray-800/[0.02] select-none group-hover:scale-110 transition-transform">
                             {project.title[0]}
                         </div>
                     </div>
