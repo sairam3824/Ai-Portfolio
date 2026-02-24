@@ -56,6 +56,18 @@ export const projectsData: ProjectData[] = [
     // FEATURED PROJECTS - AI Platforms & Flagship Projects
     // ═══════════════════════════════════════════════════════════════════════════
     {
+        title: "VidyAI: AI Test Generator",
+        description:
+            "EdTech SaaS platform generating curriculum-aligned MCQs from textbook PDFs using RAG and GPT-4o. Students select a chapter and receive a 10-question test with difficulty-distributed explanations in seconds.",
+        tech: ["FastAPI", "Next.js", "pgvector", "OpenAI", "Supabase", "Celery", "Redis", "Docker"],
+        github: "https://github.com/sairam3824/vidyai",
+        link: "https://vidyaedtech.saiii.in",
+        category: "AI Search & RAG",
+        iconName: "Search",
+        featured: true,
+        tagline: "Built SaaS Product in 2 Days with Claude Code.",
+    },
+    {
         title: "System Design Simulator",
         description:
             "Master-level platform for system design interviews. Features privacy-first local LLM integration via Ollama, RAG-powered assistants, and automated ATS resume analysis.",
@@ -114,6 +126,18 @@ export const projectsData: ProjectData[] = [
         iconName: "Activity",
         featured: true,
         tagline: "LSTM-CNN-GRU Ensemble • 92% Prediction Accuracy",
+    },
+    {
+        title: "BadmintonHub: Match Management SaaS",
+        description:
+            "Production-ready multi-tenant SaaS platform for managing badminton matches across teams. Features real-time scoring with official rules (first to 21, best of 3), AI-powered doubles pairing, player leaderboards, venue management, and mobile-first courtside UX.",
+        tech: ["Next.js", "TypeScript", "Prisma", "SQLite", "NextAuth.js", "Recharts", "Tailwind CSS"],
+        github: "https://github.com/sairam3824/Badminton-hub",
+        link: "https://badminton.saiii.in",
+        category: "Web Development",
+        iconName: "Globe",
+        featured: true,
+        tagline: "Multi-Tenant Sports SaaS • Real-time Scoring & Leaderboards",
     },
     {
         title: "AstraFlow: AI Intelligence Platform",
@@ -182,6 +206,18 @@ export const projectsData: ProjectData[] = [
         tagline: "AI-Powered Hiring • Automated Evaluation",
     },
 
+    {
+        title: "VoiceGen Pro",
+        description:
+            "Full-stack text-to-speech SaaS platform built with FastAPI and React. Supports multi-speaker scripts using voice tags, optional duration control, and downloadable WAV audio — powered by Coqui TTS with a modern glassmorphism UI.",
+        tech: ["FastAPI", "React", "Vite", "Coqui TTS", "Python", "CSS"],
+        github: "https://github.com/sairam3824/voicegen-pro",
+        category: "AI Platform",
+        iconName: "Brain",
+        featured: true,
+        tagline: "Multi-Speaker TTS SaaS • Coqui TTS Engine",
+    },
+
     // ═══════════════════════════════════════════════════════════════════════════
     // COMPUTER VISION & MEDICAL AI
     // ═══════════════════════════════════════════════════════════════════════════
@@ -217,6 +253,17 @@ export const projectsData: ProjectData[] = [
         iconName: "Cpu",
         featured: false,
         tagline: "101 Food Classes • Real-time Nutritional Analysis",
+    },
+    {
+        title: "Brain Tumor Classification (TDA & ML)",
+        description:
+            "ML pipeline classifying brain tumor MRI scans into 4 categories (Glioma, Meningioma, No Tumor, Pituitary). Uses PCA-based dimensionality reduction (62,500→1,031 features) with KNN achieving 93.75% accuracy across 7 classical ML models.",
+        tech: ["Python", "Scikit-learn", "XGBoost", "LightGBM", "PCA", "KNN"],
+        github: "https://github.com/sairam3824/Brain-Tumor-Classification-using-TDA-and-ML",
+        category: "Computer Vision",
+        iconName: "Cpu",
+        featured: false,
+        tagline: "4-Class MRI Diagnosis • 93.75% Accuracy",
     },
 
     // ═══════════════════════════════════════════════════════════════════════════
