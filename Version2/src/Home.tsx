@@ -41,24 +41,25 @@ const Home = () => {
                 {/* ═══════════════════════════════════════════
                     HERO — Magazine Cover
                 ═══════════════════════════════════════════ */}
-                <section className="pt-12 md:pt-20 pb-6 md:pb-10 animate-fade-in-up">
-                    <p className="text-xs font-semibold tracking-[0.25em] uppercase text-gray-400 mb-4">Vol. 01 — 2026 Edition</p>
+                <section className="pt-8 md:pt-20 pb-6 md:pb-10 animate-fade-in-up">
+                    <p className="text-xs font-semibold tracking-[0.25em] uppercase text-gray-400 mb-3 md:mb-4">Vol. 01 — 2026 Edition</p>
 
-                    <div className="flex flex-col-reverse md:flex-row items-center md:items-start gap-8 md:gap-12">
-                        <div className="flex-1">
-                            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-gray-900 tracking-tighter leading-[0.9] mb-4">
+                    <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-12">
+                        {/* Left: Main text content — shown first on mobile */}
+                        <div className="flex-1 flex flex-col items-center md:items-start w-full">
+                            <h1 className="text-4xl sm:text-5xl md:text-8xl lg:text-9xl font-black text-gray-900 tracking-tighter leading-[0.9] mb-3 md:mb-4 text-center md:text-left">
                                 Sairam{" "}
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-500">Maruri.</span>
                             </h1>
 
-                            <div className="h-9 sm:h-10 mb-6">
-                                <span className="text-xl sm:text-2xl md:text-3xl font-medium text-gray-500 tracking-tight font-display">
+                            <div className="h-8 sm:h-9 md:h-10 mb-4 md:mb-6">
+                                <span className="text-lg sm:text-2xl md:text-3xl font-medium text-gray-500 tracking-tight font-display">
                                     {title}
                                     <span className="text-blue-400 animate-pulse ml-px">|</span>
                                 </span>
                             </div>
 
-                            <p className="text-base sm:text-lg text-gray-500 font-medium max-w-xl leading-relaxed mb-6">
+                            <p className="text-sm sm:text-base md:text-lg text-gray-500 font-medium max-w-xl leading-relaxed mb-4 md:mb-6 text-center md:text-left">
                                 GenAI & ML Engineer & Vibe Coder who architects and ships production SaaS AI on cloud — powered by Claude Code, built to scale, designed to deliver.
                             </p>
 
@@ -73,9 +74,9 @@ const Home = () => {
                         </div>
 
                         {/* Right Column: Avatar + Connect */}
-                        <div className="flex flex-col items-center gap-6 shrink-0">
+                        <div className="flex flex-col items-center gap-4 md:gap-6 shrink-0">
                             {/* Avatar */}
-                            <div className="relative w-36 h-36 md:w-48 md:h-48">
+                            <div className="relative w-24 h-24 md:w-48 md:h-48">
                                 <div className="absolute -inset-1.5 rounded-full bg-gradient-to-br from-blue-400/30 via-indigo-400/20 to-purple-400/30 blur-sm" />
                                 <img
                                     src={avatar}
@@ -87,11 +88,24 @@ const Home = () => {
                                     decoding="async"
                                     fetchPriority="high"
                                 />
-                                <div className="absolute bottom-2 right-2 w-4 h-4 bg-emerald-500 rounded-full border-[2.5px] border-white shadow-sm" />
+                                <div className="absolute bottom-2 right-2 w-3 h-3 md:w-4 md:h-4 bg-emerald-500 rounded-full border-[2.5px] border-white shadow-sm" />
                             </div>
 
-                            {/* Let's Connect List */}
-                            <div className="w-full max-w-[280px] sm:max-w-[320px] flex flex-col gap-6 mt-4">
+                            {/* Mobile: compact icon-only social links */}
+                            <div className="flex md:hidden items-center gap-6">
+                                <a href="https://github.com/sairam3824" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                                    <Github className="w-5 h-5 text-blue-600" />
+                                </a>
+                                <a href="https://www.linkedin.com/in/sairam-maruri/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                    <Linkedin className="w-5 h-5 text-blue-600" />
+                                </a>
+                                <a href="mailto:sairam.maruri@gmail.com" aria-label="Email">
+                                    <Mail className="w-5 h-5 text-blue-600" />
+                                </a>
+                            </div>
+
+                            {/* Desktop: full Let's Connect list */}
+                            <div className="hidden md:flex w-full max-w-[320px] flex-col gap-6 mt-4">
                                 <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 text-center">Let's Connect</h3>
 
                                 <a
@@ -101,7 +115,7 @@ const Home = () => {
                                     className="flex items-center gap-5 px-2 py-2 group"
                                 >
                                     <Github className="w-6 h-6 text-blue-600" />
-                                    <span className="font-medium text-sm sm:text-lg text-gray-800">github.com/sairam3824</span>
+                                    <span className="font-medium text-lg text-gray-800">github.com/sairam3824</span>
                                 </a>
 
                                 <a
@@ -111,12 +125,12 @@ const Home = () => {
                                     className="flex items-center gap-5 px-2 py-2 group"
                                 >
                                     <Linkedin className="w-6 h-6 text-blue-600" />
-                                    <span className="font-medium text-sm sm:text-lg text-gray-800 truncate">linkedin.com/in/sairam-maruri</span>
+                                    <span className="font-medium text-lg text-gray-800 truncate">linkedin.com/in/sairam-maruri</span>
                                 </a>
 
                                 <a href="mailto:sairam.maruri@gmail.com" className="flex items-center gap-5 px-2 py-2 group">
                                     <Mail className="w-6 h-6 text-blue-600" />
-                                    <span className="font-medium text-sm sm:text-lg text-gray-800 truncate">sairam.maruri@gmail.com</span>
+                                    <span className="font-medium text-lg text-gray-800 truncate">sairam.maruri@gmail.com</span>
                                 </a>
                             </div>
                         </div>
