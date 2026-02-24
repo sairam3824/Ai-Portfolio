@@ -82,13 +82,13 @@ const SectionHeader = ({
     <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 relative">
         <div>
             <span className="editorial-number mb-2 block text-blue-600 font-mono">{number}</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 tracking-tight">
                 {title}
                 <span className="text-blue-600">.</span>
             </h2>
         </div>
         {description && (
-            <p className="max-w-md text-gray-500 font-medium leading-relaxed text-right md:text-left">
+            <p className="max-w-md text-gray-500 font-medium leading-relaxed text-left">
                 {description}
             </p>
         )}
@@ -196,7 +196,7 @@ const HomeSections = () => {
                     description="The tools, frameworks, and technologies I use to build."
                 />
 
-                <div className="flex flex-col gap-20">
+                <div className="flex flex-col gap-12 md:gap-20">
                     {/* 1. Vibe Coder Toolbox */}
                     <div>
                         <div className="mb-8">
@@ -204,7 +204,7 @@ const HomeSections = () => {
                             <p className="text-sm font-medium text-gray-500">Tools I ship with daily</p>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 md:gap-x-8 md:gap-y-12">
                             {vibeTools.map((group) => (
                                 <div key={group.label} className="flex flex-col gap-4">
                                     <h4 className="text-xs font-bold tracking-widest uppercase text-gray-400">{group.label}</h4>
@@ -239,7 +239,7 @@ const HomeSections = () => {
                             <p className="text-sm font-medium text-gray-500">Core competencies across the stack</p>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 md:gap-x-8 md:gap-y-12">
                             {skillCategories.filter((cat) => !["Full-Stack Dev", "Infra & Delivery", "Intelligence Stack"].includes(cat.category)).map((cat) => (
                                 <div key={cat.category} className="flex flex-col gap-4">
                                     <h4 className="text-xs font-bold tracking-widest uppercase text-gray-400">{cat.category}</h4>
@@ -430,15 +430,15 @@ const HomeSections = () => {
                 CONTACT CTA
             ═══════════════════════════════════════════ */}
             <section className="py-6 md:py-10 animate-fade-in-up stagger-12 content-auto">
-                <div className="group relative rounded-3xl bg-white border border-gray-200/80 p-8 md:p-12 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-500">
+                <div className="group relative rounded-3xl bg-white border border-gray-200/80 p-5 sm:p-8 md:p-12 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-500">
                     <div className="absolute right-0 top-0 h-full w-1/3 bg-gray-50/50 -skew-x-12 translate-x-1/2 opacity-0 md:opacity-100 transition-opacity" />
 
                     <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-10">
                         <div className="max-w-2xl">
-                            <h2 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight mb-4">
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 tracking-tight mb-4">
                                 Ready to ship your next breakthrough?
                             </h2>
-                            <p className="text-gray-500 text-lg leading-relaxed mb-0">
+                            <p className="text-gray-500 text-base sm:text-lg leading-relaxed mb-0">
                                 I specialize in turning complex AI concepts into production-grade software. Whether you need a full-stack overhaul or a custom GenAI integration, I deliver engineering excellence.
                             </p>
                         </div>
