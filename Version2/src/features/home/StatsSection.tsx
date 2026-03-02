@@ -78,7 +78,7 @@ export const StatsSection = () => {
                         <span className="text-xl sm:text-2xl md:text-3xl font-black text-gray-900 tracking-tight mb-1">
                             {stat.value}
                         </span>
-                        <span className="text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-wider md:tracking-widest text-gray-500 text-center min-h-[2rem] flex items-start justify-center leading-tight">
+                        <span className="text-[10px] sm:text-[11px] md:text-xs font-bold uppercase tracking-wider md:tracking-widest text-gray-500 text-center min-h-[2rem] flex items-start justify-center leading-tight">
                             {stat.label}
                         </span>
                     </div>

@@ -119,30 +119,31 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
     if (!isOpen) return null;
 
     return (
-        <div className="lg:hidden fixed inset-0 z-[100] bg-white text-gray-800 overflow-y-auto animate-in fade-in zoom-in-95 duration-200">
-            <div className="sticky top-0 bg-white/80 backdrop-blur-md p-4 flex justify-between items-center border-b border-gray-100 mb-4 z-10">
-                <span className="text-xl font-bold tracking-tight text-gray-800">Menu</span>
-                <button onClick={onClose} className="p-2 bg-gray-50 rounded-full hover:bg-gray-100 transition-colors">
-                    <X className="w-6 h-6 text-gray-500" />
+        <div className="lg:hidden fixed inset-0 z-[100] bg-white flex flex-col animate-in fade-in duration-200">
+            {/* Header */}
+            <div className="flex justify-between items-center px-6 py-5">
+                <Link to="/" onClick={onClose} className="text-lg font-medium text-gray-800">Sai Rama Linga Reddy Maruri</Link>
+                <button onClick={onClose} className="text-gray-700">
+                    <X className="w-5 h-5" />
                 </button>
             </div>
-            <div className="grid grid-cols-2 gap-3 p-4 pb-32">
-                {NAV_ITEMS.map((item) => (
+
+            {/* Nav items */}
+            <nav className="flex-1 overflow-y-auto">
+                {NAV_ITEMS.map((item, i) => (
                     <Link
                         key={item.path}
                         to={item.path}
                         onClick={onClose}
                         onTouchStart={() => prefetchRoute(item.path)}
                         onMouseEnter={() => prefetchRoute(item.path)}
-                        className="flex flex-col items-center justify-center p-6 bg-gray-50/50 border border-gray-100 rounded-2xl active:scale-95 transition-all hover:bg-white hover:shadow-md hover:border-transparent"
+                        className="flex items-center gap-3 px-6 py-4 active:opacity-50 transition-opacity"
                     >
-                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-3 ${item.bg}`}>
-                            <item.icon className={`w-6 h-6 ${item.color}`} />
-                        </div>
-                        <span className="font-semibold text-sm text-gray-700">{item.label}</span>
+                        <span className="text-[10px] font-mono text-gray-400 w-4 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                        <span className="text-lg font-semibold tracking-tight text-gray-800">{item.label}</span>
                     </Link>
                 ))}
-            </div>
+            </nav>
         </div>
     );
 };
@@ -164,9 +165,9 @@ function App() {
 
                     {/* Main Content Wrapper - Scrolls independently */}
                     <div id="main-content" className="flex-1 flex flex-col h-full overflow-y-auto min-w-0 transition-all duration-300 relative">
-                        <MobileHeader />
+                        <MobileHeader onMenuClick={() => setIsMobileMenuOpen(true)} />
 
-                        <main className="flex-1 w-full max-w-[1600px] mx-auto p-4 md:p-12 pb-24 md:pb-0">
+                        <main className="flex-1 w-full max-w-[1600px] mx-auto p-4 md:p-12">
                             <Suspense fallback={<LoadingFallback />}>
                                 <Routes>
                                     <Route path="/" element={<Home />} />
@@ -186,11 +187,9 @@ function App() {
                                     <Route path="*" element={<NotFoundPage />} />
                                 </Routes>
                             </Suspense>
-                            {/* Footer moved to Sidebar */}
                         </main>
 
                         <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
-                        <MobileNav onMenuClick={() => setIsMobileMenuOpen(true)} />
                     </div>
                 </div>
             </Router>
@@ -253,56 +252,28 @@ const Sidebar = () => {
     );
 };
 
-const MobileHeader = () => {
+const MobileHeader = ({ onMenuClick }: { onMenuClick: () => void }) => {
     return (
-        <div className="lg:hidden sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-100 px-4 py-3 flex items-center justify-between">
+        <div className="lg:hidden sticky top-0 z-40 bg-white/80 backdrop-blur-md px-4 py-3 flex items-center justify-between">
             <Link to="/">
-                <span className="text-lg font-medium text-gray-800">Sai Rama Linga Reddy</span>
+                <span className="text-lg font-medium text-gray-800">Sai Rama Linga Reddy Maruri</span>
             </Link>
-            <Link to="/resume" className="p-2 bg-gray-50 rounded-full text-gray-600">
-                <FileText className="w-5 h-5" />
-            </Link>
-        </div>
-    );
-}
-
-const BOTTOM_BAR_ITEMS = [
-    { path: '/', icon: HomeIcon, label: 'Home' },
-    { path: '/projects', icon: Folder, label: 'Work' },
-    { path: '/skills', icon: BrainCircuit, label: 'Skills' },
-    { path: '/contact', icon: Mail, label: 'Contact' },
-] as const;
-
-const MobileNav = ({ onMenuClick }: { onMenuClick: () => void }) => {
-    const location = useLocation();
-
-    return (
-        <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 pb-safe">
-            <div className="flex justify-around items-center p-2">
-                {BOTTOM_BAR_ITEMS.map((item) => {
-                    const isActive = location.pathname === item.path;
-                    return (
-                        <Link
-                            key={item.path}
-                            to={item.path}
-                            className={`flex flex-col items-center gap-1 p-2 rounded-2xl transition-all active:scale-95 ${isActive ? 'text-blue-700' : 'text-gray-500'
-                                }`}
-                        >
-                            <item.icon className={`w-6 h-6 ${isActive ? 'fill-blue-100' : ''}`} strokeWidth={2} />
-                            <span className="text-[10px] font-medium">{item.label}</span>
-                        </Link>
-                    );
-                })}
-                <button
-                    onClick={onMenuClick}
-                    className="flex flex-col items-center gap-1 p-2 text-gray-500"
+            <div className="flex items-center gap-1">
+                <a
+                    href="/Sai_Ram_Maruri_Resume_2025.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 text-gray-600"
                 >
+                    <FileText className="w-5 h-5" />
+                </a>
+                <button onClick={onMenuClick} className="p-2 text-gray-600">
                     <Menu className="w-6 h-6" />
-                    <span className="text-[10px] font-medium">Menu</span>
                 </button>
             </div>
         </div>
     );
-};
+}
+
 
 export default App;
