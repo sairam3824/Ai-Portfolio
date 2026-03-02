@@ -36,8 +36,10 @@ export const AboutPage = () => {
   return (
     <div className="relative py-12 px-4 max-w-6xl mx-auto min-h-full overflow-visible flex flex-col">
       <Seo
-        title="About | Sai Ram Maruri"
-        description="Learn about Sai Ram Maruri - GenAI & ML Engineer with 3+ years experience, 1000+ problems solved, 30+ blog articles, and 9 industry certifications. Building production AI that ships."
+        title="About | Sai Ram Maruri — GenAI & ML Engineer"
+        description="Sai Ram Maruri is a GenAI & ML Engineer at VIT-AP with 3+ years building production AI on AWS. LeetCode Guardian (Top 1%, 2500+ rating), 1000+ problems solved, 30+ technical blogs, 9 industry certifications. Architect of RAG pipelines, agentic workflows, and cloud-native SaaS AI."
+        pageType="AboutPage"
+        keywords={["Sai Ram Maruri", "GenAI Engineer India", "ML Engineer VIT-AP", "LeetCode Guardian", "RAG Engineer", "AI Developer", "Competitive Programmer India", "Anthropic Claude", "AWS AI Engineer"]}
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "About", url: "/about" },
@@ -48,7 +50,7 @@ export const AboutPage = () => {
       <div className="hidden md:block absolute top-1/2 left-0 w-[400px] h-[400px] bg-indigo-600/5 blur-[120px] rounded-full -z-10" />
 
       {/* Header: Pure Impact */}
-      <header className="relative z-10 mb-20 animate-fade-in w-full text-left">
+      <header className="relative z-10 mb-8 sm:mb-12 md:mb-20 animate-fade-in w-full text-left">
         <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/40 backdrop-blur-md border border-white/40 rounded-full shadow-sm mb-6">
           <Sparkles className="w-4 h-4 text-blue-500" />
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Evolution of an Engineer</span>
@@ -65,7 +67,7 @@ export const AboutPage = () => {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 relative z-10 w-full">
 
         {/* Main Bio Card - Span 8 */}
-        <div className="md:col-span-8 p-10 rounded-[3rem] bg-white border border-gray-100 shadow-2xl shadow-gray-200/50 flex flex-col justify-between group hover:border-blue-200/50 hover:-translate-y-2 transition-all duration-700">
+        <div className="md:col-span-8 p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-[2rem] md:rounded-[3rem] bg-white border border-gray-100 shadow-2xl shadow-gray-200/50 flex flex-col justify-between group hover:border-blue-200/50 hover:-translate-y-2 transition-all duration-700">
           <div className="space-y-8">
             <div className="flex items-center gap-4">
               <div className="p-3 bg-blue-600 rounded-full text-white">
@@ -103,7 +105,7 @@ export const AboutPage = () => {
         </div>
 
         {/* Badge Grid - Span 4 */}
-        <div className="md:col-span-4 p-10 rounded-[3rem] bg-white border border-gray-100 shadow-xl shadow-gray-200/40 flex flex-col justify-start overflow-hidden relative group hover:border-blue-200/50 hover:-translate-y-2 transition-all duration-500">
+        <div className="md:col-span-4 p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-[2rem] md:rounded-[3rem] bg-white border border-gray-100 shadow-xl shadow-gray-200/40 flex flex-col justify-start overflow-hidden relative group hover:border-blue-200/50 hover:-translate-y-2 transition-all duration-500">
           <div className="absolute top-0 right-0 w-40 h-40 bg-blue-500/5 blur-[60px] rounded-full group-hover:bg-blue-500/10 transition-all" />
           <h3 className="text-xs font-bold uppercase tracking-widest text-blue-600 mb-4 flex items-center gap-3">
             Verified Authority <div className="h-px flex-1 bg-gray-100" />
@@ -130,7 +132,7 @@ export const AboutPage = () => {
         </div>
 
         {/* Expertise List - Span 8 */}
-        <div className="md:col-span-8 p-10 rounded-[3rem] bg-white border border-gray-100 shadow-xl shadow-gray-200/40 flex flex-col justify-start relative overflow-hidden group hover:border-blue-200/50 hover:-translate-y-2 transition-all duration-500">
+        <div className="md:col-span-8 p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-[2rem] md:rounded-[3rem] bg-white border border-gray-100 shadow-xl shadow-gray-200/40 flex flex-col justify-start relative overflow-hidden group hover:border-blue-200/50 hover:-translate-y-2 transition-all duration-500">
           <div className="hidden sm:block absolute -bottom-10 -right-10 text-[180px] font-black text-gray-800/[0.02] select-none">AI</div>
           <div className="space-y-6">
             <h3 className="text-2xl font-bold text-gray-800 flex items-center gap-3">
