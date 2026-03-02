@@ -16,8 +16,10 @@ export const ResumePage = () => {
     return (
         <div className="min-h-screen bg-white py-12 px-4 md:px-8 print:p-0 print:bg-white flex flex-col">
             <Seo
-                title="Resume | Sai Ram Maruri"
-                description="Professional resume of Sai Ram Maruri — GenAI Engineer, Full Stack Developer, and competitive programmer."
+                title="Resume | Sai Ram Maruri — GenAI Engineer CV"
+                description="Professional resume of Sai Ram Maruri: GenAI Engineer with expertise in LLM agents, RAG pipelines, AWS cloud, and full stack development. LeetCode Guardian (Top 1%), B.Tech CS VIT-AP 2026."
+                pageType="ProfilePage"
+                keywords={["Sai Ram Maruri Resume", "GenAI Engineer CV", "ML Engineer Resume", "AI Developer India", "LeetCode Guardian Resume", "AWS AI Engineer Resume"]}
                 breadcrumbs={[
                     { name: "Home", url: "/" },
                     { name: "Resume", url: "/resume" },

@@ -103,8 +103,9 @@ export const CodingProfilesPage = () => {
     return (
         <div className="home-container relative py-12 px-4 max-w-6xl mx-auto min-h-full overflow-hidden">
             <Seo
-                title="Coding Profiles | Sai Ram Maruri"
-                description="Explore Sai Ram Maruri's competitive programming profiles — LeetCode Guardian, CodeChef 3-Star rankings and more."
+                title="Coding Profiles | Sai Ram Maruri — LeetCode Guardian"
+                description="Competitive programming profiles of Sai Ram Maruri: LeetCode Guardian (2500+ rating, Top 1%), CodeChef 3-Star (1600+), Codeforces, InterviewBit, TakeUForward. 1000+ problems solved across 50+ contests."
+                keywords={["LeetCode Guardian", "LeetCode 2500 Rating", "CodeChef 3 Star", "Competitive Programming India", "Codeforces", "1000 Problems Solved", "Sai Ram Maruri LeetCode", "Top 1 Percent LeetCode"]}
                 breadcrumbs={[
                     { name: "Home", url: "/" },
                     { name: "Coding Profiles", url: "/coding-profiles" },
@@ -115,7 +116,7 @@ export const CodingProfilesPage = () => {
             <div className="hidden md:block absolute bottom-0 -right-20 w-96 h-96 bg-indigo-400/10 blur-[120px] rounded-full -z-10 animate-pulse delay-700" />
 
             {/* Header section with distinct typography */}
-            <header className="text-center space-y-6 mb-20 animate-fade-in">
+            <header className="text-center space-y-6 mb-10 sm:mb-16 md:mb-20 animate-fade-in">
                 <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/40 backdrop-blur-md border border-white/40 rounded-full shadow-sm">
                     <Code className="w-4 h-4 text-blue-500" />
                     <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Global Leaderboards</span>
@@ -188,7 +189,7 @@ export const CodingProfilesPage = () => {
                                 </div>
 
                                 {isFeatured && (
-                                    <p className="text-gray-500 text-sm font-medium leading-relaxed max-w-xs mt-2 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                                    <p className="text-gray-500 text-sm font-medium leading-relaxed max-w-xs mt-2 md:opacity-0 md:group-hover:opacity-100 md:translate-y-4 md:group-hover:translate-y-0 transition-all duration-500">
                                         {profile.desc}
                                     </p>
                                 )}
