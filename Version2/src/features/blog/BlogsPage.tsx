@@ -5,11 +5,13 @@ const BlogsPage = () => {
     return (
         <div className="max-w-7xl mx-auto pb-8 pt-0 px-4">
             <Seo
-                title="Blogs | Sai Ram Maruri"
-                description="Technical blog posts, tutorials, and deep dives into GenAI, LLMs, and Software Engineering by Sai Ram Maruri."
+                title="Writing | Sai Ram Maruri — AI & Engineering Blog"
+                description="30+ technical blog posts by Sai Ram Maruri on GenAI, LLMs, RAG systems, AWS cloud, agentic workflows, MCP, A2A, context engineering, competitive programming, and software engineering."
+                pageType="CollectionPage"
+                keywords={["AI Blog", "GenAI Blog", "LLM Tutorial", "RAG Tutorial", "AWS Blog", "Competitive Programming Blog", "Tech Writing", "Sai Ram Maruri Blog", "Context Engineering", "Agentic AI"]}
                 breadcrumbs={[
                     { name: "Home", url: "/" },
-                    { name: "Blogs", url: "/blogs" },
+                    { name: "Writing", url: "/blogs" },
                 ]}
             />
             <BlogSection />

@@ -14,6 +14,17 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
     {
+        id: "tech-monthly-digest-feb-2026",
+        title: "Tech Monthly Digest: February 2026 – A2A, Context Engineering, and the Rise of Agentic Everything",
+        excerpt:
+            "February 2026 was the month agentic AI stopped being experimental and started being expected. Google's A2A protocol redefined how agents communicate, Context Engineering emerged as the must-have production skill, MCP became the de facto standard for tool use, and every major cloud doubled down on inference infrastructure. Here's everything that mattered for builders this month.",
+        date: "March 1, 2026",
+        readTime: "18 min read",
+        tags: ["AI/ML", "Agents", "A2A", "MCP", "Context Engineering", "Developer Tools", "Monthly Digest"],
+        icon: "Globe",
+        iconColor: "purple",
+    },
+    {
         id: "context-engineering",
         title: "Context Engineering: The Skill That Replaced Prompt Engineering for Production AI in 2026",
         excerpt:
