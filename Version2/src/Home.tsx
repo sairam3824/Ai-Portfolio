@@ -31,6 +31,7 @@ const Home = () => {
             <Seo
                 title="Sai Ram Maruri | GenAI & ML Engineer"
                 description="Portfolio of Sai Ram Maruri - GenAI & ML Engineer building production AI that ships. Specializing in LLM agents, RAG systems, agentic workflows, and cloud-native AI on AWS."
+                keywords={["Sai Ram Maruri", "GenAI Engineer", "ML Engineer", "LLM Agent", "RAG Systems", "AWS Bedrock", "LangChain", "Full Stack Developer", "Competitive Programmer", "LeetCode Guardian", "VIT-AP", "Vibe Coder", "AI SaaS"]}
             />
 
             {/* Ambient Background Glows — hidden on mobile for GPU perf */}
@@ -42,7 +43,7 @@ const Home = () => {
                     HERO — Magazine Cover
                 ═══════════════════════════════════════════ */}
                 <section className="pt-8 md:pt-20 pb-6 md:pb-10 animate-fade-in-up">
-                    <p className="text-xs font-semibold tracking-[0.25em] uppercase text-gray-400 mb-3 md:mb-4">Vol. 01 — 2026 Edition</p>
+                    <p className="text-xs font-semibold tracking-[0.25em] uppercase text-gray-400 mb-3 md:mb-4">Vol. 02 — 2026 Edition</p>
 
                     <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-12">
                         {/* Left: Main text content — shown first on mobile */}

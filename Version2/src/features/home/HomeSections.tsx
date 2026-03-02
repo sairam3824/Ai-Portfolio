@@ -1,19 +1,9 @@
 import { Link } from "react-router-dom";
 import { Github, ExternalLink, ArrowRight, Code, Target, Activity, Globe, Cpu, Zap } from "lucide-react";
 import { projectsData } from "../projects/projectsData";
-import { skillCategories } from "../skills/skillsData";
 import { codingProfilesData } from "../coding-profiles/codingProfilesData";
 import { blogPosts } from "../blog/blogData";
 import CredentialsSection from "./CredentialsSection";
-
-const skillColorMap: Record<string, string> = {
-    indigo: "bg-indigo-100 text-indigo-700",
-    blue: "bg-blue-100 text-blue-700",
-    emerald: "bg-emerald-100 text-emerald-700",
-    sky: "bg-sky-100 text-sky-700",
-    amber: "bg-amber-100 text-amber-700",
-    rose: "bg-rose-100 text-rose-700",
-};
 
 const vibeColorMap: Record<string, string> = {
     emerald: "bg-emerald-100 text-emerald-700",
@@ -67,7 +57,7 @@ const vibeTools = [
     },
 ];
 
-const featuredProjects = projectsData.filter((p) => p.featured).slice(0, 4);
+const featuredProjects = projectsData.filter((p) => p.featured).slice(0, 2);
 const topBlogPosts = blogPosts.slice(0, 3);
 
 const SectionHeader = ({
@@ -232,41 +222,6 @@ const HomeSections = () => {
                         </div>
                     </div>
 
-                    {/* 2. Skills Matrix */}
-                    <div>
-                        <div className="mb-8">
-                            <h3 className="text-xl font-bold text-gray-800 tracking-tight mb-2">Skills Matrix</h3>
-                            <p className="text-sm font-medium text-gray-500">Core competencies across the stack</p>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 md:gap-x-8 md:gap-y-12">
-                            {skillCategories.filter((cat) => !["Full-Stack Dev", "Infra & Delivery", "Intelligence Stack"].includes(cat.category)).map((cat) => (
-                                <div key={cat.category} className="flex flex-col gap-4">
-                                    <h4 className="text-xs font-bold tracking-widest uppercase text-gray-400">{cat.category}</h4>
-                                    <div className="flex flex-wrap gap-x-4 gap-y-3">
-                                        {cat.skills.map((skill) => {
-                                            const showCompany = !!skill.company;
-
-                                            return (
-                                                <div key={skill.name} className="flex items-center gap-2 group">
-                                                    {showCompany && (
-                                                        <span className="text-[10px] font-bold text-gray-300 uppercase tracking-widest group-hover:text-gray-500 transition-colors">
-                                                            {skill.company}
-                                                        </span>
-                                                    )}
-                                                    <span
-                                                        className={`px-3 py-1.5 rounded-full text-xs font-bold ${skillColorMap[cat.color] || "bg-gray-100 text-gray-600"} shadow-sm transition-transform hover:-translate-y-0.5`}
-                                                    >
-                                                        {skill.name}
-                                                    </span>
-                                                </div>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
                 </div>
 
                 <div className="mt-8">
