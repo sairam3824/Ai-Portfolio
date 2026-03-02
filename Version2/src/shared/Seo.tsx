@@ -11,11 +11,14 @@ type BreadcrumbItem = {
     url: string;
 };
 
+type PageType = "WebPage" | "AboutPage" | "ContactPage" | "CollectionPage" | "ProfilePage";
+
 type SeoProps = {
     title: string;
     description: string;
     image?: string;
     type?: "website" | "article";
+    pageType?: PageType;
     canonical?: string;
     robots?: string;
     publishedTime?: string;
@@ -29,6 +32,7 @@ const Seo = ({
     description,
     image = DEFAULT_IMAGE,
     type = "website",
+    pageType = "WebPage",
     canonical,
     robots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     publishedTime,
@@ -51,9 +55,11 @@ const Seo = ({
         }))
     } : null;
 
+    const schemaType = type === "article" ? "Article" : pageType;
+
     const webPageSchema = {
         "@context": "https://schema.org",
-        "@type": type === "article" ? "Article" : "WebPage",
+        "@type": schemaType,
         "@id": url,
         "name": title,
         "description": description,
@@ -74,6 +80,7 @@ const Seo = ({
         <Helmet>
             <title>{title}</title>
             <meta name="description" content={description} />
+            <meta name="author" content={AUTHOR_NAME} />
             <meta name="robots" content={robots} />
             <link rel="canonical" href={url} />
             {keywords && keywords.length > 0 && (
@@ -85,6 +92,7 @@ const Seo = ({
             <meta property="og:type" content={type} />
             <meta property="og:url" content={url} />
             <meta property="og:image" content={fullImage} />
+            <meta property="og:image:secure_url" content={fullImage} />
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="630" />
             <meta property="og:image:alt" content="Sai Ram Maruri — GenAI & ML Engineer Portfolio" />
@@ -96,6 +104,7 @@ const Seo = ({
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
             <meta name="twitter:image" content={fullImage} />
+            <meta name="twitter:creator" content="@sairammaruri" />
 
             {type === "article" && (
                 <>
