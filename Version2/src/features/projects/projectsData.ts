@@ -61,7 +61,7 @@ export const projectsData: ProjectData[] = [
             "EdTech SaaS platform generating curriculum-aligned MCQs from textbook PDFs using RAG and GPT-4o. Students select a chapter and receive a 10-question test with difficulty-distributed explanations in seconds.",
         tech: ["FastAPI", "Next.js", "pgvector", "OpenAI", "Supabase", "Celery", "Redis", "Docker"],
         github: "https://github.com/sairam3824/vidyai",
-        link: "https://vidyaedtech.saiii.in",
+        link: "https://vidyaiedtech.saiii.in",
         category: "AI Search & RAG",
         iconName: "Search",
         featured: true,
