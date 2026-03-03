@@ -347,12 +347,12 @@ export const ProfilePage = () => {
               </a>
 
               <a
-                href="https://sairam.orravyn.info/"
+                href="https://oldportfolio.saiii.in"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border bg-card/40 hover:bg-card/60 transition text-base font-semibold"
               >
-                Portfolio <ExternalLink className="w-4 h-4" />
+                Old Portfolio <ExternalLink className="w-4 h-4" />
               </a>
 
               <a

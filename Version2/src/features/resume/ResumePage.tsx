@@ -258,7 +258,7 @@ export const ResumePage = () => {
                 {/* Footer on Print */}
                 <div className="hidden print:block text-center mt-12 pt-4 border-t border-gray-100">
                     <p className="text-[10px] text-gray-400 uppercase tracking-widest">
-                        Generated from portfolio.saiii.in
+                        Generated from saiii.in
                     </p>
                 </div>
             </div>
