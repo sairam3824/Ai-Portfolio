@@ -99,14 +99,6 @@ export const ProjectsSection = () => {
                         key={i}
                         className="group relative flex flex-col p-5 sm:p-8 rounded-2xl sm:rounded-[2.5rem] bg-white border border-gray-100 shadow-xl shadow-gray-200/40 hover:border-blue-200/50 transition-all duration-500"
                     >
-                        {/* Status Label */}
-                        <div className="absolute top-5 right-5 sm:top-8 sm:right-8">
-                            <div className="flex items-center gap-1.5 px-2.5 py-1 bg-emerald-50 text-emerald-600 rounded-full border border-emerald-100">
-                                <div className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
-                                <span className="text-[9px] font-bold uppercase tracking-widest">Active</span>
-                            </div>
-                        </div>
-
                         <div className="mb-6">
                             <div className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-inner">
                                 {project.icon}
