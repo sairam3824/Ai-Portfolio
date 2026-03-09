@@ -25,32 +25,6 @@ export interface ProjectData {
     tagline?: string;
 }
 
-/**
- * Standardized Project Categories:
- * - AI Platform: Enterprise AI/LLM platforms and orchestration
- * - AI Agent: Autonomous agents, career bots, assistants
- * - AI Search & RAG: Search engines, knowledge bases, RAG systems
- * - AI Automation: Test automation, workflow automation
- * - Computer Vision: Image classification, object detection, medical imaging
- * - Deep Learning: Neural networks, prediction models
- * - Machine Learning: Traditional ML, predictive analytics
- * - Web Development: Full-stack web applications, portfolios
- * - Enterprise Software: SaaS, management systems
- * - Infrastructure: MCP servers, microservices, DevOps
- *
- * Standardized Icons:
- * - Brain: AI platforms, LLM-based projects
- * - Search: RAG, search engines, knowledge bases
- * - Zap: Agents, automation, real-time systems
- * - Shield: Security, QA, testing
- * - Activity: Predictions, analytics, monitoring
- * - Cpu: Computer vision, image processing
- * - Terminal: Developer tools, CLI, interview platforms
- * - Rocket: Showcase projects, portfolios, aerospace
- * - Globe: Web apps, enterprise software
- * - Code2: Algorithms, infrastructure, protocols
- */
-
 export const projectsData: ProjectData[] = [
 
     // ═══════════════════════════════════════════════════════════════════════════
@@ -165,11 +139,6 @@ export const projectsData: ProjectData[] = [
         featured: false,
         tagline: "Responsive Vanilla Stack • Theme Switching",
     },
-
-    // ═══════════════════════════════════════════════════════════════════════════
-    // AI AGENTS & MULTI-AGENT SYSTEMS — Agentic AI at scale
-    // ═══════════════════════════════════════════════════════════════════════════
-
     {
         title: "A2A Task Marketplace",
         description:
@@ -258,11 +227,6 @@ export const projectsData: ProjectData[] = [
         featured: false,
         tagline: "T5-Powered NLP Engine • Generation & Analysis",
     },
-
-    // ═══════════════════════════════════════════════════════════════════════════
-    // RAG & MULTIMODAL AI — Retrieval-augmented & vision-language systems
-    // ═══════════════════════════════════════════════════════════════════════════
-
     {
         title: "Agentic RAG Engine",
         description:
@@ -351,11 +315,6 @@ export const projectsData: ProjectData[] = [
         featured: true,
         tagline: "Autonomous Testing • RAG-Powered QA Agent",
     },
-
-    // ═══════════════════════════════════════════════════════════════════════════
-    // AI PLATFORMS & PRODUCTS — End-to-end GenAI applications
-    // ═══════════════════════════════════════════════════════════════════════════
-
     {
         title: "AstraFlow: AI Intelligence Platform",
         description:
@@ -400,11 +359,17 @@ export const projectsData: ProjectData[] = [
         featured: true,
         tagline: "Multi-Source Ingestion • Anki Export • GPT-4o-mini",
     },
-
-    // ═══════════════════════════════════════════════════════════════════════════
-    // INFRASTRUCTURE & DEVELOPER TOOLS — AI tooling, MCP servers, DevOps
-    // ═══════════════════════════════════════════════════════════════════════════
-
+    {
+        title: "LLM Token Debugger",
+        description:
+            "An interactive, client-side developer tool that visualizes exactly how LLMs and embedding models tokenize your text. Supports 50 models across 8 providers, featuring side-by-side comparison and real-time stats without sending any data to a backend.",
+        tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "gpt-tokenizer"],
+        github: "https://github.com/sairam3824/LLM-Token-Debugger",
+        category: "Infrastructure",
+        iconName: "Terminal",
+        featured: true,
+        tagline: "Interactive Tokenizer Visualizer • 50 Models • 8 Providers",
+    },
     {
         title: "LLM Eval Bench",
         description:
@@ -537,11 +502,6 @@ export const projectsData: ProjectData[] = [
         featured: false,
         tagline: "Codeforces Specialist • 1000+ Solutions",
     },
-
-    // ═══════════════════════════════════════════════════════════════════════════
-    // COMPUTER VISION & MEDICAL AI — Deep learning for visual intelligence
-    // ═══════════════════════════════════════════════════════════════════════════
-
     {
         title: "Lung Cancer Detection",
         description:
@@ -586,11 +546,6 @@ export const projectsData: ProjectData[] = [
         featured: false,
         tagline: "101 Food Classes • Real-time Nutritional Analysis",
     },
-
-    // ═══════════════════════════════════════════════════════════════════════════
-    // MACHINE LEARNING & PREDICTIVE ANALYTICS — Classical ML & forecasting
-    // ═══════════════════════════════════════════════════════════════════════════
-
     {
         title: "Customer Churn Prediction",
         description:
@@ -613,11 +568,6 @@ export const projectsData: ProjectData[] = [
         featured: false,
         tagline: "91% Prediction Accuracy • Aerospace Analytics",
     },
-
-    // ═══════════════════════════════════════════════════════════════════════════
-    // WEB & ENTERPRISE SOFTWARE — Full-stack products and SaaS
-    // ═══════════════════════════════════════════════════════════════════════════
-
     {
         title: "ShopInsight: Shopify Analytics",
         description:

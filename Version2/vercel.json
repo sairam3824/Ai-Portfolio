@@ -2,35 +2,111 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/linkedin",
+      "destination": "https://www.linkedin.com/in/sairam-maruri/",
+      "permanent": false
+    },
+    {
+      "source": "/github",
+      "destination": "https://github.com/sairam3824",
+      "permanent": false
+    },
+    {
+      "source": "/leetcode",
+      "destination": "https://leetcode.com/u/sairam3824/",
+      "permanent": false
+    },
+    {
+      "source": "/leetcode-contests",
+      "destination": "https://leetcode.com/u/programmer3824/",
+      "permanent": false
+    },
+    {
+      "source": "/leetcode-problems",
+      "destination": "https://leetcode.com/u/sairam3824/",
+      "permanent": false
+    },
+    {
+      "source": "/codechef",
+      "destination": "https://www.codechef.com/users/sairam2004",
+      "permanent": false
+    },
+    {
+      "source": "/codeforces",
+      "destination": "https://codeforces.com/profile/sairam3824",
+      "permanent": false
+    },
+    {
+      "source": "/cv",
+      "destination": "/Sai_Ram_Maruri_Resume_2025.pdf",
+      "permanent": false
+    },
+    {
+      "source": "/resumepdf",
+      "destination": "/Sai_Ram_Maruri_Resume_2025.pdf",
+      "permanent": false
+    },
+    {
+      "source": "/mail",
+      "destination": "mailto:sairam.maruri@gmail.com",
+      "permanent": false
+    },
+    {
       "source": "/:path(.*)",
-      "has": [{ "type": "host", "value": "www.saiii.in" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.saiii.in"
+        }
+      ],
       "destination": "https://saiii.in/:path",
       "permanent": true
     }
   ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ],
   "headers": [
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/(.*).html",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     },
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
       ]
     }
   ]

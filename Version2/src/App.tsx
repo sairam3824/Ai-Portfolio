@@ -148,6 +148,13 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
     );
 };
 
+const ExternalRedirect = ({ url }: { url: string }) => {
+    useEffect(() => {
+        window.location.href = url;
+    }, [url]);
+    return null;
+};
+
 function App() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -184,6 +191,16 @@ function App() {
                                     <Route path="/admin" element={<AdminPage />} />
                                     <Route path="/privacy" element={<PrivacyPage />} />
                                     <Route path="/terms" element={<TermsPage />} />
+                                    <Route path="/linkedin" element={<ExternalRedirect url="https://www.linkedin.com/in/sairam-maruri/" />} />
+                                    <Route path="/github" element={<ExternalRedirect url="https://github.com/sairam3824" />} />
+                                    <Route path="/leetcode" element={<ExternalRedirect url="https://leetcode.com/u/sairam3824/" />} />
+                                    <Route path="/leetcode-contests" element={<ExternalRedirect url="https://leetcode.com/u/programmer3824/" />} />
+                                    <Route path="/leetcode-problems" element={<ExternalRedirect url="https://leetcode.com/u/sairam3824/" />} />
+                                    <Route path="/codechef" element={<ExternalRedirect url="https://www.codechef.com/users/sairam2004" />} />
+                                    <Route path="/codeforces" element={<ExternalRedirect url="https://codeforces.com/profile/sairam3824" />} />
+                                    <Route path="/cv" element={<ExternalRedirect url="/Sai_Ram_Maruri_Resume_2025.pdf" />} />
+                                    <Route path="/resumepdf" element={<ExternalRedirect url="/Sai_Ram_Maruri_Resume_2025.pdf" />} />
+                                    <Route path="/mail" element={<ExternalRedirect url="mailto:sairam.maruri@gmail.com" />} />
                                     <Route path="*" element={<NotFoundPage />} />
                                 </Routes>
                             </Suspense>
