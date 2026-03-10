@@ -32,6 +32,17 @@ export const projectsData: ProjectData[] = [
     // ═══════════════════════════════════════════════════════════════════════════
 
     {
+        title: "Prompt Injection Detector (Prompt Shield)",
+        description:
+            "A robust detection engine safeguarding LLM applications against prompt injections, jailbreaks, and system prompt leaks. Features rule-based heuristics, statistical analysis, and LLM-powered classification, complete with an interactive Next.js dashboard.",
+        tech: ["Python", "Next.js", "OpenAI", "React", "pytest", "Tailwind CSS"],
+        github: "https://github.com/sairam3824/Prompt-Injection-Detector",
+        category: "AI Security",
+        iconName: "Shield",
+        featured: true,
+        tagline: "LLM Security Engine • Rule-based + LLM Detection",
+    },
+    {
         title: "AI Research Platform (Orravyn)",
         description:
             "Enterprise-grade collaborative platform for AI deployment. Enables scalable LLM experimentation and model fine-tuning within a production-ready environment.",
