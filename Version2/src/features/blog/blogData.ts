@@ -14,6 +14,17 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
     {
+        id: "prompt-injection",
+        title: "Prompt Injection: The Silent Exploit Threatening Every AI Application",
+        excerpt:
+            "Prompt injection is the top attack vector for LLM-powered applications — and most developers are still shipping vulnerable code. Learn how attackers hijack AI systems, the real-world breaches that prove the threat is live, and the layered defenses every AI engineer must implement in 2026.",
+        date: "March 11, 2026",
+        readTime: "16 min read",
+        tags: ["AI/ML", "Cybersecurity", "LLM Security", "Prompt Injection", "AI Safety", "Production AI"],
+        icon: "Shield",
+        iconColor: "red",
+    },
+    {
         id: "tech-monthly-digest-feb-2026",
         title: "Tech Monthly Digest: February 2026 – A2A, Context Engineering, and the Rise of Agentic Everything",
         excerpt:

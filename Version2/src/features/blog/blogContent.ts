@@ -1,4 +1,5 @@
 const contentLoaders: Record<string, () => Promise<{ default?: { content: string }; [key: string]: any }>> = {
+    "prompt-injection": () => import('./posts/prompt-injection'),
     "mcp-servers": () => import('./posts/MCP-server'),
     "ai-vs-genai": () => import('./posts/ai-vs-genai'),
     "aws-bedrock": () => import('./posts/aws-bedrock'),
