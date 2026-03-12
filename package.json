@@ -10,6 +10,7 @@
     "@vercel/node": "^5.5.28"
   },
   "dependencies": {
-    "@openai/agents": "^0.4.3"
+    "@openai/agents": "^0.4.3",
+    "openai": "^6.27.0"
   }
 }
