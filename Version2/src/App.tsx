@@ -2,6 +2,7 @@ import { useEffect, useCallback, Suspense, lazy, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Home from './Home';
+import ChatWidget from './features/home/ChatWidget';
 
 // Route chunk loaders — stored for prefetching on hover
 const routeLoaders = {
@@ -209,6 +210,7 @@ function App() {
                         <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
                     </div>
                 </div>
+                <ChatWidget />
             </Router>
         </HelmetProvider>
     );
