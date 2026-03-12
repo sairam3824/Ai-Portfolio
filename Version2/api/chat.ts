@@ -1,6 +1,5 @@
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 import OpenAI from 'openai';
-
-export const config = { runtime: 'edge' };
 
 const SYSTEM_PROMPT = `You are an AI assistant on Sai Ram Maruri's personal portfolio website (saiii.in). Your job is to answer questions about Sai Ram and help visitors learn more about him. Be friendly, concise, and enthusiastic.
 
@@ -35,15 +34,15 @@ const SYSTEM_PROMPT = `You are an AI assistant on Sai Ram Maruri's personal port
 - 1000+ problems solved, 50+ contests
 
 ## Key Projects (30+ total)
-- **VidyAI** — EdTech SaaS with RAG + pgvector, built in 2 days using Claude Code — https://vidyaedtech.saiii.in
-- **HireMind** — AI job matching platform — https://hiremind.saiii.in
-- **SystemDesign Simulator** — System design learning platform, built in <6hrs — https://systemdesign.saiii.in
-- **Orravyn** — AI research platform — https://orravyn.cloud
-- **BadmintonHub** — Multi-tenant sports match management SaaS — https://badminton.saiii.in
-- **AstraFlow** — Agentic workflow automation
-- **VoiceGen Pro** — AI voice generation
-- **Traffic Prediction** — ML-based traffic forecasting — https://traffic.saiii.in
-- **PrepLoop** — Gamified interview prep — https://dailyquestion.saiii.in
+- VidyAI — EdTech SaaS with RAG + pgvector, built in 2 days — https://vidyaedtech.saiii.in
+- HireMind — AI job matching platform — https://hiremind.saiii.in
+- SystemDesign Simulator — system design learning platform, built in <6hrs — https://systemdesign.saiii.in
+- Orravyn — AI research platform — https://orravyn.cloud
+- BadmintonHub — Multi-tenant sports match management SaaS — https://badminton.saiii.in
+- AstraFlow — Agentic workflow automation
+- VoiceGen Pro — AI voice generation
+- Traffic Prediction — ML-based traffic forecasting — https://traffic.saiii.in
+- PrepLoop — Gamified interview prep — https://dailyquestion.saiii.in
 
 ## Certifications (12 total, 9 industry)
 - Oracle AI Vector Search Professional
@@ -76,14 +75,14 @@ const SYSTEM_PROMPT = `You are an AI assistant on Sai Ram Maruri's personal port
 - Answer questions about Sai Ram's skills, projects, experience, education, and contact info
 - Keep responses concise (2-4 sentences usually) unless a detailed question deserves more
 - Be enthusiastic and positive about his work
-- If asked something not related to Sai Ram (like general coding questions, personal advice, etc.), politely redirect: "I'm here specifically to answer questions about Sai Ram! You can reach him at sairam.maruri@gmail.com for other questions."
+- If asked something not related to Sai Ram, politely redirect: "I'm here specifically to answer questions about Sai Ram! You can reach him at sairam.maruri@gmail.com for other questions."
 - Never make up information not provided above
-- If unsure about something specific, suggest the visitor reach out directly: sairam.maruri@gmail.com`;
+- If unsure about something specific, suggest the visitor reach out: sairam.maruri@gmail.com`;
 
-// Simple in-memory rate limiting per IP (resets on cold start — good enough for a portfolio)
+// Simple in-memory rate limiting per IP
 const requestLog = new Map<string, number[]>();
-const RATE_LIMIT = 15;       // max requests
-const RATE_WINDOW = 60 * 60 * 1000; // per hour
+const RATE_LIMIT = 15;
+const RATE_WINDOW = 60 * 60 * 1000; // 1 hour
 
 function isRateLimited(ip: string): boolean {
     const now = Date.now();
@@ -94,66 +93,40 @@ function isRateLimited(ip: string): boolean {
     return false;
 }
 
-export default async function handler(req: Request) {
-    if (req.method === 'OPTIONS') {
-        return new Response(null, { status: 204 });
-    }
-
+export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (req.method !== 'POST') {
-        return new Response(JSON.stringify({ error: 'Method not allowed' }), {
-            status: 405,
-            headers: { 'Content-Type': 'application/json' },
-        });
+        return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+    const ip = (req.headers['x-forwarded-for'] as string)?.split(',')[0]?.trim() || 'unknown';
     if (isRateLimited(ip)) {
-        return new Response(JSON.stringify({ error: 'Too many requests. Please try again later.' }), {
-            status: 429,
-            headers: { 'Content-Type': 'application/json' },
-        });
+        return res.status(429).json({ error: 'Too many requests. Please try again later.' });
     }
 
-    let body: { message?: string; history?: { role: string; content: string }[] };
-    try {
-        body = await req.json();
-    } catch {
-        return new Response(JSON.stringify({ error: 'Invalid request body' }), {
-            status: 400,
-            headers: { 'Content-Type': 'application/json' },
-        });
-    }
-
-    const { message, history = [] } = body;
+    const { message, history = [] } = req.body || {};
 
     if (!message || typeof message !== 'string' || message.trim().length === 0) {
-        return new Response(JSON.stringify({ error: 'Message is required' }), {
-            status: 400,
-            headers: { 'Content-Type': 'application/json' },
-        });
+        return res.status(400).json({ error: 'Message is required' });
     }
 
     if (message.length > 500) {
-        return new Response(JSON.stringify({ error: 'Message too long (max 500 characters)' }), {
-            status: 400,
-            headers: { 'Content-Type': 'application/json' },
-        });
+        return res.status(400).json({ error: 'Message too long (max 500 characters)' });
     }
 
     const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) {
-        return new Response(JSON.stringify({ error: 'Service unavailable' }), {
-            status: 503,
-            headers: { 'Content-Type': 'application/json' },
-        });
+        return res.status(503).json({ error: 'Service unavailable' });
     }
 
     const openai = new OpenAI({ apiKey });
 
-    const safeHistory = history
+    const safeHistory = (Array.isArray(history) ? history : [])
         .slice(-8)
-        .filter(m => m.role === 'user' || m.role === 'assistant')
-        .map(m => ({ role: m.role as 'user' | 'assistant', content: String(m.content).slice(0, 500) }));
+        .filter((m: { role: string; content: string }) => m.role === 'user' || m.role === 'assistant')
+        .map((m: { role: string; content: string }) => ({
+            role: m.role as 'user' | 'assistant',
+            content: String(m.content).slice(0, 500),
+        }));
 
     try {
         const completion = await openai.chat.completions.create({
@@ -167,17 +140,12 @@ export default async function handler(req: Request) {
             temperature: 0.7,
         });
 
-        const reply = completion.choices[0]?.message?.content ?? "I'm not sure how to answer that. Try asking Sai Ram directly at sairam.maruri@gmail.com!";
+        const reply = completion.choices[0]?.message?.content
+            ?? "I'm not sure how to answer that. Try asking Sai Ram directly at sairam.maruri@gmail.com!";
 
-        return new Response(JSON.stringify({ reply }), {
-            status: 200,
-            headers: { 'Content-Type': 'application/json' },
-        });
+        return res.status(200).json({ reply });
     } catch (err) {
         console.error('OpenAI error:', err);
-        return new Response(JSON.stringify({ error: 'Failed to get a response. Please try again.' }), {
-            status: 500,
-            headers: { 'Content-Type': 'application/json' },
-        });
+        return res.status(500).json({ error: 'Failed to get a response. Please try again.' });
     }
 }
