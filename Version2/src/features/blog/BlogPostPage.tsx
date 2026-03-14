@@ -150,7 +150,7 @@ const BlogPostPage = () => {
                     </div>
                 ) : (
                     <div
-                        className="prose prose-lg prose-slate max-w-none
+                        className="prose prose-lg prose-slate max-w-none blog-content
                     prose-headings:font-bold prose-headings:text-gray-800
                     prose-p:text-gray-700 prose-p:leading-relaxed
                     prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline
