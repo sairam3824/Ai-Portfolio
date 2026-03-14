@@ -154,6 +154,19 @@ body {
     animation-delay: 600ms;
 }
 
+/* Enforce consistent Inter font across all blog post content */
+.blog-content,
+.blog-content * {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.blog-content pre,
+.blog-content code,
+.blog-content kbd,
+.blog-content samp {
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
 /* Editorial section number watermark */
 .editorial-number {
     font-size: clamp(5rem, 10vw, 8rem);
