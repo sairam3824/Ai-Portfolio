@@ -151,6 +151,18 @@ export const projectsData: ProjectData[] = [
         tagline: "Responsive Vanilla Stack • Theme Switching",
     },
     {
+        title: "AI Competitive Analysis Agent",
+        description:
+            "Autonomous multi-agent system that researches and analyzes competitive landscapes in real time. Agents crawl company data, news, and market signals to generate structured competitor profiles, SWOT analyses, positioning maps, and strategic recommendations — delivered as interactive reports.",
+        tech: ["Python", "LangGraph", "OpenAI", "FastAPI", "Next.js", "Tavily", "Docker"],
+        github: "https://github.com/sairam3824/AI-Competitive-Analysis-Agent",
+        link: "https://analysisagent.saiii.in",
+        category: "AI Agent",
+        iconName: "Zap",
+        featured: true,
+        tagline: "Autonomous Competitive Intelligence • SWOT & Positioning Analysis",
+    },
+    {
         title: "A2A Task Marketplace",
         description:
             "One of the first open-source implementations of Google's Agent-to-Agent (A2A) protocol. A marketplace where specialized AI agents discover and collaborate on complex tasks via natural language decomposition. Features 6 agents (code, content, data, research, translation, design), dependency-aware execution, and real-time SSE progress tracking.",
