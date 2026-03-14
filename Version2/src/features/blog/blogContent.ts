@@ -1,4 +1,5 @@
 const contentLoaders: Record<string, () => Promise<{ default?: { content: string }; [key: string]: any }>> = {
+    "a2a-agent-protocol": () => import('./posts/a2a-agent-protocol'),
     "prompt-injection": () => import('./posts/prompt-injection'),
     "mcp-servers": () => import('./posts/MCP-server'),
     "ai-vs-genai": () => import('./posts/ai-vs-genai'),

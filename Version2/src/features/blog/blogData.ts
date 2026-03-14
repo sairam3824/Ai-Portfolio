@@ -14,6 +14,17 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
     {
+        id: "a2a-agent-protocol",
+        title: "A2A Protocol: How Google's Agent-to-Agent Standard Is Redefining Multi-Agent AI in 2026",
+        excerpt:
+            "Google's Agent-to-Agent (A2A) protocol is quietly becoming the TCP/IP of the agentic era — a universal standard that lets AI agents from different vendors, frameworks, and clouds communicate, negotiate, and collaborate. Here's what it is, how it works, and why every AI engineer needs to understand it right now.",
+        date: "March 13, 2026",
+        readTime: "15 min read",
+        tags: ["AI Agents", "A2A", "Multi-Agent", "Agentic AI", "Google", "MCP", "Production AI", "Agent Protocols"],
+        icon: "Share2",
+        iconColor: "blue",
+    },
+    {
         id: "prompt-injection",
         title: "Prompt Injection: The Silent Exploit Threatening Every AI Application",
         excerpt:
