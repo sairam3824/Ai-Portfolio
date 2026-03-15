@@ -493,6 +493,17 @@ export const projectsData: ProjectData[] = [
         tagline: "LLM ↔ LeetCode Bridge • 10 MCP Tools",
     },
     {
+        title: "AI Open Source License Picker",
+        description:
+            "AI-powered tool that recommends the ideal open-source license for any project. Analyzes project goals, use cases, and requirements through a conversational interface to suggest the best-fit license from a curated library — with plain-language explanations of key terms, permissions, and restrictions.",
+        tech: ["Python", "OpenAI", "Next.js", "TypeScript", "Tailwind CSS"],
+        github: "https://github.com/sairam3824/AI-Open-Source-License-Picker",
+        category: "Infrastructure",
+        iconName: "Code2",
+        featured: false,
+        tagline: "AI License Recommender • Plain-Language Explanations",
+    },
+    {
         title: "AI Commit Messages",
         description:
             "CLI tool that generates conventional commit messages (feat, fix, chore, etc.) by analyzing staged git diffs with LLMs. Offers 3 interactive message choices, gitmoji support, auto language/framework detection, dry-run preview, and supports OpenAI, Claude, and Gemini providers.",
