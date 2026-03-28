@@ -1,10 +1,17 @@
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/shared/ui/button";
+import { SEO } from "@/shared/components";
+import { profileDetails } from "@/data/siteMetadata";
 
 const TermsAndConditions = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title={`Terms & Conditions | ${profileDetails.name}`}
+        description={`Terms and conditions for ${profileDetails.name}'s legacy portfolio website.`}
+        canonicalPath="/terms-and-conditions"
+      />
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="mb-8">
           <Link to="/">
@@ -13,7 +20,7 @@ const TermsAndConditions = () => {
               Back to Home
             </Button>
           </Link>
-          <h1 className="text-4xl font-bold text-foreground mb-2">Terms and Conditions</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-2">Terms and Conditions</h1>
           <p className="text-muted-foreground">Last updated: January 2026</p>
         </div>
 
@@ -21,7 +28,7 @@ const TermsAndConditions = () => {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">Introduction</h2>
             <p className="mb-4">
-              Welcome to the personal portfolio website of Sai Rama Linga Reddy Maruri (the "Website").
+              Welcome to the personal portfolio website of {profileDetails.name} (the "Website").
               These Terms and Conditions ("Terms") govern your access to and use of the Website and any
               related content or services made available through it.
             </p>
