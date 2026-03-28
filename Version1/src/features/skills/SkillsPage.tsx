@@ -3,7 +3,7 @@ import Layout from "@/shared/components/Layout";
 
 const SkillsPage = () => {
   return (
-    <Layout title="Skills">
+    <Layout>
       <div className="max-w-4xl mx-auto">
         <SkillsSection />
       </div>
