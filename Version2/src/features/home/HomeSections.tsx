@@ -69,7 +69,7 @@ const SectionHeader = ({
     title: string;
     description?: string;
 }) => (
-    <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 relative">
+    <div className="relative mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between md:gap-4">
         <div>
             <span className="editorial-number mb-2 block text-blue-600 font-mono">{number}</span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 tracking-tight">
@@ -78,7 +78,7 @@ const SectionHeader = ({
             </h2>
         </div>
         {description && (
-            <p className="max-w-md text-gray-500 font-medium leading-relaxed text-left">
+            <p className="max-w-md text-left text-sm font-medium leading-relaxed text-gray-500 sm:text-base">
                 {description}
             </p>
         )}
@@ -134,7 +134,7 @@ const HomeSections = () => {
                                         </span>
                                     ))}
                                 </div>
-                                <div className="flex items-center gap-6 text-[10px] font-bold tracking-tight overflow-hidden">
+                                <div className="flex flex-col gap-3 overflow-hidden text-[10px] font-bold tracking-tight sm:flex-row sm:items-center sm:gap-6">
                                     {project.github && (
                                         <a
                                             href={project.github}
@@ -194,11 +194,11 @@ const HomeSections = () => {
                             <p className="text-sm font-medium text-gray-500">Tools I ship with daily</p>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 md:gap-x-8 md:gap-y-12">
+                        <div className="grid grid-cols-1 gap-x-4 gap-y-6 md:grid-cols-2 md:gap-x-8 md:gap-y-12 lg:grid-cols-3">
                             {vibeTools.map((group) => (
                                 <div key={group.label} className="flex flex-col gap-4">
                                     <h4 className="text-xs font-bold tracking-widest uppercase text-gray-400">{group.label}</h4>
-                                    <div className="flex flex-wrap gap-x-4 gap-y-3">
+                                    <div className="flex flex-wrap gap-x-3 gap-y-2.5 sm:gap-x-4 sm:gap-y-3">
                                         {group.tools.map((tool) => {
                                             const showCompany = tool.company && !tool.name.startsWith(tool.company);
                                             return (
@@ -209,7 +209,7 @@ const HomeSections = () => {
                                                         </span>
                                                     )}
                                                     <span
-                                                        className={`px-3 py-1.5 rounded-full text-xs font-bold ${vibeColorMap[group.color]} shadow-sm transition-transform hover:-translate-y-0.5`}
+                                                        className={`rounded-full px-2.5 py-1.5 text-[11px] font-bold shadow-sm transition-transform hover:-translate-y-0.5 sm:px-3 sm:text-xs ${vibeColorMap[group.color]}`}
                                                     >
                                                         {tool.name}
                                                     </span>
@@ -250,7 +250,7 @@ const HomeSections = () => {
                     description="Quantifiable metrics of my programming and problem-solving skills."
                 />
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
                     {codingProfilesData.slice(0, 3).map((profile) => {
                         const colorStyles: Record<string, string> = {
                             orange: "border-orange-100 bg-orange-50 group-hover:border-orange-500",
@@ -314,9 +314,9 @@ const HomeSections = () => {
                                 href={profile.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={`group relative p-6 rounded-3xl border shadow-sm bg-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1 ${styleClass}`}
+                                className={`group relative rounded-3xl border bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-6 ${styleClass}`}
                             >
-                                <div className="flex items-center justify-between mb-4">
+                                <div className="mb-4 flex items-center justify-between">
                                     <div className={`p-2.5 rounded-2xl bg-white shadow-sm ${textClass}`}>{IconComponent}</div>
                                     <ExternalLink className={`w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity ${textClass}`} />
                                 </div>
@@ -385,7 +385,7 @@ const HomeSections = () => {
                 CONTACT CTA
             ═══════════════════════════════════════════ */}
             <section className="py-6 md:py-10 animate-fade-in-up stagger-12 content-auto">
-                <div className="group relative rounded-3xl bg-white border border-gray-200/80 p-5 sm:p-8 md:p-12 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-500">
+                <div className="group relative overflow-hidden rounded-3xl border border-gray-200/80 bg-white p-5 shadow-sm transition-shadow duration-500 hover:shadow-md sm:p-8 md:p-12">
                     <div className="absolute right-0 top-0 h-full w-1/3 bg-gray-50/50 -skew-x-12 translate-x-1/2 opacity-0 md:opacity-100 transition-opacity" />
 
                     <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-10">
@@ -398,10 +398,10 @@ const HomeSections = () => {
                             </p>
                         </div>
 
-                        <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+                        <div className="flex w-full flex-col gap-4 shrink-0 sm:w-auto sm:flex-row">
                             <Link
                                 to="/contact"
-                                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gray-900 text-white font-bold hover:bg-black transition-all hover:scale-105 active:scale-95 shadow-xl shadow-gray-200"
+                                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gray-900 px-8 py-4 font-bold text-white shadow-xl shadow-gray-200 transition-all hover:scale-[1.02] hover:bg-black active:scale-95 sm:w-auto sm:hover:scale-105"
                             >
                                 <ArrowRight className="w-4 h-4" />
                                 Start a Conversation
