@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { User, FileText, FolderKanban, Layers, GraduationCap, BookOpen, Sparkles, Mail } from "lucide-react";
 import { Button } from "@/shared/ui/button";
+import { profileDetails } from "@/data/siteMetadata";
 
 const navigationItems = [
   { path: "/about", icon: User, label: "About" },
@@ -17,7 +18,7 @@ const SectionNavigation = () => {
   const location = useLocation();
 
   return (
-    <nav className="flex items-center gap-2 overflow-x-auto overflow-y-hidden [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+    <nav className="-mx-1 flex items-center gap-2 overflow-x-auto overflow-y-hidden px-1 pb-1 [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       {navigationItems.map((item) => {
         const isActive = location.pathname === item.path;
         const Icon = item.icon;
@@ -32,7 +33,7 @@ const SectionNavigation = () => {
               className="whitespace-nowrap flex-shrink-0"
             >
               <a
-                href="/Sai_Ram_Maruri_Resume_2025.pdf"
+                href={profileDetails.resumeHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"
