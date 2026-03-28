@@ -3,7 +3,7 @@ import Layout from "@/shared/components/Layout";
 
 const ContactPage = () => {
   return (
-    <Layout title="Contact">
+    <Layout>
       <div className="max-w-4xl mx-auto">
         <ContactSection />
       </div>
