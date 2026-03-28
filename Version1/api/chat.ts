@@ -7,6 +7,11 @@ import { ConversationChain } from 'langchain/chains';
 // In production, use Redis or a database
 const sessions = new Map<string, BufferMemory>();
 
+interface ChatRequestBody {
+  query?: string;
+  sessionId?: string;
+}
+
 export default async function handler(
   req: VercelRequest,
   res: VercelResponse
@@ -31,7 +36,7 @@ export default async function handler(
   }
 
   try {
-    const { query, sessionId = 'default' } = req.body;
+    const { query, sessionId = 'default' } = (req.body ?? {}) as ChatRequestBody;
 
     // Check if OpenAI API key is configured
     if (!process.env.OPENAI_API_KEY) {
@@ -42,7 +47,7 @@ export default async function handler(
       });
     }
 
-    if (!query) {
+    if (typeof query !== 'string' || !query.trim()) {
       return res.status(400).json({ error: 'Query is required' });
     }
 
@@ -107,11 +112,12 @@ export default async function handler(
       response: response.response,
       sessionId,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     console.error('Chat API Error:', error);
     return res.status(500).json({
       error: 'Failed to process chat request',
-      details: error.message,
+      details: errorMessage,
     });
   }
 }
