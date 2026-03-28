@@ -1,0 +1,17 @@
+export const badgeFiles = [
+    "CodeChefBadge (1).png",
+    "CodeChefBadge (2).png",
+    "CodeChefBadge (3).png",
+    "downl.png",
+    "download (1).png",
+    "download (2).png",
+    "download (3).png",
+    "download (4).png",
+    "download (5).png",
+    "download (6).png",
+    "download (7).png",
+    "download (8).png",
+    "download (9).png",
+    "download.png",
+    "inb.png",
+] as const;

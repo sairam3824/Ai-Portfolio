@@ -1,0 +1,67 @@
+export const profileDetails = {
+    name: "Sai Ram Maruri",
+    alternateName: "Sairam Maruri",
+    brand: "Sairam Maruri",
+    initials: "SAI RAMA LINGA REDDY MARURI",
+    shortRole: "GenAI & ML Engineer",
+    jobTitle: "GenAI Engineer & Full Stack Developer",
+    role: "GenAI Engineer, ML Builder, and product-minded full-stack developer.",
+    summary:
+        "I design and ship AI products with the same care for interface, systems thinking, and production reliability.",
+    location: "",
+    email: "sairam.maruri@gmail.com",
+    phone: "+91 7893865644",
+    resumeHref: "/Sai_Ram_Maruri_Resume_2025.pdf",
+    availability: "Available for Opportunities",
+    socials: {
+        github: "https://github.com/sairam3824",
+        linkedin: "https://www.linkedin.com/in/sairam-maruri/",
+        leetcodePrimary: "https://leetcode.com/u/programmer3824/",
+        leetcodeSecondary: "https://leetcode.com/u/sairam3824/",
+        codechef: "https://www.codechef.com/users/sairam2004",
+        codeforces: "https://codeforces.com/profile/sairam3824",
+        credly: "https://www.credly.com/users/sai-rama-linga-reddy-maruri.44a3ece0",
+    },
+} as const;
+
+export const siteMetadata = {
+    siteUrl: "https://saiii.in",
+    applicationName: "Sai Ram Maruri Portfolio",
+    defaultTitle: `${profileDetails.name} | ${profileDetails.shortRole}`,
+    defaultDescription:
+        "GenAI & ML Engineer portfolio — production AI projects, technical blogs, competitive programming, and professional journey of Sai Ram Maruri.",
+    manifestDescription: "AI Engineer & Software Developer Portfolio",
+    previewImage: "/preview.png",
+    twitterHandle: "@sairammaruri",
+    copyrightYear: 2026,
+    alumniOf: {
+        name: "VIT-AP University",
+        url: "https://vitap.ac.in",
+    },
+    knowsAbout: [
+        "Artificial Intelligence",
+        "Machine Learning",
+        "Deep Learning",
+        "Generative AI",
+        "Full Stack Development",
+        "Python",
+        "React",
+        "AWS",
+    ],
+    keywords: [
+        "AI Engineer",
+        "Software Developer",
+        "GenAI",
+        "Machine Learning",
+        "Full Stack Developer",
+        "Portfolio",
+        "Sairam Maruri",
+    ],
+    sameAs: [
+        profileDetails.socials.github,
+        profileDetails.socials.linkedin,
+        profileDetails.socials.leetcodePrimary,
+        profileDetails.socials.codechef,
+        profileDetails.socials.codeforces,
+    ],
+} as const;
