@@ -15,10 +15,11 @@ import {
     BookOpen,
     FileText,
     Coffee,
-    Terminal
+    Terminal,
+    type LucideIcon
 } from 'lucide-react';
 
-export const BlogIconMap: Record<string, any> = {
+export const BlogIconMap: Record<string, LucideIcon> = {
     "ServerStack": Server,
     "BrainCircuit": BrainCircuit,
     "Cloud": Cloud,
