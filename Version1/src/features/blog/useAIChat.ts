@@ -5,6 +5,12 @@ interface ChatMessage {
   content: string;
 }
 
+interface ChatResponse {
+  response?: string;
+  error?: string;
+  details?: string;
+}
+
 interface UseChatReturn {
   messages: ChatMessage[];
   isLoading: boolean;
@@ -42,24 +48,25 @@ export const useAIChat = (): UseChatReturn => {
       });
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
+        const errorData: ChatResponse = await response.json().catch(() => ({}));
         const errorMessage = errorData.error || errorData.details || `Server error: ${response.status}`;
         throw new Error(errorMessage);
       }
 
-      const data = await response.json();
+      const data = (await response.json()) as ChatResponse;
 
       // Add assistant message
       const assistantMessage: ChatMessage = {
         role: 'assistant',
-        content: data.response,
+        content: data.response ?? 'No response received.',
       };
       setMessages((prev) => [...prev, assistantMessage]);
 
       // If it's a redirect to contact suggestion, you could handle it here
       // For now, just show the message
-    } catch (err: any) {
-      setError(err.message || 'Something went wrong');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Something went wrong';
+      setError(errorMessage);
       console.error('Chat error:', err);
     } finally {
       setIsLoading(false);
