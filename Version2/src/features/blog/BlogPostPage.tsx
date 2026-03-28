@@ -5,8 +5,9 @@ import { getBlogPost } from "./blogData";
 import { getBlogContent } from "./blogContent";
 import { ArrowLeft, Calendar, Clock, Share2, MessageCircle } from "lucide-react";
 import Seo from "../../shared/Seo";
+import { profileDetails, siteMetadata } from "@/data/siteMetadata";
 
-const SITE_URL = "https://saiii.in";
+const SITE_URL = siteMetadata.siteUrl;
 
 const BlogPostPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -81,13 +82,13 @@ const BlogPostPage = () => {
         "author": {
             "@type": "Person",
             "@id": `${SITE_URL}/#person`,
-            "name": "Sai Ram Maruri",
+            "name": profileDetails.name,
             "url": SITE_URL
         },
         "publisher": {
             "@type": "Person",
             "@id": `${SITE_URL}/#person`,
-            "name": "Sai Ram Maruri",
+            "name": profileDetails.name,
             "url": SITE_URL
         },
         "keywords": post.tags?.join(", "),
@@ -96,11 +97,12 @@ const BlogPostPage = () => {
     };
 
     return (
-        <div className="max-w-3xl mx-auto px-6 py-12 md:py-20 animate-fade-in min-h-screen bg-white">
+        <div className="mx-auto min-h-screen max-w-3xl bg-white px-4 py-8 animate-fade-in sm:px-6 md:py-20">
             <Seo
                 title={`${post.title} | Sai Ram Maruri`}
                 description={post.excerpt}
                 type="article"
+                canonical={postUrl}
                 publishedTime={publishedTime}
                 modifiedTime={publishedTime}
                 breadcrumbs={breadcrumbs}
@@ -113,19 +115,19 @@ const BlogPostPage = () => {
             </Helmet>
             <Link
                 to="/blogs"
-                className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-800 transition-colors mb-12 font-medium"
+                className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-gray-500 transition-colors hover:text-gray-800 sm:mb-12"
             >
                 <ArrowLeft className="w-4 h-4" />
                 Back to Writing
             </Link>
 
             <article>
-                <header className="mb-12">
-                    <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight tracking-tight">
+                <header className="mb-10 sm:mb-12">
+                    <h1 className="mb-5 text-3xl font-bold leading-tight tracking-tight text-gray-800 sm:text-4xl md:mb-6 md:text-5xl">
                         {post.title}
                     </h1>
 
-                    <div className="flex flex-wrap items-center gap-3 sm:gap-6 text-sm text-gray-500 border-b border-gray-100 pb-8">
+                    <div className="flex flex-col gap-3 border-b border-gray-100 pb-6 text-sm text-gray-500 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6 sm:pb-8">
                         <div className="flex items-center gap-2">
                             <Calendar className="w-4 h-4" />
                             <span>{post.date}</span>
@@ -136,7 +138,7 @@ const BlogPostPage = () => {
                         </div>
                         <button
                             onClick={handleShare}
-                            className="ml-auto inline-flex items-center gap-2 hover:text-blue-600 transition-colors"
+                            className="inline-flex items-center gap-2 transition-colors hover:text-blue-600 sm:ml-auto"
                         >
                             <Share2 className="w-4 h-4" />
                             Share
@@ -150,11 +152,11 @@ const BlogPostPage = () => {
                     </div>
                 ) : (
                     <div
-                        className="prose prose-lg prose-slate max-w-none blog-content
+                        className="prose prose-base sm:prose-lg prose-slate max-w-none blog-content
                     prose-headings:font-bold prose-headings:text-gray-800
                     prose-p:text-gray-700 prose-p:leading-relaxed
                     prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline
-                    prose-img:rounded-xl prose-img:shadow-md"
+                    prose-img:rounded-xl prose-img:shadow-md prose-pre:overflow-x-auto prose-table:block prose-table:overflow-x-auto"
                         dangerouslySetInnerHTML={{ __html: content || "<p>Content not found.</p>" }}
                     />
                 )}
@@ -170,9 +172,9 @@ const BlogPostPage = () => {
                 </div>
 
                 {/* Contact CTA */}
-                <div className="mt-12 bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-6 md:p-8">
-                    <div className="flex items-start gap-4">
-                        <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
+                <div className="mt-12 rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50 p-5 sm:p-6 md:p-8">
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-100">
                             <MessageCircle className="w-5 h-5 text-blue-600" />
                         </div>
                         <div className="space-y-3">
@@ -184,7 +186,7 @@ const BlogPostPage = () => {
                             </p>
                             <Link
                                 to="/contact"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-xl hover:bg-blue-700 transition-colors shadow-sm hover:shadow-md"
+                                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-medium text-white shadow-sm transition-colors hover:bg-blue-700 hover:shadow-md sm:w-auto sm:justify-start sm:py-2.5"
                             >
                                 <MessageCircle className="w-4 h-4" />
                                 Get in Touch
