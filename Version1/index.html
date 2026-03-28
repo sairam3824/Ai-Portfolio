@@ -5,39 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Title & SEO -->
-    <title>Sairam Maruri — AI & Software Developer</title>
-    <meta name="description" content="AI-powered portfolio showcasing projects, skills, and creative work by Sairam Maruri" />
-    <meta name="author" content="Sairam Maruri" />
+    <title>__SITE_TITLE__</title>
+    <meta name="description" content="__SITE_DESCRIPTION__" />
+    <meta name="author" content="__AUTHOR_NAME__" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="__CANONICAL_SITE_URL__" />
 
-    <!-- Favicons (place your favicon files in /public) -->
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <!-- Favicons -->
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
     <!-- Theme color for browsers -->
     <meta name="theme-color" content="#0ea5e9" />
 
     <!-- Open Graph (link previews) -->
-    <meta property="og:title" content="Sairam Maruri — AI & Software Developer" />
-    <meta property="og:description" content="AI, ML and GenAI projects, DSA achievements and portfolio of Sairam Maruri." />
+    <meta property="og:title" content="__SITE_TITLE__" />
+    <meta property="og:description" content="__SITE_DESCRIPTION__" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://sairam.orravyn.cloud/" />
-    <meta property="og:image" content="/preview.png" />
-    <meta property="og:image:alt" content="Sairam Maruri — AI & Software Developer" />
+    <meta property="og:url" content="__CANONICAL_SITE_URL__" />
+    <meta property="og:image" content="__PREVIEW_IMAGE_URL__" />
+    <meta property="og:image:alt" content="__SITE_TITLE__ preview" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Sairam Maruri — AI & Software Developer" />
-    <meta name="twitter:description" content="AI, ML and GenAI projects, DSA achievements and portfolio of Sairam Maruri." />
-    <meta name="twitter:image" content="/preview.png" />
-    <!-- Optional: only include if you have a Twitter handle you own -->
-    <!-- <meta name="twitter:site" content="@your_twitter_handle" /> -->
+    <meta name="twitter:url" content="__CANONICAL_SITE_URL__" />
+    <meta name="twitter:title" content="__SITE_TITLE__" />
+    <meta name="twitter:description" content="__SITE_DESCRIPTION__" />
+    <meta name="twitter:image" content="__PREVIEW_IMAGE_URL__" />
+    <meta name="twitter:creator" content="__TWITTER_HANDLE__" />
+    <meta name="twitter:site" content="__TWITTER_HANDLE__" />
 
-    <!-- Optional: Progressive Web App manifest (uncomment if you have one) -->
-    <!-- <link rel="manifest" href="/manifest.json" /> -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "__CANONICAL_SITE_URL__#website",
+        "url": "__CANONICAL_SITE_URL__",
+        "name": "__SITE_NAME__",
+        "description": "__SITE_DESCRIPTION__"
+      }
+    </script>
 
-    <!-- Preload critical assets -->
-    <link rel="preload" as="image" href="/logo.png" fetchpriority="high" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "@id": "__CANONICAL_SITE_URL__#profilepage",
+        "url": "__CANONICAL_SITE_URL__",
+        "name": "__SITE_NAME__",
+        "mainEntity": {
+          "@type": "Person",
+          "@id": "__SITE_URL__/#person",
+          "name": "__AUTHOR_NAME__",
+          "url": "__SITE_URL__"
+        }
+      }
+    </script>
+
   </head>
 
   <body>
