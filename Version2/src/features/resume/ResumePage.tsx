@@ -14,7 +14,7 @@ import Seo from "../../shared/Seo";
 
 export const ResumePage = () => {
     return (
-        <div className="min-h-screen bg-white py-12 px-4 md:px-8 print:p-0 print:bg-white flex flex-col">
+        <div className="flex min-h-screen flex-col bg-white px-4 py-8 sm:py-10 md:px-8 md:py-12 print:bg-white print:p-0">
             <Seo
                 title="Resume | Sai Ram Maruri — GenAI Engineer CV"
                 description="Professional resume of Sai Ram Maruri: GenAI Engineer with expertise in LLM agents, RAG pipelines, AWS cloud, and full stack development. LeetCode Guardian (Top 1%), B.Tech CS VIT-AP 2026."
@@ -26,14 +26,14 @@ export const ResumePage = () => {
                 ]}
             />
             {/* Actions Bar - Hidden on Print */}
-            <div className="max-w-4xl mx-auto mb-8 flex flex-col sm:flex-row justify-between items-center gap-4 w-full print:hidden animate-fade-in">
-                <h1 className="text-2xl font-bold text-gray-800 tracking-tight">Digital Resume</h1>
-                <div className="flex gap-4">
+            <div className="mx-auto mb-8 flex w-full max-w-4xl flex-col gap-4 print:hidden animate-fade-in sm:flex-row sm:items-center sm:justify-between">
+                <h1 className="text-2xl font-bold tracking-tight text-gray-800">Digital Resume</h1>
+                <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:gap-4">
                     <a
                         href="/Sai_Ram_Maruri_Resume_2025.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 text-gray-700 rounded-2xl hover:bg-gray-50 hover:border-gray-300 transition-all font-bold text-xs uppercase tracking-widest shadow-sm"
+                        className="flex w-full items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-4 py-3 text-center text-xs font-bold uppercase tracking-widest text-gray-700 shadow-sm transition-all hover:border-gray-300 hover:bg-gray-50 sm:w-auto sm:py-2"
                     >
                         <Eye className="w-4 h-4" />
                         View Original
@@ -41,7 +41,7 @@ export const ResumePage = () => {
                     <a
                         href="/Sai_Ram_Maruri_Resume_2025.pdf"
                         download
-                        className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-2xl hover:bg-blue-700 transition-all font-bold text-xs uppercase tracking-widest shadow-lg shadow-blue-500/20"
+                        className="flex w-full items-center justify-center gap-2 rounded-2xl bg-blue-600 px-4 py-3 text-center text-xs font-bold uppercase tracking-widest text-white shadow-lg shadow-blue-500/20 transition-all hover:bg-blue-700 sm:w-auto sm:py-2"
                     >
                         <Download className="w-4 h-4" />
                         Download PDF
@@ -50,7 +50,7 @@ export const ResumePage = () => {
             </div>
 
             {/* Resume Sheet */}
-            <div className="max-w-[210mm] mx-auto bg-white shadow-2xl shadow-gray-200/50 print:shadow-none print:w-full print:max-w-none rounded-none md:rounded-[2px] overflow-hidden relative flex-1">
+            <div className="relative mx-auto flex-1 overflow-hidden rounded-[1.5rem] bg-white shadow-xl shadow-gray-200/60 print:w-full print:max-w-none print:rounded-none print:shadow-none sm:rounded-[2rem] md:max-w-[210mm] md:rounded-[2px] md:shadow-2xl md:shadow-gray-200/50">
                 {/* Top Accent Line */}
                 <div className="h-2 bg-gradient-to-r from-blue-600 to-indigo-600 print:h-1" />
 
@@ -64,10 +64,10 @@ export const ResumePage = () => {
                             <p className="text-lg font-medium text-gray-500 tracking-wide uppercase">GenAI Engineer & Architect</p>
                         </div>
 
-                        <div className="flex flex-col gap-2 text-sm text-gray-600 font-medium">
+                        <div className="flex flex-col gap-2 text-sm font-medium text-gray-600">
                             <div className="flex items-center gap-2">
                                 <Mail className="w-4 h-4 text-gray-400" />
-                                <a href="mailto:sairam.maruri@gmail.com" className="hover:text-blue-600">sairam.maruri@gmail.com</a>
+                                <a href="mailto:sairam.maruri@gmail.com" className="break-all hover:text-blue-600">sairam.maruri@gmail.com</a>
                             </div>
                             <div className="flex items-center gap-2">
                                 <Phone className="w-4 h-4 text-gray-400" />
