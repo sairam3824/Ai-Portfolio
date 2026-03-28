@@ -8,50 +8,21 @@ import {
     TrendingUp,
     Library
 } from "lucide-react";
+import { educationData } from "@/data/educationData";
 
 export const EducationSection = () => {
-    const education = [
-        {
-            title: "Bachelor of Technology",
-            major: "Computer Science",
-            org: "Vellore Institute of Technology",
-            campus: "AP",
-            date: "2022 — 2026",
-            place: "Amaravati, India",
-            grade: "8.31 CGPA",
-            type: "University",
-            featured: true,
-            icon: <Library className="w-6 h-6" />,
-            color: "blue",
-            courses: [
-                "Data Structures", "Algorithms", "Operating Systems", "OOP",
-                "System Design", "Computer Networks", "Deep Learning", "NoSQL"
-            ]
-        },
-        {
-            title: "Intermediate Education",
-            major: "MPC",
-            org: "Sri Chaitanya Junior College",
-            date: "2020 — 2022",
-            place: "Vijayawada, India",
-            grade: "83.7%",
-            type: "College",
-            icon: <BookOpen className="w-6 h-6" />,
-            color: "indigo",
-            courses: ["Mathematics", "Physics", "Chemistry"]
-        },
-        {
-            title: "Secondary Education",
-            org: "Sri Chaitanya High School",
-            date: "2020",
-            place: "Vijayawada, India",
-            grade: "97.1%",
-            type: "School",
-            icon: <GraduationCap className="w-6 h-6" />,
-            color: "emerald",
-            courses: ["Foundation", "General Sciences", "Mathematics"]
-        }
-    ];
+    const education = educationData.map((item) => ({
+        ...item,
+        date: item.date.replace(/\s*-\s*/g, " \u2014 "),
+        place: item.place
+            .replace(", Andhra Pradesh, India", ", India")
+            .replace(", Andhra Pradesh", ""),
+        icon:
+            item.type === "University" ? <Library className="w-6 h-6" /> :
+                item.type === "College" ? <BookOpen className="w-6 h-6" /> :
+                    <GraduationCap className="w-6 h-6" />,
+        color: item.color ?? "blue",
+    }));
 
     const getColorClasses = (color: string) => {
         const maps: { [key: string]: string } = {
