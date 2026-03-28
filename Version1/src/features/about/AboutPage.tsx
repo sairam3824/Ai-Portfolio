@@ -3,7 +3,7 @@ import Layout from "@/shared/components/Layout";
 
 const AboutPage = () => {
   return (
-    <Layout title="About Me">
+    <Layout>
       <div className="max-w-4xl mx-auto">
         <AboutSection />
       </div>
