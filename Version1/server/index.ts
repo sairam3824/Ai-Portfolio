@@ -16,6 +16,11 @@ app.use(express.json());
 // In-memory storage for chat history
 const sessions = new Map<string, BaseMessage[]>();
 
+interface ChatRequestBody {
+  query?: string;
+  sessionId?: string;
+}
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'AI Chat API is running' });
@@ -24,9 +29,9 @@ app.get('/api/health', (req, res) => {
 // Chat endpoint
 app.post('/api/chat', async (req, res) => {
   try {
-    const { query, sessionId = 'default' } = req.body;
+    const { query, sessionId = 'default' } = (req.body ?? {}) as ChatRequestBody;
 
-    if (!query) {
+    if (typeof query !== 'string' || !query.trim()) {
       return res.status(400).json({ error: 'Query is required' });
     }
 
@@ -104,11 +109,12 @@ app.post('/api/chat', async (req, res) => {
       response: response.content,
       sessionId,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     console.error('Chat API Error:', error);
     return res.status(500).json({
       error: 'Failed to process chat request',
-      details: error.message,
+      details: errorMessage,
     });
   }
 });
