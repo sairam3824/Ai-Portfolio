@@ -1,5 +1,6 @@
 import { useEffect, useCallback, Suspense, lazy, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { HelmetProvider } from 'react-helmet-async';
 import Home from './Home';
 import ChatWidget from './features/home/ChatWidget';
@@ -122,9 +123,11 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
     return (
         <div className="lg:hidden fixed inset-0 z-[100] bg-white flex flex-col animate-in fade-in duration-200">
             {/* Header */}
-            <div className="flex justify-between items-center px-6 py-5">
-                <Link to="/" onClick={onClose} className="text-lg font-medium text-gray-800">Sai Rama Linga Reddy Maruri</Link>
-                <button onClick={onClose} className="text-gray-700">
+            <div className="flex items-center justify-between gap-4 px-4 py-4 sm:px-6 sm:py-5">
+                <Link to="/" onClick={onClose} className="min-w-0 flex-1 text-base font-medium text-gray-800 sm:text-lg">
+                    <span className="block truncate">Sai Rama Linga Reddy Maruri</span>
+                </Link>
+                <button onClick={onClose} className="shrink-0 rounded-full p-2 text-gray-700 transition-colors hover:bg-gray-100">
                     <X className="w-5 h-5" />
                 </button>
             </div>
@@ -138,16 +141,36 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
                         onClick={onClose}
                         onTouchStart={() => prefetchRoute(item.path)}
                         onMouseEnter={() => prefetchRoute(item.path)}
-                        className="flex items-center gap-3 px-6 py-4 active:opacity-50 transition-opacity"
+                        className="flex items-center gap-3 px-4 py-3.5 transition-opacity active:opacity-50 sm:px-6 sm:py-4"
                     >
                         <span className="text-[10px] font-mono text-gray-400 w-4 shrink-0">{String(i + 1).padStart(2, '0')}</span>
-                        <span className="text-lg font-semibold tracking-tight text-gray-800">{item.label}</span>
+                        <span className="text-[1rem] font-semibold tracking-tight text-gray-800 sm:text-lg">{item.label}</span>
                     </Link>
                 ))}
             </nav>
+
         </div>
     );
 };
+
+const VersionSwitch = () => (
+    <div className="fixed inset-x-4 bottom-24 z-40 flex flex-col gap-3 animate-in fade-in slide-in-from-bottom-4 duration-700 sm:inset-x-auto sm:bottom-6 sm:right-6 sm:flex-row sm:items-center">
+        <a
+            href="/v1/"
+            className="flex items-center justify-center gap-2 bg-gradient-to-r from-gray-600 to-gray-800 text-white px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105 font-medium group sm:px-5"
+        >
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            <span className="text-sm sm:text-base">Classic Version (V1)</span>
+        </a>
+        <a
+            href="/v3/"
+            className="flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105 font-medium group sm:px-5"
+        >
+            <span className="text-sm sm:text-base">Latest Version (V3)</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </a>
+    </div>
+);
 
 const ExternalRedirect = ({ url }: { url: string }) => {
     useEffect(() => {
@@ -168,14 +191,14 @@ function App() {
         <HelmetProvider>
             <Router>
                 <ScrollToTop />
-                <div className="flex h-screen bg-white font-sans text-gray-800 selection:bg-blue-100 selection:text-blue-900 overflow-hidden">
+                <div className="flex min-h-screen flex-col overflow-hidden bg-white font-sans text-gray-800 selection:bg-blue-100 selection:text-blue-900 lg:h-screen lg:flex-row">
                     <Sidebar />
 
                     {/* Main Content Wrapper - Scrolls independently */}
-                    <div id="main-content" className="flex-1 flex flex-col h-full overflow-y-auto min-w-0 transition-all duration-300 relative">
+                    <div id="main-content" className="relative flex min-h-0 flex-1 flex-col overflow-y-auto transition-all duration-300 lg:h-full">
                         <MobileHeader onMenuClick={() => setIsMobileMenuOpen(true)} />
 
-                        <main className="flex-1 w-full max-w-[1600px] mx-auto p-4 md:p-12">
+                        <main className="mx-auto flex-1 w-full max-w-[1600px] px-4 pb-32 pt-4 sm:px-5 md:px-12 md:pb-12 md:pt-12">
                             <Suspense fallback={<LoadingFallback />}>
                                 <Routes>
                                     <Route path="/" element={<Home />} />
@@ -211,6 +234,7 @@ function App() {
                     </div>
                 </div>
                 <ChatWidget />
+                <VersionSwitch />
             </Router>
         </HelmetProvider>
     );
@@ -259,11 +283,11 @@ const Sidebar = () => {
                 })}
             </div>
 
-            {/* Footer Links at Bottom of Sidebar */}
+            {/* Footer Links */}
             <div className="mt-auto px-8 pb-4 pt-4">
                 <div className="flex gap-4 flex-wrap">
-                    <Link to="/privacy" className="text-xs font-medium text-gray-500 hover:text-gray-700 hover:underline">Privacy</Link>
-                    <Link to="/terms" className="text-xs font-medium text-gray-500 hover:text-gray-700 hover:underline">Terms</Link>
+                    <Link to="/privacy" className="text-xs font-medium text-gray-400 hover:text-gray-600 hover:underline">Privacy</Link>
+                    <Link to="/terms" className="text-xs font-medium text-gray-400 hover:text-gray-600 hover:underline">Terms</Link>
                     <a href="/v1/" className="text-xs font-medium text-gray-400 hover:text-blue-600 hover:underline">Classic Version</a>
                 </div>
             </div>
@@ -273,20 +297,21 @@ const Sidebar = () => {
 
 const MobileHeader = ({ onMenuClick }: { onMenuClick: () => void }) => {
     return (
-        <div className="lg:hidden sticky top-0 z-40 bg-white/80 backdrop-blur-md px-4 py-3 flex items-center justify-between">
-            <Link to="/">
-                <span className="text-lg font-medium text-gray-800">Sai Rama Linga Reddy Maruri</span>
+        <div className="sticky top-0 z-40 flex items-center justify-between gap-3 bg-white/80 px-4 py-3 backdrop-blur-md lg:hidden">
+            <Link to="/" className="min-w-0 flex-1">
+                <span className="block truncate text-base font-medium text-gray-800 sm:text-lg">Sai Rama Linga Reddy Maruri</span>
             </Link>
             <div className="flex items-center gap-1">
                 <a
                     href="/Sai_Ram_Maruri_Resume_2025.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 text-gray-600"
+                    className="rounded-full p-2 text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900"
+                    aria-label="Open resume PDF"
                 >
                     <FileText className="w-5 h-5" />
                 </a>
-                <button onClick={onMenuClick} className="p-2 text-gray-600">
+                <button onClick={onMenuClick} className="rounded-full p-2 text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900" aria-label="Open navigation menu">
                     <Menu className="w-6 h-6" />
                 </button>
             </div>
