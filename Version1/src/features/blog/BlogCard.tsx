@@ -1,4 +1,4 @@
-import { Calendar, Eye, ExternalLink, ArrowRight } from "lucide-react";
+import { Calendar, Eye, ExternalLink, ArrowRight, type LucideIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { BlogPost } from "@/features/blog";
 import * as Icons from "lucide-react";
@@ -10,14 +10,16 @@ interface BlogCardProps {
 
 export const BlogCard = ({ post, onTagClick }: BlogCardProps) => {
   // Auto-correct common icon name issues (lowercase to PascalCase)
+  const iconRegistry = Icons as unknown as Record<string, LucideIcon>;
+
   const getIconComponent = (iconName: string) => {
     // Try the exact name first
-    let icon = (Icons as any)[iconName];
+    let icon = iconRegistry[iconName];
 
     // If not found, try capitalizing first letter (e.g., "database" -> "Database")
     if (!icon && iconName) {
       const capitalized = iconName.charAt(0).toUpperCase() + iconName.slice(1);
-      icon = (Icons as any)[capitalized];
+      icon = iconRegistry[capitalized];
     }
 
     // Fallback to BookOpen
