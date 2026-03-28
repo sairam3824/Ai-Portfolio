@@ -49,6 +49,14 @@
             "destination": "/v1/index.html"
         },
         {
+            "source": "/v3",
+            "destination": "/v3/index.html"
+        },
+        {
+            "source": "/v3/((?!.*\\.).*)",
+            "destination": "/v3/index.html"
+        },
+        {
             "source": "/((?!.*\\.).*)",
             "destination": "/index.html"
         }
