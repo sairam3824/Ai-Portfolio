@@ -1,15 +1,20 @@
 import Layout from "@/shared/components/Layout";
 import { Link } from "react-router-dom";
 import { Button } from "@/shared/ui/button";
+import { profileDetails } from "@/data/siteMetadata";
 
 const NotFound = () => {
   return (
-    <Layout>
+    <Layout
+      title={`404 | ${profileDetails.name}`}
+      description={`The page you are looking for could not be found on ${profileDetails.name}'s legacy portfolio.`}
+      robots="noindex,follow"
+    >
       <div className="relative flex min-h-[80vh] items-center justify-center overflow-hidden">
         {/* Large 404 background text with blur */}
         <div className="absolute inset-0 flex items-center justify-center select-none pointer-events-none">
           <h1 
-            className="text-[280px] md:text-[400px] lg:text-[500px] font-extrabold leading-none"
+            className="text-[160px] sm:text-[220px] md:text-[400px] lg:text-[500px] font-extrabold leading-none"
             style={{
               color: 'rgba(128, 128, 128, 0.15)',
               filter: 'blur(3px)',
