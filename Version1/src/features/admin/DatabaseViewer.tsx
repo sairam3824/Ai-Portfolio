@@ -11,7 +11,7 @@ interface TableInfo {
 }
 
 interface TableData {
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 const DatabaseViewer = () => {
@@ -29,6 +29,12 @@ const DatabaseViewer = () => {
   const fetchTables = async () => {
     setLoading(true);
     try {
+      if (!supabase) {
+        toast.error("Supabase is not configured");
+        setTables([]);
+        return;
+      }
+
       // Get all tables from information_schema
       const { data, error } = await supabase.rpc('get_table_info');
       
@@ -52,7 +58,7 @@ const DatabaseViewer = () => {
         
         setTables(tableInfo);
       } else {
-        setTables(data || []);
+        setTables((data as TableInfo[] | null) || []);
       }
     } catch (error) {
       console.error("Error fetching tables:", error);
@@ -67,6 +73,13 @@ const DatabaseViewer = () => {
     setSelectedTable(tableName);
     
     try {
+      if (!supabase) {
+        toast.error("Supabase is not configured");
+        setTableData([]);
+        setColumns([]);
+        return;
+      }
+
       const { data, error } = await supabase
         .from(tableName)
         .select('*')
@@ -74,11 +87,12 @@ const DatabaseViewer = () => {
 
       if (error) throw error;
 
-      setTableData(data || []);
+      const rows = (data as TableData[] | null) || [];
+      setTableData(rows);
       
       // Extract column names from first row
-      if (data && data.length > 0) {
-        setColumns(Object.keys(data[0]));
+      if (rows.length > 0) {
+        setColumns(Object.keys(rows[0]));
       } else {
         setColumns([]);
       }
@@ -92,7 +106,7 @@ const DatabaseViewer = () => {
     }
   };
 
-  const formatValue = (value: any): string => {
+  const formatValue = (value: unknown): string => {
     if (value === null || value === undefined) return "NULL";
     if (typeof value === "boolean") return value ? "true" : "false";
     if (Array.isArray(value)) return JSON.stringify(value);
