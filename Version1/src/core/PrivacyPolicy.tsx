@@ -1,10 +1,17 @@
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/shared/ui/button";
+import { SEO } from "@/shared/components";
+import { profileDetails } from "@/data/siteMetadata";
 
 const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title={`Privacy Policy | ${profileDetails.name}`}
+        description={`Privacy policy for ${profileDetails.name}'s legacy portfolio website.`}
+        canonicalPath="/privacy-policy"
+      />
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="mb-8">
           <Link to="/">
@@ -13,7 +20,7 @@ const PrivacyPolicy = () => {
               Back to Home
             </Button>
           </Link>
-          <h1 className="text-4xl font-bold text-foreground mb-2">Privacy Policy</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-2">Privacy Policy</h1>
           <p className="text-muted-foreground">Last updated: January 2026</p>
         </div>
 
@@ -21,7 +28,7 @@ const PrivacyPolicy = () => {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">Introduction</h2>
             <p className="mb-4">
-              This Privacy Policy explains how Sai Rama Linga Reddy Maruri ("I", "me", or "my") collects,
+              This Privacy Policy explains how {profileDetails.name} ("I", "me", or "my") collects,
               uses, discloses, and safeguards personal information when you visit or interact with my
               personal portfolio website (the "Website").
             </p>
