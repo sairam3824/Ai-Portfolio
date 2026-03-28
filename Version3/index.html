@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <!-- Google tag (gtag.js) — deferred until after first paint -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        (function loadGtag() {
+            var cb = function () {
+                var s = document.createElement('script');
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-SFNS5F7ZSB';
+                s.async = true;
+                s.onload = function () {
+                    gtag('js', new Date());
+                    gtag('config', 'G-SFNS5F7ZSB', { send_page_view: false });
+                    gtag('event', 'page_view', { page_location: window.location.href });
+                };
+                document.head.appendChild(s);
+            };
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(cb, { timeout: 3000 });
+            } else {
+                setTimeout(cb, 2000);
+            }
+        })();
+    </script>
+
+    <!-- Primary Meta Tags -->
+    <title>%SITE_TITLE%</title>
+    <meta name="description"
+        content="%SITE_DESCRIPTION%" />
+    <meta name="keywords"
+        content="AI Engineer, Software Developer, GenAI, Machine Learning, Full Stack Developer, Portfolio, Sairam Maruri" />
+    <meta name="author" content="%SITE_NAME%" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <!-- canonical is set dynamically per-route by react-helmet-async (Seo.tsx) -->
+
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2" />
+    <!-- manifest is auto-injected by VitePWA plugin -->
+
+    <!-- Mobile Web App -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="%SITE_BRAND%" />
+    <meta name="application-name" content="%APPLICATION_NAME%" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="%CANONICAL_SITE_URL%" />
+    <meta property="og:title" content="%SITE_TITLE%" />
+    <meta property="og:description" content="%SITE_DESCRIPTION%" />
+    <meta property="og:image" content="%PREVIEW_IMAGE_URL%" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="%SITE_NAME% - AI Engineer Portfolio" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:site_name" content="%SITE_NAME%" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="%CANONICAL_SITE_URL%" />
+    <meta name="twitter:title" content="%SITE_TITLE%" />
+    <meta name="twitter:description" content="%SITE_DESCRIPTION%" />
+    <meta name="twitter:image" content="%PREVIEW_IMAGE_URL%" />
+
+
+    <!-- Structured Data: Person -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "%SITE_URL%/#person",
+        "name": "%SITE_NAME%",
+        "alternateName": "%ALTERNATE_NAME%",
+        "url": "%SITE_URL%",
+        "image": "%SITE_URL%/apple-touch-icon.png",
+        "email": "%EMAIL%",
+        "jobTitle": "%JOB_TITLE%",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Self-Employed"
+        },
+        "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "%ALUMNI_NAME%",
+            "url": "%ALUMNI_URL%"
+        },
+        "knowsAbout": %KNOWS_ABOUT_JSON%,
+        "sameAs": %SAME_AS_JSON%
+    }
+    </script>
+
+    <!-- Structured Data: WebSite with Search -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "%CANONICAL_SITE_URL%/#website",
+        "url": "%CANONICAL_SITE_URL%/",
+        "name": "%SITE_NAME%",
+        "alternateName": ["%ALTERNATE_NAME%", "%APPLICATION_NAME%"],
+        "description": "%SITE_DESCRIPTION%",
+        "publisher": {
+            "@id": "%SITE_URL%/#person"
+        },
+        "inLanguage": "en-US",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "%SITE_SEARCH_URL%?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        },
+        "hasPart": [
+            {
+                "@type": "WebPage",
+                "@id": "%CANONICAL_SITE_URL%/about",
+                "name": "About",
+                "url": "%CANONICAL_SITE_URL%/about"
+            },
+            {
+                "@type": "WebPage",
+                "@id": "%CANONICAL_SITE_URL%/projects",
+                "name": "Projects",
+                "url": "%CANONICAL_SITE_URL%/projects"
+            },
+            {
+                "@type": "WebPage",
+                "@id": "%CANONICAL_SITE_URL%/resume",
+                "name": "Resume",
+                "url": "%CANONICAL_SITE_URL%/resume"
+            },
+            {
+                "@type": "WebPage",
+                "@id": "%CANONICAL_SITE_URL%/skills",
+                "name": "Skills",
+                "url": "%CANONICAL_SITE_URL%/skills"
+            },
+            {
+                "@type": "WebPage",
+                "@id": "%CANONICAL_SITE_URL%/blogs",
+                "name": "Blogs",
+                "url": "%CANONICAL_SITE_URL%/blogs"
+            },
+            {
+                "@type": "WebPage",
+                "@id": "%CANONICAL_SITE_URL%/coding-profiles",
+                "name": "Coding Profiles",
+                "url": "%CANONICAL_SITE_URL%/coding-profiles"
+            }
+        ]
+    }
+    </script>
+
+    <!-- Structured Data: ProfilePage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "@id": "%CANONICAL_SITE_URL%/#profilepage",
+        "url": "%CANONICAL_SITE_URL%/",
+        "name": "%APPLICATION_NAME%",
+        "mainEntity": {
+            "@id": "%SITE_URL%/#person"
+        },
+        "dateCreated": "2024-01-01",
+        "dateModified": "2026-02-16"
+    }
+    </script>
+
+    <!-- Structured Data: SiteNavigationElement for Google Sitelinks -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+            {
+                "@type": "SiteNavigationElement",
+                "position": 1,
+                "name": "About",
+                "description": "3+ years experience building production AI — GenAI & ML Engineer background",
+                "url": "%CANONICAL_SITE_URL%/about"
+            },
+            {
+                "@type": "SiteNavigationElement",
+                "position": 2,
+                "name": "Projects",
+                "description": "Production AI/ML projects — RAG systems, LLM agents, and SaaS applications",
+                "url": "%CANONICAL_SITE_URL%/projects"
+            },
+            {
+                "@type": "SiteNavigationElement",
+                "position": 3,
+                "name": "Resume",
+                "description": "Professional experience, qualifications, and downloadable resume",
+                "url": "%CANONICAL_SITE_URL%/resume"
+            },
+            {
+                "@type": "SiteNavigationElement",
+                "position": 4,
+                "name": "Skills",
+                "description": "43+ technical skills across GenAI, Cloud (AWS), and Full Stack development",
+                "url": "%CANONICAL_SITE_URL%/skills"
+            },
+            {
+                "@type": "SiteNavigationElement",
+                "position": 5,
+                "name": "Blogs",
+                "description": "30+ technical articles on GenAI, LLMs, RAG, and AI engineering",
+                "url": "%CANONICAL_SITE_URL%/blogs"
+            },
+            {
+                "@type": "SiteNavigationElement",
+                "position": 6,
+                "name": "Coding Profiles",
+                "description": "LeetCode Guardian (Top 1%), CodeChef 3-Star — 1000+ problems solved",
+                "url": "%CANONICAL_SITE_URL%/coding-profiles"
+            }
+        ]
+    }
+    </script>
+
+    <!-- DNS prefetch for external domains -->
+    <link rel="dns-prefetch" href="https://jxehfeeibqlgqfkdzbhl.supabase.co" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Preload font CSS for faster discovery -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" />
+
+    <!-- Non-blocking Inter + Outfit font load (only used weights) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+            rel="stylesheet" />
+    </noscript>
+</head>
+
+<body>
+    <div id="root"></div>
+    <!-- Force SW update check on every page load so new deploys are picked up fast -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            var isLocalDevHost = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+
+            if (isLocalDevHost) {
+                navigator.serviceWorker.getRegistrations().then(function (registrations) {
+                    registrations.forEach(function (registration) {
+                        registration.unregister();
+                    });
+                });
+
+                if ('caches' in window) {
+                    caches.keys().then(function (keys) {
+                        keys.forEach(function (key) {
+                            caches.delete(key);
+                        });
+                    });
+                }
+            } else {
+                navigator.serviceWorker.ready.then(function (reg) {
+                    reg.update();
+                }).catch(function () {
+                    // Ignore when no service worker is active yet.
+                });
+            }
+        }
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+    <!-- Cloudflare Web Analytics (JS beacon — works with or without proxy) -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d3cf8d9d6c604694a7bb42505af50d76"}'></script>
+</body>
+
+</html>

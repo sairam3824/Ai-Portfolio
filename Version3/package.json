@@ -1,0 +1,38 @@
+{
+    "name": "version3",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "@supabase/supabase-js": "^2.93.2",
+        "lucide-react": "^0.468.0",
+        "openai": "^6.27.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-helmet-async": "^2.0.5",
+        "react-router-dom": "^6.22.3"
+    },
+    "devDependencies": {
+        "@tailwindcss/typography": "^0.5.19",
+        "@types/node": "^20.12.7",
+        "@types/react": "^18.2.66",
+        "@types/react-dom": "^18.2.22",
+        "@vercel/node": "^5.6.15",
+        "@vitejs/plugin-react": "^4.2.1",
+        "autoprefixer": "^10.4.19",
+        "postcss": "^8.4.38",
+        "tailwindcss": "^3.4.3",
+        "terser": "^5.27.0",
+        "typescript": "^5.2.2",
+        "vite": "^5.2.0",
+        "vite-plugin-compression": "^0.5.1",
+        "vite-plugin-pwa": "^1.2.0",
+        "web-vitals": "^3.5.2"
+    }
+}

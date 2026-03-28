@@ -1,0 +1,134 @@
+import {
+    GraduationCap,
+    Calendar,
+    MapPin,
+    BookOpen,
+    Award,
+
+    TrendingUp,
+    Library
+} from "lucide-react";
+import { educationData } from "@/data/educationData";
+
+export const EducationSection = () => {
+    const education = educationData.map((item) => ({
+        ...item,
+        date: item.date.replace(/\s*-\s*/g, " \u2014 "),
+        place: item.place
+            .replace(", Andhra Pradesh, India", ", India")
+            .replace(", Andhra Pradesh", ""),
+        icon:
+            item.type === "University" ? <Library className="w-6 h-6" /> :
+                item.type === "College" ? <BookOpen className="w-6 h-6" /> :
+                    <GraduationCap className="w-6 h-6" />,
+        color: item.color ?? "blue",
+    }));
+
+    const getColorClasses = (color: string) => {
+        const maps: { [key: string]: string } = {
+            blue: "text-blue-600 bg-blue-50 border-blue-100",
+            indigo: "text-indigo-600 bg-indigo-50 border-indigo-100",
+            emerald: "text-emerald-600 bg-emerald-50 border-emerald-100",
+        };
+        return maps[color] || maps.blue;
+    };
+
+    return (
+        <div className="home-container relative py-12 px-4 max-w-7xl mx-auto min-h-full">
+            {/* Ambient Background Glows — hidden on mobile for GPU perf */}
+            <div className="hidden md:block absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 blur-[120px] rounded-full -z-10" />
+            <div className="hidden md:block absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/5 blur-[120px] rounded-full -z-10" />
+
+            {/* Header section */}
+            <header className="text-center space-y-5 mb-12 sm:mb-20 animate-fade-in px-4">
+                <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/40 backdrop-blur-md border border-white/40 rounded-full shadow-sm">
+                    <TrendingUp className="w-4 h-4 text-blue-500" />
+                    <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Knowledge Acquisition</span>
+                </div>
+                <h1 className="text-2xl sm:text-4xl md:text-8xl font-black tracking-tighter text-gray-900 leading-[0.9]">
+                    Academic <br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                        Odyssey.
+                    </span>
+                </h1>
+                <p className="text-gray-500 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
+                    The foundations of my engineering mental model, built through rigorous study and technical specialization.
+                </p>
+            </header>
+
+            {/* Education Bento Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 relative z-10">
+                {education.map((it, i) => (
+                    <div
+                        key={i}
+                        className={`group relative flex flex-col p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] bg-white border border-gray-100 shadow-xl shadow-gray-200/40 hover:border-blue-200/50 transition-all duration-500 overflow-hidden ${it.featured ? 'lg:col-span-12' : 'lg:col-span-6'}`}
+                    >
+                        {/* Status Label */}
+                        <div className="static sm:absolute sm:top-6 sm:right-6 md:top-8 md:right-8 mb-4 sm:mb-0 self-start">
+                            <div className={`flex items-center gap-2 px-3 py-1 md:px-4 md:py-1.5 rounded-full ${getColorClasses(it.color)}`}>
+                                <Award className="w-3.5 h-3.5" />
+                                <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest">{it.grade}</span>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col lg:flex-row gap-8 md:gap-10 items-start">
+                            <div className="flex-1 space-y-6">
+                                <div className="space-y-4">
+                                    <div className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl md:rounded-3xl flex items-center justify-center shadow-inner ${getColorClasses(it.color)}`}>
+                                        {it.icon}
+                                    </div>
+                                    <div className="space-y-1">
+                                        <h3 className={`text-xl sm:text-2xl md:text-4xl font-black text-gray-800 tracking-tight`}>
+                                            {it.org}
+                                        </h3>
+                                        <p className="text-blue-600 font-black uppercase text-[10px] md:text-xs tracking-widest flex flex-wrap items-center gap-2">
+                                            {it.title} {it.major && <span className="text-gray-300">•</span>} {it.major}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="flex flex-wrap gap-4 md:gap-6 text-gray-400 font-medium text-xs md:text-sm">
+                                    <div className="flex items-center gap-2">
+                                        <Calendar className="w-3.5 h-3.5" />
+                                        <span>{it.date}</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <MapPin className="w-3.5 h-3.5" />
+                                        <span>{it.place}</span>
+                                    </div>
+                                </div>
+
+                                <div className="pt-6 border-t border-gray-50">
+                                    <h4 className="text-[9px] md:text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-4">Core Track</h4>
+                                    <div className="flex flex-wrap gap-2">
+                                        {it.courses.map((course, j) => (
+                                            <span key={j} className="px-2.5 py-1 md:px-3 md:py-1.5 bg-gray-50 text-gray-500 rounded-full text-[9px] md:text-[10px] font-bold border border-transparent hover:border-blue-100 hover:text-blue-600 transition-all">
+                                                {course}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Ghost Typography */}
+                            <div className="hidden sm:block absolute -bottom-10 -right-10 text-[150px] md:text-[200px] font-black text-gray-800/[0.02] select-none pointer-events-none group-hover:scale-110 transition-transform">
+                                {it.org[0]}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            {/* Journey Footer */}
+            <footer className="mt-24 text-center pb-8 animate-fade-in">
+                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.4em] flex items-center justify-center gap-6">
+                    <span className="w-16 h-px bg-gray-200" />
+                    Academic Excellence • Continuous Growth
+                    <span className="w-16 h-px bg-gray-200" />
+                </p>
+            </footer>
+        </div>
+    );
+};
+
+export default EducationSection;
