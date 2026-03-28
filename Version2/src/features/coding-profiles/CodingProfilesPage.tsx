@@ -6,6 +6,7 @@ import {
     Globe,
     Cpu
 } from "lucide-react";
+import type { ReactNode } from "react";
 import { codingProfilesData } from "./codingProfilesData";
 import Seo from "../../shared/Seo";
 
@@ -85,7 +86,9 @@ export const CodingProfilesPage = () => {
         }
     };
 
-    const iconMap: Record<string, React.ReactNode> = {
+    type ColorKey = keyof typeof colorStyles;
+
+    const iconMap: Record<string, ReactNode> = {
         "leetcode-img": <img src="/LeetCode_logo_rvs.webp" alt="LeetCode" className="w-full h-full object-contain" width="24" height="24" loading="lazy" decoding="async" />,
         "codechef-img": <img src="/codechef.webp" alt="CodeChef" className="w-full h-full object-cover" width="24" height="24" loading="lazy" decoding="async" />,
         Activity: <Activity className="w-5 h-5" />,
@@ -145,8 +148,8 @@ export const CodingProfilesPage = () => {
                     const isFeatured = profile.featured;
                     const colSpan = isFeatured ? 'md:col-span-3' : 'md:col-span-2';
                     const rowSpan = isFeatured ? 'md:row-span-2' : 'md:row-span-1';
-                    // @ts-ignore
-                    const styles = colorStyles[profile.color] || colorStyles.blue;
+                    const styleKey = (profile.color in colorStyles ? profile.color : "blue") as ColorKey;
+                    const styles = colorStyles[styleKey];
 
                     return (
                         <a
