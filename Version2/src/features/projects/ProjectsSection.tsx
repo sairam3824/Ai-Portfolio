@@ -12,7 +12,8 @@ import {
     Folder,
     Terminal,
     Shield,
-    Activity
+    Activity,
+    Mic
 } from "lucide-react";
 import { projectsData } from "./projectsData";
 
@@ -27,6 +28,7 @@ const iconMap: Record<string, ReactNode> = {
     Shield: <Shield className="w-5 h-5" />,
     Search: <Search className="w-5 h-5" />,
     Activity: <Activity className="w-5 h-5" />,
+    Mic: <Mic className="w-5 h-5" />,
 };
 
 const projects = projectsData.map(p => ({
