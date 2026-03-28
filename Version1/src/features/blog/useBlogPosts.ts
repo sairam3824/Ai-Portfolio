@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { blogPosts as staticBlogPosts, BlogPost } from "./index";
+import { blogPosts as staticBlogPosts, type BlogPost } from "@/data/blogData";
 
 export const useBlogPosts = () => {
   const [posts] = useState<BlogPost[]>(staticBlogPosts);
