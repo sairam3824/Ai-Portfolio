@@ -1,48 +1,37 @@
 import { Github, Linkedin, Code, Trophy, BookOpen, Target } from "lucide-react";
+import { codingProfilesData } from "@/data/codingProfilesData";
+import { profileDetails } from "@/data/siteMetadata";
 
 const socialLinks = [
-  { icon: Github, label: "GitHub", href: "https://github.com/sairam3824", category: "social" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/sairam-maruri", category: "social" },
+  { icon: Github, label: "GitHub", href: profileDetails.socials.github },
+  { icon: Linkedin, label: "LinkedIn", href: profileDetails.socials.linkedin },
 ];
 
-const codingProfiles = [
-  {
-    icon: Code,
-    label: "LeetCode",
-    href: "https://leetcode.com/u/sairam3824/",
-    category: "coding"
-  },
-  {
-    icon: Trophy,
-    label: "CodeChef",
-    href: "https://www.codechef.com/users/sairam2004",
-    category: "coding"
-  },
-  {
-    icon: BookOpen,
-    label: "InterviewBit",
-    href: "https://www.interviewbit.com/profile/sai-rama-linga-reddy-maruri/",
-    category: "coding"
-  },
-  {
-    icon: Target,
-    label: "TakeUForward",
-    href: "https://takeuforward.org/plus/profile/sairam3824",
-    category: "coding"
-  },
-];
+const codingProfileIcons = {
+  LeetCode: Code,
+  CodeChef: Trophy,
+  InterviewBit: BookOpen,
+  TakeUForward: Target,
+};
+
+const codingProfiles = codingProfilesData
+  .filter((profile) => profile.label in codingProfileIcons)
+  .map((profile) => ({
+    ...profile,
+    icon: codingProfileIcons[profile.label as keyof typeof codingProfileIcons],
+  }));
 
 export const AboutSection = () => {
   return (
     <section id="about" className="scroll-mt-28 animate-fade-in space-y-6">
-      <h2 className="text-3xl font-bold text-foreground text-center select-none pointer-events-none focus:outline-none">
+      <h2 className="text-2xl font-bold text-foreground text-center select-none pointer-events-none focus:outline-none sm:text-3xl">
         About Me
       </h2>
 
 
       <div className="space-y-6 text-muted-foreground">
-        <p className="text-lg leading-relaxed">
-          I am a GenAI & ML Engineer with a strong foundation in data structures, algorithms, and scalable system design, backed by solving 1,000+ problems, earning the LeetCode Guardian badge (2500+ rating) and a 3★ CodeChef rating (1600+). This discipline has shaped my ability to build efficient, reliable, and production-grade AI and cloud systems.
+        <p className="text-base leading-relaxed sm:text-lg">
+          I am a GenAI & ML Engineer with a strong foundation in data structures, algorithms, and scalable system design, backed by solving 1,000+ problems and building production-grade AI systems. {profileDetails.summary}
         </p>
 
         <p className="leading-relaxed">
@@ -92,14 +81,14 @@ export const AboutSection = () => {
 
         <div className="pt-6 space-y-4">
           <p className="text-sm font-medium text-foreground">Connect with me</p>
-          <div className="grid grid-cols-2 gap-4">
-            {socialLinks.map((social, index) => (
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+            {socialLinks.map((social) => (
               <a
-                key={index}
+                key={social.label}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 rounded-xl bg-card border-2 border-border hover:border-accent transition-all duration-300 hover:scale-105 flex items-center gap-3"
+                className="flex items-center gap-3 rounded-xl bg-card border-2 border-border p-4 transition-all duration-300 hover:scale-[1.02] hover:border-accent sm:hover:scale-105"
                 aria-label={social.label}
               >
                 <social.icon className="w-5 h-5 text-accent" />
@@ -111,14 +100,14 @@ export const AboutSection = () => {
 
         <div className="pt-6 space-y-4">
           <p className="text-sm font-medium text-foreground">My coding profiles</p>
-          <div className="grid grid-cols-2 gap-4">
-            {codingProfiles.map((profile, index) => (
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+            {codingProfiles.map((profile) => (
               <a
-                key={index}
+                key={profile.label}
                 href={profile.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 rounded-xl bg-card border-2 border-border hover:border-accent transition-all duration-300 hover:scale-105 flex items-center gap-3"
+                className="flex items-center gap-3 rounded-xl bg-card border-2 border-border p-4 transition-all duration-300 hover:scale-[1.02] hover:border-accent sm:hover:scale-105"
                 aria-label={profile.label}
               >
                 <profile.icon className="w-5 h-5 text-accent" />
