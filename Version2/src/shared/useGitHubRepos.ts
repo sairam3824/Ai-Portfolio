@@ -19,7 +19,9 @@ export function useGitHubRepos(fallback = "20+"): string {
                     return `${entry.count}+`;
                 }
             }
-        } catch {}
+        } catch {
+            // Fall back to the provided default if cached data is unreadable.
+        }
         return fallback;
     });
 
