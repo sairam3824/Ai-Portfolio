@@ -1,24 +1,65 @@
 import { useParams, Navigate, Link } from "react-router-dom";
 import { ArrowLeft, Calendar, Eye, Share2, Link as LinkIcon, MessageSquare } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Layout from "@/shared/components/Layout";
-import { getBlogPost } from "./index";
+import { getBlogContent, getBlogPost } from "@/data/blogData";
+import { profileDetails } from "@/data/siteMetadata";
 import { Button } from "@/shared/ui/button";
 import { MessageDialog } from "../contact/MessageDialog";
 
 const BlogPostPage = () => {
     const { slug } = useParams<{ slug: string }>();
     const [copied, setCopied] = useState(false);
-
     const post = getBlogPost(slug || "");
+    const [content, setContent] = useState("");
+    const [contentLoading, setContentLoading] = useState(false);
+    const [messageOpen, setMessageOpen] = useState(false);
+
+    useEffect(() => {
+        if (!post) {
+            setContent("");
+            setContentLoading(false);
+            return;
+        }
+
+        let cancelled = false;
+
+        const loadContent = async () => {
+            if (post.content) {
+                setContent(post.content);
+                return;
+            }
+
+            setContentLoading(true);
+
+            try {
+                const loadedContent = await getBlogContent(post.id);
+                if (!cancelled) {
+                    setContent(loadedContent ?? "");
+                }
+            } finally {
+                if (!cancelled) {
+                    setContentLoading(false);
+                }
+            }
+        };
+
+        loadContent();
+
+        return () => {
+            cancelled = true;
+        };
+    }, [post]);
 
     if (!post) {
         return <Navigate to="/blogs" replace />;
     }
 
     const shareUrl = typeof window !== "undefined" ? window.location.href : "";
-
-    const [messageOpen, setMessageOpen] = useState(false);
+    const publishedDate = post.date ? new Date(post.date) : null;
+    const publishedTime = publishedDate && !Number.isNaN(publishedDate.getTime())
+        ? publishedDate.toISOString()
+        : undefined;
 
     const handleNativeShare = async () => {
         try {
@@ -45,7 +86,16 @@ const BlogPostPage = () => {
     };
 
     return (
-        <Layout title={post.title}>
+        <Layout
+            title={`${post.title} | ${profileDetails.name}`}
+            description={post.excerpt}
+            canonicalPath={`/blogs/${slug}`}
+            type="article"
+            pageType="CollectionPage"
+            keywords={post.tags}
+            publishedTime={publishedTime}
+            modifiedTime={publishedTime}
+        >
             <div className="max-w-4xl mx-auto px-4 py-8">
                 <Link
                     to="/blogs"
@@ -69,11 +119,11 @@ const BlogPostPage = () => {
                                 ))}
                             </div>
 
-                            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4 leading-tight">
+                            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 leading-tight">
                                 {post.title}
                             </h1>
 
-                            <div className="flex items-center gap-6 text-muted-foreground text-sm">
+                            <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-muted-foreground text-sm">
                                 <div className="flex items-center gap-2">
                                     <Calendar className="w-4 h-4" />
                                     <span>{post.date}</span>
@@ -86,12 +136,11 @@ const BlogPostPage = () => {
                         </header>
 
                         <div className="prose prose-lg max-w-none dark:prose-invert leading-relaxed text-foreground [&>p]:text-foreground/90 [&>ul>li]:text-foreground/90 [&>ol>li]:text-foreground/90">
-                            {post.content && (
-                                <div dangerouslySetInnerHTML={{ __html: post.content }} />
-                            )}
+                            {contentLoading ? <p>Loading article...</p> : null}
+                            {content ? <div dangerouslySetInnerHTML={{ __html: content }} /> : null}
                         </div>
 
-                        <div className="flex items-center gap-4 mt-10 pt-6 border-t border-border">
+                        <div className="mt-10 flex flex-wrap items-center gap-4 border-t border-border pt-6">
                             <Button
                                 variant="outline"
                                 size="sm"
