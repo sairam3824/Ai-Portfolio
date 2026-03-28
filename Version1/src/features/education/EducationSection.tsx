@@ -1,59 +1,44 @@
 import { GraduationCap, Calendar, MapPin } from "lucide-react";
+import { educationData } from "@/data/educationData";
 
 export const EducationSection = () => {
-  const items = [
-    {
-      title: "Bachelor of Technology - Computer Science",
-      org: "Vellore Institute of Technology Andhra Pradesh",
-      date: "2022 - 2026",
-      place: "Amaravati, Andhra Pradesh, India",
-      notes: [
-        "Relevant Coursework: Data Structures & Algorithms, Operating Systems, OOP, Software Engineering (Design Patterns, System Design), Computer Networks, Deep Learning, NoSQL databases",
-        "CGPA: 8.31",
-      ],
-    },
-    {
-      title: "Board of Intermediate Education",
-      org: "Sri Chaitanya Junior College",
-      date: "2020 - 2022",
-      place: "Vijayawada, Andhra Pradesh, India",
-      notes: ["Grade: 83.7%", "Subjects: Mathematics, Physics, Chemistry"],
-    },
-    {
-      title: "Board of Secondary Education",
-      org: "Sri Chaitanya High School",
-      date: "2020",
-      place: "Vijayawada, Andhra Pradesh, India",
-      notes: ["Grade: 97.1%"],
-    },
-  ];
+  const items = educationData.map((item) => ({
+    title: item.major ? `${item.title} - ${item.major}` : item.title,
+    org: item.campus ? `${item.org} ${item.campus}` : item.org,
+    date: item.date,
+    place: item.place,
+    notes: [
+      `Relevant Coursework: ${item.courses.join(", ")}`,
+      `Grade: ${item.grade}`,
+    ],
+  }));
 
   return (
     <section className="animate-fade-in">
-      <h2 className="text-3xl font-bold text-foreground text-center mb-8 select-none pointer-events-none">
+      <h2 className="mb-8 text-center text-2xl font-bold text-foreground select-none pointer-events-none sm:text-3xl">
         Education
       </h2>
 
       <div className="relative">
         {/* vertical line */}
-        <div className="absolute left-6 top-6 bottom-0 w-[2px] bg-border" />
+        <div className="absolute left-4 top-5 bottom-0 w-[2px] bg-border sm:left-6 sm:top-6" />
 
         <div className="space-y-8">
           {items.map((it, idx) => (
-            <article key={idx} className="relative pl-16">
+            <article key={idx} className="relative pl-12 sm:pl-16">
               {/* marker */}
               <div className="absolute left-0 top-3 flex items-center justify-center">
-                <div className="p-2 bg-card border border-border rounded-full shadow-sm z-10">
-                  <div className="p-2 bg-blue-50 dark:bg-blue-900/20 rounded-full">
-                    <GraduationCap className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                <div className="z-10 rounded-full bg-card border border-border p-1.5 shadow-sm sm:p-2">
+                  <div className="rounded-full bg-blue-50 p-1.5 dark:bg-blue-900/20 sm:p-2">
+                    <GraduationCap className="h-4 w-4 text-blue-600 dark:text-blue-400 sm:h-5 sm:w-5" />
                   </div>
                 </div>
               </div>
 
-              <div className="bg-card border border-border rounded-2xl p-6 shadow-sm transition-all duration-300 hover:border-accent hover:shadow-md">
-                <div className="flex items-start gap-4">
+              <div className="rounded-2xl bg-card border border-border p-5 shadow-sm transition-all duration-300 hover:border-accent hover:shadow-md sm:p-6">
+                <div className="flex items-start gap-3 sm:gap-4">
                   <div className="flex-1">
-                    <h3 className="text-xl md:text-2xl font-semibold text-card-foreground mb-1">
+                    <h3 className="mb-1 text-lg font-semibold text-card-foreground md:text-2xl">
                       {it.title}
                     </h3>
                     <p className="text-muted-foreground mb-3">{it.org}</p>
