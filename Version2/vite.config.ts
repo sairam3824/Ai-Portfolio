@@ -1,8 +1,10 @@
+import fs from 'fs';
 import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import viteCompression from 'vite-plugin-compression';
 import { VitePWA } from 'vite-plugin-pwa';
+import { buildRootRobotsTxt, buildRootSitemapXml } from '../shared-data/seoArtifacts';
 
 // Inject <link rel="preload"> for the hashed avatar image so the browser
 // can start downloading it immediately instead of waiting for React to render.
@@ -24,11 +26,31 @@ function preloadAvatarPlugin(): Plugin {
     };
 }
 
+function writeSeoArtifactsPlugin(): Plugin {
+    let outDir = '';
+
+    return {
+        name: 'write-seo-artifacts',
+        apply: 'build',
+        configResolved(config) {
+            outDir = path.resolve(config.root, config.build.outDir);
+        },
+        closeBundle() {
+            if (!outDir) return;
+            fs.mkdirSync(outDir, { recursive: true });
+            fs.writeFileSync(path.join(outDir, 'robots.txt'), buildRootRobotsTxt(), 'utf8');
+            fs.writeFileSync(path.join(outDir, 'sitemap.xml'), buildRootSitemapXml(), 'utf8');
+        },
+    };
+}
+
 // https://vitejs.dev/config/
 export default defineConfig({
+    envDir: path.resolve(__dirname, ".."),
     plugins: [
         react(),
         preloadAvatarPlugin(),
+        writeSeoArtifactsPlugin(),
         viteCompression({
             algorithm: 'gzip',
             ext: '.gz',
