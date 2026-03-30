@@ -1,9 +1,11 @@
-import { defineConfig, type Plugin } from 'vite';
+import fs from 'fs';
+import { defineConfig, loadEnv, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import viteCompression from 'vite-plugin-compression';
 import { VitePWA } from 'vite-plugin-pwa';
 import { profileDetails, siteMetadata } from '../shared-data/siteMetadata';
+import { buildRootRobotsTxt, buildRootSitemapXml } from '../shared-data/seoArtifacts';
 
 // Inject <link rel="preload"> for the hashed avatar image so the browser
 // can start downloading it immediately instead of waiting for React to render.
@@ -28,8 +30,8 @@ function preloadAvatarPlugin(): Plugin {
 function injectSiteMetadataPlugin(): Plugin {
     const replacements: Record<string, string> = {
         '%SITE_URL%': siteMetadata.siteUrl,
-        '%CANONICAL_SITE_URL%': `${siteMetadata.siteUrl}/v3`,
-        '%SITE_SEARCH_URL%': `${siteMetadata.siteUrl}/v3/blogs`,
+        '%CANONICAL_SITE_URL%': siteMetadata.siteUrl,
+        '%SITE_SEARCH_URL%': `${siteMetadata.siteUrl}/blogs`,
         '%SITE_TITLE%': siteMetadata.defaultTitle,
         '%SITE_DESCRIPTION%': siteMetadata.defaultDescription,
         '%SITE_NAME%': profileDetails.name,
@@ -57,13 +59,38 @@ function injectSiteMetadataPlugin(): Plugin {
     };
 }
 
+function writeSeoArtifactsPlugin(): Plugin {
+    let outDir = '';
+
+    return {
+        name: 'write-seo-artifacts',
+        apply: 'build',
+        configResolved(config) {
+            outDir = path.resolve(config.root, config.build.outDir);
+        },
+        closeBundle() {
+            if (!outDir) return;
+            fs.mkdirSync(outDir, { recursive: true });
+            fs.writeFileSync(path.join(outDir, 'robots.txt'), buildRootRobotsTxt(), 'utf8');
+            fs.writeFileSync(path.join(outDir, 'sitemap.xml'), buildRootSitemapXml(), 'utf8');
+        },
+    };
+}
+
 // https://vitejs.dev/config/
-export default defineConfig({
-    base: '/v3/',
-    plugins: [
+export default defineConfig(({ mode }) => {
+    const envDir = path.resolve(__dirname, '..');
+    const env = loadEnv(mode, envDir, '');
+    const chatProxyTarget = env.VITE_CHAT_PROXY_TARGET || 'http://127.0.0.1:3000';
+
+    return {
+        base: '/',
+        envDir,
+        plugins: [
         react(),
         preloadAvatarPlugin(),
         injectSiteMetadataPlugin(),
+        writeSeoArtifactsPlugin(),
         viteCompression({
             algorithm: 'gzip',
             ext: '.gz',
@@ -172,47 +199,56 @@ export default defineConfig({
                 ]
             }
         })
-    ],
-    resolve: {
-        alias: {
-            "@": path.resolve(__dirname, "./src"),
-            "lucide-react": path.resolve(__dirname, "./node_modules/lucide-react"),
+        ],
+        resolve: {
+            alias: {
+                "@": path.resolve(__dirname, "./src"),
+                "lucide-react": path.resolve(__dirname, "./node_modules/lucide-react"),
+            },
         },
-    },
-    server: {
-        fs: {
-            allow: [path.resolve(__dirname, "..")],
-        },
-    },
-    build: {
-        target: 'esnext',
-        modulePreload: {
-            polyfill: false,
-        },
-        cssCodeSplit: true,
-        rollupOptions: {
-            output: {
-                manualChunks: (id) => {
-                    if (id.includes('node_modules')) {
-                        if (id.includes('react') || id.includes('react-dom') || id.includes('react-router') || id.includes('react-helmet-async')) {
-                            return 'vendor';
-                        }
-                        if (id.includes('lucide-react')) return 'icons';
-                        if (id.includes('@supabase')) return 'supabase';
-                        if (id.includes('web-vitals')) return 'web-vitals';
-                    }
+        server: {
+            fs: {
+                allow: [path.resolve(__dirname, "..")],
+            },
+            proxy: {
+                // Forward Vite dev requests to the root Vercel dev server so
+                // `/api/chat` works locally without changing the frontend URL.
+                '/api': {
+                    target: chatProxyTarget,
+                    changeOrigin: true,
                 },
             },
         },
-        chunkSizeWarningLimit: 1000,
-        sourcemap: false,
-        minify: 'terser',
-        terserOptions: {
-            compress: {
-                drop_console: true,
-                drop_debugger: true,
-                passes: 2,
+        build: {
+            target: 'esnext',
+            modulePreload: {
+                polyfill: false,
+            },
+            cssCodeSplit: true,
+            rollupOptions: {
+                output: {
+                    manualChunks: (id) => {
+                        if (id.includes('node_modules')) {
+                            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router') || id.includes('react-helmet-async')) {
+                                return 'vendor';
+                            }
+                            if (id.includes('lucide-react')) return 'icons';
+                            if (id.includes('@supabase')) return 'supabase';
+                            if (id.includes('web-vitals')) return 'web-vitals';
+                        }
+                    },
+                },
+            },
+            chunkSizeWarningLimit: 1000,
+            sourcemap: false,
+            minify: 'terser',
+            terserOptions: {
+                compress: {
+                    drop_console: true,
+                    drop_debugger: true,
+                    passes: 2,
+                },
             },
         },
-    },
+    };
 });
