@@ -1,9 +1,13 @@
-import { Suspense, lazy } from "react";
+import { lazy } from "react";
 import { HelmetProvider } from "react-helmet-async";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { SiteLayout } from "@/features/site/SiteLayout";
+import ChatWidget from "@/features/chat/ChatWidget";
 
-const routerBasename = import.meta.env.DEV ? "/" : "/v3";
+const routerBasename =
+    import.meta.env.BASE_URL === "/"
+        ? "/"
+        : import.meta.env.BASE_URL.replace(/\/$/, "");
 
 const HomePage = lazy(() =>
     import("@/features/home/HomePage").then((module) => ({ default: module.HomePage })),
@@ -34,8 +38,6 @@ const AdminPage = lazy(() => import("@/features/admin/AdminPage"));
 const PrivacyPage = lazy(() => import("@/features/legal/PrivacyPage"));
 const TermsPage = lazy(() => import("@/features/legal/TermsPage"));
 const NotFoundPage = lazy(() => import("@/NotFoundPage"));
-const ChatWidget = lazy(() => import("../../shared-components/ChatWidget"));
-
 export default function App() {
     return (
         <HelmetProvider>
@@ -59,13 +61,7 @@ export default function App() {
                         <Route path="*" element={<NotFoundPage />} />
                     </Route>
                 </Routes>
-                <Suspense fallback={null}>
-                    <ChatWidget
-                        renderLink={({ to, className, children }) => (
-                            <Link to={to} className={className}>{children}</Link>
-                        )}
-                    />
-                </Suspense>
+                <ChatWidget />
             </Router>
         </HelmetProvider>
     );
