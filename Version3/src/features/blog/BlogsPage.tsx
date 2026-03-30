@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, BellRing, Calendar, Clock, Mail, Search, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
@@ -47,10 +47,13 @@ const mapTagToCategory = (tag: string): string => {
 };
 
 const topicCount = new Set(blogPosts.flatMap((post) => post.tags)).size;
+const SUBSCRIBE_DIALOG_AUTO_DISMISS_MS = 6000;
+
 const BlogsPage = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("all");
     const [mobileSummaryId, setMobileSummaryId] = useState<string | null>(null);
+    const [isSubscribeDialogOpen, setIsSubscribeDialogOpen] = useState(true);
     const { email, setEmail, isLoading, notification, closeNotification, handleSubscribe } = useBlogSubscription();
 
     const filteredPosts = useMemo(() => {
@@ -70,8 +73,137 @@ const BlogsPage = () => {
         });
     }, [searchQuery, selectedCategory]);
 
+    useEffect(() => {
+        if (!isSubscribeDialogOpen || email.trim()) return;
+
+        document.body.style.overflow = "hidden";
+        const timeoutId = window.setTimeout(() => {
+            setIsSubscribeDialogOpen(false);
+        }, SUBSCRIBE_DIALOG_AUTO_DISMISS_MS);
+
+        return () => {
+            document.body.style.overflow = "";
+            window.clearTimeout(timeoutId);
+        };
+    }, [email, isSubscribeDialogOpen]);
+
+    useEffect(() => {
+        if (!isSubscribeDialogOpen || notification?.type !== "success") return;
+
+        const timeoutId = window.setTimeout(() => {
+            setIsSubscribeDialogOpen(false);
+        }, 1400);
+
+        return () => window.clearTimeout(timeoutId);
+    }, [isSubscribeDialogOpen, notification]);
+
     return (
         <div className="flex flex-col gap-8">
+            {isSubscribeDialogOpen && (
+                <div className="fixed inset-0 z-[130] flex items-center justify-center p-4">
+                    <div
+                        className="absolute inset-0 bg-[#17140f]/55 backdrop-blur-md animate-fade-in"
+                        onClick={() => !isLoading && setIsSubscribeDialogOpen(false)}
+                    />
+
+                    <div
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby="blog-subscribe-title"
+                        className="relative w-full max-w-lg overflow-hidden rounded-[2.4rem] border border-[#dfe4cb] bg-[#fffdf8] shadow-[0_30px_90px_rgba(35,31,24,0.2)] animate-scale-in"
+                    >
+                        <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,#7b8d42_0%,#c2d18f_100%)]" />
+
+                        <div className="p-7 md:p-9">
+                            <div className="mb-7 flex items-start justify-between gap-4">
+                                <div className="space-y-4">
+                                    <div className="flex items-center gap-3">
+                                        <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#eef2df] text-[#5d7414]">
+                                            <BellRing className="h-5 w-5" />
+                                        </div>
+                                        <div className="flex items-center gap-2 rounded-full border border-[#d4ddba] bg-[#fdfef8] px-3 py-1">
+                                            <Mail className="h-3.5 w-3.5 text-[#5d7414]" />
+                                            <span className="text-[10px] font-bold uppercase tracking-widest text-[#7b7467]">
+                                                Blog Updates
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <h2 id="blog-subscribe-title" className="text-3xl font-black tracking-tight text-[#1c1a14]">
+                                            Subscribe to the blog.
+                                        </h2>
+                                        <p className="mt-2 max-w-[34ch] text-sm font-medium leading-relaxed text-[#7b7467]">
+                                            Get fresh essays on AI systems, agents, cloud delivery, and developer workflows straight in your inbox.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    onClick={() => setIsSubscribeDialogOpen(false)}
+                                    disabled={isLoading}
+                                    aria-label="Close subscribe dialog"
+                                    className="flex h-10 w-10 items-center justify-center rounded-2xl border border-[#e3dccf] bg-[#fbfaf6] text-[#9a9388] transition-all hover:border-[#d5cebf] hover:text-[#17140f] disabled:opacity-30"
+                                >
+                                    <X className="h-5 w-5" />
+                                </button>
+                            </div>
+
+                            <form onSubmit={handleSubscribe} className="space-y-4">
+                                <label className="block">
+                                    <span className="mb-2 inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#7e8660]">
+                                        <Mail className="h-3.5 w-3.5" />
+                                        Email Address
+                                    </span>
+                                    <input
+                                        type="email"
+                                        value={email}
+                                        onChange={(event) => setEmail(event.target.value)}
+                                        placeholder="you@company.com"
+                                        autoComplete="email"
+                                        disabled={isLoading}
+                                        className="w-full rounded-[1.6rem] border border-[#d8dcbf] bg-[#fbfbf6] px-5 py-4 text-[0.96rem] text-[#17150f] outline-none transition-colors placeholder:text-[#9aa08a] focus:border-[#7b8d42] focus:ring-4 focus:ring-[#dce6b8]/40"
+                                    />
+                                </label>
+
+                                <p className="text-[0.76rem] font-semibold uppercase tracking-[0.18em] text-[#9a9388]">
+                                    This popup closes automatically in a few seconds.
+                                </p>
+
+                                <div className="flex flex-col gap-3 sm:flex-row">
+                                    <button
+                                        type="button"
+                                        onClick={() => setIsSubscribeDialogOpen(false)}
+                                        disabled={isLoading}
+                                        className="flex-1 rounded-[1.35rem] border border-[#e3dccf] bg-[#f6f3eb] px-5 py-4 text-xs font-black uppercase tracking-widest text-[#8f887c] transition-all hover:bg-[#f0eadf] disabled:opacity-30"
+                                    >
+                                        Maybe Later
+                                    </button>
+                                    <button
+                                        type="submit"
+                                        disabled={isLoading}
+                                        className="inline-flex flex-1 items-center justify-center gap-2 rounded-[1.35rem] bg-[#171d10] px-5 py-4 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-[#5d7414] disabled:cursor-not-allowed disabled:opacity-60"
+                                    >
+                                        {isLoading ? (
+                                            <>
+                                                <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+                                                Subscribing...
+                                            </>
+                                        ) : (
+                                            <>
+                                                <BellRing className="h-4 w-4" />
+                                                Subscribe
+                                            </>
+                                        )}
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             <Seo
                 title="Writing | Sai Ram Maruri — AI & Engineering Blog"
                 description="Technical writing by Sai Ram Maruri on GenAI, LLM systems, RAG, cloud infrastructure, agent workflows, MCP, A2A, competitive programming, and software engineering."
