@@ -1,12 +1,17 @@
 import { useMemo, useState } from "react";
-import { ArrowRight, Calendar, Clock, Search, X } from "lucide-react";
+import { ArrowRight, BellRing, Calendar, Clock, Mail, Search, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Seo from "../../shared/Seo";
 import { blogPosts } from "./blogData";
+import { useBlogSubscription } from "./useBlogSubscription";
 import { profileDetails, siteMetadata } from "@/data/siteMetadata";
+import { NotificationToast } from "@/shared/ui/NotificationToast";
 
-const VERSION_BASE_PATH = "/v3";
+const VERSION_BASE_PATH =
+    import.meta.env.BASE_URL === "/"
+        ? ""
+        : import.meta.env.BASE_URL.replace(/\/$/, "");
 
 const PRESET_CATEGORIES = [
     { id: "all", label: "All" },
@@ -45,6 +50,8 @@ const topicCount = new Set(blogPosts.flatMap((post) => post.tags)).size;
 const BlogsPage = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("all");
+    const [mobileSummaryId, setMobileSummaryId] = useState<string | null>(null);
+    const { email, setEmail, isLoading, notification, closeNotification, handleSubscribe } = useBlogSubscription();
 
     const filteredPosts = useMemo(() => {
         const query = searchQuery.trim().toLowerCase();
@@ -105,13 +112,67 @@ const BlogsPage = () => {
                     Writing / Research Notes
                 </p>
 
-                <div className="mt-8 max-w-[1080px]">
-                    <h1 className="portfolio-sans max-w-[10ch] text-[clamp(3.4rem,8vw,7rem)] font-semibold leading-[0.9] tracking-[-0.08em] text-[#11100c]">
-                        Essays for builders shipping AI.
-                    </h1>
-                    <p className="mt-7 max-w-[46ch] text-[clamp(1.05rem,1.8vw,1.4rem)] leading-[1.6] text-[#6f695c]">
-                        I write about production AI systems, cloud delivery, agent protocols, developer tools, and the habits that help ideas survive contact with the real world.
-                    </p>
+                <div className="mt-8 grid gap-8 xl:grid-cols-[minmax(0,1fr)_360px] xl:items-end">
+                    <div className="max-w-[1080px]">
+                        <h1 className="portfolio-sans max-w-[10ch] text-[clamp(3.4rem,8vw,7rem)] font-semibold leading-[0.9] tracking-[-0.08em] text-[#11100c]">
+                            Essays for builders shipping AI.
+                        </h1>
+                        <p className="mt-7 max-w-[46ch] text-[clamp(1.05rem,1.8vw,1.4rem)] leading-[1.6] text-[#6f695c]">
+                            I write about production AI systems, cloud delivery, agent protocols, developer tools, and the habits that help ideas survive contact with the real world.
+                        </p>
+                    </div>
+
+                    <div className="rounded-[2rem] border border-[#dbe3bf] bg-[linear-gradient(135deg,#fbfcf6_0%,#eef4d8_100%)] p-5 shadow-[0_20px_60px_rgba(95,114,33,0.08)]">
+                        <div className="inline-flex items-center gap-2 rounded-full border border-[#d4ddba] bg-[#fdfef8] px-3 py-1.5">
+                            <BellRing className="h-3.5 w-3.5 text-[#5d7414]" />
+                            <span className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-[#6a7343]">
+                                Subscribe
+                            </span>
+                        </div>
+
+                        <h2 className="mt-4 text-[1.65rem] font-semibold leading-tight tracking-[-0.05em] text-[#17150f]">
+                            Get new essays in your inbox.
+                        </h2>
+                        <p className="mt-3 text-[0.95rem] leading-7 text-[#5f6650]">
+                            A quiet stream of blog updates on AI systems, shipping, and developer workflows.
+                        </p>
+
+                        <form onSubmit={handleSubscribe} className="mt-5 space-y-3">
+                            <label className="block">
+                                <span className="mb-2 inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#7e8660]">
+                                    <Mail className="h-3.5 w-3.5" />
+                                    Email Address
+                                </span>
+                                <input
+                                    type="email"
+                                    value={email}
+                                    onChange={(event) => setEmail(event.target.value)}
+                                    placeholder="you@company.com"
+                                    autoComplete="email"
+                                    disabled={isLoading}
+                                    className="w-full rounded-[1.35rem] border border-[#d8dcbf] bg-[#fbfbf6] px-5 py-4 text-[0.96rem] text-[#17150f] outline-none transition-colors placeholder:text-[#9aa08a] focus:border-[#7b8d42]"
+                                />
+                            </label>
+
+                            <button
+                                type="submit"
+                                disabled={isLoading}
+                                className="inline-flex w-full items-center justify-center gap-2 rounded-[1.35rem] bg-[#171d10] px-5 py-4 text-sm font-semibold text-white transition-colors hover:bg-[#5d7414] disabled:cursor-not-allowed disabled:opacity-60"
+                            >
+                                {isLoading ? (
+                                    <>
+                                        <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+                                        Subscribing...
+                                    </>
+                                ) : (
+                                    <>
+                                        <BellRing className="h-4 w-4" />
+                                        Subscribe to Updates
+                                    </>
+                                )}
+                            </button>
+                        </form>
+                    </div>
                 </div>
 
                 <div className="mt-10 grid gap-4 md:grid-cols-3">
@@ -185,9 +246,12 @@ const BlogsPage = () => {
                 <div className="mt-8 space-y-4">
                     {filteredPosts.length > 0 ? (
                         filteredPosts.map((post) => (
-                            <article key={post.id} className="rounded-[2rem] border border-[#e3dccf] bg-[#fffdf8] px-6 py-6 shadow-[0_14px_40px_rgba(61,52,36,0.04)] transition-transform duration-200 hover:-translate-y-0.5">
+                            <article
+                                key={post.id}
+                                className="group relative rounded-[2rem] border border-[#e3dccf] bg-[#fffdf8] px-6 py-6 shadow-[0_14px_40px_rgba(61,52,36,0.04)] transition-transform duration-200 hover:-translate-y-0.5"
+                            >
                                 {post.externalLink ? (
-                                    <a href={post.externalLink} target="_blank" rel="noreferrer" className="group block">
+                                    <a href={post.externalLink} target="_blank" rel="noreferrer" className="block">
                                         <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
                                             <div className="min-w-0 flex-1">
                                                 <div className="flex flex-wrap items-center gap-4 text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-[#8e97a8]">
@@ -221,7 +285,7 @@ const BlogsPage = () => {
                                         </div>
                                     </a>
                                 ) : (
-                                    <Link to={`/blogs/${post.id}`} className="group block">
+                                    <Link to={`/blogs/${post.id}`} className="block">
                                         <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
                                             <div className="min-w-0 flex-1">
                                                 <div className="flex flex-wrap items-center gap-4 text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-[#8e97a8]">
@@ -255,6 +319,36 @@ const BlogsPage = () => {
                                         </div>
                                     </Link>
                                 )}
+
+                                <div className="mt-4 lg:hidden">
+                                    <button
+                                        type="button"
+                                        onClick={() => setMobileSummaryId((current) => (current === post.id ? null : post.id))}
+                                        className="inline-flex items-center gap-2 rounded-full border border-[#ddd6c9] bg-[#f7f2e8] px-3.5 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-[#5f594c] transition-colors hover:border-[#c9d793] hover:text-[#243042]"
+                                    >
+                                        {mobileSummaryId === post.id ? "Hide Summary" : "Quick Summary"}
+                                    </button>
+
+                                    {mobileSummaryId === post.id && (
+                                        <div className="mt-3 rounded-[1.2rem] border border-[#ded8ca] bg-white/95 p-4 shadow-[0_16px_40px_rgba(36,32,20,0.08)]">
+                                            <p className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-[#7f8760]">
+                                                Quick Summary
+                                            </p>
+                                            <p className="mt-3 text-[0.92rem] leading-6 text-[#5f594c]">
+                                                {post.excerpt}
+                                            </p>
+                                        </div>
+                                    )}
+                                </div>
+
+                                <div className="pointer-events-none absolute right-6 top-6 z-20 hidden w-[18rem] rounded-[1.4rem] border border-[#ded8ca] bg-white/95 p-4 opacity-0 shadow-[0_20px_60px_rgba(36,32,20,0.14)] backdrop-blur-sm transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 lg:block lg:translate-y-3">
+                                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-[#7f8760]">
+                                        Quick Summary
+                                    </p>
+                                    <p className="mt-3 overflow-hidden text-[0.92rem] leading-6 text-[#5f594c] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3]">
+                                        {post.excerpt}
+                                    </p>
+                                </div>
                             </article>
                         ))
                     ) : (
@@ -267,6 +361,7 @@ const BlogsPage = () => {
                     )}
                 </div>
             </section>
+            {notification && <NotificationToast {...notification} onClose={closeNotification} />}
         </div>
     );
 };
