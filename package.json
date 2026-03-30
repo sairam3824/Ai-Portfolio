@@ -4,13 +4,15 @@
   "private": true,
   "scripts": {
     "postinstall": "cd Version1 && npm install && cd ../Version2 && npm install && cd ../Version3 && npm install",
-    "build": "cd Version3 && npm run build && cd ../Version1 && npm run build && mkdir -p ../Version3/dist/v1 && cp -r dist/* ../Version3/dist/v1/"
+    "build": "cd Version3 && npm run build && cd ../Version1 && npm run build && mkdir -p ../Version3/dist/v1 && cp -r dist/* ../Version3/dist/v1/",
+    "newsletter:deploy": "node --import tsx scripts/send-latest-blog-newsletter.ts"
   },
   "devDependencies": {
     "@types/react": "^19.2.14",
     "@vercel/node": "^5.5.28",
     "lucide-react": "^1.7.0",
-    "react": "^19.2.4"
+    "react": "^19.2.4",
+    "tsx": "^4.20.6"
   },
   "dependencies": {
     "@openai/agents": "^0.4.3",
