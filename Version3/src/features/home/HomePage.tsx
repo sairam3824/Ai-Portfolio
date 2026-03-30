@@ -212,6 +212,7 @@ const FeaturedProjectCard = ({ project, index }: { project: any; index: number }
 /* ─── component ─── */
 
 export const HomePage = () => {
+    const [mobileBlogSummaryId, setMobileBlogSummaryId] = useState<string | null>(null);
     const title = useTypewriter({
         texts: ["GenAI Engineer", "ML Engineer", "Software Developer", "Cloud Architect", "AI Agent Builder", "Vibe Coder", "Competitive Programmer", "Full Stack Developer"],
         speed: 80, deleteSpeed: 40, delayBetweenTexts: 2000,
@@ -414,14 +415,13 @@ export const HomePage = () => {
                                                 <p className="text-[0.92rem] font-semibold tracking-[-0.02em] text-[#11100c]">{item.title}</p>
                                             </div>
                                             {/* Popup */}
-                                            <div className="pointer-events-none absolute left-[calc(100%+12px)] top-1/2 -translate-y-1/2 z-50 w-52 opacity-0 translate-x-[-4px] group-hover/focus:opacity-100 group-hover/focus:translate-x-0 transition-all duration-200 ease-out">
+                                            <div className="pointer-events-none absolute left-0 top-[calc(100%+10px)] z-50 w-[min(18rem,calc(100vw-5rem))] opacity-0 translate-y-2 group-hover/focus:opacity-100 group-hover/focus:translate-y-0 transition-all duration-200 ease-out xl:left-[calc(100%+12px)] xl:top-1/2 xl:w-52 xl:-translate-y-1/2 xl:translate-x-[-4px] xl:group-hover/focus:-translate-y-1/2 xl:group-hover/focus:translate-x-0">
                                                 <div className="rounded-2xl border border-[#e3dccf] bg-white p-4 shadow-[0_16px_48px_rgba(61,52,36,0.16)]">
                                                     <span className={`text-[0.62rem] font-semibold uppercase tracking-[0.2em] ${item.cls}`}>{item.label}</span>
                                                     <p className="mt-1 text-[0.82rem] font-bold text-[#11100c]">{item.title}</p>
                                                     <p className="mt-2 text-[0.75rem] leading-5 text-[#6f695c]">{item.detail}</p>
                                                 </div>
-                                                {/* Arrow pointing left */}
-                                                <div className="absolute top-1/2 -translate-y-1/2 -left-1.5 h-3 w-3 rotate-45 border-l border-b border-[#e3dccf] bg-white" />
+                                                <div className="absolute -top-1.5 left-6 h-3 w-3 rotate-45 border-l border-t border-[#e3dccf] bg-white xl:left-auto xl:top-1/2 xl:-left-1.5 xl:-translate-y-1/2 xl:border-b xl:border-l xl:border-t-0" />
                                             </div>
                                         </div>
                                     );
@@ -467,7 +467,7 @@ export const HomePage = () => {
                         {latestPosts.map((post, i) => {
                             const accent = blogAccent[post.iconColor] ?? "#4c74ff";
                             const inner = (
-                                <div className={`group flex gap-6 py-6 transition-transform duration-200 hover:-translate-y-0.5 ${i < latestPosts.length - 1 ? "border-b border-[#e4ddd1]" : ""}`}>
+                                <div className="flex gap-6 py-6 transition-transform duration-200 hover:-translate-y-0.5">
                                     {/* Accent line */}
                                     <div className="hidden sm:flex flex-col items-center pt-2">
                                         <span className="h-3 w-3 rounded-full shrink-0" style={{ backgroundColor: accent }} />
@@ -505,9 +505,85 @@ export const HomePage = () => {
                             );
 
                             return post.externalLink ? (
-                                <a key={post.id} href={post.externalLink} target="_blank" rel="noreferrer" className="block">{inner}</a>
+                                <a
+                                    key={post.id}
+                                    href={post.externalLink}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className={`group relative block ${i < latestPosts.length - 1 ? "border-b border-[#e4ddd1] pb-6" : ""}`}
+                                >
+                                    {inner}
+                                    <div className="mt-3 lg:hidden">
+                                        <button
+                                            type="button"
+                                            onClick={(event) => {
+                                                event.preventDefault();
+                                                setMobileBlogSummaryId((current) => (current === post.id ? null : post.id));
+                                            }}
+                                            className="inline-flex items-center gap-2 rounded-full border border-[#ddd6c9] bg-[#f7f2e8] px-3.5 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-[#5f594c] transition-colors hover:border-[#c9d793] hover:text-[#243042]"
+                                        >
+                                            {mobileBlogSummaryId === post.id ? "Hide Summary" : "Quick Summary"}
+                                        </button>
+
+                                        {mobileBlogSummaryId === post.id && (
+                                            <div className="mt-3 rounded-[1.2rem] border border-[#ded8ca] bg-white/95 p-4 shadow-[0_16px_40px_rgba(36,32,20,0.08)]">
+                                                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-[#7f8760]">
+                                                    Quick Summary
+                                                </p>
+                                                <p className="mt-3 text-[0.92rem] leading-6 text-[#5f594c]">
+                                                    {post.excerpt}
+                                                </p>
+                                            </div>
+                                        )}
+                                    </div>
+                                    <div className="pointer-events-none absolute right-4 top-5 z-20 hidden w-[18rem] rounded-[1.4rem] border border-[#ded8ca] bg-white/95 p-4 opacity-0 shadow-[0_20px_60px_rgba(36,32,20,0.14)] backdrop-blur-sm transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 lg:block lg:translate-y-3">
+                                        <p className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-[#7f8760]">
+                                            Quick Summary
+                                        </p>
+                                        <p className="mt-3 overflow-hidden text-[0.92rem] leading-6 text-[#5f594c] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3]">
+                                            {post.excerpt}
+                                        </p>
+                                    </div>
+                                </a>
                             ) : (
-                                <Link key={post.id} to={`/blogs/${post.id}`} className="block">{inner}</Link>
+                                <Link
+                                    key={post.id}
+                                    to={`/blogs/${post.id}`}
+                                    className={`group relative block ${i < latestPosts.length - 1 ? "border-b border-[#e4ddd1] pb-6" : ""}`}
+                                >
+                                    {inner}
+                                    <div className="mt-3 lg:hidden">
+                                        <button
+                                            type="button"
+                                            onClick={(event) => {
+                                                event.preventDefault();
+                                                setMobileBlogSummaryId((current) => (current === post.id ? null : post.id));
+                                            }}
+                                            className="inline-flex items-center gap-2 rounded-full border border-[#ddd6c9] bg-[#f7f2e8] px-3.5 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-[#5f594c] transition-colors hover:border-[#c9d793] hover:text-[#243042]"
+                                        >
+                                            {mobileBlogSummaryId === post.id ? "Hide Summary" : "Quick Summary"}
+                                        </button>
+
+                                        {mobileBlogSummaryId === post.id && (
+                                            <div className="mt-3 rounded-[1.2rem] border border-[#ded8ca] bg-white/95 p-4 shadow-[0_16px_40px_rgba(36,32,20,0.08)]">
+                                                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-[#7f8760]">
+                                                    Quick Summary
+                                                </p>
+                                                <p className="mt-3 text-[0.92rem] leading-6 text-[#5f594c]">
+                                                    {post.excerpt}
+                                                </p>
+                                            </div>
+                                        )}
+                                    </div>
+                                    <div className="pointer-events-none absolute right-4 top-5 z-20 hidden w-[18rem] rounded-[1.4rem] border border-[#ded8ca] bg-white/95 p-4 opacity-0 shadow-[0_20px_60px_rgba(36,32,20,0.14)] backdrop-blur-sm transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 lg:block lg:translate-y-3">
+                                        <p className="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-[#7f8760]">
+                                            Quick Summary
+                                        </p>
+                                        <p className="mt-3 overflow-hidden text-[0.92rem] leading-6 text-[#5f594c] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3]">
+                                            {post.excerpt}
+                                        </p>
+                                    </div>
+                                </Link>
                             );
                         })}
                     </div>
