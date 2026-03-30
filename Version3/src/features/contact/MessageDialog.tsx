@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import { Send, MessageSquare, X, Shield, AlertCircle, CheckCircle2 } from "lucide-react";
+import { Send, MessageSquare, X, Shield } from "lucide-react";
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { NotificationToast } from "@/shared/ui/NotificationToast";
 
 // Memory storage to persist draft across internal route navigation
 // This resets to "" automatically if the browser session is refreshed (page reload)
@@ -36,7 +37,6 @@ export const MessageDialog = ({ open, onOpenChange }: MessageDialogProps) => {
 
     const showNotification = (title: string, description: string, type: 'success' | 'error') => {
         setNotification({ title, description, type });
-        setTimeout(() => setNotification(null), 4000);
     };
 
 
@@ -194,21 +194,7 @@ export const MessageDialog = ({ open, onOpenChange }: MessageDialogProps) => {
             </div>
 
             {/* Premium Notification Toast */}
-            {notification && (
-                <div className={`fixed top-4 left-4 right-4 sm:left-auto sm:right-8 sm:max-w-xs z-[110] w-auto animate-fade-in`}>
-                    <div className={`flex gap-4 rounded-3xl border bg-[#fffdf8] p-5 shadow-2xl ${notification.type === 'success' ? 'border-emerald-100' : 'border-rose-100'
-                        }`}>
-                        <div className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl ${notification.type === 'success' ? 'bg-emerald-50 text-emerald-500' : 'bg-rose-50 text-rose-500'
-                            }`}>
-                            {notification.type === 'success' ? <CheckCircle2 className="w-6 h-6" /> : <AlertCircle className="w-6 h-6" />}
-                        </div>
-                        <div className="space-y-1">
-                            <h4 className="text-sm font-black uppercase tracking-tight text-[#17140f]">{notification.title}</h4>
-                            <p className="text-xs font-medium leading-relaxed text-[#7b7467]">{notification.description}</p>
-                        </div>
-                    </div>
-                </div>
-            )}
+            {notification && <NotificationToast {...notification} onClose={() => setNotification(null)} />}
         </div>
     );
 };
