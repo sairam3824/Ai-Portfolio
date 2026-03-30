@@ -197,12 +197,20 @@ export const SiteLayout = () => {
 
                 <div className="mt-10 flex flex-col gap-4 border-t border-[#ddd7cb] pt-6 text-[0.78rem] font-semibold uppercase tracking-[0.2em] text-[#7f8760] sm:flex-row sm:items-center sm:justify-between">
                     <p>&copy; {siteMetadata.copyrightYear} Sai Rama Linga Reddy Maruri</p>
-                    <a
-                        href="/"
-                        className="inline-flex items-center gap-2 rounded-full bg-[#1b2433] px-6 py-2.5 text-[0.82rem] font-semibold text-white normal-case tracking-wide shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg hover:bg-[#253044]"
-                    >
-                        ← Switch to Version 2
-                    </a>
+                    <div className="flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
+                        <a
+                            href="/v1/"
+                            className="inline-flex items-center gap-2 rounded-full border border-[#d7d0c2] bg-[#fffaf1] px-6 py-2.5 text-[0.82rem] font-semibold text-[#17140f] normal-case tracking-wide shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md hover:bg-white"
+                        >
+                            ← Switch to Version 1
+                        </a>
+                        <a
+                            href="/"
+                            className="inline-flex items-center gap-2 rounded-full bg-[#1b2433] px-6 py-2.5 text-[0.82rem] font-semibold text-white normal-case tracking-wide shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg hover:bg-[#253044]"
+                        >
+                            ← Switch to Version 2
+                        </a>
+                    </div>
                     <p>Built for shipping, not placeholders.</p>
                 </div>
             </div>
