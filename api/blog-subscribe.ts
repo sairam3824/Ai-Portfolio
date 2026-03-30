@@ -76,6 +76,16 @@ async function insertSubscriber(email: string, userAgent: string | null, unsubsc
     });
 }
 
+const isDuplicateSubscriberError = (error: unknown) => {
+    if (!(error instanceof Error)) return false;
+
+    return (
+        error.message.includes("23505") ||
+        error.message.toLowerCase().includes("duplicate key") ||
+        error.message.toLowerCase().includes("blog_subscribers_email_key")
+    );
+};
+
 async function reactivateSubscriber(email: string, userAgent: string | null, unsubscribeToken: string) {
     await supabaseRequest(
         `blog_subscribers?email=eq.${encodeURIComponent(email)}`,
@@ -307,6 +317,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             welcomeEmailSent,
         });
     } catch (error) {
+        if (isDuplicateSubscriberError(error)) {
+            return res.status(200).json({
+                status: "already_subscribed",
+                welcomeEmailSent: false,
+            });
+        }
+
         console.error("Blog subscription failed:", error);
         return res.status(500).json({
             error: "Subscription failed. Please try again in a moment.",
