@@ -25,6 +25,8 @@ export const useBlogSubscription = () => {
         event.preventDefault();
 
         const normalizedEmail = email.trim().toLowerCase();
+        const browserUserAgent = typeof window !== "undefined" ? window.navigator.userAgent : null;
+        const unsubscribeToken = crypto.randomUUID();
 
         if (!normalizedEmail) {
             showNotification("Missing email", "Enter your email address to subscribe.", "error");
@@ -48,9 +50,53 @@ export const useBlogSubscription = () => {
                 throw new Error("Supabase is not configured for this environment yet.");
             }
 
+            const { data: existingSubscriber, error: lookupError } = await supabaseRef.current
+                .from("blog_subscribers")
+                .select("email, is_active")
+                .eq("email", normalizedEmail)
+                .maybeSingle();
+
+            if (lookupError) {
+                throw lookupError;
+            }
+
+            if (existingSubscriber?.is_active) {
+                setEmail("");
+                showNotification("Already subscribed", "This email is already on the blog updates list.", "success");
+                return;
+            }
+
+            if (existingSubscriber) {
+                const { error: updateError } = await supabaseRef.current
+                    .from("blog_subscribers")
+                    .update({
+                        is_active: true,
+                        unsubscribed_at: null,
+                        unsubscribe_token: unsubscribeToken,
+                        source: "blogs_page",
+                        user_agent: browserUserAgent,
+                        subscribed_at: new Date().toISOString(),
+                    })
+                    .eq("email", normalizedEmail);
+
+                if (updateError) {
+                    throw updateError;
+                }
+
+                setEmail("");
+                showNotification("Welcome back", "Your subscription has been reactivated for future blog updates.", "success");
+                return;
+            }
+
             const { error } = await supabaseRef.current
                 .from("blog_subscribers")
-                .insert([{ email: normalizedEmail }]);
+                .insert([{
+                    email: normalizedEmail,
+                    is_active: true,
+                    unsubscribe_token: unsubscribeToken,
+                    source: "blogs_page",
+                    user_agent: browserUserAgent,
+                }]);
 
             if (error) {
                 if (error.code === "23505") {
