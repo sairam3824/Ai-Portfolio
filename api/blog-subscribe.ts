@@ -44,11 +44,8 @@ async function supabaseRequest<T>(path: string, init: RequestInit = {}): Promise
         throw new Error(`Supabase request failed (${response.status}): ${body}`);
     }
 
-    if (response.status === 204) {
-        return undefined as T;
-    }
-
-    return (await response.json()) as T;
+    const body = await response.text();
+    return (body ? JSON.parse(body) : undefined) as T;
 }
 
 async function getSubscriber(email: string) {
