@@ -15,6 +15,8 @@ interface ChatWidgetProps {
     contactPath?: string;
     /** Render a router Link component for internal navigation */
     renderLink?: (props: { to: string; className: string; children: React.ReactNode }) => React.ReactNode;
+    /** Optional visible label beside the floating launcher */
+    launcherLabel?: string;
 }
 
 const SUGGESTED_QUESTIONS = [
@@ -34,6 +36,7 @@ export default function ChatWidget({
     contactEmail = 'sairam.maruri@gmail.com',
     contactPath = '/contact',
     renderLink,
+    launcherLabel,
 }: ChatWidgetProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState<Message[]>([WELCOME_MESSAGE]);
@@ -122,7 +125,7 @@ export default function ChatWidget({
     const showSuggestions = messages.length === 1;
 
     return (
-        <div className="fixed inset-x-4 bottom-4 z-50 flex flex-col items-end gap-3 sm:inset-x-auto sm:bottom-6 sm:right-6">
+        <div className="fixed inset-x-4 bottom-4 z-[160] flex flex-col items-end gap-3 sm:inset-x-auto sm:bottom-6 sm:right-6">
             {isOpen && (
                 <div className="w-full max-w-[min(380px,100vw-2rem)] bg-white rounded-3xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden animate-in slide-in-from-bottom-4 fade-in duration-300"
                     style={{ maxHeight: 'min(520px, calc(100vh - 120px))' }}>
@@ -219,20 +222,31 @@ export default function ChatWidget({
             )}
 
             {/* Toggle Button */}
-            <button
-                onClick={() => setIsOpen(prev => !prev)}
-                className="w-14 h-14 rounded-full bg-blue-600 text-white shadow-xl hover:bg-blue-700 transition-all active:scale-95 hover:scale-105 flex items-center justify-center relative"
-                aria-label={isOpen ? 'Close chat' : 'Chat with AI about Sai Ram'}
-            >
-                {isOpen ? (
-                    <X className="w-6 h-6" />
-                ) : (
-                    <MessageCircle className="w-6 h-6" />
+            <div className="flex items-center gap-3">
+                {!isOpen && launcherLabel && (
+                    <button
+                        type="button"
+                        onClick={() => setIsOpen(true)}
+                        className="hidden sm:inline-flex items-center rounded-full border border-blue-100 bg-white/95 px-4 py-2.5 text-sm font-semibold text-gray-800 shadow-lg shadow-blue-500/10 backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-blue-200 hover:text-blue-700"
+                    >
+                        {launcherLabel}
+                    </button>
                 )}
-                {hasUnread && !isOpen && (
-                    <span className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-red-500 border-2 border-white" />
-                )}
-            </button>
+                <button
+                    onClick={() => setIsOpen(prev => !prev)}
+                    className="w-14 h-14 rounded-full bg-blue-600 text-white shadow-xl ring-4 ring-white/80 hover:bg-blue-700 transition-all active:scale-95 hover:scale-105 flex items-center justify-center relative"
+                    aria-label={isOpen ? 'Close chat' : 'Chat with AI about Sai Ram'}
+                >
+                    {isOpen ? (
+                        <X className="w-6 h-6" />
+                    ) : (
+                        <MessageCircle className="w-6 h-6" />
+                    )}
+                    {hasUnread && !isOpen && (
+                        <span className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-red-500 border-2 border-white" />
+                    )}
+                </button>
+            </div>
         </div>
     );
 }
