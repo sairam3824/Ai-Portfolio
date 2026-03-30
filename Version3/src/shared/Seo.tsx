@@ -3,10 +3,14 @@ import { useLocation } from "react-router-dom";
 import { profileDetails, siteMetadata } from "@/data/siteMetadata";
 
 const SITE_URL = siteMetadata.siteUrl;
-const SITE_PATH_PREFIX = "/v3";
+const SITE_PATH_PREFIX =
+    import.meta.env.BASE_URL === "/"
+        ? ""
+        : import.meta.env.BASE_URL.replace(/\/$/, "");
 const DEFAULT_IMAGE = `${SITE_URL}${siteMetadata.previewImage}`;
 const SITE_NAME = profileDetails.name;
 const AUTHOR_NAME = profileDetails.name;
+const DEFAULT_ROBOTS = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 
 const toCanonicalUrl = (path: string) => {
     if (path.startsWith("http://") || path.startsWith("https://")) {
@@ -49,7 +53,7 @@ const Seo = ({
     type = "website",
     pageType = "WebPage",
     canonical,
-    robots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    robots = DEFAULT_ROBOTS,
     publishedTime,
     modifiedTime,
     breadcrumbs,
@@ -58,6 +62,7 @@ const Seo = ({
     const { pathname } = useLocation();
     const url = canonical ? toCanonicalUrl(canonical) : toCanonicalUrl(pathname);
     const fullImage = image.startsWith("http") ? image : `${SITE_URL}${image}`;
+    const imageAlt = `${title} | ${SITE_NAME}`;
 
     const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 ? {
         "@context": "https://schema.org",
@@ -117,6 +122,8 @@ const Seo = ({
             <meta name="description" content={description} />
             <meta name="author" content={AUTHOR_NAME} />
             <meta name="robots" content={robots} />
+            <meta name="googlebot" content={robots} />
+            <meta name="bingbot" content={robots} />
             <link rel="canonical" href={url} />
             {keywords && keywords.length > 0 && (
                 <meta name="keywords" content={keywords.join(", ")} />
@@ -127,10 +134,11 @@ const Seo = ({
             <meta property="og:type" content={type} />
             <meta property="og:url" content={url} />
             <meta property="og:image" content={fullImage} />
+            <meta property="og:image:url" content={fullImage} />
             <meta property="og:image:secure_url" content={fullImage} />
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="630" />
-            <meta property="og:image:alt" content={`${profileDetails.name} — ${profileDetails.shortRole} Portfolio`} />
+            <meta property="og:image:alt" content={imageAlt} />
             <meta property="og:image:type" content="image/png" />
             <meta property="og:site_name" content={SITE_NAME} />
             <meta property="og:locale" content="en_US" />
@@ -141,7 +149,7 @@ const Seo = ({
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
             <meta name="twitter:image" content={fullImage} />
-            <meta name="twitter:image:alt" content={`${profileDetails.name} — ${profileDetails.shortRole} Portfolio`} />
+            <meta name="twitter:image:alt" content={imageAlt} />
             <meta name="twitter:creator" content={siteMetadata.twitterHandle} />
             <meta name="twitter:site" content={siteMetadata.twitterHandle} />
 
