@@ -38,6 +38,25 @@ const allProjects = [...projectsData].sort((a, b) => {
 const projectCategories = ["All", ...Array.from(new Set(allProjects.map((project) => project.category)))];
 const liveProjectsCount = allProjects.filter((project) => project.link).length;
 
+const formatGithubLabel = (url: string) => {
+    try {
+        const { pathname } = new URL(url);
+        return pathname.replace(/^\/+|\/+$/g, "") || "GitHub";
+    } catch {
+        return url.replace("https://github.com/", "").replace(/\/$/, "") || "GitHub";
+    }
+};
+
+const formatProjectLinkLabel = (url: string) => {
+    try {
+        const { hostname, pathname } = new URL(url);
+        const cleanPath = pathname.replace(/^\/+|\/+$/g, "");
+        return [hostname.replace(/^www\./, ""), cleanPath].filter(Boolean).join("/") || "Visit";
+    } catch {
+        return url.replace(/^https?:\/\//, "").replace(/\/$/, "") || "Visit";
+    }
+};
+
 export const ProjectsPage = () => {
     const [activeCategory, setActiveCategory] = useState("All");
     const [query, setQuery] = useState("");
@@ -216,7 +235,7 @@ export const ProjectsPage = () => {
                                                 rel="noreferrer"
                                                 className="inline-flex items-center gap-2 rounded-full border border-[#d0c8bc] px-4 py-2.5 text-sm font-semibold text-[#18160f]"
                                             >
-                                                GitHub
+                                                {formatGithubLabel(project.github)}
                                                 <Github className="h-4 w-4" />
                                             </a>
                                         )}
@@ -227,7 +246,7 @@ export const ProjectsPage = () => {
                                                 rel="noreferrer"
                                                 className="inline-flex items-center gap-2 rounded-full bg-[#e2edbf] px-4 py-2.5 text-sm font-semibold text-[#18160f]"
                                             >
-                                                Visit
+                                                {formatProjectLinkLabel(project.link)}
                                                 <ArrowUpRight className="h-4 w-4" />
                                             </a>
                                         )}
