@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "postinstall": "cd Version1 && npm install && cd ../Version2 && npm install && cd ../Version3 && npm install",
-    "build": "cd Version2 && npm run build && cd ../Version1 && npm run build && mkdir -p ../Version2/dist/v1 && cp -r dist/* ../Version2/dist/v1/ && cd ../Version3 && npm run build && mkdir -p ../Version2/dist/v3 && cp -r dist/* ../Version2/dist/v3/"
+    "build": "cd Version3 && npm run build && cd ../Version1 && npm run build && mkdir -p ../Version3/dist/v1 && cp -r dist/* ../Version3/dist/v1/"
   },
   "devDependencies": {
     "@types/react": "^19.2.14",
