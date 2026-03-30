@@ -42,6 +42,25 @@ const projects = projectsData.map(p => ({
     return 0;
 });
 
+const formatGithubLabel = (url: string) => {
+    try {
+        const { pathname } = new URL(url);
+        return pathname.replace(/^\/+|\/+$/g, "") || "GitHub";
+    } catch {
+        return url.replace("https://github.com/", "").replace(/\/$/, "") || "GitHub";
+    }
+};
+
+const formatProjectLinkLabel = (url: string) => {
+    try {
+        const { hostname, pathname } = new URL(url);
+        const cleanPath = pathname.replace(/^\/+|\/+$/g, "");
+        return [hostname.replace(/^www\./, ""), cleanPath].filter(Boolean).join("/") || "Visit";
+    } catch {
+        return url.replace(/^https?:\/\//, "").replace(/\/$/, "") || "Visit";
+    }
+};
+
 export const ProjectsSection = () => {
     const [searchQuery, setSearchQuery] = useState("");
 
@@ -141,13 +160,13 @@ export const ProjectsSection = () => {
                                 {project.github && (
                                     <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex-1 min-w-0 flex items-center justify-center gap-2 py-3 bg-gray-900 text-white rounded-2xl text-[10px] font-bold tracking-tight hover:bg-gray-800 transition-colors active:scale-95 px-2">
                                         <Github className="w-3.5 h-3.5 shrink-0" />
-                                        <span className="truncate">GitHub</span>
+                                        <span className="truncate">{formatGithubLabel(project.github)}</span>
                                     </a>
                                 )}
                                 {project.link && (
                                     <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex-1 min-w-0 flex items-center justify-center gap-2 py-3 bg-blue-600 text-white rounded-2xl text-[10px] font-bold tracking-tight hover:bg-blue-500 transition-colors shadow-lg shadow-blue-500/20 active:scale-95 px-2">
                                         <ExternalLink className="w-3.5 h-3.5 shrink-0" />
-                                        <span className="truncate">{project.link.replace(/^https?:\/\//, "").replace(/\/$/, "").toLowerCase()}</span>
+                                        <span className="truncate">{formatProjectLinkLabel(project.link)}</span>
                                     </a>
                                 )}
                             </div>
