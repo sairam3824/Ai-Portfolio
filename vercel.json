@@ -1,7 +1,19 @@
 {
     "buildCommand": "DISABLE_PWA=true npm run build",
-    "outputDirectory": "Version2/dist",
+    "outputDirectory": "Version3/dist",
     "framework": "vite",
+    "redirects": [
+        {
+            "source": "/v3",
+            "destination": "/",
+            "permanent": true
+        },
+        {
+            "source": "/v3/:path*",
+            "destination": "/:path*",
+            "permanent": true
+        }
+    ],
     "headers": [
         {
             "source": "/assets/(.*)",
@@ -47,14 +59,6 @@
         {
             "source": "/v1/((?!.*\\.).*)",
             "destination": "/v1/index.html"
-        },
-        {
-            "source": "/v3",
-            "destination": "/v3/index.html"
-        },
-        {
-            "source": "/v3/((?!.*\\.).*)",
-            "destination": "/v3/index.html"
         },
         {
             "source": "/((?!.*\\.).*)",
