@@ -1,5 +1,5 @@
 {
-    "buildCommand": "DISABLE_PWA=true npm run build",
+    "buildCommand": "DISABLE_PWA=true npm run build && npm run newsletter:deploy",
     "outputDirectory": "Version3/dist",
     "framework": "vite",
     "redirects": [
