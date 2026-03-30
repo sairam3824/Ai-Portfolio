@@ -29,6 +29,7 @@ function injectSiteMetadataPlugin(): Plugin {
 
 export default defineConfig(({ mode }) => ({
   base: '/v1/',
+  envDir: path.resolve(__dirname, ".."),
   publicDir: path.resolve(__dirname, "../shared-public"),
   server: {
     host: "::",
