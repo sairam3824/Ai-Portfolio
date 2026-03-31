@@ -2,8 +2,6 @@ import fs from 'fs';
 import { defineConfig, loadEnv, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import viteCompression from 'vite-plugin-compression';
-import { VitePWA } from 'vite-plugin-pwa';
 import { profileDetails, siteMetadata } from '../shared-data/siteMetadata';
 import { buildRootRobotsTxt, buildRootSitemapXml } from '../shared-data/seoArtifacts';
 
@@ -31,7 +29,7 @@ function injectSiteMetadataPlugin(): Plugin {
     const replacements: Record<string, string> = {
         '%SITE_URL%': siteMetadata.siteUrl,
         '%CANONICAL_SITE_URL%': siteMetadata.siteUrl,
-        '%SITE_SEARCH_URL%': `${siteMetadata.siteUrl}/blogs`,
+        '%SITE_SEARCH_URL%': `${siteMetadata.siteUrl}/writing`,
         '%SITE_TITLE%': siteMetadata.defaultTitle,
         '%SITE_DESCRIPTION%': siteMetadata.defaultDescription,
         '%SITE_NAME%': profileDetails.name,
@@ -40,6 +38,7 @@ function injectSiteMetadataPlugin(): Plugin {
         '%ALTERNATE_NAME%': profileDetails.alternateName,
         '%EMAIL%': profileDetails.email,
         '%PREVIEW_IMAGE_URL%': `${siteMetadata.siteUrl}${siteMetadata.previewImage}`,
+        '%PREVIEW_IMAGE_TYPE%': siteMetadata.previewImageType,
         '%SHORT_ROLE%': profileDetails.shortRole,
         '%JOB_TITLE%': profileDetails.jobTitle,
         '%ALUMNI_NAME%': siteMetadata.alumniOf.name,
@@ -86,119 +85,12 @@ export default defineConfig(({ mode }) => {
     return {
         base: '/',
         envDir,
+        publicDir: path.resolve(__dirname, "../shared-public"),
         plugins: [
         react(),
         preloadAvatarPlugin(),
         injectSiteMetadataPlugin(),
-        writeSeoArtifactsPlugin(),
-        viteCompression({
-            algorithm: 'gzip',
-            ext: '.gz',
-            threshold: 512,
-            deleteOriginFile: false,
-        }),
-        viteCompression({
-            algorithm: 'brotliCompress',
-            ext: '.br',
-            threshold: 512,
-            deleteOriginFile: false,
-        }),
-        VitePWA({
-            registerType: 'autoUpdate',
-            minify: true,
-            disable: process.env.DISABLE_PWA === 'true',
-            workbox: {
-                globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,avif,woff2}'],
-                navigateFallback: '/index.html',
-                navigateFallbackDenylist: [/^\/v1/, /^\/api/],
-                cleanupOutdatedCaches: true,
-                skipWaiting: true,
-                clientsClaim: true,
-                runtimeCaching: [
-                    {
-                        urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-                        handler: 'CacheFirst',
-                        options: {
-                            cacheName: 'google-fonts-cache',
-                            expiration: {
-                                maxEntries: 10,
-                                maxAgeSeconds: 60 * 60 * 24 * 365
-                            },
-                            cacheableResponse: {
-                                statuses: [0, 200]
-                            }
-                        }
-                    },
-                    {
-                        urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
-                        handler: 'CacheFirst',
-                        options: {
-                            cacheName: 'gstatic-fonts-cache',
-                            expiration: {
-                                maxEntries: 10,
-                                maxAgeSeconds: 60 * 60 * 24 * 365
-                            },
-                            cacheableResponse: {
-                                statuses: [0, 200]
-                            }
-                        }
-                    },
-                    {
-                        urlPattern: /^https:\/\/.*\.supabase\.co\/.*/i,
-                        handler: 'NetworkFirst',
-                        options: {
-                            cacheName: 'supabase-cache',
-                            expiration: {
-                                maxEntries: 50,
-                                maxAgeSeconds: 60 * 5
-                            },
-                            networkTimeoutSeconds: 10,
-                            cacheableResponse: {
-                                statuses: [0, 200]
-                            }
-                        }
-                    }
-                ]
-            },
-            manifest: {
-                name: siteMetadata.applicationName,
-                short_name: profileDetails.brand,
-                description: siteMetadata.manifestDescription,
-                lang: 'en',
-                dir: 'ltr',
-                theme_color: '#ffffff',
-                background_color: '#ffffff',
-                display: 'standalone',
-                start_url: '/',
-                scope: '/',
-                orientation: 'portrait-primary',
-                icons: [
-                    {
-                        src: 'favicon.ico',
-                        sizes: '64x64 32x32 24x24 16x16',
-                        type: 'image/x-icon'
-                    },
-                    {
-                        src: 'pwa-192x192.png',
-                        sizes: '192x192',
-                        type: 'image/png',
-                        purpose: 'any'
-                    },
-                    {
-                        src: 'pwa-512x512.png',
-                        sizes: '512x512',
-                        type: 'image/png',
-                        purpose: 'any'
-                    },
-                    {
-                        src: 'pwa-maskable-512x512.png',
-                        sizes: '512x512',
-                        type: 'image/png',
-                        purpose: 'maskable'
-                    }
-                ]
-            }
-        })
+        writeSeoArtifactsPlugin()
         ],
         resolve: {
             alias: {
