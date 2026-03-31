@@ -20,7 +20,9 @@ export function useGitHubRepos(fallback = `${projectsData.length}+`): string {
                     return `${entry.count}+`;
                 }
             }
-        } catch {}
+        } catch {
+            // Ignore cache parse/storage errors and fall back to the static value.
+        }
         return fallback;
     });
 
