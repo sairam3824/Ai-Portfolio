@@ -1,9 +1,10 @@
 import { useEffect, useCallback, Suspense, lazy, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { HelmetProvider } from 'react-helmet-async';
 import Home from './Home';
 import ChatWidget from './features/home/ChatWidget';
+import { getWritingPath, ROUTE_PATHS, WRITING_LABEL } from './data/siteRoutes';
 
 // Route chunk loaders — stored for prefetching on hover
 const routeLoaders = {
@@ -12,7 +13,7 @@ const routeLoaders = {
     contact: () => import('./features/contact'),
     certifications: () => import('./features/certifications'),
     skills: () => import('./features/skills'),
-    blog: () => import('./features/blog'),
+    writing: () => import('./features/writing'),
     projects: () => import('./features/projects'),
     resume: () => import('./features/resume'),
     codingProfiles: () => import('./features/coding-profiles'),
@@ -24,8 +25,8 @@ const EducationPage = lazy(() => routeLoaders.education().then(module => ({ defa
 const ContactPage = lazy(() => routeLoaders.contact().then(module => ({ default: module.ContactPage })));
 const CertificationsPage = lazy(() => routeLoaders.certifications().then(module => ({ default: module.CertificationsPage })));
 const SkillsPage = lazy(() => routeLoaders.skills().then(module => ({ default: module.SkillsPage })));
-const BlogsPage = lazy(() => routeLoaders.blog().then(module => ({ default: module.BlogsPage })));
-const BlogPostPage = lazy(() => routeLoaders.blog().then(module => ({ default: module.BlogPostPage })));
+const BlogsPage = lazy(() => routeLoaders.writing().then(module => ({ default: module.BlogsPage })));
+const BlogPostPage = lazy(() => routeLoaders.writing().then(module => ({ default: module.BlogPostPage })));
 const ProjectsPage = lazy(() => routeLoaders.projects().then(module => ({ default: module.ProjectsPage })));
 const ResumePage = lazy(() => routeLoaders.resume().then(module => ({ default: module.ResumePage })));
 const AdminPage = lazy(() => import('./features/admin/AdminPage'));
@@ -41,7 +42,8 @@ const pathToLoader: Record<string, () => Promise<unknown>> = {
     '/contact': routeLoaders.contact,
     '/certifications': routeLoaders.certifications,
     '/skills': routeLoaders.skills,
-    '/blogs': routeLoaders.blog,
+    [ROUTE_PATHS.writing]: routeLoaders.writing,
+    [ROUTE_PATHS.legacyWriting]: routeLoaders.writing,
     '/projects': routeLoaders.projects,
     '/resume': routeLoaders.resume,
     '/coding-profiles': routeLoaders.codingProfiles,
@@ -71,7 +73,7 @@ const NAV_ITEMS = [
     { path: '/projects', label: 'Projects', icon: Folder, color: 'text-blue-500', bg: 'bg-blue-100' },
     { path: '/skills', label: 'Skills', icon: Shield, color: 'text-orange-500', bg: 'bg-orange-100' },
     { path: '/education', label: 'Education', icon: CreditCard, color: 'text-yellow-600', bg: 'bg-yellow-100' },
-    { path: '/blogs', label: 'Writing', icon: Code2, color: 'text-indigo-600', bg: 'bg-indigo-100' },
+    { path: ROUTE_PATHS.writing, label: WRITING_LABEL, icon: Code2, color: 'text-indigo-600', bg: 'bg-indigo-100' },
     { path: '/certifications', label: 'Certifications', icon: Award, color: 'text-cyan-600', bg: 'bg-cyan-100' },
     { path: '/contact', label: 'Contact', icon: Mail, color: 'text-blue-600', bg: 'bg-blue-100' },
 ];
@@ -179,6 +181,13 @@ const ExternalRedirect = ({ url }: { url: string }) => {
     return null;
 };
 
+const LegacyWritingRedirect = () => <Navigate to={ROUTE_PATHS.writing} replace />;
+
+const LegacyWritingPostRedirect = () => {
+    const { id } = useParams<{ id: string }>();
+    return <Navigate to={getWritingPath(id)} replace />;
+};
+
 function App() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -208,8 +217,10 @@ function App() {
                                     <Route path="/skills" element={<SkillsPage />} />
                                     <Route path="/resume" element={<ResumePage />} />
                                     <Route path="/projects" element={<ProjectsPage />} />
-                                    <Route path="/blogs" element={<BlogsPage />} />
-                                    <Route path="/blogs/:id" element={<BlogPostPage />} />
+                                    <Route path={ROUTE_PATHS.writing} element={<BlogsPage />} />
+                                    <Route path={`${ROUTE_PATHS.writing}/:id`} element={<BlogPostPage />} />
+                                    <Route path={ROUTE_PATHS.legacyWriting} element={<LegacyWritingRedirect />} />
+                                    <Route path={`${ROUTE_PATHS.legacyWriting}/:id`} element={<LegacyWritingPostRedirect />} />
                                     <Route path="/certifications" element={<CertificationsPage />} />
                                     <Route path="/contact" element={<ContactPage />} />
                                     <Route path="/admin" element={<AdminPage />} />
