@@ -1,43 +1,98 @@
-import { lazy } from "react";
+import { lazy, startTransition, Suspense, useEffect, useState } from "react";
 import { HelmetProvider } from "react-helmet-async";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate, useParams } from "react-router-dom";
 import { SiteLayout } from "@/features/site/SiteLayout";
-import ChatWidget from "@/features/chat/ChatWidget";
+import { getWritingPath, ROUTE_PATHS } from "@/data/siteRoutes";
+import {
+    loadAboutPage,
+    loadAdminPage,
+    loadBlogPostPage,
+    loadBlogsPage,
+    loadCertificationsPage,
+    loadChatWidget,
+    loadCodingProfilesPage,
+    loadContactPage,
+    loadEducationPage,
+    loadHomePage,
+    loadNotFoundPage,
+    loadPrivacyPage,
+    loadProjectsPage,
+    loadResumePage,
+    loadSkillsPage,
+    loadTermsPage,
+} from "@/app/routeLoaders";
 
 const routerBasename =
     import.meta.env.BASE_URL === "/"
         ? "/"
         : import.meta.env.BASE_URL.replace(/\/$/, "");
 
-const HomePage = lazy(() =>
-    import("@/features/home/HomePage").then((module) => ({ default: module.HomePage })),
-);
-const AboutPage = lazy(() =>
-    import("@/features/about/AboutPage").then((module) => ({ default: module.AboutPage })),
-);
-const ProjectsPage = lazy(() =>
-    import("@/features/projects/ProjectsPage").then((module) => ({ default: module.ProjectsPage })),
-);
-const SkillsPage = lazy(() =>
-    import("@/features/skills/SkillsPage").then((module) => ({ default: module.SkillsPage })),
-);
-const EducationPage = lazy(() => import("@/features/education/EducationPage"));
-const ResumePage = lazy(() =>
-    import("@/features/resume/ResumePage").then((module) => ({ default: module.ResumePage })),
-);
-const CodingProfilesPage = lazy(() =>
-    import("@/features/coding-profiles/CodingProfilesPage").then((module) => ({ default: module.CodingProfilesPage })),
-);
-const ContactPage = lazy(() =>
-    import("@/features/contact/ContactPage").then((module) => ({ default: module.ContactPage })),
-);
-const CertificationsPage = lazy(() => import("@/features/certifications/CertificationsPage"));
-const BlogsPage = lazy(() => import("@/features/blog/BlogsPage"));
-const BlogPostPage = lazy(() => import("@/features/blog/BlogPostPage"));
-const AdminPage = lazy(() => import("@/features/admin/AdminPage"));
-const PrivacyPage = lazy(() => import("@/features/legal/PrivacyPage"));
-const TermsPage = lazy(() => import("@/features/legal/TermsPage"));
-const NotFoundPage = lazy(() => import("@/NotFoundPage"));
+const HomePage = lazy(loadHomePage);
+const AboutPage = lazy(loadAboutPage);
+const ProjectsPage = lazy(loadProjectsPage);
+const SkillsPage = lazy(loadSkillsPage);
+const EducationPage = lazy(loadEducationPage);
+const ResumePage = lazy(loadResumePage);
+const CodingProfilesPage = lazy(loadCodingProfilesPage);
+const ContactPage = lazy(loadContactPage);
+const CertificationsPage = lazy(loadCertificationsPage);
+const BlogsPage = lazy(loadBlogsPage);
+const BlogPostPage = lazy(loadBlogPostPage);
+const AdminPage = lazy(loadAdminPage);
+const PrivacyPage = lazy(loadPrivacyPage);
+const TermsPage = lazy(loadTermsPage);
+const NotFoundPage = lazy(loadNotFoundPage);
+const ChatWidget = lazy(loadChatWidget);
+
+const CHAT_WIDGET_IDLE_DELAY_MS = 2500;
+
+const LegacyWritingRedirect = () => <Navigate to={ROUTE_PATHS.writing} replace />;
+
+const LegacyWritingPostRedirect = () => {
+    const { id } = useParams<{ id: string }>();
+    return <Navigate to={getWritingPath(id)} replace />;
+};
+
+const DeferredChatWidget = () => {
+    const [shouldRender, setShouldRender] = useState(false);
+
+    useEffect(() => {
+        if (shouldRender) return;
+
+        const loadChatWidget = () => {
+            startTransition(() => {
+                setShouldRender(true);
+            });
+        };
+
+        const interactionEvents: Array<keyof WindowEventMap> = ["pointerdown", "keydown", "touchstart"];
+        const listenerOptions = { once: true, passive: true } as const;
+
+        for (const eventName of interactionEvents) {
+            window.addEventListener(eventName, loadChatWidget, listenerOptions);
+        }
+
+        const timerId = window.setTimeout(loadChatWidget, CHAT_WIDGET_IDLE_DELAY_MS);
+
+        return () => {
+            window.clearTimeout(timerId);
+            for (const eventName of interactionEvents) {
+                window.removeEventListener(eventName, loadChatWidget);
+            }
+        };
+    }, [shouldRender]);
+
+    if (!shouldRender) {
+        return null;
+    }
+
+    return (
+        <Suspense fallback={null}>
+            <ChatWidget />
+        </Suspense>
+    );
+};
+
 export default function App() {
     return (
         <HelmetProvider>
@@ -51,8 +106,10 @@ export default function App() {
                         <Route path="/education" element={<EducationPage />} />
                         <Route path="/resume" element={<ResumePage />} />
                         <Route path="/coding-profiles" element={<CodingProfilesPage />} />
-                        <Route path="/blogs" element={<BlogsPage />} />
-                        <Route path="/blogs/:id" element={<BlogPostPage />} />
+                        <Route path={ROUTE_PATHS.writing} element={<BlogsPage />} />
+                        <Route path={`${ROUTE_PATHS.writing}/:id`} element={<BlogPostPage />} />
+                        <Route path={ROUTE_PATHS.legacyWriting} element={<LegacyWritingRedirect />} />
+                        <Route path={`${ROUTE_PATHS.legacyWriting}/:id`} element={<LegacyWritingPostRedirect />} />
                         <Route path="/certifications" element={<CertificationsPage />} />
                         <Route path="/contact" element={<ContactPage />} />
                         <Route path="/admin" element={<AdminPage />} />
@@ -61,7 +118,7 @@ export default function App() {
                         <Route path="*" element={<NotFoundPage />} />
                     </Route>
                 </Routes>
-                <ChatWidget />
+                <DeferredChatWidget />
             </Router>
         </HelmetProvider>
     );
