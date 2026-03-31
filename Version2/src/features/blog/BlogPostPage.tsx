@@ -3,9 +3,10 @@ import { useEffect, useState, useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import { getBlogPost } from "./blogData";
 import { getBlogContent } from "./blogContent";
-import { ArrowLeft, Calendar, Clock, Share2, MessageCircle } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Share2, Link2, MessageCircle } from "lucide-react";
 import Seo from "../../shared/Seo";
 import { profileDetails, siteMetadata } from "@/data/siteMetadata";
+import { ROUTE_PATHS, WRITING_LABEL, getWritingPath } from "@/data/siteRoutes";
 
 const SITE_URL = siteMetadata.siteUrl;
 
@@ -14,6 +15,7 @@ const BlogPostPage = () => {
     const post = getBlogPost(id || "");
     const [content, setContent] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
+    const [copied, setCopied] = useState(false);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -35,11 +37,11 @@ const BlogPostPage = () => {
     }, [content]);
 
     if (!post) {
-        return <Navigate to="/blogs" replace />;
+        return <Navigate to={ROUTE_PATHS.writing} replace />;
     }
 
     const shareUrl = typeof window !== "undefined" ? window.location.href : "";
-    const postUrl = `${SITE_URL}/blogs/${id}`;
+    const postUrl = `${SITE_URL}${getWritingPath(id)}`;
 
     const handleShare = async () => {
         try {
@@ -54,6 +56,16 @@ const BlogPostPage = () => {
         }
     };
 
+    const handleCopyLink = async () => {
+        try {
+            await navigator.clipboard.writeText(shareUrl);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        } catch (error) {
+            console.error("Error copying link:", error);
+        }
+    };
+
     const publishedDate = post.date ? new Date(post.date) : null;
     const publishedTime = publishedDate && !Number.isNaN(publishedDate.getTime())
         ? publishedDate.toISOString()
@@ -61,8 +73,8 @@ const BlogPostPage = () => {
 
     const breadcrumbs = [
         { name: "Home", url: "/" },
-        { name: "Blogs", url: "/blogs" },
-        { name: post.title, url: `/blogs/${id}` }
+        { name: WRITING_LABEL, url: ROUTE_PATHS.writing },
+        { name: post.title, url: getWritingPath(id) }
     ];
 
     const blogPostingSchema = {
@@ -75,7 +87,7 @@ const BlogPostPage = () => {
         },
         "headline": post.title,
         "description": post.excerpt,
-        "image": `${SITE_URL}/preview.png`,
+        "image": `${SITE_URL}${siteMetadata.previewImage}`,
         "datePublished": publishedTime,
         "dateModified": publishedTime,
         "wordCount": wordCount > 0 ? wordCount : undefined,
@@ -114,11 +126,11 @@ const BlogPostPage = () => {
                 </script>
             </Helmet>
             <Link
-                to="/blogs"
+                to={ROUTE_PATHS.writing}
                 className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-gray-500 transition-colors hover:text-gray-800 sm:mb-12"
             >
                 <ArrowLeft className="w-4 h-4" />
-                Back to Writing
+                Back to {WRITING_LABEL}
             </Link>
 
             <article>
@@ -136,13 +148,22 @@ const BlogPostPage = () => {
                             <Clock className="w-4 h-4" />
                             <span>{post.readTime}</span>
                         </div>
-                        <button
-                            onClick={handleShare}
-                            className="inline-flex items-center gap-2 transition-colors hover:text-blue-600 sm:ml-auto"
-                        >
-                            <Share2 className="w-4 h-4" />
-                            Share
-                        </button>
+                        <div className="flex items-center gap-4 sm:ml-auto">
+                            <button
+                                onClick={handleCopyLink}
+                                className="inline-flex items-center gap-2 transition-colors hover:text-blue-600"
+                            >
+                                <Link2 className="w-4 h-4" />
+                                {copied ? "Copied!" : "Copy Link"}
+                            </button>
+                            <button
+                                onClick={handleShare}
+                                className="inline-flex items-center gap-2 transition-colors hover:text-blue-600"
+                            >
+                                <Share2 className="w-4 h-4" />
+                                Share
+                            </button>
+                        </div>
                     </div>
                 </header>
 
