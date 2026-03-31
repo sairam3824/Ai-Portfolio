@@ -14,6 +14,17 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
     {
+        id: "anthropic-q1-2026",
+        title: "Anthropic Shipped 20+ Major Updates in 3 Months - Here's What Builders Need to Know",
+        excerpt:
+            "From Claude Cowork and Opus 4.6 to Computer Use and 1M context windows, Anthropic's Q1 2026 was a masterclass in shipping. A deep dive into every major release, what it means for builders, and why the gap between AI users and AI builders is widening every week.",
+        date: "March 31, 2026",
+        readTime: "18 min read",
+        tags: ["AI/ML", "Anthropic", "Claude Code", "Claude", "Agentic AI", "Developer Tools", "MCP", "Production AI"],
+        icon: "Zap",
+        iconColor: "orange",
+    },
+    {
         id: "a2a-agent-protocol",
         title: "A2A Protocol: How Google's Agent-to-Agent Standard Is Redefining Multi-Agent AI in 2026",
         excerpt:
