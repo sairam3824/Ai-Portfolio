@@ -4,6 +4,7 @@ import { projectsData } from "../projects/projectsData";
 import { codingProfilesData } from "../coding-profiles/codingProfilesData";
 import { blogPosts } from "../blog/blogData";
 import CredentialsSection from "./CredentialsSection";
+import { ROUTE_PATHS, getWritingPath } from "@/data/siteRoutes";
 
 const vibeColorMap: Record<string, string> = {
     emerald: "bg-emerald-100 text-emerald-700",
@@ -339,7 +340,7 @@ const HomeSections = () => {
             <hr className="border-gray-200/80" />
 
             {/* ═══════════════════════════════════════════
-                05 / DISPATCHES (Blog)
+                05 / DISPATCHES (Writing)
             ═══════════════════════════════════════════ */}
             <section className="py-6 md:py-10 animate-fade-in-up stagger-8 content-auto">
                 <SectionHeader number="05" title="Dispatches" description="Thoughts, tutorials, and deep dives into the world of AI." />
@@ -353,7 +354,7 @@ const HomeSections = () => {
                         return (
                             <Link
                                 key={post.id}
-                                to={post.externalLink || `/blogs/${post.id}`}
+                                to={post.externalLink || getWritingPath(post.id)}
                                 {...externalLinkProps}
                                 className="group block py-8 transition-transform duration-300 hover:-translate-y-1"
                             >
@@ -370,8 +371,8 @@ const HomeSections = () => {
                 </div>
 
                 <div className="mt-8">
-                    <Link to="/blogs" className="inline-flex items-center gap-2 text-sm font-semibold text-gray-800 hover:text-blue-600 transition-colors">
-                        Read All {blogPosts.length} Posts <ArrowRight className="w-4 h-4" />
+                    <Link to={ROUTE_PATHS.writing} className="inline-flex items-center gap-2 text-sm font-semibold text-gray-800 hover:text-blue-600 transition-colors">
+                        Read All {blogPosts.length} Pieces <ArrowRight className="w-4 h-4" />
                     </Link>
                 </div>
             </section>
