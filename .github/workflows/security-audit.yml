@@ -1,0 +1,134 @@
+name: Security Audit
+
+on:
+  schedule:
+    - cron: "0 2 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    env:
+      RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      ISSUE_TITLE: "[Ops] Security audit requires attention"
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run npm audit
+        run: npm audit --audit-level=high --json > audit-report.json || true
+
+      - name: Enforce audit policy
+        run: node --import tsx scripts/check-audit-report.ts audit-report.json
+
+      - name: Upload audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: npm-audit-report
+          path: audit-report.json
+          retention-days: 30
+
+      - name: Create or update GitHub issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = process.env.ISSUE_TITLE;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const body = [
+              "Scheduled npm audit detected a high-severity or critical dependency issue.",
+              "",
+              `- Workflow run: ${process.env.RUN_URL}`,
+              `- Branch: ${context.ref}`,
+              `- Commit: ${context.sha}`,
+              "",
+              "Download the uploaded audit-report artifact, patch the dependency tree, then close this issue."
+            ].join("\n");
+
+            const issues = await github.paginate(github.rest.issues.listForRepo, {
+              owner,
+              repo,
+              state: "open",
+              labels: "ops-alert"
+            });
+
+            const existing = issues.find((issue) => issue.title === title);
+
+            if (existing) {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: existing.number,
+                body,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner,
+                repo,
+                title,
+                body,
+                labels: ["ops-alert", "security"],
+              });
+            }
+
+      - name: Notify Slack on failure
+        if: failure() && secrets.SLACK_WEBHOOK_URL != ''
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data "$(cat <<JSON
+          {
+            "text": ":warning: Security audit found high or critical vulnerabilities in ai-portfolio-monorepo.\nRun: ${RUN_URL}"
+          }
+          JSON
+          )" "$SLACK_WEBHOOK_URL"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Close open issue on recovery
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = process.env.ISSUE_TITLE;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            const issues = await github.paginate(github.rest.issues.listForRepo, {
+              owner,
+              repo,
+              state: "open",
+              labels: "ops-alert"
+            });
+
+            const existing = issues.find((issue) => issue.title === title);
+
+            if (existing) {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: existing.number,
+                body: `Security audit recovered.\n\n- Workflow run: ${process.env.RUN_URL}`,
+              });
+
+              await github.rest.issues.update({
+                owner,
+                repo,
+                issue_number: existing.number,
+                state: "closed",
+              });
+            }

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Operations Runbook
+    url: https://github.com/sairam3824/Ai-Portfolio/blob/main/docs/OPERATIONS_RUNBOOK.md
+    about: Check recovery steps, provider dependencies, and incident guidance.
+  - name: Maintenance Policy
+    url: https://github.com/sairam3824/Ai-Portfolio/blob/main/docs/MAINTENANCE.md
+    about: Review repo guardrails, version policy, and maintenance workflow.

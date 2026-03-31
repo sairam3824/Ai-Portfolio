@@ -1,0 +1,64 @@
+name: Bug Report
+description: Report a product, API, or content bug.
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Describe the bug clearly and briefly.
+      placeholder: What is broken?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps To Reproduce
+      description: Include the route, API path, or workflow when relevant.
+      placeholder: |
+        1. Go to ...
+        2. Click ...
+        3. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      placeholder: What should have happened?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      placeholder: What happened instead?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Version3
+        - Version2
+        - Version1
+        - API
+        - Shared Data
+        - CI / Monitoring
+        - Docs / Ops
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Extra Context
+      description: Logs, screenshots, commit SHA, deployment URL, or browser/device details.
+      placeholder: Add anything useful for debugging.
