@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/shared/ui/dialog";
 import { Input } from "@/shared/ui/input";
 import { Button } from "@/shared/ui/button";
@@ -27,6 +27,7 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
 
   const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL;
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const sentInitialMessageRef = useRef<string | null>(null);
   const { toast } = useToast();
 
   // Typewriter effect for chat input placeholder
@@ -47,16 +48,10 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
   });
 
   useEffect(() => {
-    if (initialMessage && open) {
-      handleSendMessage(initialMessage);
-    }
-  }, [initialMessage, open]);
-
-  useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const handleSendMessage = async (messageText?: string) => {
+  const handleSendMessage = useCallback(async (messageText?: string) => {
     const textToSend = messageText || input;
     if (!textToSend.trim()) return;
 
@@ -144,7 +139,19 @@ export const ChatDialog = ({ open, onOpenChange, initialMessage }: ChatDialogPro
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [input, sessionId, toast, webhookUrl]);
+
+  useEffect(() => {
+    if (!open) {
+      sentInitialMessageRef.current = null;
+      return;
+    }
+
+    if (initialMessage && sentInitialMessageRef.current !== initialMessage) {
+      sentInitialMessageRef.current = initialMessage;
+      void handleSendMessage(initialMessage);
+    }
+  }, [handleSendMessage, initialMessage, open]);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
