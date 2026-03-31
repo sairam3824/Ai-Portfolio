@@ -26,7 +26,7 @@ jobs:
         run: npm run content:snapshot
 
       - name: Upload snapshot artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: shared-data-snapshot
           path: backups/shared-data/
