@@ -9,10 +9,25 @@ export const profileDetails = {
     summary:
         "I design and ship AI products with the same care for interface, systems thinking, and production reliability.",
     location: "",
+    basedIn: "India",
     email: "sairam.maruri@gmail.com",
     phone: "+91 7893865644",
     resumeHref: "/Sai_Ram_Maruri_Resume_2025.pdf",
     availability: "Available for Opportunities",
+    motto: "Learn always. Build always.",
+    seekingRoles: ["GenAI Engineer", "ML Engineer", "Software Developer"],
+    currentFocus: [
+        "Building AI-powered SaaS products",
+        "Crafting A2A Agent Cards",
+        "Exploring agentic workflows",
+        "Learning Reinforcement Learning and RLHF",
+    ],
+    researchInterests: [
+        "Scaling laws",
+        "Code generation",
+        "AI safety and alignment",
+        "A2A Agent Cards",
+    ],
     socials: {
         github: "https://github.com/sairam3824",
         linkedin: "https://www.linkedin.com/in/sairam-maruri/",
@@ -29,11 +44,12 @@ export const siteMetadata = {
     applicationName: "Sai Ram Maruri Portfolio",
     defaultTitle: `${profileDetails.name} | ${profileDetails.shortRole}`,
     defaultDescription:
-        "GenAI & ML Engineer portfolio — production AI projects, technical blogs, competitive programming, and professional journey of Sai Ram Maruri.",
+        "GenAI & ML Engineer portfolio — production AI projects, technical writing, competitive programming, and professional journey of Sai Ram Maruri.",
     manifestDescription: "AI Engineer & Software Developer Portfolio",
-    previewImage: "/preview.png",
+    previewImage: "/preview.jpg",
+    previewImageType: "image/jpeg",
     twitterHandle: "@sairammaruri",
-    copyrightYear: 2026,
+    copyrightYear: new Date().getUTCFullYear(),
     alumniOf: {
         name: "VIT-AP University",
         url: "https://vitap.ac.in",
