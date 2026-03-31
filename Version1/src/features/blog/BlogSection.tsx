@@ -114,37 +114,37 @@ export const BlogSection = () => {
   if (loading) {
     return (
       <div className="animate-fade-in space-y-6">
-        <h2 className="text-3xl font-bold text-foreground text-center">Blog</h2>
-        <div className="text-center py-8">Loading blog posts...</div>
+        <h2 className="text-3xl font-bold text-foreground text-center">Writing</h2>
+        <div className="text-center py-8">Loading writing...</div>
       </div>
     );
   }
 
   return (
-    <section className="animate-fade-in space-y-6" aria-labelledby="blog-title">
-      <h2 id="blog-title" className="text-3xl font-bold text-foreground text-center select-none pointer-events-none focus:outline-none">
-        Tech Insights...
+    <section className="animate-fade-in space-y-6" aria-labelledby="writing-title">
+      <h2 id="writing-title" className="text-3xl font-bold text-foreground text-center select-none pointer-events-none focus:outline-none">
+        Writing
       </h2>
 
       <div className="max-w-4xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4" role="region" aria-label="Blog search options">
-          {/* Left Box - Local Blog Search */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4" role="region" aria-label="Writing search options">
+          {/* Left Box - Local Writing Search */}
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" aria-hidden="true" />
             <Input
               type="text"
-              placeholder="Search my blogs..."
+              placeholder="Search my writing..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === 'Escape') setSearchQuery('');
               }}
               className="pl-10 pr-4 py-2 w-full rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              aria-label="Search blog posts by title, content, or tags"
+              aria-label="Search writing by title, content, or tags"
               aria-describedby="search-help"
             />
             <div id="search-help" className="sr-only">
-              Search through blog posts by typing keywords. Press Escape to clear.
+              Search through writing by typing keywords. Press Escape to clear.
             </div>
             {searchQuery && (
               <button
@@ -167,7 +167,7 @@ export const BlogSection = () => {
             }}
             className="relative"
             role="search"
-            aria-label="AI-powered blog search"
+            aria-label="AI-powered writing search"
           >
             <Sparkles className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-400 w-4 h-4" aria-hidden="true" />
             <Input
@@ -176,11 +176,11 @@ export const BlogSection = () => {
               onChange={(e) => setAiQuery(e.target.value)}
               placeholder="Ask AI anything..."
               className="pl-10 pr-4 py-2 w-full rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-              aria-label="Ask AI questions about blog content"
+              aria-label="Ask AI questions about writing"
               aria-describedby="ai-search-help"
             />
             <div id="ai-search-help" className="sr-only">
-              Ask AI questions about blog content and get intelligent responses
+              Ask AI questions about writing and get intelligent responses
             </div>
           </form>
         </div>
@@ -193,7 +193,7 @@ export const BlogSection = () => {
             <div
               className="inline-flex gap-2 py-2 whitespace-nowrap justify-center w-max mx-auto"
               role="tablist"
-              aria-label="Blog categories"
+              aria-label="Writing categories"
             >
               {categories.map((c) => (
                 <button
@@ -233,7 +233,7 @@ export const BlogSection = () => {
           </div>
         )}
 
-        <div className="space-y-5" role="region" aria-label="Blog posts" aria-live="polite">
+        <div className="space-y-5" role="region" aria-label="Writing pieces" aria-live="polite">
           {filteredPosts.length > 0 ? (
             filteredPosts.map((post) => (
               <BlogCard key={post.id} post={post} onTagClick={handleTagClick} />
@@ -241,7 +241,7 @@ export const BlogSection = () => {
           ) : (
             <div className="text-center py-8" role="status">
               <p className="text-gray-500 text-base">
-                No blogs found {selectedTag ? `with tag "${selectedTag}"` : searchQuery ? `matching "${searchQuery}"` : ""}
+                No writing found {selectedTag ? `with tag "${selectedTag}"` : searchQuery ? `matching "${searchQuery}"` : ""}
               </p>
               <p className="text-gray-400 text-sm mt-2">Try a different search or category</p>
             </div>
@@ -254,10 +254,10 @@ export const BlogSection = () => {
           <ShieldCheck className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5" />
           <div className="flex-1">
             <h4 id="subscribe-title" className="text-lg font-semibold text-foreground">
-              Subscribe to Blog Updates
+              Subscribe to Writing Updates
             </h4>
             <p className="text-muted-foreground text-sm mb-3">
-              Get email notifications whenever I publish new blog on GenAI, cloud, and dev-tools highlights. No fixed schedule, no spam — unsubscribe anytime.
+              Get email notifications whenever I publish new writing on GenAI, cloud, and dev-tools highlights. No fixed schedule, no spam — unsubscribe anytime.
             </p>
             <form
               className="flex flex-col sm:flex-row gap-3"
