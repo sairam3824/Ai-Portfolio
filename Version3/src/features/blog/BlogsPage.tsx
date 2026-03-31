@@ -6,6 +6,7 @@ import Seo from "../../shared/Seo";
 import { blogPosts } from "./blogData";
 import { useBlogSubscription } from "./useBlogSubscription";
 import { profileDetails, siteMetadata } from "@/data/siteMetadata";
+import { ROUTE_PATHS, WRITING_LABEL, WRITING_UPDATES_LABEL, getWritingPath } from "@/data/siteRoutes";
 import { NotificationToast } from "@/shared/ui/NotificationToast";
 
 const VERSION_BASE_PATH =
@@ -47,7 +48,7 @@ const mapTagToCategory = (tag: string): string => {
 };
 
 const topicCount = new Set(blogPosts.flatMap((post) => post.tags)).size;
-const SUBSCRIBE_DIALOG_AUTO_DISMISS_MS = 6000;
+const SUBSCRIBE_DIALOG_AUTO_DISMISS_MS = 3500;
 
 const BlogsPage = () => {
     const [searchQuery, setSearchQuery] = useState("");
@@ -124,14 +125,14 @@ const BlogsPage = () => {
                                         <div className="flex items-center gap-2 rounded-full border border-[#d4ddba] bg-[#fdfef8] px-3 py-1">
                                             <Mail className="h-3.5 w-3.5 text-[#5d7414]" />
                                             <span className="text-[10px] font-bold uppercase tracking-widest text-[#7b7467]">
-                                                Blog Updates
+                                                {WRITING_UPDATES_LABEL}
                                             </span>
                                         </div>
                                     </div>
 
                                     <div>
                                         <h2 id="blog-subscribe-title" className="text-3xl font-black tracking-tight text-[#1c1a14]">
-                                            Subscribe to the blog.
+                                            Subscribe to new writing.
                                         </h2>
                                         <p className="mt-2 max-w-[34ch] text-sm font-medium leading-relaxed text-[#7b7467]">
                                             Get fresh essays on AI systems, agents, cloud delivery, and developer workflows straight in your inbox.
@@ -205,13 +206,13 @@ const BlogsPage = () => {
             )}
 
             <Seo
-                title="Writing | Sai Ram Maruri — AI & Engineering Blog"
+                title={`${WRITING_LABEL} | Sai Ram Maruri — AI & Engineering Writing`}
                 description="Technical writing by Sai Ram Maruri on GenAI, LLM systems, RAG, cloud infrastructure, agent workflows, MCP, A2A, competitive programming, and software engineering."
                 pageType="CollectionPage"
                 keywords={["AI Blog", "GenAI Blog", "LLM Tutorial", "RAG Tutorial", "AWS Blog", "Competitive Programming Blog", "Tech Writing", "Sai Ram Maruri Blog", "Context Engineering", "Agentic AI"]}
                 breadcrumbs={[
                     { name: "Home", url: "/" },
-                    { name: "Writing", url: "/blogs" },
+                    { name: WRITING_LABEL, url: ROUTE_PATHS.writing },
                 ]}
             />
             <Helmet>
@@ -219,10 +220,10 @@ const BlogsPage = () => {
                     {JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "CollectionPage",
-                        "@id": `${siteMetadata.siteUrl}${VERSION_BASE_PATH}/blogs`,
-                        "name": "Writing | Sai Ram Maruri",
+                        "@id": `${siteMetadata.siteUrl}${VERSION_BASE_PATH}${ROUTE_PATHS.writing}`,
+                        "name": `${WRITING_LABEL} | Sai Ram Maruri`,
                         "description": "Technical writing on GenAI, LLM systems, RAG, cloud infrastructure, agent workflows, and software engineering.",
-                        "url": `${siteMetadata.siteUrl}${VERSION_BASE_PATH}/blogs`,
+                        "url": `${siteMetadata.siteUrl}${VERSION_BASE_PATH}${ROUTE_PATHS.writing}`,
                         "isPartOf": { "@id": `${siteMetadata.siteUrl}${VERSION_BASE_PATH}/#website` },
                         "about": { "@id": `${siteMetadata.siteUrl}/#person` },
                         "numberOfItems": blogPosts.length,
@@ -230,7 +231,7 @@ const BlogsPage = () => {
                             "@type": "BlogPosting",
                             "headline": post.title,
                             "description": post.excerpt,
-                            "url": post.externalLink || `${siteMetadata.siteUrl}${VERSION_BASE_PATH}/blogs/${post.id}`,
+                            "url": post.externalLink || `${siteMetadata.siteUrl}${VERSION_BASE_PATH}${getWritingPath(post.id)}`,
                             "datePublished": post.date ? new Date(post.date).toISOString() : undefined,
                             "author": { "@type": "Person", "name": profileDetails.name },
                             "keywords": post.tags?.join(", "),
@@ -266,7 +267,7 @@ const BlogsPage = () => {
                             Get new essays in your inbox.
                         </h2>
                         <p className="mt-3 text-[0.95rem] leading-7 text-[#5f6650]">
-                            A quiet stream of blog updates on AI systems, shipping, and developer workflows.
+                            A quiet stream of writing updates on AI systems, shipping, and developer workflows.
                         </p>
 
                         <form onSubmit={handleSubscribe} className="mt-5 space-y-3">
@@ -362,11 +363,10 @@ const BlogsPage = () => {
                                     key={category.id}
                                     type="button"
                                     onClick={() => setSelectedCategory(category.id)}
-                                    className={`rounded-full border px-4 py-2 text-[0.78rem] font-semibold uppercase tracking-[0.16em] transition-colors ${
-                                        selectedCategory === category.id
-                                            ? "border-[#728c1a] bg-[#728c1a] text-white"
-                                            : "border-[#d8d0c3] bg-[#fffdf8] text-[#5c564a] hover:border-[#b8c782] hover:text-[#243042]"
-                                    }`}
+                                    className={`rounded-full border px-4 py-2 text-[0.78rem] font-semibold uppercase tracking-[0.16em] transition-colors ${selectedCategory === category.id
+                                        ? "border-[#728c1a] bg-[#728c1a] text-white"
+                                        : "border-[#d8d0c3] bg-[#fffdf8] text-[#5c564a] hover:border-[#b8c782] hover:text-[#243042]"
+                                        }`}
                                 >
                                     {category.label}
                                 </button>
@@ -417,7 +417,7 @@ const BlogsPage = () => {
                                         </div>
                                     </a>
                                 ) : (
-                                    <Link to={`/blogs/${post.id}`} className="block">
+                                    <Link to={getWritingPath(post.id)} className="block">
                                         <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
                                             <div className="min-w-0 flex-1">
                                                 <div className="flex flex-wrap items-center gap-4 text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-[#8e97a8]">
