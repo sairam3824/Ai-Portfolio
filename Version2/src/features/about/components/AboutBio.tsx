@@ -34,7 +34,7 @@ export const AboutBio = () => {
                 </div>
                 <div className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-blue-600"></div>
-                    <span>30+ Published Blog Articles</span>
+                    <span>30+ Published Writing Pieces</span>
                 </div>
                 <div className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-blue-600"></div>
