@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/ui/card";
 import { Users, FileText } from "lucide-react";
-import { blogPosts } from "@/features/blog";
+import { blogPosts } from "@/features/writing";
 import { ModeToggle } from "@/shared/components/mode-toggle";
 
 interface AnalyticsData {
@@ -22,7 +22,7 @@ const AnalyticsDashboard = () => {
 
   const fetchAnalytics = () => {
     try {
-      // Get static blog posts count
+      // Get static writing count
       const totalPosts = blogPosts.length;
 
       // Get subscribers from localStorage
@@ -53,7 +53,7 @@ const AnalyticsDashboard = () => {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold mb-2">Analytics Dashboard</h2>
-          <p className="text-gray-600 dark:text-gray-400">Overview of your static blog</p>
+          <p className="text-gray-600 dark:text-gray-400">Overview of your static writing archive</p>
         </div>
         <ModeToggle />
       </div>
@@ -62,13 +62,13 @@ const AnalyticsDashboard = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Blog Posts</CardTitle>
+            <CardTitle className="text-sm font-medium">Total Writing Pieces</CardTitle>
             <FileText className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{analytics.totalPosts}</div>
             <p className="text-xs text-muted-foreground">
-              Static blog posts published
+              Static writing pieces published
             </p>
           </CardContent>
         </Card>
@@ -87,11 +87,11 @@ const AnalyticsDashboard = () => {
         </Card>
       </div>
 
-      {/* Blog Posts List */}
+      {/* Writing List */}
       <Card>
         <CardHeader>
-          <CardTitle>Published Blog Posts</CardTitle>
-          <CardDescription>All static blog posts</CardDescription>
+          <CardTitle>Published Writing Pieces</CardTitle>
+          <CardDescription>All static writing entries</CardDescription>
         </CardHeader>
         <CardContent>
           {blogPosts.length > 0 ? (
@@ -125,7 +125,7 @@ const AnalyticsDashboard = () => {
             </div>
           ) : (
             <div className="text-center py-8 text-gray-500 dark:text-gray-400">
-              <p>No blog posts found.</p>
+              <p>No writing found.</p>
             </div>
           )}
         </CardContent>
@@ -134,12 +134,12 @@ const AnalyticsDashboard = () => {
       {/* Info Card */}
       <Card className="bg-blue-50 dark:bg-blue-950/50 border-blue-200 dark:border-blue-800">
         <CardHeader>
-          <CardTitle className="text-blue-900 dark:text-blue-100">Static Blog Mode</CardTitle>
+          <CardTitle className="text-blue-900 dark:text-blue-100">Static Writing Mode</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-blue-800 dark:text-blue-200 text-sm">
-            Your blog is running in static mode. Blog posts are defined in code files and subscribers are stored locally in the browser. 
-            To add new blog posts, create new files in <code className="bg-blue-100 dark:bg-blue-900/50 text-blue-900 dark:text-blue-100 px-1 py-0.5 rounded">src/features/blog/</code> and import them in the index file.
+            Your writing archive is running in static mode. Writing entries are defined in code files and subscribers are stored locally in the browser. 
+            To add new writing, update <code className="bg-blue-100 dark:bg-blue-900/50 text-blue-900 dark:text-blue-100 px-1 py-0.5 rounded">shared-data/blogData.ts</code> and, for long-form entries, add content under <code className="bg-blue-100 dark:bg-blue-900/50 text-blue-900 dark:text-blue-100 px-1 py-0.5 rounded">shared-data/blog/posts/</code>.
           </p>
         </CardContent>
       </Card>
