@@ -1,6 +1,5 @@
 import { Award, BookOpen, BrainCircuit, Calendar, Code2, GraduationCap, Layers3, Library, MapPin, Sparkles, Target } from "lucide-react";
 import Seo from "@/shared/Seo";
-import { portfolioContent } from "@/data/portfolioContent";
 import { profileDetails } from "@/data/siteMetadata";
 import { codingProfilesData } from "@/features/coding-profiles/codingProfilesData";
 import { projectsData } from "@/features/projects/projectsData";
@@ -163,7 +162,7 @@ export const AboutPage = () => (
                                 speed, and intelligence.
                             </p>
                             <p>
-                                {portfolioContent.profile.summary}
+                                {profileDetails.summary}
                             </p>
                         </div>
                     </article>
