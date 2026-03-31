@@ -32,7 +32,7 @@
     <!-- Primary Meta Tags -->
     <title>Sai Ram Maruri | GenAI & ML Engineer</title>
     <meta name="description"
-        content="GenAI & ML Engineer portfolio — production AI projects, technical blogs, competitive programming, and professional journey of Sai Ram Maruri." />
+        content="GenAI & ML Engineer portfolio — production AI projects, technical writing, competitive programming, and professional journey of Sai Ram Maruri." />
     <meta name="keywords"
         content="AI Engineer, Software Developer, GenAI, Machine Learning, Full Stack Developer, Portfolio, Sairam Maruri" />
     <meta name="author" content="Sai Ram Maruri" />
@@ -48,8 +48,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2" />
-    <!-- manifest is auto-injected by VitePWA plugin -->
-
     <!-- Mobile Web App -->
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -64,13 +62,13 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://saiii.in" />
     <meta property="og:title" content="Sai Ram Maruri | GenAI & ML Engineer" />
-    <meta property="og:description" content="GenAI & ML Engineer portfolio — production AI projects, technical blogs, competitive programming, and professional journey of Sai Ram Maruri." />
-    <meta property="og:image" content="https://saiii.in/preview.png" />
-    <meta property="og:image:secure_url" content="https://saiii.in/preview.png" />
+    <meta property="og:description" content="GenAI & ML Engineer portfolio — production AI projects, technical writing, competitive programming, and professional journey of Sai Ram Maruri." />
+    <meta property="og:image" content="https://saiii.in/preview.jpg" />
+    <meta property="og:image:secure_url" content="https://saiii.in/preview.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Sai Ram Maruri - AI Engineer Portfolio" />
-    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:site_name" content="Sai Ram Maruri" />
     <meta property="og:locale" content="en_US" />
 
@@ -78,8 +76,8 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://saiii.in" />
     <meta name="twitter:title" content="Sai Ram Maruri | GenAI & ML Engineer" />
-    <meta name="twitter:description" content="GenAI & ML Engineer portfolio — production AI projects, technical blogs, competitive programming, and professional journey of Sai Ram Maruri." />
-    <meta name="twitter:image" content="https://saiii.in/preview.png" />
+    <meta name="twitter:description" content="GenAI & ML Engineer portfolio — production AI projects, technical writing, competitive programming, and professional journey of Sai Ram Maruri." />
+    <meta name="twitter:image" content="https://saiii.in/preview.jpg" />
     <meta name="twitter:image:alt" content="Sai Ram Maruri - AI Engineer Portfolio" />
 
 
@@ -129,14 +127,14 @@
         "url": "https://saiii.in",
         "name": "Sai Ram Maruri",
         "alternateName": ["Sairam Maruri", "Sai Ram Maruri Portfolio"],
-        "description": "GenAI & ML Engineer portfolio — projects, blogs, resume, skills, and competitive programming stats",
+        "description": "GenAI & ML Engineer portfolio — projects, writing, resume, skills, and competitive programming stats",
         "publisher": {
             "@id": "https://saiii.in/#person"
         },
         "inLanguage": "en-US",
         "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://saiii.in/blogs?q={search_term_string}",
+            "target": "https://saiii.in/writing?q={search_term_string}",
             "query-input": "required name=search_term_string"
         },
         "hasPart": [
@@ -166,9 +164,9 @@
             },
             {
                 "@type": "WebPage",
-                "@id": "https://saiii.in/blogs",
-                "name": "Blogs",
-                "url": "https://saiii.in/blogs"
+                "@id": "https://saiii.in/writing",
+                "name": "Writing",
+                "url": "https://saiii.in/writing"
             },
             {
                 "@type": "WebPage",
@@ -233,9 +231,9 @@
             {
                 "@type": "SiteNavigationElement",
                 "position": 5,
-                "name": "Blogs",
-                "description": "30+ technical articles on GenAI, LLMs, RAG, and AI engineering",
-                "url": "https://saiii.in/blogs"
+                "name": "Writing",
+                "description": "30+ technical writing pieces on GenAI, LLMs, RAG, and AI engineering",
+                "url": "https://saiii.in/writing"
             },
             {
                 "@type": "SiteNavigationElement",
@@ -251,32 +249,10 @@
     <!-- DNS prefetch for external domains -->
     <link rel="dns-prefetch" href="https://jxehfeeibqlgqfkdzbhl.supabase.co" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Preload font CSS for faster discovery -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" />
-
-    <!-- Non-blocking Inter + Outfit font load (only used weights) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet" media="print" onload="this.media='all'" />
-    <noscript>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap"
-            rel="stylesheet" />
-    </noscript>
 </head>
 
 <body>
     <div id="root"></div>
-    <!-- Force SW update check on every page load so new deploys are picked up fast -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.ready.then(function (reg) {
-                reg.update();
-            });
-        }
-    </script>
     <script type="module" src="/src/main.tsx"></script>
     <!-- Cloudflare Web Analytics (JS beacon — works with or without proxy) -->
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d3cf8d9d6c604694a7bb42505af50d76"}'></script>
