@@ -1,9 +1,10 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { ApiRequest, ApiResponse } from "./types";
+import { profileDetails, siteMetadata } from "../shared-data/siteMetadata";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const SITE_URL = "https://saiii.in";
+const SITE_URL = siteMetadata.siteUrl;
 const DEFAULT_FROM_EMAIL = "Sai Ram Maruri <blog@updates.saiii.in>";
-const DEFAULT_REPLY_TO = "sairam.maruri@gmail.com";
+const DEFAULT_REPLY_TO = profileDetails.email;
 
 type SubscriberRecord = {
     email: string;
@@ -67,7 +68,7 @@ async function insertSubscriber(email: string, userAgent: string | null, unsubsc
             is_active: true,
             unsubscribe_token: unsubscribeToken,
             unsubscribed_at: null,
-            source: "blogs_page",
+            source: "writing_page",
             user_agent: userAgent,
         }]),
     });
@@ -95,7 +96,7 @@ async function reactivateSubscriber(email: string, userAgent: string | null, uns
                 is_active: true,
                 unsubscribed_at: null,
                 unsubscribe_token: unsubscribeToken,
-                source: "blogs_page",
+                source: "writing_page",
                 user_agent: userAgent,
                 subscribed_at: new Date().toISOString(),
             }),
@@ -112,7 +113,7 @@ function buildWelcomeEmail(email: string, unsubscribeToken: string) {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Welcome to Sai Ram Maruri's blog</title>
+  <title>Welcome to Sai Ram Maruri's writing updates</title>
 </head>
 <body style="margin:0;background:#f5f1e8;font-family:Arial,sans-serif;color:#17140f;">
   <div style="padding:32px 16px;">
@@ -127,8 +128,8 @@ function buildWelcomeEmail(email: string, unsubscribeToken: string) {
         <p style="margin:0 0 20px;font-size:16px;line-height:1.7;color:#6f695c;">
           You’ll get fresh posts on AI systems, agents, cloud delivery, developer tools, and practical lessons from building production software.
         </p>
-        <a href="${SITE_URL}/blogs" style="display:inline-block;background:#171d10;color:#ffffff;text-decoration:none;padding:14px 22px;border-radius:999px;font-weight:700;">
-          Read the latest posts
+        <a href="${SITE_URL}/writing" style="display:inline-block;background:#171d10;color:#ffffff;text-decoration:none;padding:14px 22px;border-radius:999px;font-weight:700;">
+          Read the latest writing
         </a>
         <div style="margin-top:28px;padding-top:24px;border-top:1px solid #e8e1d1;">
           <p style="margin:0 0 12px;font-size:13px;line-height:1.7;color:#6f695c;">
@@ -146,11 +147,11 @@ function buildWelcomeEmail(email: string, unsubscribeToken: string) {
 </html>`;
 
     const text = [
-        "Thanks for subscribing to Sai Ram Maruri's blog.",
+        "Thanks for subscribing to Sai Ram Maruri's writing updates.",
         "",
         `${email} is now on the list for new posts.`,
         "",
-        `Read the latest posts: ${SITE_URL}/blogs`,
+        `Read the latest writing: ${SITE_URL}/writing`,
         `Unsubscribe: ${unsubscribeUrl}`,
     ].join("\n");
 
@@ -166,7 +167,7 @@ function buildReactivatedEmail(email: string, unsubscribeToken: string) {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Welcome back to Sai Ram Maruri's blog</title>
+  <title>Welcome back to Sai Ram Maruri's writing updates</title>
 </head>
 <body style="margin:0;background:#f5f1e8;font-family:Arial,sans-serif;color:#17140f;">
   <div style="padding:32px 16px;">
@@ -174,14 +175,14 @@ function buildReactivatedEmail(email: string, unsubscribeToken: string) {
       <div style="height:6px;background:linear-gradient(90deg,#5d7414 0%,#c2d18f 100%);"></div>
       <div style="padding:32px;">
         <p style="margin:0 0 12px;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#7e8660;font-weight:700;">Welcome Back</p>
-        <h1 style="margin:0 0 16px;font-size:32px;line-height:1.08;">Your blog subscription is active again.</h1>
+        <h1 style="margin:0 0 16px;font-size:32px;line-height:1.08;">Your writing subscription is active again.</h1>
         <p style="margin:0 0 16px;font-size:16px;line-height:1.7;color:#6f695c;">
           ${safeEmail} is back on the list for new writing from Sai Ram Maruri.
         </p>
         <p style="margin:0 0 20px;font-size:16px;line-height:1.7;color:#6f695c;">
           You’ll start receiving future posts on AI systems, agents, cloud delivery, and developer workflows again.
         </p>
-        <a href="${SITE_URL}/blogs" style="display:inline-block;background:#171d10;color:#ffffff;text-decoration:none;padding:14px 22px;border-radius:999px;font-weight:700;">
+        <a href="${SITE_URL}/writing" style="display:inline-block;background:#171d10;color:#ffffff;text-decoration:none;padding:14px 22px;border-radius:999px;font-weight:700;">
           See what's new
         </a>
         <div style="margin-top:28px;padding-top:24px;border-top:1px solid #e8e1d1;">
@@ -200,11 +201,11 @@ function buildReactivatedEmail(email: string, unsubscribeToken: string) {
 </html>`;
 
     const text = [
-        "Your Sai Ram Maruri blog subscription is active again.",
+        "Your Sai Ram Maruri writing subscription is active again.",
         "",
         `${email} is back on the list for future posts.`,
         "",
-        `Read the latest posts: ${SITE_URL}/blogs`,
+        `Read the latest writing: ${SITE_URL}/writing`,
         `Unsubscribe: ${unsubscribeUrl}`,
     ].join("\n");
 
@@ -240,8 +241,8 @@ async function sendEmail(email: string, unsubscribeToken: string, mode: "welcome
             from,
             to: [email],
             subject: mode === "welcome"
-                ? "Welcome to Sai Ram Maruri's blog"
-                : "Welcome back to Sai Ram Maruri's blog",
+                ? "Welcome to Sai Ram Maruri's writing updates"
+                : "Welcome back to Sai Ram Maruri's writing updates",
             html: content.html,
             text: content.text,
             reply_to: replyTo,
@@ -256,7 +257,7 @@ async function sendEmail(email: string, unsubscribeToken: string, mode: "welcome
     return true;
 }
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req: ApiRequest, res: ApiResponse) {
     if (req.method !== "POST") {
         return res.status(405).json({ error: "Method not allowed" });
     }
@@ -321,7 +322,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             });
         }
 
-        console.error("Blog subscription failed:", error);
+        console.error("Writing subscription failed:", error);
         return res.status(500).json({
             error: "Subscription failed. Please try again in a moment.",
         });
