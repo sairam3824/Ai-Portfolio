@@ -4,8 +4,8 @@
   "private": true,
   "packageManager": "npm@10.9.3",
   "engines": {
-    "node": "22.20.0",
-    "npm": "10.9.3"
+    "node": "22.x",
+    "npm": "10.x"
   },
   "workspaces": [
     "Version1",
