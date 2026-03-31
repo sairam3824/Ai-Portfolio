@@ -3,6 +3,7 @@ import { Mail, Phone, Github, Linkedin, Code, Trophy, BookOpen, Target, MessageS
 import { MessageDialog } from "./MessageDialog";
 import { codingProfilesData } from "@/data/codingProfilesData";
 import { profileDetails } from "@/data/siteMetadata";
+import { ROUTE_PATHS } from "@/data/siteRoutes";
 import { projectsData } from "@/data/projectsData";
 
 const socialLinks = [
@@ -217,7 +218,7 @@ export const ContactSection = () => {
         <div className="mt-6 flex flex-wrap justify-center gap-3">
 
           <a
-            href="/blogs"
+            href={ROUTE_PATHS.writing}
             className="px-4 py-2 bg-pink-50 text-pink-600 text-sm rounded-full hover:bg-pink-100 transition-colors duration-200 cursor-pointer inline-flex items-center gap-1"
           >
             🚀 GenAI Enthusiast
