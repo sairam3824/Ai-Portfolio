@@ -14,7 +14,7 @@ export const AboutPage = () => {
     { label: "Building", value: "3+ Years", icon: <Layers className="w-4 h-4" />, color: "blue" },
     { label: "Projects", value: `${projectsData.length}+`, icon: <Zap className="w-4 h-4" />, color: "amber" },
     { label: "Problems", value: "1000+", icon: <Binary className="w-4 h-4" />, color: "emerald" },
-    { label: "Blog Articles", value: "30+", icon: <Sparkles className="w-4 h-4" />, color: "blue" },
+    { label: "Writing Pieces", value: "30+", icon: <Sparkles className="w-4 h-4" />, color: "blue" },
     { label: "Certifications", value: "9+", icon: <Target className="w-4 h-4" />, color: "amber" },
     { label: "Skills", value: "43+", icon: <Code className="w-4 h-4" />, color: "emerald" },
   ];
@@ -37,7 +37,7 @@ export const AboutPage = () => {
     <div className="relative py-12 px-4 max-w-6xl mx-auto min-h-full overflow-visible flex flex-col">
       <Seo
         title="About | Sai Ram Maruri — GenAI & ML Engineer"
-        description="Sai Ram Maruri is a GenAI & ML Engineer at VIT-AP with 3+ years building production AI on AWS. LeetCode Guardian (Top 1%, 2500+ rating), 1000+ problems solved, 30+ technical blogs, 9 industry certifications. Architect of RAG pipelines, agentic workflows, and cloud-native SaaS AI."
+        description="Sai Ram Maruri is a GenAI & ML Engineer at VIT-AP with 3+ years building production AI on AWS. LeetCode Guardian (Top 1%, 2500+ rating), 1000+ problems solved, 30+ technical writing pieces, 9 industry certifications. Architect of RAG pipelines, agentic workflows, and cloud-native SaaS AI."
         pageType="AboutPage"
         keywords={["Sai Ram Maruri", "GenAI Engineer India", "ML Engineer VIT-AP", "LeetCode Guardian", "RAG Engineer", "AI Developer", "Competitive Programmer India", "Anthropic Claude", "AWS AI Engineer"]}
         breadcrumbs={[
