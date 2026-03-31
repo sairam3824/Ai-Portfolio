@@ -3,8 +3,9 @@ import { Toaster } from "@/shared/ui/toaster";
 import { Toaster as Sonner } from "@/shared/ui/sonner";
 import { TooltipProvider } from "@/shared/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Navigate, useParams } from "react-router-dom";
 import { RouteLoadingBar, PageLoader, VersionSwitch } from "@/shared/components";
+import { getWritingPath, ROUTE_PATHS } from "@/data/siteRoutes";
 
 // Eager load: Homepage (Index) - Critical for initial render
 import Index from "./Index";
@@ -14,8 +15,8 @@ const AboutPage = lazy(() => import("@/features/about").then(m => ({ default: m.
 const ProjectsPage = lazy(() => import("@/features/projects").then(m => ({ default: m.ProjectsPage })));
 const SkillsPage = lazy(() => import("@/features/skills").then(m => ({ default: m.SkillsPage })));
 const EducationPage = lazy(() => import("@/features/education").then(m => ({ default: m.EducationPage })));
-const BlogsPage = lazy(() => import("@/features/blog").then(m => ({ default: m.BlogsPage })));
-const BlogPostPage = lazy(() => import("@/features/blog").then(m => ({ default: m.BlogPostPage })));
+const BlogsPage = lazy(() => import("@/features/writing").then(m => ({ default: m.BlogsPage })));
+const BlogPostPage = lazy(() => import("@/features/writing").then(m => ({ default: m.BlogPostPage })));
 const CertificationsPage = lazy(() => import("@/features/certifications").then(m => ({ default: m.CertificationsPage })));
 const ContactPage = lazy(() => import("@/features/contact").then(m => ({ default: m.ContactPage })));
 
@@ -45,6 +46,13 @@ const ScrollToTop = () => {
   return null;
 };
 
+const LegacyWritingRedirect = () => <Navigate to={ROUTE_PATHS.writing} replace />;
+
+const LegacyWritingPostRedirect = () => {
+  const { slug } = useParams();
+  return <Navigate to={getWritingPath(slug)} replace />;
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -61,8 +69,10 @@ const App = () => (
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/skills" element={<SkillsPage />} />
             <Route path="/education" element={<EducationPage />} />
-            <Route path="/blogs" element={<BlogsPage />} />
-            <Route path="/blogs/:slug" element={<BlogPostPage />} />
+            <Route path={ROUTE_PATHS.writing} element={<BlogsPage />} />
+            <Route path={`${ROUTE_PATHS.writing}/:slug`} element={<BlogPostPage />} />
+            <Route path={ROUTE_PATHS.legacyWriting} element={<LegacyWritingRedirect />} />
+            <Route path={`${ROUTE_PATHS.legacyWriting}/:slug`} element={<LegacyWritingPostRedirect />} />
             <Route path="/certifications" element={<CertificationsPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/profile" element={<ProfilePage />} />
