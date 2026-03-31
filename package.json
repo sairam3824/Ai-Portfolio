@@ -2,20 +2,37 @@
   "name": "ai-portfolio-monorepo",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "npm@10.9.3",
+  "engines": {
+    "node": "22.20.0",
+    "npm": "10.9.3"
+  },
+  "workspaces": [
+    "Version1",
+    "Version2",
+    "Version3"
+  ],
   "scripts": {
-    "postinstall": "cd Version1 && npm install && cd ../Version2 && npm install && cd ../Version3 && npm install",
-    "build": "cd Version3 && npm run build && cd ../Version1 && npm run build && mkdir -p ../Version3/dist/v1 && cp -r dist/* ../Version3/dist/v1/",
-    "newsletter:deploy": "node --import tsx scripts/send-latest-blog-newsletter.ts"
+    "check:writing": "node --import tsx scripts/check-writing-invariants.ts",
+    "check:metrics": "node --import tsx scripts/check-public-metrics.ts",
+    "test": "node --import tsx --test tests/**/*.test.ts",
+    "lint": "npm run lint --workspaces --if-present",
+    "check:bundle": "node --import tsx scripts/check-version3-bundle-budget.ts",
+    "verify": "npm run check:writing && npm run check:metrics && npm run test && npm run lint && npm run build:ci && npm run check:bundle",
+    "build": "npm run build:deploy",
+    "build:ci": "npm run build --workspace Version1 && npm run build --workspace Version2 && npm run build --workspace Version3",
+    "build:deploy": "npm run check:writing && npm run check:metrics && npm run build --workspace Version3 && npm run check:bundle && npm run build --workspace Version1 && node --import tsx scripts/copy-version1-dist.ts",
+    "branch-protect:apply": "node --import tsx scripts/apply-branch-protection.ts",
+    "content:snapshot": "node --import tsx scripts/export-shared-data-snapshot.ts",
+    "clean:generated": "node --import tsx scripts/clean-generated-files.ts",
+    "newsletter:send": "node --import tsx scripts/send-latest-blog-newsletter.ts",
+    "newsletter:deploy": "npm run newsletter:send"
   },
   "devDependencies": {
-    "@types/react": "^19.2.14",
-    "@vercel/node": "^5.5.28",
-    "lucide-react": "^1.7.0",
-    "react": "^19.2.4",
+    "lucide-react": "^0.562.0",
     "tsx": "^4.20.6"
   },
   "dependencies": {
-    "@openai/agents": "^0.4.3",
-    "openai": "^6.27.0"
+    "openai": "^6.33.0"
   }
 }
