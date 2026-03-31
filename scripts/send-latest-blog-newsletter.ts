@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { blogPosts, type BlogPost } from "../shared-data/blogData";
+import { getWritingPath } from "../shared-data/siteRoutes";
 import { profileDetails, siteMetadata } from "../shared-data/siteMetadata";
 
 type CampaignRecord = {
@@ -63,7 +64,7 @@ const formatDate = (date: string) => {
     }).format(new Date(timestamp));
 };
 
-const buildPostUrl = (post: BlogPost) => post.externalLink || `${SITE_URL}/blogs/${post.id}`;
+const buildPostUrl = (post: BlogPost) => post.externalLink || `${SITE_URL}${getWritingPath(post.id)}`;
 
 const buildUnsubscribeUrl = (token: string) => `${SITE_URL}/api/unsubscribe?token=${encodeURIComponent(token)}`;
 
@@ -226,7 +227,7 @@ function buildEmailContent(post: BlogPost, unsubscribeUrl: string) {
     <div style="max-width:640px;margin:0 auto;background:#fffdf8;border:1px solid #e0d7c5;border-radius:28px;overflow:hidden;box-shadow:0 24px 80px rgba(32,25,15,0.08);">
       <div style="height:6px;background:linear-gradient(90deg,#5d7414 0%,#c2d18f 100%);"></div>
       <div style="padding:32px;">
-        <p style="margin:0 0 12px;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#7e8660;font-weight:700;">New Blog Post</p>
+        <p style="margin:0 0 12px;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#7e8660;font-weight:700;">New Writing Post</p>
         <h1 style="margin:0 0 16px;font-size:32px;line-height:1.08;">${safeTitle}</h1>
         <p style="margin:0 0 20px;font-size:16px;line-height:1.7;color:#6f695c;">${safeExcerpt}</p>
         <p style="margin:0 0 24px;font-size:14px;line-height:1.6;color:#8b8376;">
@@ -237,7 +238,7 @@ function buildEmailContent(post: BlogPost, unsubscribeUrl: string) {
         </a>
         <div style="margin-top:28px;padding-top:24px;border-top:1px solid #e8e1d1;">
           <p style="margin:0 0 12px;font-size:13px;line-height:1.7;color:#6f695c;">
-            Thanks for subscribing to blog updates from Sai Ram Maruri. Replies come directly to ${escapeHtml(RESEND_REPLY_TO)}.
+            Thanks for subscribing to writing updates from Sai Ram Maruri. Replies come directly to ${escapeHtml(RESEND_REPLY_TO)}.
           </p>
           <p style="margin:0 0 16px;font-size:13px;line-height:1.7;color:#6f695c;">
             ${safeTags.length ? `Topics: ${safeTags.join(", ")}` : ""}
@@ -254,7 +255,7 @@ function buildEmailContent(post: BlogPost, unsubscribeUrl: string) {
 </html>`;
 
     const text = [
-        `New blog post from Sai Ram Maruri`,
+        `New writing from Sai Ram Maruri`,
         ``,
         post.title,
         `${formatDate(post.date)} · ${post.readTime}`,
@@ -305,7 +306,7 @@ async function sendDeliveryBatch(post: BlogPost, deliveries: DeliveryRecord[]) {
             return {
                 from: RESEND_FROM_EMAIL,
                 to: [delivery.subscriber_email],
-                subject: `New blog post: ${post.title}`,
+                subject: `New writing: ${post.title}`,
                 html: content.html,
                 text: content.text,
                 reply_to: RESEND_REPLY_TO,
@@ -324,7 +325,7 @@ async function sendSingleDelivery(post: BlogPost, delivery: DeliveryRecord) {
         {
             from: RESEND_FROM_EMAIL,
             to: [delivery.subscriber_email],
-            subject: `New blog post: ${post.title}`,
+            subject: `New writing: ${post.title}`,
             html: content.html,
             text: content.text,
             reply_to: RESEND_REPLY_TO,
@@ -403,7 +404,7 @@ async function main() {
 
     const latestPost = getLatestBlogPost();
     if (!latestPost) {
-        console.log("Newsletter automation skipped: no blog posts found.");
+        console.log("Newsletter automation skipped: no writing posts found.");
         return;
     }
 
