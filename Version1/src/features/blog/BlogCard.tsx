@@ -1,7 +1,8 @@
 import { Calendar, Eye, ExternalLink, ArrowRight, type LucideIcon } from "lucide-react";
 import { Link } from "react-router-dom";
-import { BlogPost } from "@/features/blog";
+import { BlogPost } from "@/features/writing";
 import * as Icons from "lucide-react";
+import { getWritingPath } from "@/data/siteRoutes";
 
 interface BlogCardProps {
   post: BlogPost;
@@ -110,7 +111,7 @@ export const BlogCard = ({ post, onTagClick }: BlogCardProps) => {
               </h3>
             </a>
           ) : (
-            <Link to={`/blogs/${post.id}`} className="block group" aria-label={`Read ${post.title}`}>
+            <Link to={getWritingPath(post.id)} className="block group" aria-label={`Read ${post.title}`}>
               <h3 id={`blog-title-${post.id}`} className="text-lg md:text-xl font-semibold text-card-foreground mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
                 {post.title}
               </h3>
@@ -132,7 +133,7 @@ export const BlogCard = ({ post, onTagClick }: BlogCardProps) => {
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-2 mb-3" role="group" aria-label="Blog post tags">
+          <div className="flex flex-wrap gap-2 mb-3" role="group" aria-label="Writing topics">
             {post.tags.map((tag) => (
               <button
                 key={tag}
@@ -161,7 +162,7 @@ export const BlogCard = ({ post, onTagClick }: BlogCardProps) => {
           </a>
         ) : (
           <Link
-            to={`/blogs/${post.id}`}
+            to={getWritingPath(post.id)}
             className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium text-sm transition-colors"
             aria-label={`Read full article: ${post.title}`}
           >
