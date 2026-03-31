@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { ArrowUpRight, Bot, Brain, Cloud, Code2, Github, Linkedin, Mail, MessageSquare, Phone, Shield, Zap } from "lucide-react";
 import Seo from "@/shared/Seo";
 import { profileDetails } from "@/data/siteMetadata";
-import { MessageDialog } from "@/features/contact/MessageDialog";
+
+const MessageDialog = lazy(() =>
+    import("@/features/contact/MessageDialog").then((module) => ({ default: module.MessageDialog })),
+);
 
 const socials = [
     { label: "GitHub", href: profileDetails.socials.github, icon: Github, handle: "github.com/sairam3824" },
@@ -162,7 +165,11 @@ export const ContactPage = () => {
                 </section>
             </div>
 
-            <MessageDialog open={messageDialogOpen} onOpenChange={setMessageDialogOpen} />
+            {messageDialogOpen && (
+                <Suspense fallback={null}>
+                    <MessageDialog open={messageDialogOpen} onOpenChange={setMessageDialogOpen} />
+                </Suspense>
+            )}
         </>
     );
 };
