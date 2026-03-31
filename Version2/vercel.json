@@ -2,6 +2,16 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/blogs",
+      "destination": "/writing",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/:path*",
+      "destination": "/writing/:path*",
+      "permanent": true
+    },
+    {
       "source": "/linkedin",
       "destination": "https://www.linkedin.com/in/sairam-maruri/",
       "permanent": false
