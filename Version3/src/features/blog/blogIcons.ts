@@ -17,8 +17,9 @@ import {
     Coffee,
     Terminal
 } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 
-export const BlogIconMap: Record<string, any> = {
+export const BlogIconMap: Record<string, LucideIcon> = {
     "ServerStack": Server,
     "BrainCircuit": BrainCircuit,
     "Cloud": Cloud,
