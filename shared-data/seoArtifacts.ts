@@ -20,7 +20,7 @@ const ROOT_STATIC_ROUTES: readonly Omit<SitemapEntry, "lastmod">[] = [
     { path: "/education", changefreq: "monthly", priority: 0.7 },
     { path: "/coding-profiles", changefreq: "weekly", priority: 0.8 },
     { path: "/resume", changefreq: "monthly", priority: 0.8 },
-    { path: "/blogs", changefreq: "weekly", priority: 0.8 },
+    { path: "/writing", changefreq: "weekly", priority: 0.8 },
     { path: "/certifications", changefreq: "monthly", priority: 0.7 },
     { path: "/contact", changefreq: "monthly", priority: 0.6 },
     { path: "/privacy", changefreq: "yearly", priority: 0.3 },
@@ -33,7 +33,7 @@ const VERSION1_STATIC_ROUTES: readonly Omit<SitemapEntry, "lastmod">[] = [
     { path: "/v1/projects", changefreq: "monthly", priority: 0.5 },
     { path: "/v1/skills", changefreq: "monthly", priority: 0.5 },
     { path: "/v1/education", changefreq: "monthly", priority: 0.5 },
-    { path: "/v1/blogs", changefreq: "monthly", priority: 0.5 },
+    { path: "/v1/writing", changefreq: "monthly", priority: 0.5 },
     { path: "/v1/certifications", changefreq: "monthly", priority: 0.5 },
     { path: "/v1/contact", changefreq: "monthly", priority: 0.5 },
 ];
@@ -46,7 +46,7 @@ const VERSION3_STATIC_ROUTES: readonly Omit<SitemapEntry, "lastmod">[] = [
     { path: "/v3/education", changefreq: "monthly", priority: 0.6 },
     { path: "/v3/resume", changefreq: "monthly", priority: 0.6 },
     { path: "/v3/coding-profiles", changefreq: "monthly", priority: 0.6 },
-    { path: "/v3/blogs", changefreq: "weekly", priority: 0.6 },
+    { path: "/v3/writing", changefreq: "weekly", priority: 0.6 },
     { path: "/v3/certifications", changefreq: "monthly", priority: 0.6 },
     { path: "/v3/contact", changefreq: "monthly", priority: 0.6 },
     { path: "/v3/privacy", changefreq: "yearly", priority: 0.3 },
@@ -95,14 +95,14 @@ const createStaticEntries = (
     lastmod: string,
 ): SitemapEntry[] => routes.map((route) => ({ ...route, lastmod }));
 
-const createBlogEntries = (basePath: "/blogs" | "/v3/blogs"): SitemapEntry[] =>
+const createBlogEntries = (basePath: "/writing" | "/v3/writing"): SitemapEntry[] =>
     blogPosts
         .filter((post) => !post.externalLink)
         .map((post) => ({
             path: `${basePath}/${post.id}`,
             lastmod: toLastmodDate(post.date, buildDate()),
             changefreq: "monthly" as const,
-            priority: basePath === "/blogs" ? 0.6 : 0.5,
+            priority: basePath === "/writing" ? 0.6 : 0.5,
         }));
 
 const createSitemapXml = (entries: readonly SitemapEntry[]) => {
@@ -154,10 +154,10 @@ export const buildRootSitemapXml = () => {
 
     return createSitemapXml([
         ...createStaticEntries(ROOT_STATIC_ROUTES, staticLastmod).map((entry) =>
-            entry.path === "/blogs" ? { ...entry, lastmod: blogIndexLastmod } : entry,
+            entry.path === "/writing" ? { ...entry, lastmod: blogIndexLastmod } : entry,
         ),
         ...createStaticEntries(VERSION1_STATIC_ROUTES, staticLastmod),
-        ...createBlogEntries("/blogs"),
+        ...createBlogEntries("/writing"),
     ]);
 };
 
@@ -167,9 +167,9 @@ export const buildVersion3SitemapXml = () => {
 
     return createSitemapXml([
         ...createStaticEntries(VERSION3_STATIC_ROUTES, staticLastmod).map((entry) =>
-            entry.path === "/v3/blogs" ? { ...entry, lastmod: blogIndexLastmod } : entry,
+            entry.path === "/v3/writing" ? { ...entry, lastmod: blogIndexLastmod } : entry,
         ),
-        ...createBlogEntries("/v3/blogs"),
+        ...createBlogEntries("/v3/writing"),
     ]);
 };
 
