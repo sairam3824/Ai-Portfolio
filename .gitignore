@@ -16,6 +16,7 @@ node_modules/
 # Build output
 dist/
 build/
+backups/shared-data/*.json
 
 # Logs
 *.log
