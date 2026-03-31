@@ -1,6 +1,18 @@
 {
   "buildCommand": "npm run build",
   "installCommand": "npm install --legacy-peer-deps",
+  "redirects": [
+    {
+      "source": "/blogs",
+      "destination": "/writing",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/:path*",
+      "destination": "/writing/:path*",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/(.*)",
