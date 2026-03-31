@@ -1,7 +1,6 @@
 import { defineConfig, type Plugin } from "vite";
-import react from "@vitejs/plugin-react-swc";
+import react from "@vitejs/plugin-react";
 import path from "path";
-import { componentTagger } from "lovable-tagger";
 import { profileDetails, siteMetadata } from "../shared-data/siteMetadata";
 
 function injectSiteMetadataPlugin(): Plugin {
@@ -45,7 +44,7 @@ export default defineConfig(({ mode }) => ({
       },
     },
   },
-  plugins: [react(), injectSiteMetadataPlugin(), mode === "development" && componentTagger()].filter(Boolean),
+  plugins: [react(), injectSiteMetadataPlugin()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
