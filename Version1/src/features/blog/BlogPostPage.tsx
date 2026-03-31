@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Layout from "@/shared/components/Layout";
 import { getBlogContent, getBlogPost } from "@/data/blogData";
 import { profileDetails } from "@/data/siteMetadata";
+import { ROUTE_PATHS, WRITING_LABEL, getWritingPath } from "@/data/siteRoutes";
 import { Button } from "@/shared/ui/button";
 import { MessageDialog } from "../contact/MessageDialog";
 
@@ -52,7 +53,7 @@ const BlogPostPage = () => {
     }, [post]);
 
     if (!post) {
-        return <Navigate to="/blogs" replace />;
+        return <Navigate to={ROUTE_PATHS.writing} replace />;
     }
 
     const shareUrl = typeof window !== "undefined" ? window.location.href : "";
@@ -89,7 +90,7 @@ const BlogPostPage = () => {
         <Layout
             title={`${post.title} | ${profileDetails.name}`}
             description={post.excerpt}
-            canonicalPath={`/blogs/${slug}`}
+            canonicalPath={getWritingPath(slug)}
             type="article"
             pageType="CollectionPage"
             keywords={post.tags}
@@ -98,11 +99,11 @@ const BlogPostPage = () => {
         >
             <div className="max-w-4xl mx-auto px-4 py-8">
                 <Link
-                    to="/blogs"
+                    to={ROUTE_PATHS.writing}
                     className="inline-flex items-center text-muted-foreground hover:text-foreground mb-8 transition-colors"
                 >
                     <ArrowLeft className="w-4 h-4 mr-2" />
-                    Back to Blogs
+                    Back to {WRITING_LABEL}
                 </Link>
 
                 <article className="bg-card rounded-2xl shadow-sm border border-border overflow-hidden">
