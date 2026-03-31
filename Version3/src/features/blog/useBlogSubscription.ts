@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { API_PATHS } from "@/data/siteRoutes";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -36,7 +37,7 @@ export const useBlogSubscription = () => {
         setIsLoading(true);
 
         try {
-            const response = await fetch("/api/blog-subscribe", {
+            const response = await fetch(API_PATHS.writingSubscribe, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -51,13 +52,13 @@ export const useBlogSubscription = () => {
 
             if (payload?.status === "already_subscribed") {
                 setEmail("");
-                showNotification("Already subscribed", "This email is already on the blog updates list.", "success");
+                showNotification("Already subscribed", "This email is already on the writing updates list.", "success");
                 return;
             }
 
             if (payload?.status === "reactivated") {
                 setEmail("");
-                showNotification("Welcome back", "Your subscription has been reactivated for future blog updates.", "success");
+                showNotification("Welcome back", "Your subscription has been reactivated for future writing updates.", "success");
                 return;
             }
 
@@ -65,14 +66,14 @@ export const useBlogSubscription = () => {
             showNotification(
                 "Subscribed",
                 payload?.welcomeEmailSent
-                    ? "You’ll get future blog updates in your inbox. A welcome email is on the way."
-                    : "You’ll get future blog updates in your inbox.",
+                    ? "You’ll get future writing updates in your inbox. A welcome email is on the way."
+                    : "You’ll get future writing updates in your inbox.",
                 "success",
             );
-        } catch (error: any) {
-            console.error("Error subscribing to blog updates:", error);
+        } catch (error: unknown) {
+            console.error("Error subscribing to writing updates:", error);
 
-            const message = typeof error?.message === "string" ? error.message : "";
+            const message = error instanceof Error ? error.message : "";
             if (message.includes("configuration") || message.includes("blog_subscribers") || message.includes("relation")) {
                 showNotification(
                     "Subscriber table issue",
