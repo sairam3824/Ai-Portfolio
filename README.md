@@ -1,90 +1,116 @@
-# Ai-Portfolio 🚀
+# Ai-Portfolio
 
-**Live Portfolio:** [saiii.in](https://saiii.in)
+Personal portfolio monorepo for [saiii.in](https://saiii.in), with shared content, multiple historical app generations, and Vercel serverless APIs.
 
-**Other Live Projects:**
-*   [hiremind.saiii.in](https://hiremind.saiii.in)
-*   [systemdesign.saiii.in](https://systemdesign.saiii.in)
-*   [orravyn.cloud](https://orravyn.cloud)
-*   [traffic.saiii.in](https://traffic.saiii.in)
+## Live Sites
 
-Welcome to the **Ai-Portfolio** repository! This project showcases two distinct versions of a modern, AI-integrated portfolio website, demonstrating the evolution of design and technical capabilities.
+- [saiii.in](https://saiii.in)
+- [hiremind.saiii.in](https://hiremind.saiii.in)
+- [systemdesign.saiii.in](https://systemdesign.saiii.in)
+- [orravyn.cloud](https://orravyn.cloud)
+- [traffic.saiii.in](https://traffic.saiii.in)
 
-## 🌟 Project Overview
+## Repository Layout
 
-This repository contains two versions of my personal portfolio:
-
-*   **Version 1:** Needs to be run manually. It features a complete AI-driven interface with a chat assistant, showcasing foundational AI integration and web development skills.
-*   **Version 2:** The latest, production-ready version. It is highly optimized, features a polished UI/UX, and includes advanced features like a rotating typewriter effect, section-specific footers, and improved responsiveness. This version is designed for deployment and performance.
-
-## 📂 Directory Structure
-
-```
+```text
 Ai-Portfolio/
-├── Version1/           # Legacy version (Manual run required)
-│   ├── src/
-│   ├── server/
-│   ├── public/
-│   └── ...
-├── Version2/           # Latest production version (Optimized)
-│   ├── src/
-│   ├── public/
-│   ├── vite.config.ts
-│   └── ...
-└── README.md           # This file
+├── Version3/       # Current production app
+├── Version2/       # Transitional/legacy reference app
+├── Version1/       # Oldest legacy app, deployed under /v1
+├── api/            # Vercel serverless functions
+├── shared-data/    # Shared routes, writing, SEO, metadata, and content
+├── scripts/        # Maintenance and deployment helper scripts
+└── docs/           # Maintenance policy and operational notes
 ```
 
-## 🚀 Getting Started
+## Long-Term Support Policy
 
-To explore the portfolios, you can run each version locally.
+- `Version3/` is the only target for new feature development.
+- `Version2/` and `Version1/` are compatibility surfaces. Keep changes there minimal unless a task explicitly requires them.
+- Prefer updating shared sources in `shared-data/` instead of duplicating changes across versions.
+- Public writing URLs use `/writing`. Legacy `/blogs` URLs remain as permanent redirects.
 
-### Prerequisites
+Full policy: [docs/MAINTENANCE.md](docs/MAINTENANCE.md)
+Operations runbook: [docs/OPERATIONS_RUNBOOK.md](docs/OPERATIONS_RUNBOOK.md)
+Branch protection: [docs/BRANCH_PROTECTION_POLICY.md](docs/BRANCH_PROTECTION_POLICY.md)
+Quarterly checklist: [docs/QUARTERLY_MAINTENANCE_CHECKLIST.md](docs/QUARTERLY_MAINTENANCE_CHECKLIST.md)
+Provider inventory: [docs/PROVIDER_INVENTORY.md](docs/PROVIDER_INVENTORY.md)
 
-*   Node.js (v18 or higher recommended)
-*   npm or yarn
+## Tooling Baseline
 
-### Running Version 1  (Legacy)
+- Node.js: `22.20.0`
+- npm: `10.9.3`
+- Package manager: npm workspaces from the repo root
 
-1.  Navigate to the `Version1` directory:
-    ```bash
-    cd Version1
-    ```
-2.  Install dependencies:
-    ```bash
-    npm install
-    ```
-3.  Start the development server:
-    ```bash
-    npm run dev
-    ```
+Use the root install and verification flow:
 
-### Running Version 2 (Latest)
+```bash
+npm ci
+npm run verify
+npm run content:snapshot
+```
 
-1.  Navigate to the `Version2` directory:
-    ```bash
-    cd Version2
-    ```
-2.  Install dependencies:
-    ```bash
-    npm install
-    ```
-3.  Start the development server:
-    ```bash
-    npm run dev
-    ```
+## Common Commands
 
-## ✨ Key Features (Version 2)
+### Root
 
-*   **AI Integration:** Showcases expertise in GenAI, LLMs, and RAG systems.
-*   **Dynamic UI:** Features smooth animations, a typewriter search bar, and interactive components.
-*   **Responsive Design:** Fully optimized for mobile, tablet, and desktop screens.
-*   **Detailed Sections:**
-    *   **Skills:** Categorized technical competencies with direct documentation links.
-    *   **Certifications:** Verified credentials from top providers.
-    *   **Projects:** showcase of AI and engineering projects with GitHub and live links.
-    *   **Blog:** Insights into AI and tech trends.
+```bash
+npm run check:writing   # Validate redirects, sitemap URLs, and Writing aliases
+npm run check:metrics   # Validate homepage/public numbers against shared data
+npm run test            # Behavioral tests for routes and APIs
+npm run lint            # Lint all workspaces
+npm run build:ci        # Build Version1, Version2, and Version3
+npm run build:deploy    # Production bundle: build Version3 + embed Version1 under /v1
+npm run check:bundle    # Enforce Version3 bundle-size budgets after build
+npm run branch-protect:apply # Apply documented GitHub branch protection (requires valid gh auth)
+npm run content:snapshot # Export a portable shared-data backup
+npm run clean:generated # Remove local dist output and generated snapshot artifacts
+npm run newsletter:send # Send the latest Writing newsletter manually
+npm run verify          # Full maintenance check
+```
 
-## 📄 License
+### Version3
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+```bash
+npm run dev --workspace Version3
+npm run build --workspace Version3
+```
 
+### Version2
+
+```bash
+npm run dev --workspace Version2
+npm run build --workspace Version2
+```
+
+### Version1
+
+```bash
+npm run dev --workspace Version1
+npm run build --workspace Version1
+```
+
+## Deployment Notes
+
+- Root Vercel deployment builds with `npm run build:deploy`.
+- `npm run build:deploy` now validates writing routes, public metrics, and the Version3 bundle budget before producing the deployable output.
+- Newsletter sending is intentionally separate from site deploys. Trigger it through the GitHub Actions workflow when needed.
+- Shared profile facts for the site and chat assistant live in `shared-data/siteMetadata.ts`.
+- Shared-data snapshots can be generated locally and are archived weekly through GitHub Actions artifacts.
+- Local generated artifacts should stay out of git. Use `npm run clean:generated` after local verification if you want a clean worktree.
+
+## CI
+
+GitHub Actions now verifies the repo on every pull request and on pushes to `main`/`master`:
+
+- install dependencies with the pinned Node/npm toolchain
+- run `npm run verify`
+- enforce data-drift and bundle-budget checks as part of the root verification flow
+- run scheduled uptime checks against the live site and critical APIs
+- run scheduled Lighthouse checks against production routes
+- raise `ops-alert` GitHub issues on scheduled monitoring failures
+- optionally send Slack alerts when `SLACK_WEBHOOK_URL` is configured
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
