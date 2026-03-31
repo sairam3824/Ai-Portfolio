@@ -7,13 +7,14 @@ import { Button } from "@/shared/ui/button";
 import { useTypewriter } from "@/shared/hooks/useTypewriter";
 import { codingProfilesData } from "@/data/codingProfilesData";
 import { profileDetails, siteMetadata } from "@/data/siteMetadata";
+import { ROUTE_PATHS, WRITING_LABEL } from "@/data/siteRoutes";
 import avatar from "@/assets/avatar.webp";
 
 const AboutSection = lazy(() => import("@/features/about").then((m) => ({ default: m.AboutSection })));
 const ProjectsSection = lazy(() => import("@/features/projects").then((m) => ({ default: m.ProjectsSection })));
 const SkillsSection = lazy(() => import("@/features/skills").then((m) => ({ default: m.SkillsSection })));
 const EducationSection = lazy(() => import("@/features/education").then((m) => ({ default: m.EducationSection })));
-const BlogSection = lazy(() => import("@/features/blog").then((m) => ({ default: m.BlogSection })));
+const BlogSection = lazy(() => import("@/features/writing").then((m) => ({ default: m.BlogSection })));
 const CertificationSection = lazy(() => import("@/features/certifications").then((m) => ({ default: m.CertificationSection })));
 const ContactSection = lazy(() => import("@/features/contact").then((m) => ({ default: m.ContactSection })));
 const ChatDialog = lazy(() => import("@/features/chat").then((m) => ({ default: m.ChatDialog })));
@@ -51,8 +52,8 @@ const Index = () => {
 
   useEffect(() => {
     const sectionParam = searchParams.get("section");
-    if (sectionParam && ["me", "projects", "skills", "education", "blog", "certification", "contact"].includes(sectionParam)) {
-      setActiveSection(sectionParam as Section);
+    if (sectionParam && ["me", "projects", "skills", "education", "blog", "writing", "certification", "contact"].includes(sectionParam)) {
+      setActiveSection(sectionParam === "writing" ? "blog" : sectionParam as Section);
     }
   }, [searchParams]);
 
@@ -62,7 +63,7 @@ const Index = () => {
     { id: "projects" as Section, icon: FolderKanban, label: "Projects" },
     { id: "skills" as Section, icon: Layers, label: "Skills" },
     { id: "education" as Section, icon: GraduationCap, label: "Education" },
-    { id: "blog" as Section, icon: BookOpen, label: "Blog" },
+    { id: "blog" as Section, icon: BookOpen, label: WRITING_LABEL },
     { id: "certification" as Section, icon: Sparkles, label: "Certifications" },
     { id: "contact" as Section, icon: Mail, label: "Contact" },
   ];
@@ -290,7 +291,7 @@ const Index = () => {
                     projects: "/projects",
                     skills: "/skills",
                     education: "/education",
-                    blog: "/blogs",
+                    blog: ROUTE_PATHS.writing,
                     certification: "/certifications",
                     contact: "/contact"
                   };
