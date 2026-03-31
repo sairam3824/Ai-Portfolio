@@ -3,9 +3,10 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { blogPosts, getBlogPost } from "./blogData";
 import { getBlogContent } from "./blogContent";
-import { ArrowLeft, ArrowRight, BookOpenText, Calendar, Clock3, Copy, MessageCircle, Share2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpenText, Calendar, Clock3, Copy, Link2, MessageCircle, Share2 } from "lucide-react";
 import Seo from "../../shared/Seo";
 import { profileDetails, siteMetadata } from "@/data/siteMetadata";
+import { ROUTE_PATHS, WRITING_LABEL, getWritingPath } from "@/data/siteRoutes";
 
 const SITE_URL = siteMetadata.siteUrl;
 const VERSION_BASE_PATH =
@@ -69,6 +70,7 @@ const BlogPostPage = () => {
     const [content, setContent] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
     const [shareLabel, setShareLabel] = useState("Share");
+    const [copyLabel, setCopyLabel] = useState("Copy Link");
     const [readingProgress, setReadingProgress] = useState(0);
     const [activeHeadingId, setActiveHeadingId] = useState<string | null>(null);
 
@@ -142,6 +144,16 @@ const BlogPostPage = () => {
 
         return () => window.clearTimeout(timer);
     }, [shareLabel]);
+
+    useEffect(() => {
+        if (copyLabel === "Copy Link") return;
+
+        const timer = window.setTimeout(() => {
+            setCopyLabel("Copy Link");
+        }, 2200);
+
+        return () => window.clearTimeout(timer);
+    }, [copyLabel]);
 
     useEffect(() => {
         if (loading || !renderedContent) {
@@ -227,10 +239,10 @@ const BlogPostPage = () => {
     }, [headings, loading]);
 
     if (!post) {
-        return <Navigate to="/blogs" replace />;
+        return <Navigate to={ROUTE_PATHS.writing} replace />;
     }
 
-    const postUrl = `${SITE_URL}${VERSION_BASE_PATH}/blogs/${id}`;
+    const postUrl = `${SITE_URL}${VERSION_BASE_PATH}${getWritingPath(id)}`;
     const readingMinutes = parseReadTimeMinutes(post.readTime);
 
     const handleShare = async () => {
@@ -260,6 +272,17 @@ const BlogPostPage = () => {
         }
     };
 
+    const handleCopyLink = async () => {
+        const shareUrl = typeof window !== "undefined" ? window.location.href : postUrl;
+        try {
+            await navigator.clipboard.writeText(shareUrl);
+            setCopyLabel("Copied!");
+        } catch (error) {
+            console.error("Error copying link:", error);
+            setCopyLabel("Try again");
+        }
+    };
+
     const publishedDate = post.date ? new Date(post.date) : null;
     const publishedTime = publishedDate && !Number.isNaN(publishedDate.getTime())
         ? publishedDate.toISOString()
@@ -267,8 +290,8 @@ const BlogPostPage = () => {
 
     const breadcrumbs = [
         { name: "Home", url: "/" },
-        { name: "Blogs", url: "/blogs" },
-        { name: post.title, url: `/blogs/${id}` }
+        { name: WRITING_LABEL, url: ROUTE_PATHS.writing },
+        { name: post.title, url: getWritingPath(id) }
     ];
 
     const blogPostingSchema = {
@@ -281,7 +304,7 @@ const BlogPostPage = () => {
         },
         "headline": post.title,
         "description": post.excerpt,
-        "image": `${SITE_URL}/preview.png`,
+        "image": `${SITE_URL}${siteMetadata.previewImage}`,
         "datePublished": publishedTime,
         "dateModified": publishedTime,
         "wordCount": wordCount > 0 ? wordCount : undefined,
@@ -328,11 +351,11 @@ const BlogPostPage = () => {
                     <div className="absolute inset-x-0 top-0 h-32 bg-[radial-gradient(circle_at_top,rgba(114,140,26,0.14),transparent_65%)]" />
                     <div className="relative">
                         <Link
-                            to="/blogs"
+                            to={ROUTE_PATHS.writing}
                             className="inline-flex items-center gap-2 rounded-full border border-[#ddd6c8] bg-white/80 px-4 py-2 text-[0.8rem] font-semibold uppercase tracking-[0.18em] text-[#5f594c] transition-colors hover:border-[#c9d793] hover:text-[#243042]"
                         >
                             <ArrowLeft className="h-4 w-4" />
-                            Back to Writing
+                            Back to {WRITING_LABEL}
                         </Link>
 
                         <div className="mt-8 grid gap-8 xl:grid-cols-[minmax(0,1fr)_280px] xl:items-start">
@@ -386,6 +409,14 @@ const BlogPostPage = () => {
                                     >
                                         {shareLabel === "Copied" ? <Copy className="h-4 w-4" /> : <Share2 className="h-4 w-4" />}
                                         {shareLabel}
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={handleCopyLink}
+                                        className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#d7d0c3] bg-[#fffdf8] px-4 py-3 text-[0.82rem] font-semibold uppercase tracking-[0.18em] text-[#243042] transition-colors hover:border-[#b8c782] hover:text-[#4c74ff]"
+                                    >
+                                        {copyLabel === "Copied!" ? <Copy className="h-4 w-4" /> : <Link2 className="h-4 w-4" />}
+                                        {copyLabel}
                                     </button>
                                 </div>
                             </div>
@@ -469,7 +500,7 @@ const BlogPostPage = () => {
                                     {relatedPosts.map((relatedPost) => (
                                         <Link
                                             key={relatedPost.id}
-                                            to={`/blogs/${relatedPost.id}`}
+                                            to={getWritingPath(relatedPost.id)}
                                             className="group rounded-[1.6rem] border border-[#e1dbcf] bg-[#fdfaf4] p-5 transition-transform duration-200 hover:-translate-y-0.5 hover:border-[#cfd8ab]"
                                         >
                                             <div className="flex items-center gap-3 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[#8e97a8]">
