@@ -8,6 +8,7 @@ import {
     FileText
 } from "lucide-react";
 import { BlogIconMap } from "./blogIcons";
+import { getWritingPath } from "@/data/siteRoutes";
 
 interface BlogCardProps {
     post: BlogPost;
@@ -75,7 +76,7 @@ export const BlogCard = ({ post }: BlogCardProps) => {
     }
 
     return (
-        <Link to={`/blogs/${post.id}`} className="block">
+        <Link to={getWritingPath(post.id)} className="block">
             <CardContent post={post} />
         </Link>
     );
