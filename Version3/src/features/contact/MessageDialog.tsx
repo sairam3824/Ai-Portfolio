@@ -76,7 +76,7 @@ export const MessageDialog = ({ open, onOpenChange }: MessageDialogProps) => {
             setMessage("");
             draftSharedMemory = "";
             setTimeout(() => onOpenChange(false), 2000);
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.error("Error sending message:", error);
 
             // Fallback for demo if supabase keys are still placeholders
@@ -93,7 +93,11 @@ export const MessageDialog = ({ open, onOpenChange }: MessageDialogProps) => {
             }
 
             // Show actual error from Supabase
-            showNotification("Send failed", error?.message || "Please try again in a moment.", "error");
+            const message =
+                error instanceof Error
+                    ? error.message
+                    : "Please try again in a moment.";
+            showNotification("Send failed", message, "error");
             setIsLoading(false);
         }
     };
