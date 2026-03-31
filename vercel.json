@@ -1,8 +1,28 @@
 {
-    "buildCommand": "DISABLE_PWA=true npm run build && npm run newsletter:deploy",
+    "buildCommand": "npm run build:deploy",
     "outputDirectory": "Version3/dist",
     "framework": "vite",
     "redirects": [
+        {
+            "source": "/blogs",
+            "destination": "/writing",
+            "permanent": true
+        },
+        {
+            "source": "/blogs/:path*",
+            "destination": "/writing/:path*",
+            "permanent": true
+        },
+        {
+            "source": "/v1/blogs",
+            "destination": "/v1/writing",
+            "permanent": true
+        },
+        {
+            "source": "/v1/blogs/:path*",
+            "destination": "/v1/writing/:path*",
+            "permanent": true
+        },
         {
             "source": "/v3",
             "destination": "/",
