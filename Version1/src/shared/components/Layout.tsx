@@ -7,6 +7,7 @@ import { ModeToggle } from "./mode-toggle";
 import { SEO } from "./SEO";
 import avatar from "@/assets/avatar.webp";
 import { profileDetails, siteMetadata } from "@/data/siteMetadata";
+import { ROUTE_PATHS, WRITING_LABEL } from "@/data/siteRoutes";
 
 const ChatDialog = lazy(() => import("@/features/chat").then(m => ({ default: m.ChatDialog })));
 
@@ -48,10 +49,10 @@ const routeSeo: Record<string, Omit<LayoutProps, "children">> = {
     keywords: [`${profileDetails.name} Education`, "VIT-AP", "Computer Science Student"],
     pageType: "ProfilePage",
   },
-  "/blogs": {
-    title: `Blogs | ${profileDetails.name}`,
+  [ROUTE_PATHS.writing]: {
+    title: `${WRITING_LABEL} | ${profileDetails.name}`,
     description: `Technical writing by ${profileDetails.name} on AI, ML, cloud, software engineering, and competitive programming.`,
-    keywords: [`${profileDetails.name} Blog`, "AI Blog", "Machine Learning Blog", "Software Engineering Writing"],
+    keywords: [`${profileDetails.name} Writing`, "AI Writing", "Machine Learning Writing", "Software Engineering Writing"],
     pageType: "CollectionPage",
   },
   "/certifications": {
