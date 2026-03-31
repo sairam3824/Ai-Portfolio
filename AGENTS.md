@@ -4,69 +4,84 @@ This file provides guidance to Codex (Codex.ai/code) when working with code in t
 
 ## Repository Structure
 
-Monorepo with two versions:
-- `Version2/` — Production app deployed at [saiii.in](https://saiii.in) via Vercel
-- `Version1/` — Legacy portfolio (not deployed)
-- `api/` — Vercel serverless functions (root-level, detected by Vercel)
+Monorepo with three app generations plus shared data:
+- `Version3/` — Current production app deployed at [saiii.in](https://saiii.in) via the root `vercel.json`
+- `Version2/` — Legacy/transitional portfolio kept for reference and compatibility work
+- `Version1/` — Oldest legacy portfolio served under `/v1`
+- `api/` — Root-level Vercel serverless functions
+- `shared-data/` — Shared site metadata, writing content, routes, and SEO artifacts used across versions
 
-All active development happens in `Version2/`.
+All active feature development should target `Version3/` unless the task explicitly calls for Version1 or Version2.
+Version1 and Version2 should generally receive only compatibility fixes, historical maintenance, or explicit user-requested updates.
 
 ## Commands
 
-All commands run from `Version2/`:
+Primary app commands run from `Version3/`:
 
 ```bash
-cd Version2
+cd Version3
 npm install       # Install dependencies
 npm run dev       # Dev server at localhost:5173
 npm run build     # tsc + vite build (TypeScript check first)
-npm run lint      # ESLint
 npm run preview   # Preview production build locally
 ```
 
-Root-level `npm run build` builds both versions via postinstall hooks.
+Version2 uses the same command shape from `Version2/`.
+Version1 also uses Vite, but has its own legacy dependency graph and should only be touched when needed.
 
-Vercel uses: `DISABLE_PWA=true npm run build` (output: `Version2/dist`).
+Root-level maintenance commands:
+
+```bash
+npm run check:writing   # Validate writing routes, redirects, and sitemap invariants
+npm run build           # Runs writing checks, builds Version3 and Version1, and copies Version1 into Version3/dist/v1
+```
+
+Root Vercel deployment uses: `DISABLE_PWA=true npm run build` (output: `Version3/dist`).
 
 ## Architecture
 
-**Feature-based modules** under `Version2/src/features/`:
+**Feature-based modules** under `Version3/src/features/`:
 Each feature has a `Page.tsx` (full-page route), `Section.tsx` (embeddable), and optionally a `*Data.ts` file.
 
 **All content is client-side data** — no CMS. Editing content means editing data files:
-- `features/blog/blogData.ts` — Blog posts (interface: `{ id, title, excerpt, date, readTime, tags, icon, iconColor, content?, externalLink? }`)
+- `shared-data/blogData.ts` — Writing entries (internal historical name retained for compatibility; interface: `{ id, title, excerpt, date, readTime, tags, icon, iconColor, content?, externalLink? }`)
+- `shared-data/blogContent.ts` — Long-form writing content loaders
 - `features/projects/projectsData.ts` — Projects
-- `features/skills/skillsData.ts` — Skills by category (8 categories, 75+ skills)
+- `features/skills/skillsData.ts` — Skills by category
 - `features/certifications/certificationsData.ts` — Certifications
 - `features/coding-profiles/codingProfilesData.ts` — Competitive programming profiles
-- `features/education/EducationSection.tsx` — Education data is embedded in the component (no separate data file)
 
-**Routing** is in `src/App.tsx` with React Router DOM v6. Routes are lazy-loaded. Nav items (`NAV_ITEMS` array in App.tsx) drive the sidebar and mobile menu.
+**Routing** is in each app's `src/App.tsx`. Shared public route constants live in `shared-data/siteRoutes.ts`.
+Use those shared constants for stable public URLs instead of hardcoding route strings in new work.
 
-**AI Chat Widget** (`features/home/ChatWidget.tsx`) calls `/api/chat.ts` (Vercel serverless, Node.js runtime, OpenAI gpt-4o-mini). Rate limited at 15 req/hour per IP. `OPENAI_API_KEY` must be set in Vercel environment (not in `.env`).
+**Primary writing route** is `/writing`. Legacy `/blogs` URLs must continue to redirect permanently.
+Do not remove these redirects without an explicit migration plan.
 
-**SEO** is handled via `src/shared/Seo.tsx` (React Helmet Async). Every page uses this component with appropriate props including schema.org structured data.
+**AI Chat Widget** calls `/api/chat.ts` (Vercel serverless, Node.js runtime, OpenAI). `OPENAI_API_KEY` must be set in Vercel environment (not in `.env`).
 
-**Supabase** (`src/lib/supabase.ts`) is initialized with `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` from `.env`. Used for contact forms and auth.
+**SEO** is handled via each app's shared `Seo.tsx` component together with `shared-data/seoArtifacts.ts`.
+Sitemaps, metadata, and public canonicals should always prefer `/writing` over `/blogs`.
+
+**Supabase** is initialized with `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` from `.env`. Used for contact forms and subscriptions/auth where present.
 
 ## Key Patterns
 
-**Adding a blog post:** Add entry to `blogData.ts`. For long-form posts, create a file in `features/blog/posts/` and import the content into the `content` field. For external posts, use `externalLink`.
+**Adding a writing entry:** Add it to `shared-data/blogData.ts`. For long-form entries, create a file in `shared-data/blog/posts/` and import the content into the `content` field. For external entries, use `externalLink`.
 
-**Adding a route:** Add to the route list in `App.tsx` and add to `NAV_ITEMS` if it needs sidebar navigation.
+**Adding a route:** Prefer shared constants from `shared-data/siteRoutes.ts` for stable public URLs. Preserve old URLs with permanent redirects whenever renaming.
+
+**Version policy:** Prefer changing one shared source of truth over repeating edits across Version1, Version2, and Version3. If a change is purely historical, keep it scoped to the legacy version instead of mirroring it everywhere.
+
+**Internal naming:** Some internal modules still use `blog` in filenames for compatibility. User-facing language should use `Writing`. When modernizing internals, add aliases first rather than breaking imports abruptly.
 
 **Icons:** Only Lucide React icons are used. Pass icon names as strings in data files; components import and render them dynamically.
 
 **Path alias:** `@/*` resolves to `src/*`. Use this for all internal imports.
 
-**Chunking:** Vite is configured with manual chunks: `vendor` (react/router), `icons` (lucide), `supabase`, `web-vitals`. Don't move these deps without updating `vite.config.ts`.
-
-**PWA is disabled on Vercel** (`DISABLE_PWA=true`) to avoid service worker conflicts. PWA only activates in local production preview.
-
 ## Environment Variables
 
-```
+```bash
 VITE_SUPABASE_URL=       # Required for contact/auth
 VITE_SUPABASE_ANON_KEY=  # Required for contact/auth
-OPENAI_API_KEY=           # Set in Vercel env only (server-side)
+OPENAI_API_KEY=          # Set in Vercel env only (server-side)
 ```
