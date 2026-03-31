@@ -1,6 +1,7 @@
-import type { VercelRequest, VercelResponse } from "@vercel/node";
+import type { ApiRequest, ApiResponse } from "./types";
+import { siteMetadata } from "../shared-data/siteMetadata";
 
-const SITE_URL = "https://saiii.in";
+const SITE_URL = siteMetadata.siteUrl;
 
 const renderPage = (title: string, message: string, statusCode = 200) => `<!doctype html>
 <html lang="en">
@@ -64,12 +65,12 @@ const renderPage = (title: string, message: string, statusCode = 200) => `<!doct
   <main>
     <h1>${title}</h1>
     <p>${message}</p>
-    <a href="${SITE_URL}/blogs">Back to the blog</a>
+    <a href="${SITE_URL}/writing">Back to writing</a>
   </main>
 </body>
 </html>`;
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req: ApiRequest, res: ApiResponse) {
     if (req.method !== "GET") {
         return res.status(405).send(renderPage("Method not allowed", "This endpoint only supports one-click unsubscribe links.", 405));
     }
@@ -115,7 +116,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             return res.status(404).send(renderPage("Link expired", "This unsubscribe link is no longer valid, or that email was already removed.", 404));
         }
 
-        return res.status(200).send(renderPage("You’re unsubscribed", "You will no longer receive future blog update emails from saiii.in."));
+        return res.status(200).send(renderPage("You’re unsubscribed", "You will no longer receive future writing update emails from saiii.in."));
     } catch (error) {
         console.error("Unexpected unsubscribe error:", error);
         return res.status(500).send(renderPage("Unsubscribe failed", "We hit an unexpected error while removing you from the list.", 500));
