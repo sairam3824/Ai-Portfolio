@@ -145,8 +145,10 @@ export const CodingProfilesPage = () => {
                     const isFeatured = profile.featured;
                     const colSpan = isFeatured ? 'md:col-span-3' : 'md:col-span-2';
                     const rowSpan = isFeatured ? 'md:row-span-2' : 'md:row-span-1';
-                    // @ts-ignore
-                    const styles = colorStyles[profile.color] || colorStyles.blue;
+                    const colorKey = profile.color in colorStyles
+                        ? (profile.color as keyof typeof colorStyles)
+                        : "blue";
+                    const styles = colorStyles[colorKey];
 
                     return (
                         <a
