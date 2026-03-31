@@ -1,7 +1,8 @@
 import { ArrowUpRight, FileText, Github, Linkedin, Mail, Phone } from "lucide-react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { Suspense, useEffect, useState } from "react";
-import { portfolioContent } from "@/data/portfolioContent";
+import { prefetchRoute, schedulePrefetch } from "@/app/routeLoaders";
+import { siteShellContent } from "@/data/siteShellContent";
 import { profileDetails, siteMetadata } from "@/data/siteMetadata";
 
 const ScrollToTop = () => {
@@ -32,12 +33,57 @@ export const SiteLayout = () => {
     const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
+        let frameId = 0;
+
+        const updateScrollState = () => {
+            frameId = 0;
+            const nextIsScrolled = window.scrollY > 50;
+            setIsScrolled((previous) => (previous === nextIsScrolled ? previous : nextIsScrolled));
         };
+
+        const handleScroll = () => {
+            if (frameId !== 0) return;
+            frameId = window.requestAnimationFrame(updateScrollState);
+        };
+
+        updateScrollState();
         window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            if (frameId !== 0) {
+                window.cancelAnimationFrame(frameId);
+            }
+        };
     }, []);
+
+    const getPrefetchHandlers = (href: string) => {
+        let timerId: number | undefined;
+
+        return {
+            onMouseEnter: () => {
+                timerId = schedulePrefetch(href);
+            },
+            onFocus: () => {
+                prefetchRoute(href);
+            },
+            onTouchStart: () => {
+                prefetchRoute(href);
+            },
+            onMouseLeave: () => {
+                if (timerId !== undefined) {
+                    window.clearTimeout(timerId);
+                    timerId = undefined;
+                }
+            },
+            onBlur: () => {
+                if (timerId !== undefined) {
+                    window.clearTimeout(timerId);
+                    timerId = undefined;
+                }
+            },
+        };
+    };
 
     return (
     <div className="portfolio-page min-h-screen bg-[#f7f4ee] text-[#17140f]">
@@ -50,7 +96,7 @@ export const SiteLayout = () => {
                     className="pointer-events-auto inline-flex min-w-0 max-w-full items-center rounded-[1.1rem] border border-white/55 bg-white/38 px-4 py-2.5 backdrop-blur-xl shadow-[0_14px_30px_rgba(34,31,22,0.06)] sm:rounded-[1.35rem] sm:px-5 sm:py-3"
                 >
                     <span className="portfolio-sans block truncate text-[1.15rem] font-semibold tracking-[-0.06em] text-[#13110c] sm:text-[1.7rem]">
-                        {portfolioContent.profile.brand}
+                        {siteShellContent.brand}
                     </span>
                 </NavLink>
 
@@ -58,10 +104,11 @@ export const SiteLayout = () => {
                     isScrolled ? "scale-[0.92] -translate-y-1 shadow-[0_10px_25px_rgba(34,31,22,0.04)]" : "scale-100 translate-y-0"
                 }`}>
                     <div className="flex min-w-max items-center gap-1">
-                        {portfolioContent.nav.map((item, index) => (
+                        {siteShellContent.nav.map((item, index) => (
                             <NavLink
                                 key={item.href}
                                 to={item.href}
+                                {...getPrefetchHandlers(item.href)}
                                 style={{ animationDelay: `${index * 80}ms` }}
                                 className={({ isActive }) =>
                                     `relative rounded-full border px-3.5 py-2 transition-all duration-300 group nav-item-animate sm:px-5 ${
@@ -85,7 +132,7 @@ export const SiteLayout = () => {
                 </nav>
 
                 <a
-                    href={portfolioContent.profile.resumeHref}
+                    href={siteShellContent.resumeHref}
                     target="_blank"
                     rel="noreferrer"
                     className={`pointer-events-auto order-2 inline-flex h-[52px] items-center gap-0 overflow-hidden rounded-[1.1rem] bg-[#dbe7ae] text-[#17150f] shadow-[0_14px_30px_rgba(185,199,141,0.15)] transition-all duration-700 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)] hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(185,199,141,0.25)] group sm:order-3 sm:w-auto sm:rounded-[1.35rem] ${
@@ -120,7 +167,7 @@ export const SiteLayout = () => {
                 <div className="grid gap-10 lg:grid-cols-[1.25fr_0.75fr_0.8fr]">
                     <div>
                         <p className="portfolio-sans text-[2rem] font-semibold tracking-[-0.06em] text-[#13110c] sm:text-[2.2rem]">
-                            {portfolioContent.profile.brand}
+                            {siteShellContent.brand}
                         </p>
                         <p className="mt-5 max-w-[36ch] text-[0.98rem] leading-7 text-[#6b6557]">
                             Product-minded GenAI engineer shipping agent workflows, retrieval systems, cloud deployments, and interfaces that feel intentional.
@@ -135,22 +182,23 @@ export const SiteLayout = () => {
                     <div>
                         <p className="text-[0.78rem] font-semibold uppercase tracking-[0.24em] text-[#7f8760]">Explore</p>
                         <div className="mt-5 grid gap-3 text-[0.98rem] font-semibold text-[#17140f]">
-                            {portfolioContent.footerLinks.map((item) => (
+                            {siteShellContent.footerLinks.map((item) => (
                                 <NavLink
                                     key={item.href}
                                     to={item.href}
+                                    {...getPrefetchHandlers(item.href)}
                                     className="transition-colors hover:text-[#5d7414]"
                                 >
                                     {item.label}
                                 </NavLink>
                             ))}
-                            <NavLink to="/certifications" className="transition-colors hover:text-[#5d7414]">
+                            <NavLink to="/certifications" {...getPrefetchHandlers("/certifications")} className="transition-colors hover:text-[#5d7414]">
                                 Certifications
                             </NavLink>
-                            <NavLink to="/privacy" className="transition-colors hover:text-[#5d7414]">
+                            <NavLink to="/privacy" {...getPrefetchHandlers("/privacy")} className="transition-colors hover:text-[#5d7414]">
                                 Privacy Policy
                             </NavLink>
-                            <NavLink to="/terms" className="transition-colors hover:text-[#5d7414]">
+                            <NavLink to="/terms" {...getPrefetchHandlers("/terms")} className="transition-colors hover:text-[#5d7414]">
                                 Terms & Conditions
                             </NavLink>
                         </div>
