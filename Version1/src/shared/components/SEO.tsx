@@ -8,6 +8,14 @@ const DEFAULT_IMAGE = `${SITE_URL}${siteMetadata.previewImage}`;
 const AUTHOR_NAME = profileDetails.name;
 const SITE_NAME = siteMetadata.applicationName;
 
+const getImageMimeType = (imageUrl: string) => {
+  if (imageUrl.endsWith(".png")) return "image/png";
+  if (imageUrl.endsWith(".webp")) return "image/webp";
+  if (imageUrl.endsWith(".jpg") || imageUrl.endsWith(".jpeg")) return "image/jpeg";
+  if (imageUrl.endsWith(".svg")) return "image/svg+xml";
+  return siteMetadata.previewImageType;
+};
+
 const toCanonicalUrl = (path: string) => {
   if (path.startsWith("http://") || path.startsWith("https://")) {
     return path;
@@ -52,6 +60,7 @@ export const SEO = ({
   const fullTitle = title.includes(profileDetails.name) ? title : `${title} | ${profileDetails.name}`;
   const canonicalUrl = toCanonicalUrl(url ?? canonicalPath ?? pathname);
   const fullImage = image.startsWith("http") ? image : `${SITE_URL}${image}`;
+  const imageType = getImageMimeType(fullImage);
   const keywordContent = Array.isArray(keywords) ? keywords.join(", ") : keywords;
   const schemaType = type === "article" ? "Article" : pageType;
   const pageSchema = {
@@ -113,6 +122,7 @@ export const SEO = ({
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={`${AUTHOR_NAME} legacy portfolio preview`} />
+      <meta property="og:image:type" content={imageType} />
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:locale" content="en_US" />
 
