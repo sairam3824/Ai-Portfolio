@@ -8,6 +8,14 @@ const SITE_NAME = profileDetails.name;
 const AUTHOR_NAME = profileDetails.name;
 const DEFAULT_ROBOTS = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 
+const getImageMimeType = (imageUrl: string) => {
+    if (imageUrl.endsWith(".png")) return "image/png";
+    if (imageUrl.endsWith(".webp")) return "image/webp";
+    if (imageUrl.endsWith(".jpg") || imageUrl.endsWith(".jpeg")) return "image/jpeg";
+    if (imageUrl.endsWith(".svg")) return "image/svg+xml";
+    return siteMetadata.previewImageType;
+};
+
 type BreadcrumbItem = {
     name: string;
     url: string;
@@ -45,6 +53,7 @@ const Seo = ({
     const { pathname } = useLocation();
     const url = canonical ?? `${SITE_URL}${pathname === "/" ? "/" : pathname}`;
     const fullImage = image.startsWith("http") ? image : `${SITE_URL}${image}`;
+    const imageType = getImageMimeType(fullImage);
     const imageAlt = `${title} | ${SITE_NAME}`;
 
     const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 ? {
@@ -122,7 +131,7 @@ const Seo = ({
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="630" />
             <meta property="og:image:alt" content={imageAlt} />
-            <meta property="og:image:type" content="image/png" />
+            <meta property="og:image:type" content={imageType} />
             <meta property="og:site_name" content={SITE_NAME} />
             <meta property="og:locale" content="en_US" />
             {modifiedTime && <meta property="og:updated_time" content={modifiedTime} />}
