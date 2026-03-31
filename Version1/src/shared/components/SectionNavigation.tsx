@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { User, FileText, FolderKanban, Layers, GraduationCap, BookOpen, Sparkles, Mail } from "lucide-react";
 import { Button } from "@/shared/ui/button";
 import { profileDetails } from "@/data/siteMetadata";
+import { ROUTE_PATHS, WRITING_LABEL } from "@/data/siteRoutes";
 
 const navigationItems = [
   { path: "/about", icon: User, label: "About" },
@@ -9,7 +10,7 @@ const navigationItems = [
   { path: "/projects", icon: FolderKanban, label: "Projects" },
   { path: "/skills", icon: Layers, label: "Skills" },
   { path: "/education", icon: GraduationCap, label: "Education" },
-  { path: "/blogs", icon: BookOpen, label: "Blogs" },
+  { path: ROUTE_PATHS.writing, icon: BookOpen, label: WRITING_LABEL },
   { path: "/certifications", icon: Sparkles, label: "Certifications" },
   { path: "/contact", icon: Mail, label: "Contact" },
 ];
