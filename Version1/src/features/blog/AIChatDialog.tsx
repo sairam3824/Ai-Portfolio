@@ -25,7 +25,7 @@ export const AIChatDialog = ({ open, onOpenChange, initialQuery }: AIChatDialogP
     if (open && initialQuery && messages.length === 0) {
       sendMessage(initialQuery);
     }
-  }, [open, initialQuery]);
+  }, [open, initialQuery, messages.length, sendMessage]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
