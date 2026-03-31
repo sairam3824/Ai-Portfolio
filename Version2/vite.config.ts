@@ -2,8 +2,6 @@ import fs from 'fs';
 import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import viteCompression from 'vite-plugin-compression';
-import { VitePWA } from 'vite-plugin-pwa';
 import { buildRootRobotsTxt, buildRootSitemapXml } from '../shared-data/seoArtifacts';
 
 // Inject <link rel="preload"> for the hashed avatar image so the browser
@@ -47,118 +45,11 @@ function writeSeoArtifactsPlugin(): Plugin {
 // https://vitejs.dev/config/
 export default defineConfig({
     envDir: path.resolve(__dirname, ".."),
+    publicDir: path.resolve(__dirname, "../shared-public"),
     plugins: [
         react(),
         preloadAvatarPlugin(),
         writeSeoArtifactsPlugin(),
-        viteCompression({
-            algorithm: 'gzip',
-            ext: '.gz',
-            threshold: 512,
-            deleteOriginFile: false,
-        }),
-        viteCompression({
-            algorithm: 'brotliCompress',
-            ext: '.br',
-            threshold: 512,
-            deleteOriginFile: false,
-        }),
-        VitePWA({
-            registerType: 'autoUpdate',
-            minify: true,
-            disable: process.env.DISABLE_PWA === 'true',
-            workbox: {
-                globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,avif,woff2}'],
-                navigateFallback: '/index.html',
-                navigateFallbackDenylist: [/^\/v1/, /^\/v3/, /^\/api/],
-                cleanupOutdatedCaches: true,
-                skipWaiting: true,
-                clientsClaim: true,
-                runtimeCaching: [
-                    {
-                        urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-                        handler: 'CacheFirst',
-                        options: {
-                            cacheName: 'google-fonts-cache',
-                            expiration: {
-                                maxEntries: 10,
-                                maxAgeSeconds: 60 * 60 * 24 * 365
-                            },
-                            cacheableResponse: {
-                                statuses: [0, 200]
-                            }
-                        }
-                    },
-                    {
-                        urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
-                        handler: 'CacheFirst',
-                        options: {
-                            cacheName: 'gstatic-fonts-cache',
-                            expiration: {
-                                maxEntries: 10,
-                                maxAgeSeconds: 60 * 60 * 24 * 365
-                            },
-                            cacheableResponse: {
-                                statuses: [0, 200]
-                            }
-                        }
-                    },
-                    {
-                        urlPattern: /^https:\/\/.*\.supabase\.co\/.*/i,
-                        handler: 'NetworkFirst',
-                        options: {
-                            cacheName: 'supabase-cache',
-                            expiration: {
-                                maxEntries: 50,
-                                maxAgeSeconds: 60 * 5
-                            },
-                            networkTimeoutSeconds: 10,
-                            cacheableResponse: {
-                                statuses: [0, 200]
-                            }
-                        }
-                    }
-                ]
-            },
-            manifest: {
-                name: 'Sai Ram Maruri Portfolio',
-                short_name: 'Sai Ram',
-                description: 'AI Engineer & Software Developer Portfolio',
-                lang: 'en',
-                dir: 'ltr',
-                theme_color: '#ffffff',
-                background_color: '#ffffff',
-                display: 'standalone',
-                start_url: '/',
-                scope: '/',
-                orientation: 'portrait-primary',
-                icons: [
-                    {
-                        src: 'favicon.ico',
-                        sizes: '64x64 32x32 24x24 16x16',
-                        type: 'image/x-icon'
-                    },
-                    {
-                        src: 'pwa-192x192.png',
-                        sizes: '192x192',
-                        type: 'image/png',
-                        purpose: 'any'
-                    },
-                    {
-                        src: 'pwa-512x512.png',
-                        sizes: '512x512',
-                        type: 'image/png',
-                        purpose: 'any'
-                    },
-                    {
-                        src: 'pwa-maskable-512x512.png',
-                        sizes: '512x512',
-                        type: 'image/png',
-                        purpose: 'maskable'
-                    }
-                ]
-            }
-        })
     ],
     resolve: {
         alias: {
