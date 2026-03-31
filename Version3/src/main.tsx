@@ -77,4 +77,17 @@ root.render(
     </StrictMode>,
 );
 
-reportWebVitals(sendToAnalytics);
+if (typeof window !== "undefined") {
+    const startWebVitals = () => {
+        reportWebVitals(sendToAnalytics);
+    };
+    const idleWindow = window as Window & {
+        requestIdleCallback?: (callback: IdleRequestCallback, options?: IdleRequestOptions) => number;
+    };
+
+    if (idleWindow.requestIdleCallback) {
+        idleWindow.requestIdleCallback(startWebVitals, { timeout: 3000 });
+    } else {
+        window.setTimeout(startWebVitals, 1500);
+    }
+}
