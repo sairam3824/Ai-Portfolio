@@ -206,7 +206,7 @@ I have spent the last year on the building side of this divide, and the compound
   <li>4 Anthropic Academy certifications covering Claude, prompt engineering, and agentic architectures</li>
   <li>Built production projects with Claude Code, MCP, and RAG pipelines</li>
   <li>59+ GitHub repositories shipping real GenAI applications</li>
-  <li>Transitioned from competitive programming (LeetCode Guardian, 2500+ rating) to full-time GenAI builder</li>
+  <li>Transitioned from competitive programming (LeetCode Guardian, 2400+ rating) to full-time GenAI builder</li>
 </ul>
 <p class="mb-4 text-gray-700">
 The competitive programming background gave me the algorithmic foundation. The GenAI stack gave me the leverage. Combining deep CS fundamentals with frontier AI tools is the highest-leverage skill set in tech right now, and Anthropic's Q1 2026 releases just made the leverage even greater.

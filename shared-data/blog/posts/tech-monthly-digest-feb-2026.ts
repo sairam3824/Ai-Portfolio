@@ -107,5 +107,51 @@ This digest focuses on what actually shifted in February — the moves that will
 <p class="mb-6 text-gray-700">
   The direction is clear: AI systems are becoming composable, agent-native, and infrastructure-grade. February accelerated all three of those trends.
 </p>
+
+<!-- Collapsible Sources Section -->
+<details class="mb-8 border border-gray-200 rounded-lg">
+  <summary class="px-4 py-3 bg-gray-50 cursor-pointer hover:bg-gray-100 font-medium text-gray-900 rounded-t-lg">
+    Sources & References
+  </summary>
+  <div class="p-4 space-y-3">
+    <div class="grid gap-3">
+      <a href="https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/" class="text-blue-600 hover:text-blue-800 underline text-sm" target="_blank" rel="noopener noreferrer">
+        Agent-to-Agent (A2A) Protocol Announcement - Google Developers Blog (2026-02-01)
+      </a>
+      <a href="https://www.anthropic.com/news/claude-4" class="text-blue-600 hover:text-blue-800 underline text-sm" target="_blank" rel="noopener noreferrer">
+        Claude 4 Family: Opus 4.6, Sonnet 4.6, and Haiku 4.5 - Anthropic (2026-02-01)
+      </a>
+      <a href="https://modelcontextprotocol.io/" class="text-blue-600 hover:text-blue-800 underline text-sm" target="_blank" rel="noopener noreferrer">
+        Model Context Protocol — Official Specification & Ecosystem - MCP Docs (2026-02-01)
+      </a>
+      <a href="https://openai.com/blog/codex" class="text-blue-600 hover:text-blue-800 underline text-sm" target="_blank" rel="noopener noreferrer">
+        OpenAI Codex: Cloud-Native AI Coding Agent Updates - OpenAI Blog (2026-02-01)
+      </a>
+      <a href="https://huggingface.co/blog/open-source-llm-leaderboard-2026" class="text-blue-600 hover:text-blue-800 underline text-sm" target="_blank" rel="noopener noreferrer">
+        Open-Source LLM Leaderboard: February 2026 Benchmarks - Hugging Face (2026-02-28)
+      </a>
+      <a href="https://arxiv.org/abs/2402.rlhf-process-rewards" class="text-blue-600 hover:text-blue-800 underline text-sm" target="_blank" rel="noopener noreferrer">
+        Process Reward Models for Step-Level Alignment - arXiv (2026-02-01)
+      </a>
+    </div>
+  </div>
+</details>
+
+<!-- Blue Engagement Box -->
+<div class="bg-blue-50 border border-blue-200 rounded-2xl p-6 mt-8">
+  <div class="space-y-4">
+    <p class="text-gray-700 text-base leading-relaxed">
+      Which February development shifted your thinking the most — A2A's promise of a universal agent standard, Context Engineering going mainstream, or the steady march of open-source models closing the gap with frontier models? I'd love to hear what you're actually building with these technologies and what's changed in your stack this month.
+    </p>
+    <div class="space-y-2">
+      <p class="text-gray-700">Until next time,</p>
+      <p class="text-gray-900 font-medium italic">Sairam Maruri</p>
+    </div>
+  </div>
+</div>
+
+<div class="mt-6 text-sm text-gray-500">
+  <p>Note: This article includes AI-assisted writing and manual expert curation. Use at your own risk.</p>
+</div>
 `,
 };

@@ -28,7 +28,7 @@ export const techBiweeklyDigestOct2025 = {
 
     <p class="mb-3 font-semibold text-lg text-gray-900">Key Features Worth Noting:</p>
     <ul class="list-disc list-inside mb-6 space-y-3 pl-4 text-gray-700">
-      <li><strong class="text-gray-900">Agent Mode</strong> (Plus/Pro subscribers): Autonomous task execution across websites—ChatGPT can navigate pages, fill forms, and complete multi‑step workflows on your behalf. During the launch demo, OpenAI showcased Agent Mode autonomously adding grocery items to an Instacart cart and assigning tasks from Google Docs.</li>
+      <li><strong class="text-gray-900">Agent Mode</strong> (Plus/Pro paid tiers): Autonomous task execution across websites—ChatGPT can navigate pages, fill forms, and complete multi‑step workflows on your behalf. During the launch demo, OpenAI showcased Agent Mode autonomously adding grocery items to an Instacart cart and assigning tasks from Google Docs.</li>
       <li><strong class="text-gray-900">Browser Memories</strong>: Opt‑in feature that remembers key details from your browsing sessions to provide continuity.</li>
       <li><strong class="text-gray-900">Cursor Chat</strong>: Inline text enhancement anywhere in the browser, letting you rewrite emails or content without switching contexts.</li>
       <li><strong class="text-gray-900">Natural Language Commands</strong>: Execute tasks like "organize my tabs" or "find that recipe I looked at last week" conversationally.</li>
