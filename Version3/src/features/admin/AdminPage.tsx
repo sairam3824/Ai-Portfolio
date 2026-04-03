@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../../lib/supabase";
-import { Lock, User, Key, LogOut, MessageSquare, Clock, Smartphone, RefreshCw, Trash2, AlertCircle, FileText, Calendar, Plus, ArrowUpDown, Edit2, X, Mail } from "lucide-react";
+import { Lock, User, Key, LogOut, MessageSquare, Clock, Smartphone, RefreshCw, Trash2, AlertCircle, FileText, Calendar, Plus, ArrowUpDown, Edit2, X } from "lucide-react";
 import Seo from "../../shared/Seo";
 
 interface Message {
@@ -25,15 +25,7 @@ interface Deadline {
     created_at: string;
 }
 
-interface Subscriber {
-    id: number;
-    email: string;
-    subscribed_at: string;
-    is_active: boolean;
-    unsubscribe_token?: string | null;
-}
-
-type Tab = 'messages' | 'notes' | 'deadlines' | 'subscribers';
+type Tab = 'messages' | 'notes' | 'deadlines';
 
 const AdminPage = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -47,7 +39,6 @@ const AdminPage = () => {
     const [messages, setMessages] = useState<Message[]>([]);
     const [notes, setNotes] = useState<Note[]>([]);
     const [deadlines, setDeadlines] = useState<Deadline[]>([]);
-    const [subscribers, setSubscribers] = useState<Subscriber[]>([]);
 
     const [loading, setLoading] = useState(false);
     const [confirmDelete, setConfirmDelete] = useState<{ type: Tab, id: number } | null>(null);
@@ -104,7 +95,7 @@ const AdminPage = () => {
             }
         });
 
-        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+        const authStateChange = supabase.auth.onAuthStateChange((_event, session) => {
             if (session) {
                 setIsAuthenticated(true);
                 fetchAllData();
@@ -113,11 +104,13 @@ const AdminPage = () => {
                 setMessages([]);
                 setNotes([]);
                 setDeadlines([]);
-                setSubscribers([]);
             }
         });
 
-        return () => subscription.unsubscribe();
+        const authListener = Object.values(authStateChange.data)[0];
+        const cleanupAuthListener = authListener && Object.values(authListener)[0];
+
+        return () => cleanupAuthListener?.call(authListener);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -125,7 +118,6 @@ const AdminPage = () => {
         fetchMessages();
         fetchNotes();
         fetchDeadlines();
-        fetchSubscribers();
     };
 
     const fetchMessages = async () => {
@@ -169,23 +161,6 @@ const AdminPage = () => {
 
         if (!error) {
             setDeadlines(data || []);
-        }
-        setLoading(false);
-    };
-
-    const fetchSubscribers = async () => {
-        if (!supabase) return;
-        setLoading(true);
-        const { data, error } = await supabase
-            .from('blog_subscribers')
-            .select('*')
-            .order('subscribed_at', { ascending: false });
-
-        if (error) {
-            console.error("Error fetching subscribers:", error);
-            setError(error.message);
-        } else {
-            setSubscribers(data || []);
         }
         setLoading(false);
     };
@@ -289,7 +264,6 @@ const AdminPage = () => {
         if (confirmDelete.type === 'messages') table = 'portfolio_messages';
         if (confirmDelete.type === 'notes') table = 'portfolio_notes';
         if (confirmDelete.type === 'deadlines') table = 'portfolio_deadlines';
-        if (confirmDelete.type === 'subscribers') table = 'blog_subscribers';
 
         const { error } = await supabase
             .from(table)
@@ -302,7 +276,6 @@ const AdminPage = () => {
             if (confirmDelete.type === 'messages') setMessages(messages.filter(m => m.id !== confirmDelete.id));
             if (confirmDelete.type === 'notes') setNotes(notes.filter(n => n.id !== confirmDelete.id));
             if (confirmDelete.type === 'deadlines') setDeadlines(deadlines.filter(d => d.id !== confirmDelete.id));
-            if (confirmDelete.type === 'subscribers') setSubscribers(subscribers.filter(s => s.id !== confirmDelete.id));
         }
         setConfirmDelete(null);
     };
@@ -401,7 +374,6 @@ const AdminPage = () => {
                             setMessages([]);
                             setNotes([]);
                             setDeadlines([]);
-                            setSubscribers([]);
                         }}
                         className="p-3 hover:bg-[#fef2f2] rounded-xl text-[#8b8578] hover:text-[#dc2626] transition-colors"
                         title="Logout"
@@ -419,7 +391,6 @@ const AdminPage = () => {
                         { key: 'messages' as Tab, icon: MessageSquare, label: 'Messages' },
                         { key: 'notes' as Tab, icon: FileText, label: 'Notes' },
                         { key: 'deadlines' as Tab, icon: Calendar, label: 'Deadlines' },
-                        { key: 'subscribers' as Tab, icon: Mail, label: 'Subscribers' },
                     ]).map((tab) => (
                         <button
                             key={tab.key}
@@ -439,7 +410,6 @@ const AdminPage = () => {
                         {activeTab === 'messages' && `Messages (${messages.length})`}
                         {activeTab === 'notes' && `Notes (${notes.length})`}
                         {activeTab === 'deadlines' && `Deadlines (${deadlines.length})`}
-                        {activeTab === 'subscribers' && `Subscribers (${subscribers.length})`}
                     </h2>
                     <div className="flex items-center gap-3">
                         {activeTab === 'deadlines' && (
@@ -811,87 +781,6 @@ const AdminPage = () => {
                     </div>
                 )}
 
-                {activeTab === 'subscribers' && (
-                    <div className="space-y-8">
-                        <div className="grid gap-4 md:grid-cols-3">
-                            <div className="rounded-[1.8rem] border border-[#e3dccf] bg-[#fffdf8] px-5 py-5">
-                                <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[#8b8578]">Total Subscribers</p>
-                                <p className="mt-3 text-[2.7rem] font-semibold leading-none tracking-[-0.08em] text-[#11100c]">{subscribers.length}</p>
-                            </div>
-                            <div className="rounded-[1.8rem] border border-[#e3dccf] bg-[#fffdf8] px-5 py-5">
-                                <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[#8b8578]">Active</p>
-                                <p className="mt-3 text-[2.7rem] font-semibold leading-none tracking-[-0.08em] text-[#11100c]">
-                                    {subscribers.filter((subscriber) => subscriber.is_active).length}
-                                </p>
-                            </div>
-                            <div className="rounded-[1.8rem] border border-[#e3dccf] bg-[#fffdf8] px-5 py-5">
-                                <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[#8b8578]">Latest Signup</p>
-                                <p className="mt-3 text-lg font-semibold leading-tight text-[#11100c]">
-                                    {subscribers[0]?.subscribed_at
-                                        ? new Date(subscribers[0].subscribed_at).toLocaleString()
-                                        : "No signups yet"}
-                                </p>
-                            </div>
-                        </div>
-
-                        <div className="space-y-4">
-                            {subscribers.length === 0 && !loading && (
-                                <div className="text-center py-20">
-                                    <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-[#eef2df]">
-                                        <Mail className="h-8 w-8 text-[#c0b9ab]" />
-                                    </div>
-                                    <p className="text-[#8b8578] font-semibold uppercase tracking-[0.22em] text-[0.68rem]">
-                                        No subscribers yet
-                                    </p>
-                                    <p className="mt-2 text-sm text-[#b0a998]">
-                                        New blog signups will appear here once visitors subscribe.
-                                    </p>
-                                </div>
-                            )}
-
-                            {subscribers.map((subscriber) => (
-                                <div
-                                    key={subscriber.id}
-                                    className="group flex flex-col gap-4 rounded-[2rem] border border-[#e3dccf] bg-[#fffdf8] p-6 transition-all hover:-translate-y-0.5 hover:shadow-[0_20px_60px_rgba(61,52,36,0.06)] sm:flex-row sm:items-center sm:justify-between"
-                                >
-                                    <div className="min-w-0 flex-1">
-                                        <div className="flex flex-wrap items-center gap-3">
-                                            <p className="truncate text-lg font-semibold text-[#11100c]">{subscriber.email}</p>
-                                            <span
-                                                className={`rounded-full px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em] ${
-                                                    subscriber.is_active
-                                                        ? 'bg-[#eef2df] text-[#5d7414]'
-                                                        : 'bg-[#f4eee1] text-[#8b8578]'
-                                                }`}
-                                            >
-                                                {subscriber.is_active ? 'Active' : 'Inactive'}
-                                            </span>
-                                        </div>
-                                        <div className="mt-3 flex flex-wrap items-center gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[#8b8578]">
-                                            <span className="inline-flex items-center gap-2">
-                                                <Clock className="h-3.5 w-3.5" />
-                                                {new Date(subscriber.subscribed_at).toLocaleString()}
-                                            </span>
-                                            {subscriber.unsubscribe_token ? (
-                                                <span className="rounded-full bg-[#f4eee1] px-3 py-1 font-mono normal-case tracking-normal text-[#8b8578]">
-                                                    token saved
-                                                </span>
-                                            ) : null}
-                                        </div>
-                                    </div>
-
-                                    <button
-                                        onClick={() => handleDelete('subscribers', subscriber.id)}
-                                        className="self-end rounded-2xl p-3 text-[#c0b9ab] transition-colors hover:bg-[#fef2f2] hover:text-[#dc2626] sm:self-auto sm:opacity-0 sm:group-hover:opacity-100"
-                                        title="Delete Subscriber"
-                                    >
-                                        <Trash2 className="h-5 w-5" />
-                                    </button>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
             </main>
 
             {/* Delete Confirmation Modal */}
