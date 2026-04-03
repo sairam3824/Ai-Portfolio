@@ -11,9 +11,7 @@ This runbook is the production recovery and routine-operations reference for the
   - Primary production domain: `saiii.in`
   - Validate DNS, SSL, and redirect behavior through Vercel first
 - Supabase:
-  - Stores writing subscribers and contact/message data
-- Resend:
-  - Sends welcome emails and newsletter campaigns
+  - Stores contact/message data
 - OpenAI:
   - Powers `/api/chat`
 - GitHub Actions:
@@ -26,9 +24,6 @@ This runbook is the production recovery and routine-operations reference for the
 - `OPENAI_API_KEY`
 - `SUPABASE_URL`
 - `SUPABASE_SERVICE_ROLE_KEY`
-- `RESEND_API_KEY`
-- `RESEND_FROM_EMAIL`
-- `RESEND_REPLY_TO`
 - `VITE_SUPABASE_URL`
 - `VITE_SUPABASE_ANON_KEY`
 
@@ -36,9 +31,6 @@ This runbook is the production recovery and routine-operations reference for the
 
 - `SUPABASE_URL`
 - `SUPABASE_SERVICE_ROLE_KEY`
-- `RESEND_API_KEY`
-- `RESEND_FROM_EMAIL`
-- `RESEND_REPLY_TO`
 - `SLACK_WEBHOOK_URL`:
   - Optional
   - If set, scheduled uptime, security, and Lighthouse failures send Slack alerts
@@ -82,27 +74,6 @@ Scheduled GitHub workflows should remain healthy:
 2. Confirm `OPENAI_API_KEY` is present in Vercel production environment settings.
 3. Confirm there were no recent prompt/shared-data changes that broke payload generation.
 4. Re-run `Uptime Checks` after the fix.
-
-### Writing Subscribe Or Unsubscribe Failure
-
-1. Check Vercel function logs for:
-   - `/api/writing-subscribe`
-   - `/api/unsubscribe`
-2. Confirm Supabase service-role credentials are present and valid.
-3. Confirm Resend credentials are valid if welcome emails are expected.
-4. Test invalid input and a known-good input path after recovery.
-
-### Newsletter Delivery Failure
-
-1. Check the `Send Newsletter` workflow run logs.
-2. Confirm:
-   - `SUPABASE_URL`
-   - `SUPABASE_SERVICE_ROLE_KEY`
-   - `RESEND_API_KEY`
-   - `RESEND_FROM_EMAIL`
-   - `RESEND_REPLY_TO`
-3. Verify sender domain configuration in Resend.
-4. Re-run the workflow only after validating the campaign state in Supabase.
 
 ### Security Audit Failure
 
