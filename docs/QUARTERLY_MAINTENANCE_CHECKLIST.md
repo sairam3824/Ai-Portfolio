@@ -27,13 +27,12 @@ Run this checklist once every quarter.
 
 1. Review Vercel production settings and recent deploy health
 2. Review Supabase project status, quotas, and retention settings
-3. Review Resend sender/domain health
-4. Review OpenAI usage and cost trends
-5. Confirm GitHub Actions scheduled workflows are still running
+3. Review OpenAI usage and cost trends
+4. Confirm GitHub Actions scheduled workflows are still running
 
 ## Secrets And Access
 
-1. Review who has access to GitHub, Vercel, Supabase, Resend, and DNS
+1. Review who has access to GitHub, Vercel, Supabase, and DNS
 2. Rotate sensitive credentials if needed
 3. Confirm `SLACK_WEBHOOK_URL` is still valid if alerting is enabled
 4. Verify no secrets leaked into committed files
@@ -42,7 +41,7 @@ Run this checklist once every quarter.
 
 1. Check `saiii.in` domain expiry and auto-renew status
 2. Check DNS provider account access
-3. Review Vercel, Supabase, Resend, and OpenAI billing status
+3. Review Vercel, Supabase, and OpenAI billing status
 4. Update [PROVIDER_INVENTORY.md](./PROVIDER_INVENTORY.md) if ownership or billing changed
 
 ## Content And Recovery

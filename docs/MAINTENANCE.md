@@ -26,7 +26,7 @@ This repository is structured to stay maintainable over the long term.
 - `npm run check:metrics` protects the public homepage stats from drifting away from shared source data.
 - `npm run test` covers core route and API validation behavior.
 - `npm run check:bundle` protects the Version3 production bundle from silent growth regressions.
-- Production deploys build the site only. Newsletter sends are triggered separately through the GitHub Actions workflow.
+- Production deploys build the site only.
 - Scheduled uptime, security, shared-data snapshot, and Lighthouse workflows should remain healthy.
 
 ## Shared Sources Of Truth
