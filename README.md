@@ -65,7 +65,6 @@ npm run check:bundle    # Enforce Version3 bundle-size budgets after build
 npm run branch-protect:apply # Apply documented GitHub branch protection (requires valid gh auth)
 npm run content:snapshot # Export a portable shared-data backup
 npm run clean:generated # Remove local dist output and generated snapshot artifacts
-npm run newsletter:send # Send the latest Writing newsletter manually
 npm run verify          # Full maintenance check
 ```
 
@@ -94,7 +93,6 @@ npm run build --workspace Version1
 
 - Root Vercel deployment builds with `npm run build:deploy`.
 - `npm run build:deploy` now validates writing routes, public metrics, and the Version3 bundle budget before producing the deployable output.
-- Newsletter sending is intentionally separate from site deploys. Trigger it through the GitHub Actions workflow when needed.
 - Shared profile facts for the site and chat assistant live in `shared-data/siteMetadata.ts`.
 - Shared-data snapshots can be generated locally and are archived weekly through GitHub Actions artifacts.
 - Local generated artifacts should stay out of git. Use `npm run clean:generated` after local verification if you want a clean worktree.
