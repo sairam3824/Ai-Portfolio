@@ -6,7 +6,7 @@ import { certifications } from "../shared-data/certificationsData";
 import { codingProfilesData } from "../shared-data/codingProfilesData";
 import { educationData } from "../shared-data/educationData";
 import { projectsData } from "../shared-data/projectsData";
-import { ROUTE_PATHS, API_PATHS } from "../shared-data/siteRoutes";
+import { ROUTE_PATHS } from "../shared-data/siteRoutes";
 import { profileDetails, siteMetadata } from "../shared-data/siteMetadata";
 import { skillCategories } from "../shared-data/skillsData";
 
@@ -20,7 +20,6 @@ const snapshot = {
     profileDetails,
     siteMetadata,
     routePaths: ROUTE_PATHS,
-    apiPaths: API_PATHS,
     counts: {
         blogPosts: blogPosts.length,
         certifications: certifications.length,

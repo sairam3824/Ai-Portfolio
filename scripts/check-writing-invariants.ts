@@ -87,7 +87,6 @@ const validateAliases = () => {
         "Version1/src/features/writing/index.ts",
         "Version2/src/features/writing/index.ts",
         "Version3/src/features/writing/index.ts",
-        "api/writing-subscribe.ts",
     ];
 
     requiredFiles.forEach((filePath) => {
