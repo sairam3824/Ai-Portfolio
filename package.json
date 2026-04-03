@@ -24,9 +24,7 @@
     "build:deploy": "npm run check:writing && npm run check:metrics && npm run build --workspace Version3 && npm run check:bundle && npm run build --workspace Version1 && node --import tsx scripts/copy-version1-dist.ts",
     "branch-protect:apply": "node --import tsx scripts/apply-branch-protection.ts",
     "content:snapshot": "node --import tsx scripts/export-shared-data-snapshot.ts",
-    "clean:generated": "node --import tsx scripts/clean-generated-files.ts",
-    "newsletter:send": "node --import tsx scripts/send-latest-blog-newsletter.ts",
-    "newsletter:deploy": "npm run newsletter:send"
+    "clean:generated": "node --import tsx scripts/clean-generated-files.ts"
   },
   "devDependencies": {
     "lucide-react": "^0.562.0",
