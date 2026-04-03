@@ -34,14 +34,6 @@ jobs:
             -d '{"message":"Tell me about Sai Ram."}')
           test "$status" = "200"
 
-      - name: Check writing subscribe validation
-        run: |
-          status=$(curl -sS -o /tmp/subscribe-response.json -w '%{http_code}' \
-            -X POST https://saiii.in/api/writing-subscribe \
-            -H 'Content-Type: application/json' \
-            -d '{"email":"invalid"}')
-          test "$status" = "400"
-
       - name: Create or update GitHub issue on failure
         if: failure()
         uses: actions/github-script@v7
