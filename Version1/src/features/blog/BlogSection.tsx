@@ -1,10 +1,8 @@
-import { CheckCircle2, ShieldCheck, Search, Sparkles } from "lucide-react";
+import { Search, Sparkles } from "lucide-react";
 import { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { BlogCard } from "./BlogCard";
 import { useBlogPosts } from "./useBlogPosts";
-import { useSubscription } from "./useSubscription";
-import { SubscriptionDialog } from "@/features/chat/SubscriptionDialog";
 import { AIChatDialog } from "./AIChatDialog";
 import { Input } from "@/shared/ui/input";
 
@@ -31,8 +29,6 @@ const mapTagToCategory = (tag: string) => {
 
 export const BlogSection = () => {
   const { posts: blogPosts, loading } = useBlogPosts();
-  const { subscribe, isSubmitting } = useSubscription();
-  const [subscriptionDialogOpen, setSubscriptionDialogOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
@@ -249,40 +245,6 @@ export const BlogSection = () => {
         </div>
       </div>
 
-      <section aria-labelledby="subscribe-title" className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/40 dark:to-indigo-950/40 border border-blue-100 dark:border-blue-900 rounded-2xl p-6 mt-6 max-w-4xl mx-auto px-4">
-        <div className="flex items-start gap-3">
-          <ShieldCheck className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5" />
-          <div className="flex-1">
-            <h4 id="subscribe-title" className="text-lg font-semibold text-foreground">
-              Subscribe to Writing Updates
-            </h4>
-            <p className="text-muted-foreground text-sm mb-3">
-              Get email notifications whenever I publish new writing on GenAI, cloud, and dev-tools highlights. No fixed schedule, no spam — unsubscribe anytime.
-            </p>
-            <form
-              className="flex flex-col sm:flex-row gap-3"
-              onSubmit={async (e) => {
-                e.preventDefault();
-                const form = e.currentTarget;
-                const formData = new FormData(form);
-                const email = formData.get("email") as string;
-                const success = await subscribe(email);
-                if (success) {
-                  setSubscriptionDialogOpen(true);
-                  form.reset();
-                }
-              }}
-            >
-              <input type="email" name="email" required aria-label="Email address" placeholder="you@example.com" className="w-full sm:w-auto flex-1 rounded-xl border border-input bg-background px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-foreground" />
-              <button type="submit" disabled={isSubmitting} className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed">
-                <CheckCircle2 className="w-4 h-4" />
-                {isSubmitting ? 'Subscribing...' : 'Subscribe'}
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
-
       <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900 p-4 rounded-lg mt-8 max-w-4xl mx-auto px-4">
         <p className="text-amber-900 dark:text-amber-200 text-sm text-center">
           <strong>Disclaimer:</strong> These articles feature curated industry updates and AI-assisted writing. Information is accurate as of publication but may change over time. Please verify technical or business decisions independently.
@@ -294,7 +256,6 @@ export const BlogSection = () => {
         <Link to="/terms-and-conditions" className="hover:text-foreground underline underline-offset-4 transition-colors">Terms & Conditions</Link>
       </footer>
 
-      <SubscriptionDialog open={subscriptionDialogOpen} onOpenChange={setSubscriptionDialogOpen} />
       <AIChatDialog
         open={aiChatOpen}
         onOpenChange={(open) => {
