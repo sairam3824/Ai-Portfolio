@@ -47,6 +47,17 @@ export const blogPosts: BlogPost[] = [
         iconColor: "red",
     },
     {
+        id: "tech-monthly-digest-mar-2026",
+        title: "Tech Monthly Digest: March 2026 – The Model Avalanche, Sora's Death, and Agentic Infrastructure Comes of Age",
+        excerpt:
+            "March 2026 was the month AI stopped being cyclical and became perpetual. Twelve frontier models shipped in a single week. OpenAI killed Sora and acquired Astral. Anthropic leaked a model and its own source code. Meta's Llama 4 went open source and beat GPT-4o. AWS AgentCore and Google ADK 1.0 made production agents real. Here's everything that mattered for builders.",
+        date: "April 1, 2026",
+        readTime: "20 min read",
+        tags: ["AI/ML", "Agents", "Monthly Digest", "LLMs", "Developer Tools", "Cloud AI", "Open Source", "AI Policy"],
+        icon: "Globe",
+        iconColor: "purple",
+    },
+    {
         id: "tech-monthly-digest-feb-2026",
         title: "Tech Monthly Digest: February 2026 – A2A, Context Engineering, and the Rise of Agentic Everything",
         excerpt:
@@ -359,7 +370,7 @@ export const blogPosts: BlogPost[] = [
         icon: "Chip",
         iconColor: "blue",
     },
-];
+].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 export const getBlogPost = (id: string): BlogPost | undefined => {
     return blogPosts.find((post) => post.id === id);

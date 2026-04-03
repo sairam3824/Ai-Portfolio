@@ -32,6 +32,7 @@ const contentLoaders: Record<string, () => Promise<{ default?: { content: string
     "vector-database": () => import('./blog/posts/vector-databases-foundation-modern-ai'),
     "tech-monthly-digest-jan-2026": () => import('./blog/posts/tech-monthly-digest-jan-2026'),
     "tech-monthly-digest-feb-2026": () => import('./blog/posts/tech-monthly-digest-feb-2026'),
+    "tech-monthly-digest-mar-2026": () => import('./blog/posts/tech-monthly-digest-mar-2026'),
     "context-engineering": () => import('./blog/posts/context-engineering'),
 };
 
