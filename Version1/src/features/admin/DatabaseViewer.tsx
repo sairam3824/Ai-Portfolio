@@ -40,7 +40,7 @@ const DatabaseViewer = () => {
       
       if (error) {
         // Fallback: try to get known tables
-        const knownTables = ['blog_posts', 'blog_subscribers', 'contact_messages'];
+        const knownTables = ['blog_posts', 'contact_messages'];
         const tableInfo: TableInfo[] = [];
         
         for (const tableName of knownTables) {
