@@ -62,7 +62,7 @@ Do not remove these redirects without an explicit migration plan.
 **SEO** is handled via each app's shared `Seo.tsx` component together with `shared-data/seoArtifacts.ts`.
 Sitemaps, metadata, and public canonicals should always prefer `/writing` over `/blogs`.
 
-**Supabase** is initialized with `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` from `.env`. Used for contact forms and subscriptions/auth where present.
+**Supabase** is initialized with `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` from `.env`. Used for contact forms and auth where present.
 
 ## Key Patterns
 
