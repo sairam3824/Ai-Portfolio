@@ -10,15 +10,6 @@ export const supabase: SupabaseClient | null = (supabaseUrl && supabaseAnonKey &
   ? createClient(supabaseUrl, supabaseAnonKey)
   : null
 
-// Database Types
-export interface BlogSubscriber {
-  id: string
-  email: string
-  subscribed_at: string
-  is_active: boolean
-  unsubscribe_token: string
-}
-
 export interface ContactMessage {
   id: string
   message: string
