@@ -1,18 +1,16 @@
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/ui/card";
-import { Users, FileText } from "lucide-react";
+import { FileText } from "lucide-react";
 import { blogPosts } from "@/features/writing";
 import { ModeToggle } from "@/shared/components/mode-toggle";
 
 interface AnalyticsData {
   totalPosts: number;
-  totalSubscribers: number;
 }
 
 const AnalyticsDashboard = () => {
   const [analytics, setAnalytics] = useState<AnalyticsData>({
     totalPosts: 0,
-    totalSubscribers: 0,
   });
   const [loading, setLoading] = useState(true);
 
@@ -25,13 +23,8 @@ const AnalyticsDashboard = () => {
       // Get static writing count
       const totalPosts = blogPosts.length;
 
-      // Get subscribers from localStorage
-      const subscribers = JSON.parse(localStorage.getItem("blog_subscribers") || "[]");
-      const totalSubscribers = subscribers.length;
-
       setAnalytics({
         totalPosts,
-        totalSubscribers,
       });
     } catch (error) {
       console.error("Error fetching analytics:", error);
@@ -59,7 +52,7 @@ const AnalyticsDashboard = () => {
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Writing Pieces</CardTitle>
@@ -69,19 +62,6 @@ const AnalyticsDashboard = () => {
             <div className="text-2xl font-bold">{analytics.totalPosts}</div>
             <p className="text-xs text-muted-foreground">
               Static writing pieces published
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Email Subscribers</CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{analytics.totalSubscribers}</div>
-            <p className="text-xs text-muted-foreground">
-              Stored in browser localStorage
             </p>
           </CardContent>
         </Card>
@@ -138,7 +118,7 @@ const AnalyticsDashboard = () => {
         </CardHeader>
         <CardContent>
           <p className="text-blue-800 dark:text-blue-200 text-sm">
-            Your writing archive is running in static mode. Writing entries are defined in code files and subscribers are stored locally in the browser. 
+            Your writing archive is running in static mode. Writing entries are defined in code files. 
             To add new writing, update <code className="bg-blue-100 dark:bg-blue-900/50 text-blue-900 dark:text-blue-100 px-1 py-0.5 rounded">shared-data/blogData.ts</code> and, for long-form entries, add content under <code className="bg-blue-100 dark:bg-blue-900/50 text-blue-900 dark:text-blue-100 px-1 py-0.5 rounded">shared-data/blog/posts/</code>.
           </p>
         </CardContent>
