@@ -95,7 +95,7 @@ const AdminPage = () => {
             }
         });
 
-        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+        const authStateChange = supabase.auth.onAuthStateChange((_event, session) => {
             if (session) {
                 setIsAuthenticated(true);
                 fetchAllData();
@@ -107,7 +107,10 @@ const AdminPage = () => {
             }
         });
 
-        return () => subscription.unsubscribe();
+        const authListener = Object.values(authStateChange.data)[0];
+        const cleanupAuthListener = authListener && Object.values(authListener)[0];
+
+        return () => cleanupAuthListener?.call(authListener);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
