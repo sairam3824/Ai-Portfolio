@@ -416,6 +416,17 @@ export const projectsData: ProjectData[] = [
         tagline: "Multi-Source Ingestion • Anki Export • GPT-4o-mini",
     },
     {
+        title: "RecForge Recommendation Engine",
+        description:
+            "Production-grade recommendation platform demonstrating end-to-end personalization with collaborative filtering, content retrieval, hybrid ranking, explainable recommendations, deterministic A/B/C experimentation, and admin analytics for model operations.",
+        tech: ["FastAPI", "Next.js 14", "PostgreSQL", "Redis", "PyTorch", "FAISS", "Surprise SVD", "Docker"],
+        github: "https://github.com/sairam3824/RecForge-recommendation-engine",
+        category: "Machine Learning",
+        iconName: "Activity",
+        featured: true,
+        tagline: "Hybrid Recommender • FAISS + SVD • A/B Experimentation",
+    },
+    {
         title: "APIProbe: AI Key Guard",
         description:
             "Professional dashboard for validating and stress-testing API keys across 9 AI providers (OpenAI, Anthropic, Gemini, Groq, Mistral, Perplexity, OpenRouter, DeepSeek, Together AI). All validation runs server-side via Next.js Server Actions — keys never leave the browser. Features model stress testing with latency benchmarks, searchable audit logs, JSON export, and 15-second timeout protection.",
@@ -592,6 +603,17 @@ export const projectsData: ProjectData[] = [
         tagline: "Automated CT Analysis • Grad-CAM Explainability",
     },
     {
+        title: "Colorectal Histopathology Classifier",
+        description:
+            "Web app for colorectal histology image analysis using a TensorFlow/Keras CNN. Supports image upload, tissue classification across 8 classes, confidence scoring, top-k prediction breakdowns, and Grad-CAM heatmaps for visual explanation.",
+        tech: ["TensorFlow", "Keras", "Flask", "Grad-CAM", "Python"],
+        github: "https://github.com/sairam3824/Colorectal-Histopathology-Classifier",
+        category: "Computer Vision",
+        iconName: "Cpu",
+        featured: false,
+        tagline: "8 Tissue Classes • Confidence Scores • Grad-CAM",
+    },
+    {
         title: "Brain Tumor Classification (TDA & ML)",
         description:
             "ML pipeline classifying brain tumor MRI scans into 4 categories (Glioma, Meningioma, No Tumor, Pituitary). Uses PCA-based dimensionality reduction (62,500→1,031 features) with KNN achieving 93.75% accuracy across 7 classical ML models.",
@@ -678,5 +700,38 @@ export const projectsData: ProjectData[] = [
         iconName: "Globe",
         featured: false,
         tagline: "Academic ERP • MySQL Backend",
+    },
+    {
+        title: "BadClaude",
+        description:
+            "A hardened Electron tray app that sends Claude Code an interrupt (Ctrl-C) and a randomized motivational message whenever it's going too slow. Security-hardened fork with Electron sandbox, strict CSP, IPC sender validation, AppleScript-via-stdin injection prevention, and 18 CVE fixes — on top of a reliable macro delivery pipeline for macOS.",
+        tech: ["Electron", "JavaScript", "Node.js", "macOS", "AppleScript"],
+        github: "https://github.com/sairam3824/badclaude",
+        category: "Infrastructure",
+        iconName: "Code2",
+        featured: false,
+        tagline: "Whip Claude Code Into Shape • Electron Tray • Security-Hardened",
+    },
+    {
+        title: "NeuroLens: Brain Tumor Classifier",
+        description:
+            "Research-grade web app for explainable brain tumor classification from MRI scans. Fuses Topological Data Analysis (TDA), Tucker/Tensor Train decomposition, and classical ML — achieving 92.45% accuracy (SVM-RBF) with GradCAM++ heatmaps, TDA-derived ROI masks via persistent homology, and quantitative IoU/Dice explainability metrics across 4 tumor classes.",
+        tech: ["Python", "PyTorch", "Flask", "scikit-learn", "TensorLy", "ripser", "XGBoost", "LightGBM", "OpenCV"],
+        github: "https://github.com/sairam3824/NeuroLens",
+        category: "Computer Vision",
+        iconName: "Cpu",
+        featured: true,
+        tagline: "TDA + Tensor Fusion • 92.45% Accuracy • GradCAM++ Explainability",
+    },
+    {
+        title: "K-AgriRisk",
+        description:
+            "Interpretable multimodal crop risk prediction platform using Kolmogorov-Arnold Networks (KAN) — telling farmers not just what will happen, but why and what they can do about it. Features native spline-based explainability, constrained algorithmic recourse over mutable features (NPK, soil pH, area), multi-dataset validation across Indian and UK agricultural datasets, and a FastAPI + React dashboard with SHAP, KAN spline charts, and model comparison across XGBoost, CatBoost, RF, MLP, and KAN.",
+        tech: ["Python", "FastAPI", "KAN", "XGBoost", "CatBoost", "SHAP", "React", "Vite", "Tailwind CSS", "Pydantic", "scikit-learn"],
+        github: "https://github.com/sairam3824/K-AgriRisk",
+        category: "Machine Learning",
+        iconName: "Leaf",
+        featured: true,
+        tagline: "KAN-Powered Crop Risk • Algorithmic Recourse • Interpretable AI",
     },
 ];
