@@ -1,3 +1,4 @@
+import { projectsData } from "./projectsData";
 import { profileDetails } from "./siteMetadata";
 
 export type PublicMetric = {
@@ -25,7 +26,7 @@ export const publicMetrics: readonly PublicMetric[] = [
     },
     {
         label: "Projects",
-        value: "64+",
+        value: `${projectsData.length}+`,
         sub: "Built",
         href: "/projects",
     },
