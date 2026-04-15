@@ -25,7 +25,7 @@ export const publicMetrics: readonly PublicMetric[] = [
     },
     {
         label: "Projects",
-        value: "59+",
+        value: "64+",
         sub: "Built",
         href: "/projects",
     },
