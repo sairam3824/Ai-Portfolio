@@ -16,6 +16,9 @@ import {
     FileText,
     Coffee,
     Terminal,
+    TrendingUp,
+    Zap,
+    Share2,
     type LucideIcon
 } from 'lucide-react';
 
@@ -41,5 +44,8 @@ export const BlogIconMap: Record<string, LucideIcon> = {
     "Globe": Globe,
     "BookOpen": BookOpen,
     "Terminal": Terminal,
+    "TrendingUp": TrendingUp,
+    "Zap": Zap,
+    "Share2": Share2,
     "Default": FileText
 };
