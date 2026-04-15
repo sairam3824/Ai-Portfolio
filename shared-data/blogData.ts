@@ -14,6 +14,17 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
     {
+        id: "ai-analytics-multiplier",
+        title: "AI × Analytics: Why 20% of Companies Are Capturing 75% of AI's Economic Value",
+        excerpt:
+            "Stanford's 2026 AI Index and PwC's AI Performance Study reveal a striking truth: the gap between AI winners and losers isn't about model quality — it's about analytics. Here's what the data says and how builders can position themselves at the most powerful intersection in tech.",
+        date: "April 15, 2026",
+        readTime: "14 min read",
+        tags: ["AI/ML", "Business Analytics", "Generative AI", "AI Strategy", "Stanford AI Index", "Production AI", "AI ROI"],
+        icon: "TrendingUp",
+        iconColor: "blue",
+    },
+    {
         id: "anthropic-q1-2026",
         title: "Anthropic Shipped 20+ Major Updates in 3 Months - Here's What Builders Need to Know",
         excerpt:

@@ -34,6 +34,7 @@ const contentLoaders: Record<string, () => Promise<{ default?: { content: string
     "tech-monthly-digest-feb-2026": () => import('./blog/posts/tech-monthly-digest-feb-2026'),
     "tech-monthly-digest-mar-2026": () => import('./blog/posts/tech-monthly-digest-mar-2026'),
     "context-engineering": () => import('./blog/posts/context-engineering'),
+    "ai-analytics-multiplier": () => import('./blog/posts/ai-analytics-multiplier'),
 };
 
 export async function getBlogContent(id: string): Promise<string | null> {
