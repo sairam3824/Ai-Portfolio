@@ -44,6 +44,7 @@ function writeSeoArtifactsPlugin(): Plugin {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    base: '/v2/',
     envDir: path.resolve(__dirname, ".."),
     publicDir: path.resolve(__dirname, "../shared-public"),
     plugins: [

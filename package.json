@@ -21,7 +21,7 @@
     "verify": "npm run check:writing && npm run check:metrics && npm run test && npm run lint && npm run build:ci && npm run check:bundle",
     "build": "npm run build:deploy",
     "build:ci": "npm run build --workspace Version1 && npm run build --workspace Version2 && npm run build --workspace Version3",
-    "build:deploy": "npm run check:writing && npm run check:metrics && npm run build --workspace Version3 && npm run check:bundle && npm run build --workspace Version1 && node --import tsx scripts/copy-version1-dist.ts",
+    "build:deploy": "npm run check:writing && npm run check:metrics && npm run build --workspace Version3 && npm run check:bundle && npm run build --workspace Version1 && node --import tsx scripts/copy-version1-dist.ts && npm run build --workspace Version2 && node --import tsx scripts/copy-version2-dist.ts",
     "branch-protect:apply": "node --import tsx scripts/apply-branch-protection.ts",
     "content:snapshot": "node --import tsx scripts/export-shared-data-snapshot.ts",
     "clean:generated": "node --import tsx scripts/clean-generated-files.ts"

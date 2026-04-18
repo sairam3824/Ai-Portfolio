@@ -253,7 +253,7 @@ export const SiteLayout = () => {
                             ← Switch to Version 1
                         </a>
                         <a
-                            href="/"
+                            href="/v2/"
                             className="inline-flex items-center gap-2 rounded-full bg-[#1b2433] px-6 py-2.5 text-[0.82rem] font-semibold text-white normal-case tracking-wide shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg hover:bg-[#253044]"
                         >
                             ← Switch to Version 2

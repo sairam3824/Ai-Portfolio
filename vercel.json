@@ -30,6 +30,16 @@
             "permanent": true
         },
         {
+            "source": "/v2/blogs",
+            "destination": "/v2/writing",
+            "permanent": true
+        },
+        {
+            "source": "/v2/blogs/:path*",
+            "destination": "/v2/writing/:path*",
+            "permanent": true
+        },
+        {
             "source": "/v3",
             "destination": "/",
             "permanent": true
@@ -85,6 +95,14 @@
         {
             "source": "/v1/((?!.*\\.).*)",
             "destination": "/v1/index.html"
+        },
+        {
+            "source": "/v2",
+            "destination": "/v2/index.html"
+        },
+        {
+            "source": "/v2/((?!.*\\.).*)",
+            "destination": "/v2/index.html"
         },
         {
             "source": "/((?!.*\\.).*)",
